@@ -1,0 +1,652 @@
+ARM GAS  /tmp/ccpL7hQH.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC1:
+  17 0000 61637175 		.ascii	"acquire\000"
+  17      69726500 
+  18              		.align	2
+  19              	.LC3:
+  20 0008 7061636B 		.ascii	"package\000"
+  20      61676500 
+  21              		.align	2
+  22              	.LC5:
+  23 0010 74784341 		.ascii	"txCAN\000"
+  23      4E00
+  24              		.text
+  25              	.Ltext0:
+  26              		.cfi_sections	.debug_frame
+  27              		.section	.text.StartAcquireTask,"ax",%progbits
+  28              		.align	1
+  29              		.global	StartAcquireTask
+  30              		.syntax unified
+  31              		.thumb
+  32              		.thumb_func
+  34              	StartAcquireTask:
+  35              	.LFB72:
+  36              		.file 1 "Core/Src/freertos.c"
+   1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/freertos.c **** /**
+   3:Core/Src/freertos.c ****   ******************************************************************************
+   4:Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Core/Src/freertos.c ****   ******************************************************************************
+   7:Core/Src/freertos.c ****   * @attention
+   8:Core/Src/freertos.c ****   *
+   9:Core/Src/freertos.c ****   * Copyright (c) 2026 STMicroelectronics.
+  10:Core/Src/freertos.c ****   * All rights reserved.
+  11:Core/Src/freertos.c ****   *
+  12:Core/Src/freertos.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:Core/Src/freertos.c ****   * in the root directory of this software component.
+  14:Core/Src/freertos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:Core/Src/freertos.c ****   *
+  16:Core/Src/freertos.c ****   ******************************************************************************
+  17:Core/Src/freertos.c ****   */
+  18:Core/Src/freertos.c **** /* USER CODE END Header */
+  19:Core/Src/freertos.c **** 
+ARM GAS  /tmp/ccpL7hQH.s 			page 2
+
+
+  20:Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/freertos.c **** #include "FreeRTOS.h"
+  22:Core/Src/freertos.c **** #include "task.h"
+  23:Core/Src/freertos.c **** #include "main.h"
+  24:Core/Src/freertos.c **** #include "cmsis_os.h"
+  25:Core/Src/freertos.c **** 
+  26:Core/Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  27:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  28:Core/Src/freertos.c **** 
+  29:Core/Src/freertos.c **** /* USER CODE END Includes */
+  30:Core/Src/freertos.c **** 
+  31:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  32:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  33:Core/Src/freertos.c **** 
+  34:Core/Src/freertos.c **** /* USER CODE END PTD */
+  35:Core/Src/freertos.c **** 
+  36:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  37:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  38:Core/Src/freertos.c **** 
+  39:Core/Src/freertos.c **** /* USER CODE END PD */
+  40:Core/Src/freertos.c **** 
+  41:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  42:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  43:Core/Src/freertos.c **** 
+  44:Core/Src/freertos.c **** /* USER CODE END PM */
+  45:Core/Src/freertos.c **** 
+  46:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  47:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  48:Core/Src/freertos.c **** 
+  49:Core/Src/freertos.c **** /* USER CODE END Variables */
+  50:Core/Src/freertos.c **** osThreadId acquireHandle;
+  51:Core/Src/freertos.c **** osThreadId packageHandle;
+  52:Core/Src/freertos.c **** osThreadId txCANHandle;
+  53:Core/Src/freertos.c **** osMessageQId rawQueueHandle;
+  54:Core/Src/freertos.c **** osMessageQId canQueueHandle;
+  55:Core/Src/freertos.c **** 
+  56:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  57:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  58:Core/Src/freertos.c **** 
+  59:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  60:Core/Src/freertos.c **** 
+  61:Core/Src/freertos.c **** void StartAcquireTask(void const * argument);
+  62:Core/Src/freertos.c **** void StartPackageTask(void const * argument);
+  63:Core/Src/freertos.c **** void StartTxCAN(void const * argument);
+  64:Core/Src/freertos.c **** 
+  65:Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+  66:Core/Src/freertos.c **** 
+  67:Core/Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  68:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  69:Core/Src/freertos.c **** 
+  70:Core/Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  71:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  72:Core/Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  73:Core/Src/freertos.c **** 
+  74:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  75:Core/Src/freertos.c **** {
+  76:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+ARM GAS  /tmp/ccpL7hQH.s 			page 3
+
+
+  77:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  78:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  79:Core/Src/freertos.c ****   /* place for user code */
+  80:Core/Src/freertos.c **** }
+  81:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+  82:Core/Src/freertos.c **** 
+  83:Core/Src/freertos.c **** /**
+  84:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
+  85:Core/Src/freertos.c ****   * @param  None
+  86:Core/Src/freertos.c ****   * @retval None
+  87:Core/Src/freertos.c ****   */
+  88:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  89:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+  90:Core/Src/freertos.c **** 
+  91:Core/Src/freertos.c ****   /* USER CODE END Init */
+  92:Core/Src/freertos.c **** 
+  93:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+  94:Core/Src/freertos.c ****   /* add mutexes, ... */
+  95:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
+  96:Core/Src/freertos.c **** 
+  97:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  98:Core/Src/freertos.c ****   /* add semaphores, ... */
+  99:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+ 100:Core/Src/freertos.c **** 
+ 101:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+ 102:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
+ 103:Core/Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
+ 104:Core/Src/freertos.c **** 
+ 105:Core/Src/freertos.c ****   /* Create the queue(s) */
+ 106:Core/Src/freertos.c ****   /* definition and creation of rawQueue */
+ 107:Core/Src/freertos.c ****   osMessageQDef(rawQueue, 16, uint16_t);
+ 108:Core/Src/freertos.c ****   rawQueueHandle = osMessageCreate(osMessageQ(rawQueue), NULL);
+ 109:Core/Src/freertos.c **** 
+ 110:Core/Src/freertos.c ****   /* definition and creation of canQueue */
+ 111:Core/Src/freertos.c ****   osMessageQDef(canQueue, 16, uint16_t);
+ 112:Core/Src/freertos.c ****   canQueueHandle = osMessageCreate(osMessageQ(canQueue), NULL);
+ 113:Core/Src/freertos.c **** 
+ 114:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 115:Core/Src/freertos.c ****   /* add queues, ... */
+ 116:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
+ 117:Core/Src/freertos.c **** 
+ 118:Core/Src/freertos.c ****   /* Create the thread(s) */
+ 119:Core/Src/freertos.c ****   /* definition and creation of acquire */
+ 120:Core/Src/freertos.c ****   osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 128);
+ 121:Core/Src/freertos.c ****   acquireHandle = osThreadCreate(osThread(acquire), NULL);
+ 122:Core/Src/freertos.c **** 
+ 123:Core/Src/freertos.c ****   /* definition and creation of package */
+ 124:Core/Src/freertos.c ****   osThreadDef(package, StartPackageTask, osPriorityNormal, 0, 128);
+ 125:Core/Src/freertos.c ****   packageHandle = osThreadCreate(osThread(package), NULL);
+ 126:Core/Src/freertos.c **** 
+ 127:Core/Src/freertos.c ****   /* definition and creation of txCAN */
+ 128:Core/Src/freertos.c ****   osThreadDef(txCAN, StartTxCAN, osPriorityAboveNormal, 0, 128);
+ 129:Core/Src/freertos.c ****   txCANHandle = osThreadCreate(osThread(txCAN), NULL);
+ 130:Core/Src/freertos.c **** 
+ 131:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 132:Core/Src/freertos.c ****   /* add threads, ... */
+ 133:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ARM GAS  /tmp/ccpL7hQH.s 			page 4
+
+
+ 134:Core/Src/freertos.c **** 
+ 135:Core/Src/freertos.c **** }
+ 136:Core/Src/freertos.c **** 
+ 137:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartAcquireTask */
+ 138:Core/Src/freertos.c **** /**
+ 139:Core/Src/freertos.c ****   * @brief  Function implementing the acquire thread.
+ 140:Core/Src/freertos.c ****   * @param  argument: Not used
+ 141:Core/Src/freertos.c ****   * @retval None
+ 142:Core/Src/freertos.c ****   */
+ 143:Core/Src/freertos.c **** /* USER CODE END Header_StartAcquireTask */
+ 144:Core/Src/freertos.c **** void StartAcquireTask(void const * argument)
+ 145:Core/Src/freertos.c **** {
+  37              		.loc 1 145 1 view -0
+  38              		.cfi_startproc
+  39              		@ Volatile: function does not return.
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              	.LVL0:
+  43              		.loc 1 145 1 is_stmt 0 view .LVU1
+  44 0000 08B5     		push	{r3, lr}
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 3, -8
+  48              		.cfi_offset 14, -4
+  49              	.LVL1:
+  50              	.L2:
+ 146:Core/Src/freertos.c ****   /* USER CODE BEGIN StartAcquireTask */
+ 147:Core/Src/freertos.c ****   /* Infinite loop */
+ 148:Core/Src/freertos.c ****   for(;;)
+  51              		.loc 1 148 3 is_stmt 1 discriminator 1 view .LVU2
+ 149:Core/Src/freertos.c ****   {
+ 150:Core/Src/freertos.c ****     osDelay(1);
+  52              		.loc 1 150 5 discriminator 1 view .LVU3
+  53 0002 0120     		movs	r0, #1
+  54 0004 FFF7FEFF 		bl	osDelay
+  55              	.LVL2:
+ 148:Core/Src/freertos.c ****   {
+  56              		.loc 1 148 8 discriminator 1 view .LVU4
+  57 0008 FBE7     		b	.L2
+  58              		.cfi_endproc
+  59              	.LFE72:
+  61              		.section	.text.StartPackageTask,"ax",%progbits
+  62              		.align	1
+  63              		.global	StartPackageTask
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  68              	StartPackageTask:
+  69              	.LFB73:
+ 151:Core/Src/freertos.c ****   }
+ 152:Core/Src/freertos.c ****   /* USER CODE END StartAcquireTask */
+ 153:Core/Src/freertos.c **** }
+ 154:Core/Src/freertos.c **** 
+ 155:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartPackageTask */
+ 156:Core/Src/freertos.c **** /**
+ 157:Core/Src/freertos.c **** * @brief Function implementing the package thread.
+ 158:Core/Src/freertos.c **** * @param argument: Not used
+ARM GAS  /tmp/ccpL7hQH.s 			page 5
+
+
+ 159:Core/Src/freertos.c **** * @retval None
+ 160:Core/Src/freertos.c **** */
+ 161:Core/Src/freertos.c **** /* USER CODE END Header_StartPackageTask */
+ 162:Core/Src/freertos.c **** void StartPackageTask(void const * argument)
+ 163:Core/Src/freertos.c **** {
+  70              		.loc 1 163 1 view -0
+  71              		.cfi_startproc
+  72              		@ Volatile: function does not return.
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              	.LVL3:
+  76              		.loc 1 163 1 is_stmt 0 view .LVU6
+  77 0000 08B5     		push	{r3, lr}
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 3, -8
+  81              		.cfi_offset 14, -4
+  82              	.LVL4:
+  83              	.L5:
+ 164:Core/Src/freertos.c ****   /* USER CODE BEGIN StartPackageTask */
+ 165:Core/Src/freertos.c ****   /* Infinite loop */
+ 166:Core/Src/freertos.c ****   for(;;)
+  84              		.loc 1 166 3 is_stmt 1 discriminator 1 view .LVU7
+ 167:Core/Src/freertos.c ****   {
+ 168:Core/Src/freertos.c ****     osDelay(1);
+  85              		.loc 1 168 5 discriminator 1 view .LVU8
+  86 0002 0120     		movs	r0, #1
+  87 0004 FFF7FEFF 		bl	osDelay
+  88              	.LVL5:
+ 166:Core/Src/freertos.c ****   {
+  89              		.loc 1 166 8 discriminator 1 view .LVU9
+  90 0008 FBE7     		b	.L5
+  91              		.cfi_endproc
+  92              	.LFE73:
+  94              		.section	.text.StartTxCAN,"ax",%progbits
+  95              		.align	1
+  96              		.global	StartTxCAN
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 101              	StartTxCAN:
+ 102              	.LFB74:
+ 169:Core/Src/freertos.c ****   }
+ 170:Core/Src/freertos.c ****   /* USER CODE END StartPackageTask */
+ 171:Core/Src/freertos.c **** }
+ 172:Core/Src/freertos.c **** 
+ 173:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartTxCAN */
+ 174:Core/Src/freertos.c **** /**
+ 175:Core/Src/freertos.c **** * @brief Function implementing the txCAN thread.
+ 176:Core/Src/freertos.c **** * @param argument: Not used
+ 177:Core/Src/freertos.c **** * @retval None
+ 178:Core/Src/freertos.c **** */
+ 179:Core/Src/freertos.c **** /* USER CODE END Header_StartTxCAN */
+ 180:Core/Src/freertos.c **** void StartTxCAN(void const * argument)
+ 181:Core/Src/freertos.c **** {
+ 103              		.loc 1 181 1 view -0
+ 104              		.cfi_startproc
+ARM GAS  /tmp/ccpL7hQH.s 			page 6
+
+
+ 105              		@ Volatile: function does not return.
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              	.LVL6:
+ 109              		.loc 1 181 1 is_stmt 0 view .LVU11
+ 110 0000 08B5     		push	{r3, lr}
+ 111              	.LCFI2:
+ 112              		.cfi_def_cfa_offset 8
+ 113              		.cfi_offset 3, -8
+ 114              		.cfi_offset 14, -4
+ 115              	.LVL7:
+ 116              	.L8:
+ 182:Core/Src/freertos.c ****   /* USER CODE BEGIN StartTxCAN */
+ 183:Core/Src/freertos.c ****   /* Infinite loop */
+ 184:Core/Src/freertos.c ****   for(;;)
+ 117              		.loc 1 184 3 is_stmt 1 discriminator 1 view .LVU12
+ 185:Core/Src/freertos.c ****   {
+ 186:Core/Src/freertos.c ****     osDelay(1);
+ 118              		.loc 1 186 5 discriminator 1 view .LVU13
+ 119 0002 0120     		movs	r0, #1
+ 120 0004 FFF7FEFF 		bl	osDelay
+ 121              	.LVL8:
+ 184:Core/Src/freertos.c ****   {
+ 122              		.loc 1 184 8 discriminator 1 view .LVU14
+ 123 0008 FBE7     		b	.L8
+ 124              		.cfi_endproc
+ 125              	.LFE74:
+ 127              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	vApplicationGetIdleTaskMemory
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 134              	vApplicationGetIdleTaskMemory:
+ 135              	.LVL9:
+ 136              	.LFB70:
+  75:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+ 137              		.loc 1 75 1 view -0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+  76:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 142              		.loc 1 76 3 view .LVU16
+  76:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 143              		.loc 1 76 25 is_stmt 0 view .LVU17
+ 144 0000 034B     		ldr	r3, .L11
+ 145 0002 0360     		str	r3, [r0]
+  77:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 146              		.loc 1 77 3 is_stmt 1 view .LVU18
+  77:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 147              		.loc 1 77 27 is_stmt 0 view .LVU19
+ 148 0004 034B     		ldr	r3, .L11+4
+ 149 0006 0B60     		str	r3, [r1]
+  78:Core/Src/freertos.c ****   /* place for user code */
+ 150              		.loc 1 78 3 is_stmt 1 view .LVU20
+  78:Core/Src/freertos.c ****   /* place for user code */
+ARM GAS  /tmp/ccpL7hQH.s 			page 7
+
+
+ 151              		.loc 1 78 25 is_stmt 0 view .LVU21
+ 152 0008 8023     		movs	r3, #128
+ 153 000a 1360     		str	r3, [r2]
+  80:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+ 154              		.loc 1 80 1 view .LVU22
+ 155 000c 7047     		bx	lr
+ 156              	.L12:
+ 157 000e 00BF     		.align	2
+ 158              	.L11:
+ 159 0010 00000000 		.word	.LANCHOR0
+ 160 0014 00000000 		.word	.LANCHOR1
+ 161              		.cfi_endproc
+ 162              	.LFE70:
+ 164              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	MX_FREERTOS_Init
+ 167              		.syntax unified
+ 168              		.thumb
+ 169              		.thumb_func
+ 171              	MX_FREERTOS_Init:
+ 172              	.LFB71:
+  88:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 173              		.loc 1 88 29 is_stmt 1 view -0
+ 174              		.cfi_startproc
+ 175              		@ args = 0, pretend = 0, frame = 120
+ 176              		@ frame_needed = 0, uses_anonymous_args = 0
+ 177 0000 10B5     		push	{r4, lr}
+ 178              	.LCFI3:
+ 179              		.cfi_def_cfa_offset 8
+ 180              		.cfi_offset 4, -8
+ 181              		.cfi_offset 14, -4
+ 182 0002 9EB0     		sub	sp, sp, #120
+ 183              	.LCFI4:
+ 184              		.cfi_def_cfa_offset 128
+ 107:Core/Src/freertos.c ****   rawQueueHandle = osMessageCreate(osMessageQ(rawQueue), NULL);
+ 185              		.loc 1 107 3 view .LVU24
+ 186 0004 274C     		ldr	r4, .L15
+ 187 0006 0DF1680C 		add	ip, sp, #104
+ 188 000a 94E80F00 		ldm	r4, {r0, r1, r2, r3}
+ 189 000e 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ 108:Core/Src/freertos.c **** 
+ 190              		.loc 1 108 3 view .LVU25
+ 108:Core/Src/freertos.c **** 
+ 191              		.loc 1 108 20 is_stmt 0 view .LVU26
+ 192 0012 0021     		movs	r1, #0
+ 193 0014 6046     		mov	r0, ip
+ 194 0016 FFF7FEFF 		bl	osMessageCreate
+ 195              	.LVL10:
+ 108:Core/Src/freertos.c **** 
+ 196              		.loc 1 108 18 view .LVU27
+ 197 001a 234B     		ldr	r3, .L15+4
+ 198 001c 1860     		str	r0, [r3]
+ 111:Core/Src/freertos.c ****   canQueueHandle = osMessageCreate(osMessageQ(canQueue), NULL);
+ 199              		.loc 1 111 3 is_stmt 1 view .LVU28
+ 200 001e 0DF1580C 		add	ip, sp, #88
+ 201 0022 94E80F00 		ldm	r4, {r0, r1, r2, r3}
+ 202 0026 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ARM GAS  /tmp/ccpL7hQH.s 			page 8
+
+
+ 112:Core/Src/freertos.c **** 
+ 203              		.loc 1 112 3 view .LVU29
+ 112:Core/Src/freertos.c **** 
+ 204              		.loc 1 112 20 is_stmt 0 view .LVU30
+ 205 002a 0021     		movs	r1, #0
+ 206 002c 6046     		mov	r0, ip
+ 207 002e FFF7FEFF 		bl	osMessageCreate
+ 208              	.LVL11:
+ 112:Core/Src/freertos.c **** 
+ 209              		.loc 1 112 18 view .LVU31
+ 210 0032 1E4B     		ldr	r3, .L15+8
+ 211 0034 1860     		str	r0, [r3]
+ 120:Core/Src/freertos.c ****   acquireHandle = osThreadCreate(osThread(acquire), NULL);
+ 212              		.loc 1 120 3 is_stmt 1 view .LVU32
+ 213 0036 0DF13C0C 		add	ip, sp, #60
+ 214 003a 04F1100E 		add	lr, r4, #16
+ 215 003e BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 216 0042 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 217 0046 9EE80700 		ldm	lr, {r0, r1, r2}
+ 218 004a 8CE80700 		stm	ip, {r0, r1, r2}
+ 121:Core/Src/freertos.c **** 
+ 219              		.loc 1 121 3 view .LVU33
+ 121:Core/Src/freertos.c **** 
+ 220              		.loc 1 121 19 is_stmt 0 view .LVU34
+ 221 004e 0021     		movs	r1, #0
+ 222 0050 0FA8     		add	r0, sp, #60
+ 223 0052 FFF7FEFF 		bl	osThreadCreate
+ 224              	.LVL12:
+ 121:Core/Src/freertos.c **** 
+ 225              		.loc 1 121 17 view .LVU35
+ 226 0056 164B     		ldr	r3, .L15+12
+ 227 0058 1860     		str	r0, [r3]
+ 124:Core/Src/freertos.c ****   packageHandle = osThreadCreate(osThread(package), NULL);
+ 228              		.loc 1 124 3 is_stmt 1 view .LVU36
+ 229 005a 0DF1200C 		add	ip, sp, #32
+ 230 005e 04F12C0E 		add	lr, r4, #44
+ 231 0062 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 232 0066 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 233 006a 9EE80700 		ldm	lr, {r0, r1, r2}
+ 234 006e 8CE80700 		stm	ip, {r0, r1, r2}
+ 125:Core/Src/freertos.c **** 
+ 235              		.loc 1 125 3 view .LVU37
+ 125:Core/Src/freertos.c **** 
+ 236              		.loc 1 125 19 is_stmt 0 view .LVU38
+ 237 0072 0021     		movs	r1, #0
+ 238 0074 08A8     		add	r0, sp, #32
+ 239 0076 FFF7FEFF 		bl	osThreadCreate
+ 240              	.LVL13:
+ 125:Core/Src/freertos.c **** 
+ 241              		.loc 1 125 17 view .LVU39
+ 242 007a 0E4B     		ldr	r3, .L15+16
+ 243 007c 1860     		str	r0, [r3]
+ 128:Core/Src/freertos.c ****   txCANHandle = osThreadCreate(osThread(txCAN), NULL);
+ 244              		.loc 1 128 3 is_stmt 1 view .LVU40
+ 245 007e 0DF1040C 		add	ip, sp, #4
+ 246 0082 4834     		adds	r4, r4, #72
+ 247 0084 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ARM GAS  /tmp/ccpL7hQH.s 			page 9
+
+
+ 248 0086 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 249 008a 94E80700 		ldm	r4, {r0, r1, r2}
+ 250 008e 8CE80700 		stm	ip, {r0, r1, r2}
+ 129:Core/Src/freertos.c **** 
+ 251              		.loc 1 129 3 view .LVU41
+ 129:Core/Src/freertos.c **** 
+ 252              		.loc 1 129 17 is_stmt 0 view .LVU42
+ 253 0092 0021     		movs	r1, #0
+ 254 0094 01A8     		add	r0, sp, #4
+ 255 0096 FFF7FEFF 		bl	osThreadCreate
+ 256              	.LVL14:
+ 129:Core/Src/freertos.c **** 
+ 257              		.loc 1 129 15 view .LVU43
+ 258 009a 074B     		ldr	r3, .L15+20
+ 259 009c 1860     		str	r0, [r3]
+ 135:Core/Src/freertos.c **** 
+ 260              		.loc 1 135 1 view .LVU44
+ 261 009e 1EB0     		add	sp, sp, #120
+ 262              	.LCFI5:
+ 263              		.cfi_def_cfa_offset 8
+ 264              		@ sp needed
+ 265 00a0 10BD     		pop	{r4, pc}
+ 266              	.L16:
+ 267 00a2 00BF     		.align	2
+ 268              	.L15:
+ 269 00a4 00000000 		.word	.LANCHOR2
+ 270 00a8 00000000 		.word	.LANCHOR3
+ 271 00ac 00000000 		.word	.LANCHOR4
+ 272 00b0 00000000 		.word	.LANCHOR5
+ 273 00b4 00000000 		.word	.LANCHOR6
+ 274 00b8 00000000 		.word	.LANCHOR7
+ 275              		.cfi_endproc
+ 276              	.LFE71:
+ 278              		.global	canQueueHandle
+ 279              		.global	rawQueueHandle
+ 280              		.global	txCANHandle
+ 281              		.global	packageHandle
+ 282              		.global	acquireHandle
+ 283              		.section	.rodata
+ 284              		.align	2
+ 285              		.set	.LANCHOR2,. + 0
+ 286              	.LC0:
+ 287 0000 10000000 		.word	16
+ 288 0004 02000000 		.word	2
+ 289 0008 00000000 		.word	0
+ 290 000c 00000000 		.word	0
+ 291              	.LC7:
+ 292 0010 00000000 		.word	.LC1
+ 293 0014 00000000 		.word	StartAcquireTask
+ 294 0018 0000     		.short	0
+ 295 001a 0000     		.space	2
+ 296 001c 00000000 		.word	0
+ 297 0020 80000000 		.word	128
+ 298 0024 00000000 		.word	0
+ 299 0028 00000000 		.word	0
+ 300              	.LC8:
+ 301 002c 08000000 		.word	.LC3
+ARM GAS  /tmp/ccpL7hQH.s 			page 10
+
+
+ 302 0030 00000000 		.word	StartPackageTask
+ 303 0034 0000     		.short	0
+ 304 0036 0000     		.space	2
+ 305 0038 00000000 		.word	0
+ 306 003c 80000000 		.word	128
+ 307 0040 00000000 		.word	0
+ 308 0044 00000000 		.word	0
+ 309              	.LC9:
+ 310 0048 10000000 		.word	.LC5
+ 311 004c 00000000 		.word	StartTxCAN
+ 312 0050 0100     		.short	1
+ 313 0052 0000     		.space	2
+ 314 0054 00000000 		.word	0
+ 315 0058 80000000 		.word	128
+ 316 005c 00000000 		.word	0
+ 317 0060 00000000 		.word	0
+ 318              		.section	.bss.acquireHandle,"aw",%nobits
+ 319              		.align	2
+ 320              		.set	.LANCHOR5,. + 0
+ 323              	acquireHandle:
+ 324 0000 00000000 		.space	4
+ 325              		.section	.bss.canQueueHandle,"aw",%nobits
+ 326              		.align	2
+ 327              		.set	.LANCHOR4,. + 0
+ 330              	canQueueHandle:
+ 331 0000 00000000 		.space	4
+ 332              		.section	.bss.packageHandle,"aw",%nobits
+ 333              		.align	2
+ 334              		.set	.LANCHOR6,. + 0
+ 337              	packageHandle:
+ 338 0000 00000000 		.space	4
+ 339              		.section	.bss.rawQueueHandle,"aw",%nobits
+ 340              		.align	2
+ 341              		.set	.LANCHOR3,. + 0
+ 344              	rawQueueHandle:
+ 345 0000 00000000 		.space	4
+ 346              		.section	.bss.txCANHandle,"aw",%nobits
+ 347              		.align	2
+ 348              		.set	.LANCHOR7,. + 0
+ 351              	txCANHandle:
+ 352 0000 00000000 		.space	4
+ 353              		.section	.bss.xIdleStack,"aw",%nobits
+ 354              		.align	2
+ 355              		.set	.LANCHOR1,. + 0
+ 358              	xIdleStack:
+ 359 0000 00000000 		.space	512
+ 359      00000000 
+ 359      00000000 
+ 359      00000000 
+ 359      00000000 
+ 360              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 361              		.align	2
+ 362              		.set	.LANCHOR0,. + 0
+ 365              	xIdleTaskTCBBuffer:
+ 366 0000 00000000 		.space	84
+ 366      00000000 
+ 366      00000000 
+ARM GAS  /tmp/ccpL7hQH.s 			page 11
+
+
+ 366      00000000 
+ 366      00000000 
+ 367              		.text
+ 368              	.Letext0:
+ 369              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 370              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 371              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 372              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 373              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 374              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 375              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  /tmp/ccpL7hQH.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/ccpL7hQH.s:15     .rodata.str1.4:0000000000000000 $d
+     /tmp/ccpL7hQH.s:28     .text.StartAcquireTask:0000000000000000 $t
+     /tmp/ccpL7hQH.s:34     .text.StartAcquireTask:0000000000000000 StartAcquireTask
+     /tmp/ccpL7hQH.s:62     .text.StartPackageTask:0000000000000000 $t
+     /tmp/ccpL7hQH.s:68     .text.StartPackageTask:0000000000000000 StartPackageTask
+     /tmp/ccpL7hQH.s:95     .text.StartTxCAN:0000000000000000 $t
+     /tmp/ccpL7hQH.s:101    .text.StartTxCAN:0000000000000000 StartTxCAN
+     /tmp/ccpL7hQH.s:128    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
+     /tmp/ccpL7hQH.s:134    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
+     /tmp/ccpL7hQH.s:159    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
+     /tmp/ccpL7hQH.s:165    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/ccpL7hQH.s:171    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/ccpL7hQH.s:269    .text.MX_FREERTOS_Init:00000000000000a4 $d
+     /tmp/ccpL7hQH.s:330    .bss.canQueueHandle:0000000000000000 canQueueHandle
+     /tmp/ccpL7hQH.s:344    .bss.rawQueueHandle:0000000000000000 rawQueueHandle
+     /tmp/ccpL7hQH.s:351    .bss.txCANHandle:0000000000000000 txCANHandle
+     /tmp/ccpL7hQH.s:337    .bss.packageHandle:0000000000000000 packageHandle
+     /tmp/ccpL7hQH.s:323    .bss.acquireHandle:0000000000000000 acquireHandle
+     /tmp/ccpL7hQH.s:284    .rodata:0000000000000000 $d
+     /tmp/ccpL7hQH.s:319    .bss.acquireHandle:0000000000000000 $d
+     /tmp/ccpL7hQH.s:326    .bss.canQueueHandle:0000000000000000 $d
+     /tmp/ccpL7hQH.s:333    .bss.packageHandle:0000000000000000 $d
+     /tmp/ccpL7hQH.s:340    .bss.rawQueueHandle:0000000000000000 $d
+     /tmp/ccpL7hQH.s:347    .bss.txCANHandle:0000000000000000 $d
+     /tmp/ccpL7hQH.s:354    .bss.xIdleStack:0000000000000000 $d
+     /tmp/ccpL7hQH.s:358    .bss.xIdleStack:0000000000000000 xIdleStack
+     /tmp/ccpL7hQH.s:361    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
+     /tmp/ccpL7hQH.s:365    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
+
+UNDEFINED SYMBOLS
+osDelay
+osMessageCreate
+osThreadCreate
