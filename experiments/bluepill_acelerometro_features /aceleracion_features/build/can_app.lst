@@ -1,0 +1,60 @@
+ARM GAS  /tmp/ccBkwT0V.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"can_app.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/can_app.c"
+  18              		.section	.text.CAN_SendFloat,"ax",%progbits
+  19              		.align	1
+  20              		.global	CAN_SendFloat
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	CAN_SendFloat:
+  26              	.LVL0:
+  27              	.LFB0:
+   1:Core/Src/can_app.c **** #include "can_app.h"
+   2:Core/Src/can_app.c **** 
+   3:Core/Src/can_app.c **** void CAN_SendFloat(uint16_t id, float value)
+   4:Core/Src/can_app.c **** {
+  28              		.loc 1 4 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+   5:Core/Src/can_app.c ****     // TODO: implementar CAN real
+   6:Core/Src/can_app.c ****     (void)id;
+  33              		.loc 1 6 5 view .LVU1
+   7:Core/Src/can_app.c ****     (void)value;
+  34              		.loc 1 7 5 view .LVU2
+   8:Core/Src/can_app.c **** }...
+  35              		.loc 1 8 1 is_stmt 0 view .LVU3
+  36 0000 7047     		bx	lr
+  37              		.cfi_endproc
+  38              	.LFE0:
+  40              		.text
+  41              	.Letext0:
+  42              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ARM GAS  /tmp/ccBkwT0V.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 can_app.c
+     /tmp/ccBkwT0V.s:19     .text.CAN_SendFloat:00000000 $t
+     /tmp/ccBkwT0V.s:25     .text.CAN_SendFloat:00000000 CAN_SendFloat
+
+NO UNDEFINED SYMBOLS
