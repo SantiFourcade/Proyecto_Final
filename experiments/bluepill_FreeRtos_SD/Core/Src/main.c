@@ -20,11 +20,9 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "fatfs.h"
-#include "fatfs_sd.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -47,7 +45,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-/* Variables para los Timeouts de la SD */
+volatile uint8_t FatFsCnt = 0;
 volatile uint8_t Timer1, Timer2;
 /* USER CODE BEGIN PV */
 
@@ -73,6 +71,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -94,12 +93,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
-  printf("Inicializacion UART\r\n");
   MX_SPI1_Init();
-  printf("Inicializacion SPI\r\n");
   MX_FATFS_Init();
-  printf("Inicializacion FATFS\r\n");
-
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -174,6 +169,16 @@ void SystemClock_Config(void)
   * @param  htim : TIM handle
   * @retval None
   */
+
+void SDTimer_Handler(void)
+{  
+  if(Timer1 > 0)
+    Timer1--;
+  
+  if(Timer2 > 0)
+    Timer2--;
+}
+ 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
@@ -184,17 +189,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-  /*--- CONTADORES PARA EL DRIVER SD ---*/
-    if (Timer1 > 0) Timer1--;
-    if (Timer2 > 0) Timer2--;
+  FatFsCnt++;
+  if(FatFsCnt >= 10)
+    {
+      FatFsCnt = 0;
+      SDTimer_Handler();
+    } 
+
   /* USER CODE END Callback 1 */
 }
-int _write(int file, char *ptr, int len)
-{
-    HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, HAL_MAX_DELAY);
-    return len;
-}
-
 
 /**
   * @brief  This function is executed in case of error occurrence.
@@ -209,6 +212,11 @@ void Error_Handler(void)
   {
   }
   /* USER CODE END Error_Handler_Debug */
+}
+int _write(int file, char *ptr, int len)
+{
+  HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, HAL_MAX_DELAY);
+  return len;
 }
 #ifdef USE_FULL_ASSERT
 /**

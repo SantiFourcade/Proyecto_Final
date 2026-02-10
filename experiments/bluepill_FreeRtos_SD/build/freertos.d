@@ -42,11 +42,10 @@ build/freertos.o: Core/Src/freertos.c \
  Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  Middlewares/Third_Party/FatFs/src/ff.h \
  Middlewares/Third_Party/FatFs/src/integer.h FATFS/Target/ffconf.h \
- FATFS/App/fatfs.h Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  Middlewares/Third_Party/FatFs/src/diskio.h \
- Middlewares/Third_Party/FatFs/src/ff.h FATFS/Target/user_diskio.h \
- FATFS/App/fatfs_sd.h Middlewares/Third_Party/FatFs/src/diskio.h \
- Core/Inc/gpio.h Core/Inc/main.h Core/Inc/spi.h Core/Inc/usart.h
+ Middlewares/Third_Party/FatFs/src/ff.h FATFS/App/fatfs.h \
+ FATFS/Target/user_diskio.h FATFS/App/fatfs_sd.h
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -94,14 +93,9 @@ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 Middlewares/Third_Party/FatFs/src/ff.h:
 Middlewares/Third_Party/FatFs/src/integer.h:
 FATFS/Target/ffconf.h:
-FATFS/App/fatfs.h:
 Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
 Middlewares/Third_Party/FatFs/src/diskio.h:
 Middlewares/Third_Party/FatFs/src/ff.h:
+FATFS/App/fatfs.h:
 FATFS/Target/user_diskio.h:
 FATFS/App/fatfs_sd.h:
-Middlewares/Third_Party/FatFs/src/diskio.h:
-Core/Inc/gpio.h:
-Core/Inc/main.h:
-Core/Inc/spi.h:
-Core/Inc/usart.h:
