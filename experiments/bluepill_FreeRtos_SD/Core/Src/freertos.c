@@ -29,6 +29,7 @@
 /* USER CODE BEGIN Includes */
 #include "ff.h"
 #include "fatfs.h"
+#include "fatfs_sd.h"
 #include "gpio.h"
 #include "spi.h"
 #include "usart.h"
@@ -128,51 +129,75 @@ void MX_FREERTOS_Init(void) {
 void StartLogger(void const * argument)
 {
   /* USER CODE BEGIN StartLogger */
-  /* Infinite loop */
   FATFS fs;
   FIL file;
+  FRESULT res;
   UINT bw;
-// 1. Asegurar CS en alto y dar tiempo de estabilización
-  SD_CS_HIGH();
-  osDelay(100); 
+  char *logMsg = "Hello SD con driver nuevo\r\n";
 
-  // 2. Enviar 10-20 bytes dummy (0xFF) con CS ALTO para entrar en modo SPI
-  uint8_t dummy = 0xFF;
-  for(int i=0; i<20; i++) {
-      HAL_SPI_Transmit(&hspi1, &dummy, 1, 10);
-  }
+  printf("\r\n--- Sistema de Log SD con Drivers de eziya ---\r\n");
 
-  printf("Intentando montar SD...\r\n");
+  /* 1. BUCLE DE MONTAJE INFINITO */
+  while (1) 
+  {
+      printf("Intentando montar SD (f_mount)... ");
 
-  // 3. Mount con '1' para forzar inicialización inmediata
-  FRESULT res = f_mount(&fs, USERPath, 1);
-  
-  if (res != FR_OK) {
-      printf("Error f_mount: %d\r\n", res);
-      // Si el error es 13 (FR_NO_FILESYSTEM), intenta f_mkfs o revisa el formato
-      while(1) { 
+      // Intentamos montar. f_mount llamará internamente a SD_disk_initialize
+      // El parámetro '1' fuerza la inicialización física inmediata.
+      res = f_mount(&fs, USERPath, 1);
+
+      if (res == FR_OK) 
+      {
+          printf("¡EXITO! Sistema de archivos reconocido.\r\n");
+          break; // Salimos del bucle
+      } 
+      else 
+      {
+          // Si da Error 1 o 3, el parpadeo del LED indica que seguimos intentando
+          printf("FALLO (Código FatFS: %d). Reintentando en 2s...\r\n", res);
           HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); 
-          osDelay(1000); 
+          osDelay(2000); 
       }
   }
 
-  printf("SD Montada con éxito!\r\n");
-  /* Open file */
-  if (f_open(&file, "test.txt", FA_OPEN_ALWAYS | FA_WRITE) != FR_OK)
+  /* 2. APERTURA DE ARCHIVO */
+  // Usamos FA_OPEN_APPEND si tu versión de FatFS lo soporta, 
+  // si no, FA_OPEN_ALWAYS | FA_WRITE es lo más seguro.
+  printf("Abriendo 'test.txt'...\r\n");
+  res = f_open(&file, "test.txt", FA_OPEN_ALWAYS | FA_WRITE);
+  
+  if (res != FR_OK)
   {
-      while(1){
+      printf("Error crítico al abrir archivo: %d\r\n", res);
+      while(1) // Bloqueo por error de apertura (parpadeo rápido)
+      {
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-        osDelay(200);
-        printf("Error al abrir\r\n");
-      };   // error open
+        osDelay(100);
+      }
   }
 
-  /* Append */
+  /* 3. BUCLE DE ESCRITURA */
+  // Movemos el puntero al final del archivo por si ya tenía datos
   f_lseek(&file, f_size(&file));
+  printf("Escribiendo datos cada 1 segundo...\r\n");
+
   for (;;)
   {
-      f_write(&file, "Hello SD\r\n", 10, &bw);
-      f_sync(&file);
+      // Escribimos el mensaje
+      res = f_write(&file, logMsg, strlen(logMsg), &bw);
+      
+      if (res == FR_OK && bw > 0)
+      {
+          // Sincronizamos para asegurar que los datos se guarden físicamente
+          f_sync(&file);
+          printf("Dato guardado: %d bytes\r\n", bw);
+      }
+      else
+      {
+          printf("Error de escritura física: %d\r\n", res);
+      }
+
+      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Flash de actividad
       osDelay(1000);
   }
   /* USER CODE END StartLogger */

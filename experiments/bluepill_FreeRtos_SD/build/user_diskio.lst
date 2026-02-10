@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cclUZkff.s 			page 1
+ARM GAS  /tmp/cco1i8Ff.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,1108 +17,200 @@ ARM GAS  /tmp/cclUZkff.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.USER_status,"ax",%progbits
+  17              		.section	.text.USER_initialize,"ax",%progbits
   18              		.align	1
-  19              		.global	USER_status
+  19              		.global	USER_initialize
   20              		.syntax unified
   21              		.thumb
   22              		.thumb_func
-  24              	USER_status:
+  24              	USER_initialize:
   25              	.LVL0:
-  26              	.LFB74:
+  26              	.LFB65:
   27              		.file 1 "FATFS/Target/user_diskio.c"
-   1:FATFS/Target/user_diskio.c **** /* USER CODE BEGIN Header */
-   2:FATFS/Target/user_diskio.c **** /**
-   3:FATFS/Target/user_diskio.c ****  ******************************************************************************
-   4:FATFS/Target/user_diskio.c ****   * @file    user_diskio.c
-   5:FATFS/Target/user_diskio.c ****   * @brief   Implementation of SD SPI driver for STM32F103 (Blue Pill)
-   6:FATFS/Target/user_diskio.c ****   ******************************************************************************
-   7:FATFS/Target/user_diskio.c ****   */
-   8:FATFS/Target/user_diskio.c **** /* USER CODE END Header */
-   9:FATFS/Target/user_diskio.c **** 
-  10:FATFS/Target/user_diskio.c **** /* USER CODE BEGIN DECL */
-  11:FATFS/Target/user_diskio.c **** #include <string.h>
-  12:FATFS/Target/user_diskio.c **** #include "ff_gen_drv.h"
-  13:FATFS/Target/user_diskio.c **** #include "spi.h"
-  14:FATFS/Target/user_diskio.c **** 
-  15:FATFS/Target/user_diskio.c **** /* Definiciones de Hardware */
-  16:FATFS/Target/user_diskio.c **** #define SD_CS_GPIO_Port GPIOA
-  17:FATFS/Target/user_diskio.c **** #define SD_CS_Pin GPIO_PIN_4
-  18:FATFS/Target/user_diskio.c **** 
-  19:FATFS/Target/user_diskio.c **** #define SD_CS_LOW()  HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_RESET)
-  20:FATFS/Target/user_diskio.c **** #define SD_CS_HIGH() HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_SET)
-  21:FATFS/Target/user_diskio.c **** 
-  22:FATFS/Target/user_diskio.c **** /* Comandos SD */
-  23:FATFS/Target/user_diskio.c **** #define CMD0     (0)       /* GO_IDLE_STATE */
-  24:FATFS/Target/user_diskio.c **** #define CMD8     (8)       /* SEND_IF_COND */
-  25:FATFS/Target/user_diskio.c **** #define CMD55    (55)      /* APP_CMD */
-  26:FATFS/Target/user_diskio.c **** #define ACMD41   (41)      /* SD_SEND_OP_COND */
-  27:FATFS/Target/user_diskio.c **** 
-  28:FATFS/Target/user_diskio.c **** static volatile DSTATUS Stat = STA_NOINIT;
-  29:FATFS/Target/user_diskio.c **** 
-  30:FATFS/Target/user_diskio.c **** /* Funciones Auxiliares SPI */
-  31:FATFS/Target/user_diskio.c **** static uint8_t SPI_Xfer(uint8_t data) {
-ARM GAS  /tmp/cclUZkff.s 			page 2
-
-
-  32:FATFS/Target/user_diskio.c ****     uint8_t ret;
-  33:FATFS/Target/user_diskio.c ****     HAL_SPI_TransmitReceive(&hspi1, &data, &ret, 1, 100);
-  34:FATFS/Target/user_diskio.c ****     return ret;
-  35:FATFS/Target/user_diskio.c **** }
-  36:FATFS/Target/user_diskio.c **** 
-  37:FATFS/Target/user_diskio.c **** static uint8_t SD_ReadyWait(void) {
-  38:FATFS/Target/user_diskio.c ****     uint8_t res;
-  39:FATFS/Target/user_diskio.c ****     uint32_t timeout = 50000;
-  40:FATFS/Target/user_diskio.c ****     do {
-  41:FATFS/Target/user_diskio.c ****         res = SPI_Xfer(0xFF);
-  42:FATFS/Target/user_diskio.c ****     } while ((res != 0xFF) && --timeout);
-  43:FATFS/Target/user_diskio.c ****     return res;
-  44:FATFS/Target/user_diskio.c **** }
-  45:FATFS/Target/user_diskio.c **** 
-  46:FATFS/Target/user_diskio.c **** static uint8_t SD_SendCmd(uint8_t cmd, uint32_t arg) {
-  47:FATFS/Target/user_diskio.c ****     uint8_t res, n;
-  48:FATFS/Target/user_diskio.c **** 
-  49:FATFS/Target/user_diskio.c ****     if (cmd & 0x80) { // ACMD
-  50:FATFS/Target/user_diskio.c ****         cmd &= 0x7F;
-  51:FATFS/Target/user_diskio.c ****         res = SD_SendCmd(CMD55, 0);
-  52:FATFS/Target/user_diskio.c ****         if (res > 1) return res;
-  53:FATFS/Target/user_diskio.c ****     }
-  54:FATFS/Target/user_diskio.c **** 
-  55:FATFS/Target/user_diskio.c ****     SD_CS_HIGH();
-  56:FATFS/Target/user_diskio.c ****     SPI_Xfer(0xFF);
-  57:FATFS/Target/user_diskio.c ****     SD_CS_LOW();
-  58:FATFS/Target/user_diskio.c **** 
-  59:FATFS/Target/user_diskio.c ****     if (SD_ReadyWait() != 0xFF) return 0xFF;
-  60:FATFS/Target/user_diskio.c **** 
-  61:FATFS/Target/user_diskio.c ****     SPI_Xfer(cmd | 0x40);
-  62:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 24);
-  63:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 16);
-  64:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 8);
-  65:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg);
-  66:FATFS/Target/user_diskio.c **** 
-  67:FATFS/Target/user_diskio.c ****     n = 0x01;
-  68:FATFS/Target/user_diskio.c ****     if (cmd == CMD0) n = 0x95;
-  69:FATFS/Target/user_diskio.c ****     if (cmd == CMD8) n = 0x87;
-  70:FATFS/Target/user_diskio.c ****     SPI_Xfer(n);
-  71:FATFS/Target/user_diskio.c **** 
-  72:FATFS/Target/user_diskio.c ****     n = 10;
-  73:FATFS/Target/user_diskio.c ****     do {
-  74:FATFS/Target/user_diskio.c ****         res = SPI_Xfer(0xFF);
-  75:FATFS/Target/user_diskio.c ****     } while ((res & 0x80) && --n);
-  76:FATFS/Target/user_diskio.c **** 
-  77:FATFS/Target/user_diskio.c ****     return res;
-  78:FATFS/Target/user_diskio.c **** }
-  79:FATFS/Target/user_diskio.c **** /* USER CODE END DECL */
-  80:FATFS/Target/user_diskio.c **** 
-  81:FATFS/Target/user_diskio.c **** /* Private function prototypes -----------------------------------------------*/
-  82:FATFS/Target/user_diskio.c **** DSTATUS USER_initialize (BYTE pdrv);
-  83:FATFS/Target/user_diskio.c **** DSTATUS USER_status (BYTE pdrv);
-  84:FATFS/Target/user_diskio.c **** DRESULT USER_read (BYTE pdrv, BYTE *buff, DWORD sector, UINT count);
-  85:FATFS/Target/user_diskio.c **** #if _USE_WRITE == 1
-  86:FATFS/Target/user_diskio.c ****   DRESULT USER_write (BYTE pdrv, const BYTE *buff, DWORD sector, UINT count);
-  87:FATFS/Target/user_diskio.c **** #endif
-  88:FATFS/Target/user_diskio.c **** #if _USE_IOCTL == 1
-ARM GAS  /tmp/cclUZkff.s 			page 3
-
-
-  89:FATFS/Target/user_diskio.c ****   DRESULT USER_ioctl (BYTE pdrv, BYTE cmd, void *buff);
-  90:FATFS/Target/user_diskio.c **** #endif
-  91:FATFS/Target/user_diskio.c **** 
-  92:FATFS/Target/user_diskio.c **** Diskio_drvTypeDef  USER_Driver = {
-  93:FATFS/Target/user_diskio.c ****   USER_initialize,
-  94:FATFS/Target/user_diskio.c ****   USER_status,
-  95:FATFS/Target/user_diskio.c ****   USER_read,
-  96:FATFS/Target/user_diskio.c **** #if  _USE_WRITE
-  97:FATFS/Target/user_diskio.c ****   USER_write,
-  98:FATFS/Target/user_diskio.c **** #endif
-  99:FATFS/Target/user_diskio.c **** #if  _USE_IOCTL
- 100:FATFS/Target/user_diskio.c ****   USER_ioctl,
- 101:FATFS/Target/user_diskio.c **** #endif
- 102:FATFS/Target/user_diskio.c **** };
- 103:FATFS/Target/user_diskio.c **** 
- 104:FATFS/Target/user_diskio.c **** DSTATUS USER_initialize (BYTE pdrv) {
- 105:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN INIT */
- 106:FATFS/Target/user_diskio.c ****     uint16_t i;
- 107:FATFS/Target/user_diskio.c ****     uint8_t res;
- 108:FATFS/Target/user_diskio.c **** 
- 109:FATFS/Target/user_diskio.c ****     Stat = STA_NOINIT;
- 110:FATFS/Target/user_diskio.c **** 
- 111:FATFS/Target/user_diskio.c ****     // 1. Forzar velocidad lenta (Bajo los 400kHz requeridos por estándar)
- 112:FATFS/Target/user_diskio.c ****     hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128; 
- 113:FATFS/Target/user_diskio.c ****     if (HAL_SPI_Init(&hspi1) != HAL_OK) return Stat;
- 114:FATFS/Target/user_diskio.c **** 
- 115:FATFS/Target/user_diskio.c ****     // 2. Despertar la tarjeta: CS en alto y enviar 80+ pulsos de reloj
- 116:FATFS/Target/user_diskio.c ****     SD_CS_HIGH();
- 117:FATFS/Target/user_diskio.c ****     osDelay(10); // Tiempo para que el voltaje se estabilice
- 118:FATFS/Target/user_diskio.c ****     for (i = 0; i < 15; i++) SPI_Xfer(0xFF); 
- 119:FATFS/Target/user_diskio.c **** 
- 120:FATFS/Target/user_diskio.c ****     // 3. CMD0: Reset a la tarjeta (debe responder 0x01)
- 121:FATFS/Target/user_diskio.c ****     i = 0;
- 122:FATFS/Target/user_diskio.c ****     do {
- 123:FATFS/Target/user_diskio.c ****         res = SD_SendCmd(CMD0, 0);
- 124:FATFS/Target/user_diskio.c ****         osDelay(1);
- 125:FATFS/Target/user_diskio.c ****     } while (res != 0x01 && ++i < 100);
- 126:FATFS/Target/user_diskio.c **** 
- 127:FATFS/Target/user_diskio.c ****     if (res == 0x01) {
- 128:FATFS/Target/user_diskio.c ****         // 4. CMD8: Verificar voltaje (necesario para tarjetas SDHC/SDXC)
- 129:FATFS/Target/user_diskio.c ****         if (SD_SendCmd(CMD8, 0x1AA) == 1) {
- 130:FATFS/Target/user_diskio.c ****             for (i = 0; i < 4; i++) SPI_Xfer(0xFF); // Leer R7
- 131:FATFS/Target/user_diskio.c ****             
- 132:FATFS/Target/user_diskio.c ****             // 5. ACMD41: Inicialización operativa
- 133:FATFS/Target/user_diskio.c ****             i = 1000;
- 134:FATFS/Target/user_diskio.c ****             do {
- 135:FATFS/Target/user_diskio.c ****                 res = SD_SendCmd(ACMD41, 0x40000000); // HCS bit set
- 136:FATFS/Target/user_diskio.c ****                 osDelay(1);
- 137:FATFS/Target/user_diskio.c ****             } while (res != 0x00 && --i);
- 138:FATFS/Target/user_diskio.c ****             
- 139:FATFS/Target/user_diskio.c ****             if (i > 0) {
- 140:FATFS/Target/user_diskio.c ****                 // Éxito: Subir velocidad del SPI (Blue Pill 72MHz / 8 = 9MHz)
- 141:FATFS/Target/user_diskio.c ****                 hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
- 142:FATFS/Target/user_diskio.c ****                 HAL_SPI_Init(&hspi1);
- 143:FATFS/Target/user_diskio.c ****                 Stat &= ~STA_NOINIT;
- 144:FATFS/Target/user_diskio.c ****                 printf("Tarjeta SD lista en modo SPI\r\n");
- 145:FATFS/Target/user_diskio.c ****             }
-ARM GAS  /tmp/cclUZkff.s 			page 4
-
-
- 146:FATFS/Target/user_diskio.c ****         }
- 147:FATFS/Target/user_diskio.c ****     }
- 148:FATFS/Target/user_diskio.c ****     
- 149:FATFS/Target/user_diskio.c ****     SD_CS_HIGH();
- 150:FATFS/Target/user_diskio.c ****     SPI_Xfer(0xFF); // Ciclos extra para liberar el bus
- 151:FATFS/Target/user_diskio.c ****     return Stat;
- 152:FATFS/Target/user_diskio.c ****   /* USER CODE END INIT */
- 153:FATFS/Target/user_diskio.c **** }
- 154:FATFS/Target/user_diskio.c **** 
- 155:FATFS/Target/user_diskio.c **** DSTATUS USER_status (BYTE pdrv) {
-  28              		.loc 1 155 33 view -0
+   1:FATFS/Target/user_diskio.c **** /* Incluye la cabecera de la librería */
+   2:FATFS/Target/user_diskio.c **** #include "fatfs_sd.h"
+   3:FATFS/Target/user_diskio.c **** 
+   4:FATFS/Target/user_diskio.c **** DSTATUS USER_initialize (BYTE pdrv) {
+  28              		.loc 1 4 37 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		@ link register save eliminated.
- 156:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN STATUS */
- 157:FATFS/Target/user_diskio.c ****     return Stat;
-  33              		.loc 1 157 5 view .LVU1
-  34              		.loc 1 157 12 is_stmt 0 view .LVU2
-  35 0000 014B     		ldr	r3, .L2
-  36 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-  37              	.LVL1:
- 158:FATFS/Target/user_diskio.c ****   /* USER CODE END STATUS */
- 159:FATFS/Target/user_diskio.c **** }
-  38              		.loc 1 159 1 view .LVU3
-  39 0004 7047     		bx	lr
-  40              	.L3:
-  41 0006 00BF     		.align	2
-  42              	.L2:
-  43 0008 00000000 		.word	.LANCHOR0
+  32              		.loc 1 4 37 is_stmt 0 view .LVU1
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+   5:FATFS/Target/user_diskio.c ****   return SD_disk_initialize(pdrv);
+  38              		.loc 1 5 3 is_stmt 1 view .LVU2
+  39              		.loc 1 5 10 is_stmt 0 view .LVU3
+  40 0002 FFF7FEFF 		bl	SD_disk_initialize
+  41              	.LVL1:
+   6:FATFS/Target/user_diskio.c **** }
+  42              		.loc 1 6 1 view .LVU4
+  43 0006 08BD     		pop	{r3, pc}
   44              		.cfi_endproc
-  45              	.LFE74:
-  47              		.section	.text.USER_read,"ax",%progbits
+  45              	.LFE65:
+  47              		.section	.text.USER_status,"ax",%progbits
   48              		.align	1
-  49              		.global	USER_read
+  49              		.global	USER_status
   50              		.syntax unified
   51              		.thumb
   52              		.thumb_func
-  54              	USER_read:
+  54              	USER_status:
+ARM GAS  /tmp/cco1i8Ff.s 			page 2
+
+
   55              	.LVL2:
-  56              	.LFB75:
- 160:FATFS/Target/user_diskio.c **** 
- 161:FATFS/Target/user_diskio.c **** DRESULT USER_read (BYTE pdrv, BYTE *buff, DWORD sector, UINT count) {
-  57              		.loc 1 161 69 is_stmt 1 view -0
+  56              	.LFB66:
+   7:FATFS/Target/user_diskio.c **** 
+   8:FATFS/Target/user_diskio.c **** DSTATUS USER_status (BYTE pdrv) {
+  57              		.loc 1 8 33 is_stmt 1 view -0
   58              		.cfi_startproc
   59              		@ args = 0, pretend = 0, frame = 0
   60              		@ frame_needed = 0, uses_anonymous_args = 0
-  61              		@ link register save eliminated.
- 162:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN READ */
- 163:FATFS/Target/user_diskio.c ****     if (Stat & STA_NOINIT) return RES_NOTRDY;
-  62              		.loc 1 163 5 view .LVU5
-  63              		.loc 1 163 14 is_stmt 0 view .LVU6
-  64 0000 034B     		ldr	r3, .L8
-  65              	.LVL3:
-  66              		.loc 1 163 14 view .LVU7
-  67 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-  68              	.LVL4:
-ARM GAS  /tmp/cclUZkff.s 			page 5
+  61              		.loc 1 8 33 is_stmt 0 view .LVU6
+  62 0000 08B5     		push	{r3, lr}
+  63              	.LCFI1:
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 3, -8
+  66              		.cfi_offset 14, -4
+   9:FATFS/Target/user_diskio.c ****   return SD_disk_status(pdrv);
+  67              		.loc 1 9 3 is_stmt 1 view .LVU7
+  68              		.loc 1 9 10 is_stmt 0 view .LVU8
+  69 0002 FFF7FEFF 		bl	SD_disk_status
+  70              	.LVL3:
+  10:FATFS/Target/user_diskio.c **** }
+  71              		.loc 1 10 1 view .LVU9
+  72 0006 08BD     		pop	{r3, pc}
+  73              		.cfi_endproc
+  74              	.LFE66:
+  76              		.section	.text.USER_read,"ax",%progbits
+  77              		.align	1
+  78              		.global	USER_read
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	USER_read:
+  84              	.LVL4:
+  85              	.LFB67:
+  11:FATFS/Target/user_diskio.c **** 
+  12:FATFS/Target/user_diskio.c **** DRESULT USER_read (BYTE pdrv, BYTE *buff, DWORD sector, UINT count) {
+  86              		.loc 1 12 69 is_stmt 1 view -0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90              		.loc 1 12 69 is_stmt 0 view .LVU11
+  91 0000 08B5     		push	{r3, lr}
+  92              	.LCFI2:
+  93              		.cfi_def_cfa_offset 8
+  94              		.cfi_offset 3, -8
+  95              		.cfi_offset 14, -4
+  13:FATFS/Target/user_diskio.c ****   return SD_disk_read(pdrv, buff, sector, count);
+  96              		.loc 1 13 3 is_stmt 1 view .LVU12
+  97              		.loc 1 13 10 is_stmt 0 view .LVU13
+  98 0002 FFF7FEFF 		bl	SD_disk_read
+  99              	.LVL5:
+  14:FATFS/Target/user_diskio.c **** }
+ 100              		.loc 1 14 1 view .LVU14
+ 101 0006 08BD     		pop	{r3, pc}
+ 102              		.cfi_endproc
+ 103              	.LFE67:
+ 105              		.section	.text.USER_write,"ax",%progbits
+ 106              		.align	1
+ARM GAS  /tmp/cco1i8Ff.s 			page 3
 
 
-  69              		.loc 1 163 8 view .LVU8
-  70 0004 10F00100 		ands	r0, r0, #1
-  71 0008 00D1     		bne	.L7
-  72              	.L5:
- 164:FATFS/Target/user_diskio.c ****     
- 165:FATFS/Target/user_diskio.c ****     // Simplificado: Para propósitos de test, f_mount (Error 3) se soluciona en USER_initialize
- 166:FATFS/Target/user_diskio.c ****     // Para lectura real, se requiere implementar CMD17/18
- 167:FATFS/Target/user_diskio.c ****     return RES_OK; 
- 168:FATFS/Target/user_diskio.c ****   /* USER CODE END READ */
- 169:FATFS/Target/user_diskio.c **** }
-  73              		.loc 1 169 1 view .LVU9
-  74 000a 7047     		bx	lr
-  75              	.L7:
- 163:FATFS/Target/user_diskio.c ****     
-  76              		.loc 1 163 35 view .LVU10
-  77 000c 0320     		movs	r0, #3
-  78 000e FCE7     		b	.L5
-  79              	.L9:
-  80              		.align	2
-  81              	.L8:
-  82 0010 00000000 		.word	.LANCHOR0
-  83              		.cfi_endproc
-  84              	.LFE75:
-  86              		.section	.text.USER_write,"ax",%progbits
-  87              		.align	1
-  88              		.global	USER_write
-  89              		.syntax unified
-  90              		.thumb
-  91              		.thumb_func
-  93              	USER_write:
-  94              	.LVL5:
-  95              	.LFB76:
- 170:FATFS/Target/user_diskio.c **** 
- 171:FATFS/Target/user_diskio.c **** #if _USE_WRITE == 1
- 172:FATFS/Target/user_diskio.c **** DRESULT USER_write (BYTE pdrv, const BYTE *buff, DWORD sector, UINT count) {
-  96              		.loc 1 172 76 is_stmt 1 view -0
-  97              		.cfi_startproc
-  98              		@ args = 0, pretend = 0, frame = 0
-  99              		@ frame_needed = 0, uses_anonymous_args = 0
- 100              		@ link register save eliminated.
- 173:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN WRITE */
- 174:FATFS/Target/user_diskio.c ****     return RES_OK;
- 101              		.loc 1 174 5 view .LVU12
- 175:FATFS/Target/user_diskio.c ****   /* USER CODE END WRITE */
- 176:FATFS/Target/user_diskio.c **** }
- 102              		.loc 1 176 1 is_stmt 0 view .LVU13
- 103 0000 0020     		movs	r0, #0
- 104              	.LVL6:
- 105              		.loc 1 176 1 view .LVU14
- 106 0002 7047     		bx	lr
- 107              		.cfi_endproc
- 108              	.LFE76:
- 110              		.section	.text.USER_ioctl,"ax",%progbits
- 111              		.align	1
- 112              		.global	USER_ioctl
- 113              		.syntax unified
- 114              		.thumb
-ARM GAS  /tmp/cclUZkff.s 			page 6
+ 107              		.global	USER_write
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	USER_write:
+ 113              	.LVL6:
+ 114              	.LFB68:
+  15:FATFS/Target/user_diskio.c **** 
+  16:FATFS/Target/user_diskio.c **** #if _USE_WRITE == 1
+  17:FATFS/Target/user_diskio.c **** DRESULT USER_write (BYTE pdrv, const BYTE *buff, DWORD sector, UINT count) {
+ 115              		.loc 1 17 76 is_stmt 1 view -0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		.loc 1 17 76 is_stmt 0 view .LVU16
+ 120 0000 08B5     		push	{r3, lr}
+ 121              	.LCFI3:
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 3, -8
+ 124              		.cfi_offset 14, -4
+  18:FATFS/Target/user_diskio.c ****   return SD_disk_write(pdrv, buff, sector, count);
+ 125              		.loc 1 18 3 is_stmt 1 view .LVU17
+ 126              		.loc 1 18 10 is_stmt 0 view .LVU18
+ 127 0002 FFF7FEFF 		bl	SD_disk_write
+ 128              	.LVL7:
+  19:FATFS/Target/user_diskio.c **** }
+ 129              		.loc 1 19 1 view .LVU19
+ 130 0006 08BD     		pop	{r3, pc}
+ 131              		.cfi_endproc
+ 132              	.LFE68:
+ 134              		.section	.text.USER_ioctl,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	USER_ioctl
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	USER_ioctl:
+ 142              	.LVL8:
+ 143              	.LFB69:
+  20:FATFS/Target/user_diskio.c **** #endif
+  21:FATFS/Target/user_diskio.c **** 
+  22:FATFS/Target/user_diskio.c **** #if _USE_IOCTL == 1
+  23:FATFS/Target/user_diskio.c **** DRESULT USER_ioctl (BYTE pdrv, BYTE cmd, void *buff) {
+ 144              		.loc 1 23 54 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		.loc 1 23 54 is_stmt 0 view .LVU21
+ 149 0000 08B5     		push	{r3, lr}
+ 150              	.LCFI4:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 3, -8
+ 153              		.cfi_offset 14, -4
+  24:FATFS/Target/user_diskio.c ****   return SD_disk_ioctl(pdrv, cmd, buff);
+ 154              		.loc 1 24 3 is_stmt 1 view .LVU22
+ 155              		.loc 1 24 10 is_stmt 0 view .LVU23
+ 156 0002 FFF7FEFF 		bl	SD_disk_ioctl
+ARM GAS  /tmp/cco1i8Ff.s 			page 4
 
 
- 115              		.thumb_func
- 117              	USER_ioctl:
- 118              	.LVL7:
- 119              	.LFB77:
- 177:FATFS/Target/user_diskio.c **** #endif
- 178:FATFS/Target/user_diskio.c **** 
- 179:FATFS/Target/user_diskio.c **** #if _USE_IOCTL == 1
- 180:FATFS/Target/user_diskio.c **** DRESULT USER_ioctl (BYTE pdrv, BYTE cmd, void *buff) {
- 120              		.loc 1 180 54 is_stmt 1 view -0
- 121              		.cfi_startproc
- 122              		@ args = 0, pretend = 0, frame = 0
- 123              		@ frame_needed = 0, uses_anonymous_args = 0
- 124              		@ link register save eliminated.
- 181:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN IOCTL */
- 182:FATFS/Target/user_diskio.c ****     if (Stat & STA_NOINIT) return RES_NOTRDY;
- 125              		.loc 1 182 5 view .LVU16
- 126              		.loc 1 182 14 is_stmt 0 view .LVU17
- 127 0000 0D4B     		ldr	r3, .L20
- 128 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 129              	.LVL8:
- 130              		.loc 1 182 8 view .LVU18
- 131 0004 10F00100 		ands	r0, r0, #1
- 132 0008 11D1     		bne	.L18
- 183:FATFS/Target/user_diskio.c ****     
- 184:FATFS/Target/user_diskio.c ****     switch (cmd) {
- 133              		.loc 1 184 5 is_stmt 1 view .LVU19
- 134 000a 0329     		cmp	r1, #3
- 135 000c 11D8     		bhi	.L19
- 136 000e DFE801F0 		tbb	[pc, r1]
- 137              	.L14:
- 138 0012 02       		.byte	(.L17-.L14)/2
- 139 0013 04       		.byte	(.L16-.L14)/2
- 140 0014 07       		.byte	(.L15-.L14)/2
- 141 0015 0B       		.byte	(.L13-.L14)/2
- 142              		.p2align 1
- 143              	.L17:
- 144 0016 0846     		mov	r0, r1
- 145 0018 7047     		bx	lr
- 146              	.L16:
- 185:FATFS/Target/user_diskio.c ****         case CTRL_SYNC: return RES_OK;
- 186:FATFS/Target/user_diskio.c ****         case GET_SECTOR_COUNT: *(DWORD*)buff = 100000; return RES_OK; // Ejemplo
- 147              		.loc 1 186 32 view .LVU20
- 148              		.loc 1 186 46 is_stmt 0 view .LVU21
- 149 001a 084B     		ldr	r3, .L20+4
- 150 001c 1360     		str	r3, [r2]
- 151              		.loc 1 186 56 is_stmt 1 view .LVU22
- 152              		.loc 1 186 63 is_stmt 0 view .LVU23
- 153 001e 7047     		bx	lr
- 154              	.L15:
- 187:FATFS/Target/user_diskio.c ****         case GET_SECTOR_SIZE:  *(WORD*)buff = 512; return RES_OK;
- 155              		.loc 1 187 32 is_stmt 1 view .LVU24
- 156              		.loc 1 187 45 is_stmt 0 view .LVU25
- 157 0020 4FF40073 		mov	r3, #512
- 158 0024 1380     		strh	r3, [r2]	@ movhi
- 159              		.loc 1 187 52 is_stmt 1 view .LVU26
- 160              		.loc 1 187 59 is_stmt 0 view .LVU27
- 161 0026 7047     		bx	lr
-ARM GAS  /tmp/cclUZkff.s 			page 7
-
-
- 162              	.L13:
- 188:FATFS/Target/user_diskio.c ****         case GET_BLOCK_SIZE:   *(DWORD*)buff = 1; return RES_OK;
- 163              		.loc 1 188 32 is_stmt 1 view .LVU28
- 164              		.loc 1 188 46 is_stmt 0 view .LVU29
- 165 0028 0123     		movs	r3, #1
- 166 002a 1360     		str	r3, [r2]
- 167              		.loc 1 188 51 is_stmt 1 view .LVU30
- 168              		.loc 1 188 58 is_stmt 0 view .LVU31
- 169 002c 7047     		bx	lr
- 170              	.L18:
- 182:FATFS/Target/user_diskio.c ****     
- 171              		.loc 1 182 35 view .LVU32
- 172 002e 0320     		movs	r0, #3
- 173 0030 7047     		bx	lr
- 174              	.L19:
- 189:FATFS/Target/user_diskio.c ****     }
- 190:FATFS/Target/user_diskio.c ****     return RES_ERROR;
- 175              		.loc 1 190 12 view .LVU33
- 176 0032 0120     		movs	r0, #1
- 191:FATFS/Target/user_diskio.c ****   /* USER CODE END IOCTL */
- 192:FATFS/Target/user_diskio.c **** }
- 177              		.loc 1 192 1 view .LVU34
- 178 0034 7047     		bx	lr
- 179              	.L21:
- 180 0036 00BF     		.align	2
- 181              	.L20:
- 182 0038 00000000 		.word	.LANCHOR0
- 183 003c A0860100 		.word	100000
- 184              		.cfi_endproc
- 185              	.LFE77:
- 187              		.section	.text.SPI_Xfer,"ax",%progbits
- 188              		.align	1
- 189              		.syntax unified
- 190              		.thumb
- 191              		.thumb_func
- 193              	SPI_Xfer:
- 194              	.LVL9:
- 195              	.LFB70:
-  31:FATFS/Target/user_diskio.c ****     uint8_t ret;
- 196              		.loc 1 31 39 is_stmt 1 view -0
- 197              		.cfi_startproc
- 198              		@ args = 0, pretend = 0, frame = 16
- 199              		@ frame_needed = 0, uses_anonymous_args = 0
-  31:FATFS/Target/user_diskio.c ****     uint8_t ret;
- 200              		.loc 1 31 39 is_stmt 0 view .LVU36
- 201 0000 00B5     		push	{lr}
- 202              	.LCFI0:
- 203              		.cfi_def_cfa_offset 4
- 204              		.cfi_offset 14, -4
- 205 0002 87B0     		sub	sp, sp, #28
- 206              	.LCFI1:
- 207              		.cfi_def_cfa_offset 32
- 208 0004 8DF80F00 		strb	r0, [sp, #15]
-  32:FATFS/Target/user_diskio.c ****     HAL_SPI_TransmitReceive(&hspi1, &data, &ret, 1, 100);
- 209              		.loc 1 32 5 is_stmt 1 view .LVU37
-  33:FATFS/Target/user_diskio.c ****     return ret;
- 210              		.loc 1 33 5 view .LVU38
-ARM GAS  /tmp/cclUZkff.s 			page 8
-
-
- 211 0008 6423     		movs	r3, #100
- 212 000a 0093     		str	r3, [sp]
- 213 000c 0123     		movs	r3, #1
- 214 000e 0DF11702 		add	r2, sp, #23
- 215 0012 0DF10F01 		add	r1, sp, #15
- 216 0016 0448     		ldr	r0, .L24
- 217              	.LVL10:
-  33:FATFS/Target/user_diskio.c ****     return ret;
- 218              		.loc 1 33 5 is_stmt 0 view .LVU39
- 219 0018 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
- 220              	.LVL11:
-  34:FATFS/Target/user_diskio.c **** }
- 221              		.loc 1 34 5 is_stmt 1 view .LVU40
-  35:FATFS/Target/user_diskio.c **** 
- 222              		.loc 1 35 1 is_stmt 0 view .LVU41
- 223 001c 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
- 224 0020 07B0     		add	sp, sp, #28
- 225              	.LCFI2:
- 226              		.cfi_def_cfa_offset 4
- 227              		@ sp needed
- 228 0022 5DF804FB 		ldr	pc, [sp], #4
- 229              	.L25:
- 230 0026 00BF     		.align	2
- 231              	.L24:
- 232 0028 00000000 		.word	hspi1
- 233              		.cfi_endproc
- 234              	.LFE70:
- 236              		.section	.text.SD_ReadyWait,"ax",%progbits
- 237              		.align	1
- 238              		.syntax unified
- 239              		.thumb
- 240              		.thumb_func
- 242              	SD_ReadyWait:
- 243              	.LFB71:
-  37:FATFS/Target/user_diskio.c ****     uint8_t res;
- 244              		.loc 1 37 35 is_stmt 1 view -0
- 245              		.cfi_startproc
- 246              		@ args = 0, pretend = 0, frame = 0
- 247              		@ frame_needed = 0, uses_anonymous_args = 0
- 248 0000 10B5     		push	{r4, lr}
- 249              	.LCFI3:
- 250              		.cfi_def_cfa_offset 8
- 251              		.cfi_offset 4, -8
- 252              		.cfi_offset 14, -4
-  38:FATFS/Target/user_diskio.c ****     uint32_t timeout = 50000;
- 253              		.loc 1 38 5 view .LVU43
-  39:FATFS/Target/user_diskio.c ****     do {
- 254              		.loc 1 39 5 view .LVU44
- 255              	.LVL12:
-  39:FATFS/Target/user_diskio.c ****     do {
- 256              		.loc 1 39 14 is_stmt 0 view .LVU45
- 257 0002 4CF25034 		movw	r4, #50000
- 258              	.LVL13:
- 259              	.L28:
-  40:FATFS/Target/user_diskio.c ****         res = SPI_Xfer(0xFF);
- 260              		.loc 1 40 5 is_stmt 1 discriminator 2 view .LVU46
-  41:FATFS/Target/user_diskio.c ****     } while ((res != 0xFF) && --timeout);
-ARM GAS  /tmp/cclUZkff.s 			page 9
-
-
- 261              		.loc 1 41 9 discriminator 2 view .LVU47
-  41:FATFS/Target/user_diskio.c ****     } while ((res != 0xFF) && --timeout);
- 262              		.loc 1 41 15 is_stmt 0 discriminator 2 view .LVU48
- 263 0006 FF20     		movs	r0, #255
- 264 0008 FFF7FEFF 		bl	SPI_Xfer
- 265              	.LVL14:
-  42:FATFS/Target/user_diskio.c ****     return res;
- 266              		.loc 1 42 13 is_stmt 1 discriminator 2 view .LVU49
-  42:FATFS/Target/user_diskio.c ****     return res;
- 267              		.loc 1 42 5 is_stmt 0 discriminator 2 view .LVU50
- 268 000c FF28     		cmp	r0, #255
- 269 000e 01D0     		beq	.L27
- 270              	.LVL15:
-  42:FATFS/Target/user_diskio.c ****     return res;
- 271              		.loc 1 42 28 discriminator 1 view .LVU51
- 272 0010 013C     		subs	r4, r4, #1
- 273              	.LVL16:
-  42:FATFS/Target/user_diskio.c ****     return res;
- 274              		.loc 1 42 28 discriminator 1 view .LVU52
- 275 0012 F8D1     		bne	.L28
- 276              	.L27:
-  43:FATFS/Target/user_diskio.c **** }
- 277              		.loc 1 43 5 is_stmt 1 view .LVU53
-  44:FATFS/Target/user_diskio.c **** 
- 278              		.loc 1 44 1 is_stmt 0 view .LVU54
- 279 0014 10BD     		pop	{r4, pc}
-  44:FATFS/Target/user_diskio.c **** 
- 280              		.loc 1 44 1 view .LVU55
- 281              		.cfi_endproc
- 282              	.LFE71:
- 284              		.section	.text.SD_SendCmd,"ax",%progbits
- 285              		.align	1
- 286              		.syntax unified
- 287              		.thumb
- 288              		.thumb_func
- 290              	SD_SendCmd:
- 291              	.LVL17:
- 292              	.LFB72:
-  46:FATFS/Target/user_diskio.c ****     uint8_t res, n;
- 293              		.loc 1 46 54 is_stmt 1 view -0
- 294              		.cfi_startproc
- 295              		@ args = 0, pretend = 0, frame = 0
- 296              		@ frame_needed = 0, uses_anonymous_args = 0
-  46:FATFS/Target/user_diskio.c ****     uint8_t res, n;
- 297              		.loc 1 46 54 is_stmt 0 view .LVU57
- 298 0000 70B5     		push	{r4, r5, r6, lr}
- 299              	.LCFI4:
- 300              		.cfi_def_cfa_offset 16
- 301              		.cfi_offset 4, -16
- 302              		.cfi_offset 5, -12
- 303              		.cfi_offset 6, -8
- 304              		.cfi_offset 14, -4
- 305 0002 0446     		mov	r4, r0
- 306 0004 0D46     		mov	r5, r1
-  47:FATFS/Target/user_diskio.c **** 
- 307              		.loc 1 47 5 is_stmt 1 view .LVU58
-  49:FATFS/Target/user_diskio.c ****         cmd &= 0x7F;
-ARM GAS  /tmp/cclUZkff.s 			page 10
-
-
- 308              		.loc 1 49 5 view .LVU59
-  49:FATFS/Target/user_diskio.c ****         cmd &= 0x7F;
- 309              		.loc 1 49 8 is_stmt 0 view .LVU60
- 310 0006 10F0800F 		tst	r0, #128
- 311 000a 13D1     		bne	.L40
- 312              	.LVL18:
- 313              	.L31:
-  55:FATFS/Target/user_diskio.c ****     SPI_Xfer(0xFF);
- 314              		.loc 1 55 5 is_stmt 1 view .LVU61
- 315 000c 224E     		ldr	r6, .L43
- 316 000e 0122     		movs	r2, #1
- 317 0010 1021     		movs	r1, #16
- 318 0012 3046     		mov	r0, r6
- 319 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 320              	.LVL19:
-  56:FATFS/Target/user_diskio.c ****     SD_CS_LOW();
- 321              		.loc 1 56 5 view .LVU62
- 322 0018 FF20     		movs	r0, #255
- 323 001a FFF7FEFF 		bl	SPI_Xfer
- 324              	.LVL20:
-  57:FATFS/Target/user_diskio.c **** 
- 325              		.loc 1 57 5 view .LVU63
- 326 001e 0022     		movs	r2, #0
- 327 0020 1021     		movs	r1, #16
- 328 0022 3046     		mov	r0, r6
- 329 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 330              	.LVL21:
-  59:FATFS/Target/user_diskio.c **** 
- 331              		.loc 1 59 5 view .LVU64
-  59:FATFS/Target/user_diskio.c **** 
- 332              		.loc 1 59 9 is_stmt 0 view .LVU65
- 333 0028 FFF7FEFF 		bl	SD_ReadyWait
- 334              	.LVL22:
-  59:FATFS/Target/user_diskio.c **** 
- 335              		.loc 1 59 8 view .LVU66
- 336 002c FF28     		cmp	r0, #255
- 337 002e 0AD0     		beq	.L41
-  59:FATFS/Target/user_diskio.c **** 
- 338              		.loc 1 59 40 view .LVU67
- 339 0030 FF20     		movs	r0, #255
- 340              	.LVL23:
- 341              	.L32:
-  78:FATFS/Target/user_diskio.c **** /* USER CODE END DECL */
- 342              		.loc 1 78 1 view .LVU68
- 343 0032 70BD     		pop	{r4, r5, r6, pc}
- 344              	.LVL24:
- 345              	.L40:
-  50:FATFS/Target/user_diskio.c ****         res = SD_SendCmd(CMD55, 0);
- 346              		.loc 1 50 9 is_stmt 1 view .LVU69
-  50:FATFS/Target/user_diskio.c ****         res = SD_SendCmd(CMD55, 0);
- 347              		.loc 1 50 13 is_stmt 0 view .LVU70
- 348 0034 00F07F04 		and	r4, r0, #127
- 349              	.LVL25:
-  51:FATFS/Target/user_diskio.c ****         if (res > 1) return res;
- 350              		.loc 1 51 9 is_stmt 1 view .LVU71
-  51:FATFS/Target/user_diskio.c ****         if (res > 1) return res;
- 351              		.loc 1 51 15 is_stmt 0 view .LVU72
-ARM GAS  /tmp/cclUZkff.s 			page 11
-
-
- 352 0038 0021     		movs	r1, #0
- 353              	.LVL26:
-  51:FATFS/Target/user_diskio.c ****         if (res > 1) return res;
- 354              		.loc 1 51 15 view .LVU73
- 355 003a 3720     		movs	r0, #55
- 356 003c FFF7E0FF 		bl	SD_SendCmd
- 357              	.LVL27:
-  52:FATFS/Target/user_diskio.c ****     }
- 358              		.loc 1 52 9 is_stmt 1 view .LVU74
-  52:FATFS/Target/user_diskio.c ****     }
- 359              		.loc 1 52 12 is_stmt 0 view .LVU75
- 360 0040 0128     		cmp	r0, #1
- 361 0042 E3D9     		bls	.L31
- 362 0044 F5E7     		b	.L32
- 363              	.LVL28:
- 364              	.L41:
-  61:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 24);
- 365              		.loc 1 61 5 is_stmt 1 view .LVU76
- 366 0046 44F04000 		orr	r0, r4, #64
- 367 004a FFF7FEFF 		bl	SPI_Xfer
- 368              	.LVL29:
-  62:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 16);
- 369              		.loc 1 62 5 view .LVU77
- 370 004e 280E     		lsrs	r0, r5, #24
- 371 0050 FFF7FEFF 		bl	SPI_Xfer
- 372              	.LVL30:
-  63:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg >> 8);
- 373              		.loc 1 63 5 view .LVU78
- 374 0054 C5F30740 		ubfx	r0, r5, #16, #8
- 375 0058 FFF7FEFF 		bl	SPI_Xfer
- 376              	.LVL31:
-  64:FATFS/Target/user_diskio.c ****     SPI_Xfer(arg);
- 377              		.loc 1 64 5 view .LVU79
- 378 005c C5F30720 		ubfx	r0, r5, #8, #8
- 379 0060 FFF7FEFF 		bl	SPI_Xfer
- 380              	.LVL32:
-  65:FATFS/Target/user_diskio.c **** 
- 381              		.loc 1 65 5 view .LVU80
- 382 0064 E8B2     		uxtb	r0, r5
- 383 0066 FFF7FEFF 		bl	SPI_Xfer
- 384              	.LVL33:
-  67:FATFS/Target/user_diskio.c ****     if (cmd == CMD0) n = 0x95;
- 385              		.loc 1 67 5 view .LVU81
-  68:FATFS/Target/user_diskio.c ****     if (cmd == CMD8) n = 0x87;
- 386              		.loc 1 68 5 view .LVU82
-  68:FATFS/Target/user_diskio.c ****     if (cmd == CMD8) n = 0x87;
- 387              		.loc 1 68 8 is_stmt 0 view .LVU83
- 388 006a 84B1     		cbz	r4, .L37
-  67:FATFS/Target/user_diskio.c ****     if (cmd == CMD0) n = 0x95;
- 389              		.loc 1 67 7 view .LVU84
- 390 006c 0120     		movs	r0, #1
- 391              	.L33:
- 392              	.LVL34:
-  69:FATFS/Target/user_diskio.c ****     SPI_Xfer(n);
- 393              		.loc 1 69 5 is_stmt 1 view .LVU85
-  69:FATFS/Target/user_diskio.c ****     SPI_Xfer(n);
- 394              		.loc 1 69 8 is_stmt 0 view .LVU86
-ARM GAS  /tmp/cclUZkff.s 			page 12
-
-
- 395 006e 082C     		cmp	r4, #8
- 396 0070 0FD0     		beq	.L42
- 397              	.LVL35:
- 398              	.L34:
-  70:FATFS/Target/user_diskio.c **** 
- 399              		.loc 1 70 5 is_stmt 1 view .LVU87
- 400 0072 FFF7FEFF 		bl	SPI_Xfer
- 401              	.LVL36:
-  72:FATFS/Target/user_diskio.c ****     do {
- 402              		.loc 1 72 5 view .LVU88
-  72:FATFS/Target/user_diskio.c ****     do {
- 403              		.loc 1 72 7 is_stmt 0 view .LVU89
- 404 0076 0A24     		movs	r4, #10
- 405              	.LVL37:
- 406              	.L35:
-  73:FATFS/Target/user_diskio.c ****         res = SPI_Xfer(0xFF);
- 407              		.loc 1 73 5 is_stmt 1 discriminator 2 view .LVU90
-  74:FATFS/Target/user_diskio.c ****     } while ((res & 0x80) && --n);
- 408              		.loc 1 74 9 discriminator 2 view .LVU91
-  74:FATFS/Target/user_diskio.c ****     } while ((res & 0x80) && --n);
- 409              		.loc 1 74 15 is_stmt 0 discriminator 2 view .LVU92
- 410 0078 FF20     		movs	r0, #255
- 411 007a FFF7FEFF 		bl	SPI_Xfer
- 412              	.LVL38:
-  75:FATFS/Target/user_diskio.c **** 
- 413              		.loc 1 75 13 is_stmt 1 discriminator 2 view .LVU93
-  75:FATFS/Target/user_diskio.c **** 
- 414              		.loc 1 75 5 is_stmt 0 discriminator 2 view .LVU94
- 415 007e 10F0800F 		tst	r0, #128
- 416 0082 D6D0     		beq	.L32
-  75:FATFS/Target/user_diskio.c **** 
- 417              		.loc 1 75 27 discriminator 1 view .LVU95
- 418 0084 631E     		subs	r3, r4, #1
- 419              	.LVL39:
-  75:FATFS/Target/user_diskio.c **** 
- 420              		.loc 1 75 27 discriminator 1 view .LVU96
- 421 0086 13F0FF04 		ands	r4, r3, #255
- 422 008a F5D1     		bne	.L35
- 423 008c D1E7     		b	.L32
- 424              	.LVL40:
- 425              	.L37:
-  68:FATFS/Target/user_diskio.c ****     if (cmd == CMD8) n = 0x87;
- 426              		.loc 1 68 24 view .LVU97
- 427 008e 9520     		movs	r0, #149
- 428 0090 EDE7     		b	.L33
- 429              	.LVL41:
- 430              	.L42:
-  69:FATFS/Target/user_diskio.c ****     SPI_Xfer(n);
- 431              		.loc 1 69 24 view .LVU98
- 432 0092 8720     		movs	r0, #135
- 433              	.LVL42:
-  69:FATFS/Target/user_diskio.c ****     SPI_Xfer(n);
- 434              		.loc 1 69 24 view .LVU99
- 435 0094 EDE7     		b	.L34
- 436              	.L44:
- 437 0096 00BF     		.align	2
- 438              	.L43:
-ARM GAS  /tmp/cclUZkff.s 			page 13
-
-
- 439 0098 00080140 		.word	1073809408
- 440              		.cfi_endproc
- 441              	.LFE72:
- 443              		.section	.rodata.USER_initialize.str1.4,"aMS",%progbits,1
- 444              		.align	2
- 445              	.LC0:
- 446 0000 5461726A 		.ascii	"Tarjeta SD lista en modo SPI\015\000"
- 446      65746120 
- 446      5344206C 
- 446      69737461 
- 446      20656E20 
- 447              		.section	.text.USER_initialize,"ax",%progbits
- 448              		.align	1
- 449              		.global	USER_initialize
- 450              		.syntax unified
- 451              		.thumb
- 452              		.thumb_func
- 454              	USER_initialize:
- 455              	.LVL43:
- 456              	.LFB73:
- 104:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN INIT */
- 457              		.loc 1 104 37 is_stmt 1 view -0
- 458              		.cfi_startproc
- 459              		@ args = 0, pretend = 0, frame = 0
- 460              		@ frame_needed = 0, uses_anonymous_args = 0
- 104:FATFS/Target/user_diskio.c ****   /* USER CODE BEGIN INIT */
- 461              		.loc 1 104 37 is_stmt 0 view .LVU101
- 462 0000 38B5     		push	{r3, r4, r5, lr}
- 463              	.LCFI5:
- 464              		.cfi_def_cfa_offset 16
- 465              		.cfi_offset 3, -16
- 466              		.cfi_offset 4, -12
- 467              		.cfi_offset 5, -8
- 468              		.cfi_offset 14, -4
- 106:FATFS/Target/user_diskio.c ****     uint8_t res;
- 469              		.loc 1 106 5 is_stmt 1 view .LVU102
- 107:FATFS/Target/user_diskio.c **** 
- 470              		.loc 1 107 5 view .LVU103
- 109:FATFS/Target/user_diskio.c **** 
- 471              		.loc 1 109 5 view .LVU104
- 109:FATFS/Target/user_diskio.c **** 
- 472              		.loc 1 109 10 is_stmt 0 view .LVU105
- 473 0002 354B     		ldr	r3, .L60
- 474 0004 0122     		movs	r2, #1
- 475 0006 1A70     		strb	r2, [r3]
- 112:FATFS/Target/user_diskio.c ****     if (HAL_SPI_Init(&hspi1) != HAL_OK) return Stat;
- 476              		.loc 1 112 5 is_stmt 1 view .LVU106
- 112:FATFS/Target/user_diskio.c ****     if (HAL_SPI_Init(&hspi1) != HAL_OK) return Stat;
- 477              		.loc 1 112 34 is_stmt 0 view .LVU107
- 478 0008 3448     		ldr	r0, .L60+4
- 479              	.LVL44:
- 112:FATFS/Target/user_diskio.c ****     if (HAL_SPI_Init(&hspi1) != HAL_OK) return Stat;
- 480              		.loc 1 112 34 view .LVU108
- 481 000a 3023     		movs	r3, #48
- 482 000c C361     		str	r3, [r0, #28]
- 113:FATFS/Target/user_diskio.c **** 
- 483              		.loc 1 113 5 is_stmt 1 view .LVU109
-ARM GAS  /tmp/cclUZkff.s 			page 14
-
-
- 113:FATFS/Target/user_diskio.c **** 
- 484              		.loc 1 113 9 is_stmt 0 view .LVU110
- 485 000e FFF7FEFF 		bl	HAL_SPI_Init
- 486              	.LVL45:
- 113:FATFS/Target/user_diskio.c **** 
- 487              		.loc 1 113 8 view .LVU111
- 488 0012 18B1     		cbz	r0, .L46
- 113:FATFS/Target/user_diskio.c **** 
- 489              		.loc 1 113 41 is_stmt 1 discriminator 1 view .LVU112
- 113:FATFS/Target/user_diskio.c **** 
- 490              		.loc 1 113 48 is_stmt 0 discriminator 1 view .LVU113
- 491 0014 304B     		ldr	r3, .L60
- 492 0016 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 493 0018 C0B2     		uxtb	r0, r0
- 494              	.L47:
- 153:FATFS/Target/user_diskio.c **** 
- 495              		.loc 1 153 1 view .LVU114
- 496 001a 38BD     		pop	{r3, r4, r5, pc}
- 497              	.L46:
- 116:FATFS/Target/user_diskio.c ****     osDelay(10); // Tiempo para que el voltaje se estabilice
- 498              		.loc 1 116 5 is_stmt 1 view .LVU115
- 499 001c 0122     		movs	r2, #1
- 500 001e 1021     		movs	r1, #16
- 501 0020 2F48     		ldr	r0, .L60+8
- 502 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 503              	.LVL46:
- 117:FATFS/Target/user_diskio.c ****     for (i = 0; i < 15; i++) SPI_Xfer(0xFF); 
- 504              		.loc 1 117 5 view .LVU116
- 505 0026 0A20     		movs	r0, #10
- 506 0028 FFF7FEFF 		bl	osDelay
- 507              	.LVL47:
- 118:FATFS/Target/user_diskio.c **** 
- 508              		.loc 1 118 5 view .LVU117
- 118:FATFS/Target/user_diskio.c **** 
- 509              		.loc 1 118 12 is_stmt 0 view .LVU118
- 510 002c 0024     		movs	r4, #0
- 118:FATFS/Target/user_diskio.c **** 
- 511              		.loc 1 118 5 view .LVU119
- 512 002e 04E0     		b	.L48
- 513              	.LVL48:
- 514              	.L49:
- 118:FATFS/Target/user_diskio.c **** 
- 515              		.loc 1 118 30 is_stmt 1 discriminator 3 view .LVU120
- 516 0030 FF20     		movs	r0, #255
- 517 0032 FFF7FEFF 		bl	SPI_Xfer
- 518              	.LVL49:
- 118:FATFS/Target/user_diskio.c **** 
- 519              		.loc 1 118 25 discriminator 3 view .LVU121
- 118:FATFS/Target/user_diskio.c **** 
- 520              		.loc 1 118 26 is_stmt 0 discriminator 3 view .LVU122
- 521 0036 0134     		adds	r4, r4, #1
- 522              	.LVL50:
- 118:FATFS/Target/user_diskio.c **** 
- 523              		.loc 1 118 26 discriminator 3 view .LVU123
- 524 0038 A4B2     		uxth	r4, r4
- 525              	.LVL51:
- 526              	.L48:
-ARM GAS  /tmp/cclUZkff.s 			page 15
-
-
- 118:FATFS/Target/user_diskio.c **** 
- 527              		.loc 1 118 17 is_stmt 1 discriminator 1 view .LVU124
- 118:FATFS/Target/user_diskio.c **** 
- 528              		.loc 1 118 5 is_stmt 0 discriminator 1 view .LVU125
- 529 003a 0E2C     		cmp	r4, #14
- 530 003c F8D9     		bls	.L49
- 121:FATFS/Target/user_diskio.c ****     do {
- 531              		.loc 1 121 7 view .LVU126
- 532 003e 0024     		movs	r4, #0
- 533              	.LVL52:
- 534              	.L51:
- 122:FATFS/Target/user_diskio.c ****         res = SD_SendCmd(CMD0, 0);
- 535              		.loc 1 122 5 is_stmt 1 discriminator 2 view .LVU127
- 123:FATFS/Target/user_diskio.c ****         osDelay(1);
- 536              		.loc 1 123 9 discriminator 2 view .LVU128
- 123:FATFS/Target/user_diskio.c ****         osDelay(1);
- 537              		.loc 1 123 15 is_stmt 0 discriminator 2 view .LVU129
- 538 0040 0021     		movs	r1, #0
- 539 0042 0846     		mov	r0, r1
- 540 0044 FFF7FEFF 		bl	SD_SendCmd
- 541              	.LVL53:
- 542 0048 0546     		mov	r5, r0
- 543              	.LVL54:
- 124:FATFS/Target/user_diskio.c ****     } while (res != 0x01 && ++i < 100);
- 544              		.loc 1 124 9 is_stmt 1 discriminator 2 view .LVU130
- 545 004a 0120     		movs	r0, #1
- 546 004c FFF7FEFF 		bl	osDelay
- 547              	.LVL55:
- 125:FATFS/Target/user_diskio.c **** 
- 548              		.loc 1 125 13 discriminator 2 view .LVU131
- 125:FATFS/Target/user_diskio.c **** 
- 549              		.loc 1 125 5 is_stmt 0 discriminator 2 view .LVU132
- 550 0050 012D     		cmp	r5, #1
- 551 0052 03D0     		beq	.L50
- 125:FATFS/Target/user_diskio.c **** 
- 552              		.loc 1 125 26 discriminator 1 view .LVU133
- 553 0054 0134     		adds	r4, r4, #1
- 554              	.LVL56:
- 125:FATFS/Target/user_diskio.c **** 
- 555              		.loc 1 125 26 discriminator 1 view .LVU134
- 556 0056 A4B2     		uxth	r4, r4
- 557              	.LVL57:
- 125:FATFS/Target/user_diskio.c **** 
- 558              		.loc 1 125 26 discriminator 1 view .LVU135
- 559 0058 632C     		cmp	r4, #99
- 560 005a F1D9     		bls	.L51
- 561              	.L50:
- 127:FATFS/Target/user_diskio.c ****         // 4. CMD8: Verificar voltaje (necesario para tarjetas SDHC/SDXC)
- 562              		.loc 1 127 5 is_stmt 1 view .LVU136
- 127:FATFS/Target/user_diskio.c ****         // 4. CMD8: Verificar voltaje (necesario para tarjetas SDHC/SDXC)
- 563              		.loc 1 127 8 is_stmt 0 view .LVU137
- 564 005c 012D     		cmp	r5, #1
- 565 005e 0BD0     		beq	.L59
- 566              	.L52:
- 149:FATFS/Target/user_diskio.c ****     SPI_Xfer(0xFF); // Ciclos extra para liberar el bus
- 567              		.loc 1 149 5 is_stmt 1 view .LVU138
- 568 0060 0122     		movs	r2, #1
-ARM GAS  /tmp/cclUZkff.s 			page 16
-
-
- 569 0062 1021     		movs	r1, #16
- 570 0064 1E48     		ldr	r0, .L60+8
- 571 0066 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 572              	.LVL58:
- 150:FATFS/Target/user_diskio.c ****     return Stat;
- 573              		.loc 1 150 5 view .LVU139
- 574 006a FF20     		movs	r0, #255
- 575 006c FFF7FEFF 		bl	SPI_Xfer
- 576              	.LVL59:
- 151:FATFS/Target/user_diskio.c ****   /* USER CODE END INIT */
- 577              		.loc 1 151 5 view .LVU140
- 151:FATFS/Target/user_diskio.c ****   /* USER CODE END INIT */
- 578              		.loc 1 151 12 is_stmt 0 view .LVU141
- 579 0070 194B     		ldr	r3, .L60
- 580 0072 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 581 0074 C0B2     		uxtb	r0, r0
- 582 0076 D0E7     		b	.L47
- 583              	.L59:
- 129:FATFS/Target/user_diskio.c ****             for (i = 0; i < 4; i++) SPI_Xfer(0xFF); // Leer R7
- 584              		.loc 1 129 9 is_stmt 1 view .LVU142
- 129:FATFS/Target/user_diskio.c ****             for (i = 0; i < 4; i++) SPI_Xfer(0xFF); // Leer R7
- 585              		.loc 1 129 13 is_stmt 0 view .LVU143
- 586 0078 4FF4D571 		mov	r1, #426
- 587 007c 0820     		movs	r0, #8
- 588 007e FFF7FEFF 		bl	SD_SendCmd
- 589              	.LVL60:
- 129:FATFS/Target/user_diskio.c ****             for (i = 0; i < 4; i++) SPI_Xfer(0xFF); // Leer R7
- 590              		.loc 1 129 12 view .LVU144
- 591 0082 0128     		cmp	r0, #1
- 592 0084 ECD1     		bne	.L52
- 130:FATFS/Target/user_diskio.c ****             
- 593              		.loc 1 130 20 view .LVU145
- 594 0086 0024     		movs	r4, #0
- 595              	.LVL61:
- 130:FATFS/Target/user_diskio.c ****             
- 596              		.loc 1 130 20 view .LVU146
- 597 0088 04E0     		b	.L53
- 598              	.LVL62:
- 599              	.L54:
- 130:FATFS/Target/user_diskio.c ****             
- 600              		.loc 1 130 37 is_stmt 1 discriminator 3 view .LVU147
- 601 008a FF20     		movs	r0, #255
- 602 008c FFF7FEFF 		bl	SPI_Xfer
- 603              	.LVL63:
- 130:FATFS/Target/user_diskio.c ****             
- 604              		.loc 1 130 32 discriminator 3 view .LVU148
- 130:FATFS/Target/user_diskio.c ****             
- 605              		.loc 1 130 33 is_stmt 0 discriminator 3 view .LVU149
- 606 0090 0134     		adds	r4, r4, #1
- 607              	.LVL64:
- 130:FATFS/Target/user_diskio.c ****             
- 608              		.loc 1 130 33 discriminator 3 view .LVU150
- 609 0092 A4B2     		uxth	r4, r4
- 610              	.LVL65:
- 611              	.L53:
- 130:FATFS/Target/user_diskio.c ****             
- 612              		.loc 1 130 25 is_stmt 1 discriminator 1 view .LVU151
-ARM GAS  /tmp/cclUZkff.s 			page 17
-
-
- 130:FATFS/Target/user_diskio.c ****             
- 613              		.loc 1 130 13 is_stmt 0 discriminator 1 view .LVU152
- 614 0094 032C     		cmp	r4, #3
- 615 0096 F8D9     		bls	.L54
- 133:FATFS/Target/user_diskio.c ****             do {
- 616              		.loc 1 133 15 view .LVU153
- 617 0098 4FF47A74 		mov	r4, #1000
- 618              	.LVL66:
- 619              	.L56:
- 134:FATFS/Target/user_diskio.c ****                 res = SD_SendCmd(ACMD41, 0x40000000); // HCS bit set
- 620              		.loc 1 134 13 is_stmt 1 discriminator 2 view .LVU154
- 135:FATFS/Target/user_diskio.c ****                 osDelay(1);
- 621              		.loc 1 135 17 discriminator 2 view .LVU155
- 135:FATFS/Target/user_diskio.c ****                 osDelay(1);
- 622              		.loc 1 135 23 is_stmt 0 discriminator 2 view .LVU156
- 623 009c 4FF08041 		mov	r1, #1073741824
- 624 00a0 2920     		movs	r0, #41
- 625 00a2 FFF7FEFF 		bl	SD_SendCmd
- 626              	.LVL67:
- 627 00a6 0546     		mov	r5, r0
- 628              	.LVL68:
- 136:FATFS/Target/user_diskio.c ****             } while (res != 0x00 && --i);
- 629              		.loc 1 136 17 is_stmt 1 discriminator 2 view .LVU157
- 630 00a8 0120     		movs	r0, #1
- 631 00aa FFF7FEFF 		bl	osDelay
- 632              	.LVL69:
- 137:FATFS/Target/user_diskio.c ****             
- 633              		.loc 1 137 21 discriminator 2 view .LVU158
- 137:FATFS/Target/user_diskio.c ****             
- 634              		.loc 1 137 13 is_stmt 0 discriminator 2 view .LVU159
- 635 00ae 1DB1     		cbz	r5, .L55
- 137:FATFS/Target/user_diskio.c ****             
- 636              		.loc 1 137 34 discriminator 1 view .LVU160
- 637 00b0 013C     		subs	r4, r4, #1
- 638              	.LVL70:
- 137:FATFS/Target/user_diskio.c ****             
- 639              		.loc 1 137 34 discriminator 1 view .LVU161
- 640 00b2 A4B2     		uxth	r4, r4
- 641              	.LVL71:
- 137:FATFS/Target/user_diskio.c ****             
- 642              		.loc 1 137 34 discriminator 1 view .LVU162
- 643 00b4 002C     		cmp	r4, #0
- 644 00b6 F1D1     		bne	.L56
- 645              	.L55:
- 139:FATFS/Target/user_diskio.c ****                 // Éxito: Subir velocidad del SPI (Blue Pill 72MHz / 8 = 9MHz)
- 646              		.loc 1 139 13 is_stmt 1 view .LVU163
- 139:FATFS/Target/user_diskio.c ****                 // Éxito: Subir velocidad del SPI (Blue Pill 72MHz / 8 = 9MHz)
- 647              		.loc 1 139 16 is_stmt 0 view .LVU164
- 648 00b8 002C     		cmp	r4, #0
- 649 00ba D1D0     		beq	.L52
- 650              	.LBB2:
- 141:FATFS/Target/user_diskio.c ****                 HAL_SPI_Init(&hspi1);
- 651              		.loc 1 141 17 is_stmt 1 view .LVU165
- 141:FATFS/Target/user_diskio.c ****                 HAL_SPI_Init(&hspi1);
- 652              		.loc 1 141 46 is_stmt 0 view .LVU166
- 653 00bc 0748     		ldr	r0, .L60+4
- 654 00be 1023     		movs	r3, #16
-ARM GAS  /tmp/cclUZkff.s 			page 18
-
-
- 655 00c0 C361     		str	r3, [r0, #28]
- 142:FATFS/Target/user_diskio.c ****                 Stat &= ~STA_NOINIT;
- 656              		.loc 1 142 17 is_stmt 1 view .LVU167
- 657 00c2 FFF7FEFF 		bl	HAL_SPI_Init
- 658              	.LVL72:
- 143:FATFS/Target/user_diskio.c ****                 printf("Tarjeta SD lista en modo SPI\r\n");
- 659              		.loc 1 143 17 view .LVU168
- 143:FATFS/Target/user_diskio.c ****                 printf("Tarjeta SD lista en modo SPI\r\n");
- 660              		.loc 1 143 22 is_stmt 0 view .LVU169
- 661 00c6 044A     		ldr	r2, .L60
- 662 00c8 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 663 00ca 03F0FE03 		and	r3, r3, #254
- 664 00ce 1370     		strb	r3, [r2]
- 144:FATFS/Target/user_diskio.c ****             }
- 665              		.loc 1 144 17 is_stmt 1 view .LVU170
- 666 00d0 0448     		ldr	r0, .L60+12
- 667 00d2 FFF7FEFF 		bl	puts
- 668              	.LVL73:
- 669 00d6 C3E7     		b	.L52
- 670              	.L61:
- 671              		.align	2
- 672              	.L60:
- 673 00d8 00000000 		.word	.LANCHOR0
- 674 00dc 00000000 		.word	hspi1
- 675 00e0 00080140 		.word	1073809408
- 676 00e4 00000000 		.word	.LC0
- 677              	.LBE2:
- 678              		.cfi_endproc
- 679              	.LFE73:
- 681              		.global	USER_Driver
- 682              		.section	.data.Stat,"aw"
- 683              		.set	.LANCHOR0,. + 0
- 686              	Stat:
- 687 0000 01       		.byte	1
- 688              		.section	.data.USER_Driver,"aw"
- 689              		.align	2
- 692              	USER_Driver:
- 693 0000 00000000 		.word	USER_initialize
- 694 0004 00000000 		.word	USER_status
- 695 0008 00000000 		.word	USER_read
- 696 000c 00000000 		.word	USER_write
- 697 0010 00000000 		.word	USER_ioctl
- 698              		.text
- 699              	.Letext0:
- 700              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 701              		.file 3 "Middlewares/Third_Party/FatFs/src/integer.h"
- 702              		.file 4 "Middlewares/Third_Party/FatFs/src/diskio.h"
- 703              		.file 5 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 704              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 705              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 706              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 707              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 708              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
- 709              		.file 11 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
- 710              		.file 12 "Core/Inc/spi.h"
- 711              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 712              		.file 14 "<built-in>"
-ARM GAS  /tmp/cclUZkff.s 			page 19
-
-
-ARM GAS  /tmp/cclUZkff.s 			page 20
+ 157              	.LVL9:
+  25:FATFS/Target/user_diskio.c **** }
+ 158              		.loc 1 25 1 view .LVU24
+ 159 0006 08BD     		pop	{r3, pc}
+ 160              		.cfi_endproc
+ 161              	.LFE69:
+ 163              		.text
+ 164              	.Letext0:
+ 165              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 166              		.file 3 "Middlewares/Third_Party/FatFs/src/diskio.h"
+ 167              		.file 4 "FATFS/App/fatfs_sd.h"
+ARM GAS  /tmp/cco1i8Ff.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 user_diskio.c
-     /tmp/cclUZkff.s:18     .text.USER_status:0000000000000000 $t
-     /tmp/cclUZkff.s:24     .text.USER_status:0000000000000000 USER_status
-     /tmp/cclUZkff.s:43     .text.USER_status:0000000000000008 $d
-     /tmp/cclUZkff.s:48     .text.USER_read:0000000000000000 $t
-     /tmp/cclUZkff.s:54     .text.USER_read:0000000000000000 USER_read
-     /tmp/cclUZkff.s:82     .text.USER_read:0000000000000010 $d
-     /tmp/cclUZkff.s:87     .text.USER_write:0000000000000000 $t
-     /tmp/cclUZkff.s:93     .text.USER_write:0000000000000000 USER_write
-     /tmp/cclUZkff.s:111    .text.USER_ioctl:0000000000000000 $t
-     /tmp/cclUZkff.s:117    .text.USER_ioctl:0000000000000000 USER_ioctl
-     /tmp/cclUZkff.s:138    .text.USER_ioctl:0000000000000012 $d
-     /tmp/cclUZkff.s:142    .text.USER_ioctl:0000000000000016 $t
-     /tmp/cclUZkff.s:182    .text.USER_ioctl:0000000000000038 $d
-     /tmp/cclUZkff.s:188    .text.SPI_Xfer:0000000000000000 $t
-     /tmp/cclUZkff.s:193    .text.SPI_Xfer:0000000000000000 SPI_Xfer
-     /tmp/cclUZkff.s:232    .text.SPI_Xfer:0000000000000028 $d
-     /tmp/cclUZkff.s:237    .text.SD_ReadyWait:0000000000000000 $t
-     /tmp/cclUZkff.s:242    .text.SD_ReadyWait:0000000000000000 SD_ReadyWait
-     /tmp/cclUZkff.s:285    .text.SD_SendCmd:0000000000000000 $t
-     /tmp/cclUZkff.s:290    .text.SD_SendCmd:0000000000000000 SD_SendCmd
-     /tmp/cclUZkff.s:439    .text.SD_SendCmd:0000000000000098 $d
-     /tmp/cclUZkff.s:444    .rodata.USER_initialize.str1.4:0000000000000000 $d
-     /tmp/cclUZkff.s:448    .text.USER_initialize:0000000000000000 $t
-     /tmp/cclUZkff.s:454    .text.USER_initialize:0000000000000000 USER_initialize
-     /tmp/cclUZkff.s:673    .text.USER_initialize:00000000000000d8 $d
-     /tmp/cclUZkff.s:692    .data.USER_Driver:0000000000000000 USER_Driver
-     /tmp/cclUZkff.s:686    .data.Stat:0000000000000000 Stat
-     /tmp/cclUZkff.s:689    .data.USER_Driver:0000000000000000 $d
+     /tmp/cco1i8Ff.s:18     .text.USER_initialize:0000000000000000 $t
+     /tmp/cco1i8Ff.s:24     .text.USER_initialize:0000000000000000 USER_initialize
+     /tmp/cco1i8Ff.s:48     .text.USER_status:0000000000000000 $t
+     /tmp/cco1i8Ff.s:54     .text.USER_status:0000000000000000 USER_status
+     /tmp/cco1i8Ff.s:77     .text.USER_read:0000000000000000 $t
+     /tmp/cco1i8Ff.s:83     .text.USER_read:0000000000000000 USER_read
+     /tmp/cco1i8Ff.s:106    .text.USER_write:0000000000000000 $t
+     /tmp/cco1i8Ff.s:112    .text.USER_write:0000000000000000 USER_write
+     /tmp/cco1i8Ff.s:135    .text.USER_ioctl:0000000000000000 $t
+     /tmp/cco1i8Ff.s:141    .text.USER_ioctl:0000000000000000 USER_ioctl
 
 UNDEFINED SYMBOLS
-HAL_SPI_TransmitReceive
-hspi1
-HAL_GPIO_WritePin
-HAL_SPI_Init
-osDelay
-puts
+SD_disk_initialize
+SD_disk_status
+SD_disk_read
+SD_disk_write
+SD_disk_ioctl

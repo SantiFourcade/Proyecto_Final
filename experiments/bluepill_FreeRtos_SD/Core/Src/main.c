@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "fatfs.h"
+#include "fatfs_sd.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
@@ -46,7 +47,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
+/* Variables para los Timeouts de la SD */
+volatile uint8_t Timer1, Timer2;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -182,7 +184,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+  /*--- CONTADORES PARA EL DRIVER SD ---*/
+    if (Timer1 > 0) Timer1--;
+    if (Timer2 > 0) Timer2--;
   /* USER CODE END Callback 1 */
 }
 int _write(int file, char *ptr, int len)

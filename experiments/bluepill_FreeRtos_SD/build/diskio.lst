@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc6ASLQq.s 			page 1
+ARM GAS  /tmp/cc4YRgga.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
   29:Middlewares/Third_Party/FatFs/src/diskio.c ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
   30:Middlewares/Third_Party/FatFs/src/diskio.c ****   *    this list of conditions and the following disclaimer in the documentation
   31:Middlewares/Third_Party/FatFs/src/diskio.c ****   *    and/or other materials provided with the distribution.
-ARM GAS  /tmp/cc6ASLQq.s 			page 2
+ARM GAS  /tmp/cc4YRgga.s 			page 2
 
 
   32:Middlewares/Third_Party/FatFs/src/diskio.c ****   * 3. Neither the name of STMicroelectronics nor the names of other 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
   35              		.cfi_def_cfa_offset 8
   36              		.cfi_offset 3, -8
   37              		.cfi_offset 14, -4
-ARM GAS  /tmp/cc6ASLQq.s 			page 3
+ARM GAS  /tmp/cc4YRgga.s 			page 3
 
 
   79:Middlewares/Third_Party/FatFs/src/diskio.c ****   DSTATUS stat;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
   79              	.LCFI1:
   80              		.cfi_def_cfa_offset 8
   81              		.cfi_offset 3, -8
-ARM GAS  /tmp/cc6ASLQq.s 			page 4
+ARM GAS  /tmp/cc4YRgga.s 			page 4
 
 
   82              		.cfi_offset 14, -4
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
  125              	.LFE71:
  127              		.section	.text.disk_read,"ax",%progbits
  128              		.align	1
-ARM GAS  /tmp/cc6ASLQq.s 			page 5
+ARM GAS  /tmp/cc4YRgga.s 			page 5
 
 
  129              		.global	disk_read
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
  164              		.loc 1 122 3 is_stmt 1 view .LVU35
  123:Middlewares/Third_Party/FatFs/src/diskio.c **** }
  165              		.loc 1 123 1 is_stmt 0 view .LVU36
-ARM GAS  /tmp/cc6ASLQq.s 			page 6
+ARM GAS  /tmp/cc4YRgga.s 			page 6
 
 
  166 0012 38BD     		pop	{r3, r4, r5, pc}
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
  202              		.loc 1 143 23 view .LVU42
  203 000a ED68     		ldr	r5, [r5, #12]
  204              		.loc 1 143 9 view .LVU43
-ARM GAS  /tmp/cc6ASLQq.s 			page 7
+ARM GAS  /tmp/cc4YRgga.s 			page 7
 
 
  205 000c 0444     		add	r4, r4, r0
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
  163:Middlewares/Third_Party/FatFs/src/diskio.c **** 
  164:Middlewares/Third_Party/FatFs/src/diskio.c ****   res = disk.drv[pdrv]->disk_ioctl(disk.lun[pdrv], cmd, buff);
  242              		.loc 1 164 3 view .LVU50
-ARM GAS  /tmp/cc6ASLQq.s 			page 8
+ARM GAS  /tmp/cc4YRgga.s 			page 8
 
 
  243              		.loc 1 164 17 is_stmt 0 view .LVU51
@@ -478,35 +478,35 @@ ARM GAS  /tmp/cc6ASLQq.s 			page 1
  287              		.text
  288              	.Letext0:
  289              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
-ARM GAS  /tmp/cc6ASLQq.s 			page 9
+ARM GAS  /tmp/cc4YRgga.s 			page 9
 
 
  290              		.file 3 "Middlewares/Third_Party/FatFs/src/diskio.h"
  291              		.file 4 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
  292              		.file 5 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
  293              		.file 6 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
-ARM GAS  /tmp/cc6ASLQq.s 			page 10
+ARM GAS  /tmp/cc4YRgga.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 diskio.c
-     /tmp/cc6ASLQq.s:18     .text.disk_status:0000000000000000 $t
-     /tmp/cc6ASLQq.s:24     .text.disk_status:0000000000000000 disk_status
-     /tmp/cc6ASLQq.s:59     .text.disk_status:0000000000000014 $d
-     /tmp/cc6ASLQq.s:64     .text.disk_initialize:0000000000000000 $t
-     /tmp/cc6ASLQq.s:70     .text.disk_initialize:0000000000000000 disk_initialize
-     /tmp/cc6ASLQq.s:123    .text.disk_initialize:0000000000000024 $d
-     /tmp/cc6ASLQq.s:128    .text.disk_read:0000000000000000 $t
-     /tmp/cc6ASLQq.s:134    .text.disk_read:0000000000000000 disk_read
-     /tmp/cc6ASLQq.s:170    .text.disk_read:0000000000000014 $d
-     /tmp/cc6ASLQq.s:175    .text.disk_write:0000000000000000 $t
-     /tmp/cc6ASLQq.s:181    .text.disk_write:0000000000000000 disk_write
-     /tmp/cc6ASLQq.s:217    .text.disk_write:0000000000000014 $d
-     /tmp/cc6ASLQq.s:222    .text.disk_ioctl:0000000000000000 $t
-     /tmp/cc6ASLQq.s:228    .text.disk_ioctl:0000000000000000 disk_ioctl
-     /tmp/cc6ASLQq.s:262    .text.disk_ioctl:0000000000000014 $d
-     /tmp/cc6ASLQq.s:267    .text.get_fattime:0000000000000000 $t
-     /tmp/cc6ASLQq.s:273    .text.get_fattime:0000000000000000 get_fattime
+     /tmp/cc4YRgga.s:18     .text.disk_status:0000000000000000 $t
+     /tmp/cc4YRgga.s:24     .text.disk_status:0000000000000000 disk_status
+     /tmp/cc4YRgga.s:59     .text.disk_status:0000000000000014 $d
+     /tmp/cc4YRgga.s:64     .text.disk_initialize:0000000000000000 $t
+     /tmp/cc4YRgga.s:70     .text.disk_initialize:0000000000000000 disk_initialize
+     /tmp/cc4YRgga.s:123    .text.disk_initialize:0000000000000024 $d
+     /tmp/cc4YRgga.s:128    .text.disk_read:0000000000000000 $t
+     /tmp/cc4YRgga.s:134    .text.disk_read:0000000000000000 disk_read
+     /tmp/cc4YRgga.s:170    .text.disk_read:0000000000000014 $d
+     /tmp/cc4YRgga.s:175    .text.disk_write:0000000000000000 $t
+     /tmp/cc4YRgga.s:181    .text.disk_write:0000000000000000 disk_write
+     /tmp/cc4YRgga.s:217    .text.disk_write:0000000000000014 $d
+     /tmp/cc4YRgga.s:222    .text.disk_ioctl:0000000000000000 $t
+     /tmp/cc4YRgga.s:228    .text.disk_ioctl:0000000000000000 disk_ioctl
+     /tmp/cc4YRgga.s:262    .text.disk_ioctl:0000000000000014 $d
+     /tmp/cc4YRgga.s:267    .text.get_fattime:0000000000000000 $t
+     /tmp/cc4YRgga.s:273    .text.get_fattime:0000000000000000 get_fattime
 
 UNDEFINED SYMBOLS
 disk

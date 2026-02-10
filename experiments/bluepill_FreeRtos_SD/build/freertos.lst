@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 1
+ARM GAS  /tmp/ccnCbwOm.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -25,57 +25,102 @@ ARM GAS  /tmp/cc8Rg4Jz.s 			page 1
   21              		.section	.rodata.StartLogger.str1.4,"aMS",%progbits,1
   22              		.align	2
   23              	.LC2:
-  24 0000 496E7465 		.ascii	"Intentando montar SD...\015\000"
-  24      6E74616E 
-  24      646F206D 
-  24      6F6E7461 
-  24      72205344 
-  25 0019 000000   		.align	2
-  26              	.LC3:
-  27 001c 4572726F 		.ascii	"Error f_mount: %d\015\012\000"
-  27      7220665F 
-  27      6D6F756E 
-  27      743A2025 
-  27      640D0A00 
-  28              		.align	2
-  29              	.LC4:
-  30 0030 5344204D 		.ascii	"SD Montada con \303\251xito!\015\000"
-  30      6F6E7461 
-  30      64612063 
-  30      6F6E20C3 
-  30      A9786974 
-  31              		.align	2
-  32              	.LC5:
-  33 0048 74657374 		.ascii	"test.txt\000"
-  33      2E747874 
-  33      00
-  34 0051 000000   		.align	2
-  35              	.LC6:
-  36 0054 4572726F 		.ascii	"Error al abrir\015\000"
-  36      7220616C 
-  36      20616272 
-  36      69720D00 
-  37              		.align	2
-  38              	.LC7:
-  39 0064 48656C6C 		.ascii	"Hello SD\015\012\000"
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 2
+  24 0000 0D0A2D2D 		.ascii	"\015\012--- Sistema de Log SD con Drivers de eziya "
+  24      2D205369 
+  24      7374656D 
+  24      61206465 
+  24      204C6F67 
+  25 002d 2D2D2D0D 		.ascii	"---\015\000"
+  25      00
+  26 0032 0000     		.align	2
+  27              	.LC3:
+  28 0034 496E7465 		.ascii	"Intentando montar SD (f_mount)... \000"
+  28      6E74616E 
+  28      646F206D 
+  28      6F6E7461 
+  28      72205344 
+  29 0057 00       		.align	2
+  30              	.LC4:
+  31 0058 C2A14558 		.ascii	"\302\241EXITO! Sistema de archivos reconocido.\015\000"
+  31      49544F21 
+  31      20536973 
+  31      74656D61 
+  31      20646520 
+  32 0082 0000     		.align	2
+  33              	.LC5:
+  34 0084 41627269 		.ascii	"Abriendo 'test.txt'...\015\000"
+  34      656E646F 
+  34      20277465 
+  34      73742E74 
+  34      7874272E 
+  35              		.align	2
+  36              	.LC6:
+  37 009c 74657374 		.ascii	"test.txt\000"
+  37      2E747874 
+  37      00
+ARM GAS  /tmp/ccnCbwOm.s 			page 2
 
 
-  39      6F205344 
-  39      0D0A00
-  40              		.section	.text.StartLogger,"ax",%progbits
-  41              		.align	1
-  42              		.global	StartLogger
-  43              		.syntax unified
-  44              		.thumb
-  45              		.thumb_func
-  47              	StartLogger:
-  48              	.LVL0:
-  49              	.LFB75:
-  50              		.file 1 "Core/Src/freertos.c"
+  38 00a5 000000   		.align	2
+  39              	.LC7:
+  40 00a8 46414C4C 		.ascii	"FALLO (C\303\263digo FatFS: %d). Reintentando en 2s"
+  40      4F202843 
+  40      C3B36469 
+  40      676F2046 
+  40      61744653 
+  41 00d5 2E2E2E0D 		.ascii	"...\015\012\000"
+  41      0A00
+  42 00db 00       		.align	2
+  43              	.LC8:
+  44 00dc 4572726F 		.ascii	"Error cr\303\255tico al abrir archivo: %d\015\012\000"
+  44      72206372 
+  44      C3AD7469 
+  44      636F2061 
+  44      6C206162 
+  45 0102 0000     		.align	2
+  46              	.LC9:
+  47 0104 45736372 		.ascii	"Escribiendo datos cada 1 segundo...\015\000"
+  47      69626965 
+  47      6E646F20 
+  47      6461746F 
+  47      73206361 
+  48 0129 000000   		.align	2
+  49              	.LC10:
+  50 012c 48656C6C 		.ascii	"Hello SD con driver nuevo\015\012\000"
+  50      6F205344 
+  50      20636F6E 
+  50      20647269 
+  50      76657220 
+  51              		.align	2
+  52              	.LC11:
+  53 0148 4461746F 		.ascii	"Dato guardado: %d bytes\015\012\000"
+  53      20677561 
+  53      72646164 
+  53      6F3A2025 
+  53      64206279 
+  54 0162 0000     		.align	2
+  55              	.LC12:
+  56 0164 4572726F 		.ascii	"Error de escritura f\303\255sica: %d\015\012\000"
+  56      72206465 
+  56      20657363 
+  56      72697475 
+  56      72612066 
+  57              		.section	.text.StartLogger,"ax",%progbits
+  58              		.align	1
+  59              		.global	StartLogger
+  60              		.syntax unified
+  61              		.thumb
+  62              		.thumb_func
+  64              	StartLogger:
+  65              	.LVL0:
+  66              	.LFB75:
+  67              		.file 1 "Core/Src/freertos.c"
    1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
    2:Core/Src/freertos.c **** /**
    3:Core/Src/freertos.c ****   ******************************************************************************
+ARM GAS  /tmp/ccnCbwOm.s 			page 3
+
+
    4:Core/Src/freertos.c ****   * File Name          : freertos.c
    5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
    6:Core/Src/freertos.c ****   ******************************************************************************
@@ -104,544 +149,594 @@ ARM GAS  /tmp/cc8Rg4Jz.s 			page 1
   29:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
   30:Core/Src/freertos.c **** #include "ff.h"
   31:Core/Src/freertos.c **** #include "fatfs.h"
-  32:Core/Src/freertos.c **** #include "gpio.h"
-  33:Core/Src/freertos.c **** #include "spi.h"
-  34:Core/Src/freertos.c **** #include "usart.h"
-  35:Core/Src/freertos.c **** /* USER CODE END Includes */
-  36:Core/Src/freertos.c **** 
-  37:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
-  38:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
-  39:Core/Src/freertos.c **** 
-  40:Core/Src/freertos.c **** /* USER CODE END PTD */
-  41:Core/Src/freertos.c **** 
-  42:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
-  43:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
-  44:Core/Src/freertos.c **** #define SD_CS_LOW()   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET)
-  45:Core/Src/freertos.c **** #define SD_CS_HIGH()  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET)
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 3
+  32:Core/Src/freertos.c **** #include "fatfs_sd.h"
+  33:Core/Src/freertos.c **** #include "gpio.h"
+  34:Core/Src/freertos.c **** #include "spi.h"
+  35:Core/Src/freertos.c **** #include "usart.h"
+  36:Core/Src/freertos.c **** /* USER CODE END Includes */
+  37:Core/Src/freertos.c **** 
+  38:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  39:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  40:Core/Src/freertos.c **** 
+  41:Core/Src/freertos.c **** /* USER CODE END PTD */
+  42:Core/Src/freertos.c **** 
+  43:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  44:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  45:Core/Src/freertos.c **** #define SD_CS_LOW()   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET)
+  46:Core/Src/freertos.c **** #define SD_CS_HIGH()  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET)
+  47:Core/Src/freertos.c **** /* USER CODE END PD */
+  48:Core/Src/freertos.c **** 
+  49:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  50:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  51:Core/Src/freertos.c **** 
+  52:Core/Src/freertos.c **** /* USER CODE END PM */
+  53:Core/Src/freertos.c **** 
+  54:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  55:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  56:Core/Src/freertos.c **** 
+  57:Core/Src/freertos.c **** /* USER CODE END Variables */
+  58:Core/Src/freertos.c **** osThreadId loggerHandle;
+  59:Core/Src/freertos.c **** 
+  60:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+ARM GAS  /tmp/ccnCbwOm.s 			page 4
 
 
-  46:Core/Src/freertos.c **** /* USER CODE END PD */
-  47:Core/Src/freertos.c **** 
-  48:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
-  49:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
-  50:Core/Src/freertos.c **** 
-  51:Core/Src/freertos.c **** /* USER CODE END PM */
-  52:Core/Src/freertos.c **** 
-  53:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
-  54:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
-  55:Core/Src/freertos.c **** 
-  56:Core/Src/freertos.c **** /* USER CODE END Variables */
-  57:Core/Src/freertos.c **** osThreadId loggerHandle;
-  58:Core/Src/freertos.c **** 
-  59:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
-  60:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
-  61:Core/Src/freertos.c **** 
-  62:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
-  63:Core/Src/freertos.c **** 
-  64:Core/Src/freertos.c **** void StartLogger(void const * argument);
-  65:Core/Src/freertos.c **** 
-  66:Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
-  67:Core/Src/freertos.c **** 
-  68:Core/Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
-  69:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
-  70:Core/Src/freertos.c **** 
-  71:Core/Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
-  72:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
-  73:Core/Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
-  74:Core/Src/freertos.c **** 
-  75:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
-  76:Core/Src/freertos.c **** {
-  77:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
-  78:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
-  79:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
-  80:Core/Src/freertos.c ****   /* place for user code */
-  81:Core/Src/freertos.c **** }
-  82:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
-  83:Core/Src/freertos.c **** 
-  84:Core/Src/freertos.c **** /**
-  85:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
-  86:Core/Src/freertos.c ****   * @param  None
-  87:Core/Src/freertos.c ****   * @retval None
-  88:Core/Src/freertos.c ****   */
-  89:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
-  90:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
-  91:Core/Src/freertos.c **** 
-  92:Core/Src/freertos.c ****   /* USER CODE END Init */
-  93:Core/Src/freertos.c **** 
-  94:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
-  95:Core/Src/freertos.c ****   /* add mutexes, ... */
-  96:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
-  97:Core/Src/freertos.c **** 
-  98:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  99:Core/Src/freertos.c ****   /* add semaphores, ... */
- 100:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
- 101:Core/Src/freertos.c **** 
- 102:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 4
+  61:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  62:Core/Src/freertos.c **** 
+  63:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  64:Core/Src/freertos.c **** 
+  65:Core/Src/freertos.c **** void StartLogger(void const * argument);
+  66:Core/Src/freertos.c **** 
+  67:Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+  68:Core/Src/freertos.c **** 
+  69:Core/Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  70:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  71:Core/Src/freertos.c **** 
+  72:Core/Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  73:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  74:Core/Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  75:Core/Src/freertos.c **** 
+  76:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  77:Core/Src/freertos.c **** {
+  78:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  79:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  80:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  81:Core/Src/freertos.c ****   /* place for user code */
+  82:Core/Src/freertos.c **** }
+  83:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+  84:Core/Src/freertos.c **** 
+  85:Core/Src/freertos.c **** /**
+  86:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
+  87:Core/Src/freertos.c ****   * @param  None
+  88:Core/Src/freertos.c ****   * @retval None
+  89:Core/Src/freertos.c ****   */
+  90:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  91:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+  92:Core/Src/freertos.c **** 
+  93:Core/Src/freertos.c ****   /* USER CODE END Init */
+  94:Core/Src/freertos.c **** 
+  95:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+  96:Core/Src/freertos.c ****   /* add mutexes, ... */
+  97:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
+  98:Core/Src/freertos.c **** 
+  99:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+ 100:Core/Src/freertos.c ****   /* add semaphores, ... */
+ 101:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+ 102:Core/Src/freertos.c **** 
+ 103:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+ 104:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
+ 105:Core/Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
+ 106:Core/Src/freertos.c **** 
+ 107:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 108:Core/Src/freertos.c ****   /* add queues, ... */
+ 109:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
+ 110:Core/Src/freertos.c **** 
+ 111:Core/Src/freertos.c ****   /* Create the thread(s) */
+ 112:Core/Src/freertos.c ****   /* definition and creation of logger */
+ 113:Core/Src/freertos.c ****   osThreadDef(logger, StartLogger, osPriorityNormal, 0, 512);
+ 114:Core/Src/freertos.c ****   loggerHandle = osThreadCreate(osThread(logger), NULL);
+ 115:Core/Src/freertos.c **** 
+ 116:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 117:Core/Src/freertos.c ****   /* add threads, ... */
+ARM GAS  /tmp/ccnCbwOm.s 			page 5
 
 
- 103:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
- 104:Core/Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
- 105:Core/Src/freertos.c **** 
- 106:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
- 107:Core/Src/freertos.c ****   /* add queues, ... */
- 108:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
- 109:Core/Src/freertos.c **** 
- 110:Core/Src/freertos.c ****   /* Create the thread(s) */
- 111:Core/Src/freertos.c ****   /* definition and creation of logger */
- 112:Core/Src/freertos.c ****   osThreadDef(logger, StartLogger, osPriorityNormal, 0, 512);
- 113:Core/Src/freertos.c ****   loggerHandle = osThreadCreate(osThread(logger), NULL);
- 114:Core/Src/freertos.c **** 
- 115:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
- 116:Core/Src/freertos.c ****   /* add threads, ... */
- 117:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
- 118:Core/Src/freertos.c **** 
- 119:Core/Src/freertos.c **** }
- 120:Core/Src/freertos.c **** 
- 121:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartLogger */
- 122:Core/Src/freertos.c **** /**
- 123:Core/Src/freertos.c ****   * @brief  Function implementing the logger thread.
- 124:Core/Src/freertos.c ****   * @param  argument: Not used
- 125:Core/Src/freertos.c ****   * @retval None
- 126:Core/Src/freertos.c ****   */
- 127:Core/Src/freertos.c **** /* USER CODE END Header_StartLogger */
- 128:Core/Src/freertos.c **** void StartLogger(void const * argument)
- 129:Core/Src/freertos.c **** {
-  51              		.loc 1 129 1 view -0
-  52              		.cfi_startproc
-  53              		@ args = 0, pretend = 0, frame = 1128
-  54              		@ frame_needed = 0, uses_anonymous_args = 0
-  55              		.loc 1 129 1 is_stmt 0 view .LVU1
-  56 0000 10B5     		push	{r4, lr}
-  57              	.LCFI0:
-  58              		.cfi_def_cfa_offset 8
-  59              		.cfi_offset 4, -8
-  60              		.cfi_offset 14, -4
-  61 0002 ADF58D6D 		sub	sp, sp, #1128
-  62              	.LCFI1:
-  63              		.cfi_def_cfa_offset 1136
- 130:Core/Src/freertos.c ****   /* USER CODE BEGIN StartLogger */
- 131:Core/Src/freertos.c ****   /* Infinite loop */
- 132:Core/Src/freertos.c ****   FATFS fs;
-  64              		.loc 1 132 3 is_stmt 1 view .LVU2
- 133:Core/Src/freertos.c ****   FIL file;
-  65              		.loc 1 133 3 view .LVU3
- 134:Core/Src/freertos.c ****   UINT bw;
-  66              		.loc 1 134 3 view .LVU4
- 135:Core/Src/freertos.c **** // 1. Asegurar CS en alto y dar tiempo de estabilización
- 136:Core/Src/freertos.c ****   SD_CS_HIGH();
-  67              		.loc 1 136 3 view .LVU5
-  68 0006 0122     		movs	r2, #1
-  69 0008 1021     		movs	r1, #16
-  70 000a 2948     		ldr	r0, .L10
-  71              	.LVL1:
-  72              		.loc 1 136 3 is_stmt 0 view .LVU6
-  73 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 5
-
-
-  74              	.LVL2:
- 137:Core/Src/freertos.c ****   osDelay(100); 
-  75              		.loc 1 137 3 is_stmt 1 view .LVU7
-  76 0010 6420     		movs	r0, #100
-  77 0012 FFF7FEFF 		bl	osDelay
-  78              	.LVL3:
- 138:Core/Src/freertos.c **** 
- 139:Core/Src/freertos.c ****   // 2. Enviar 10-20 bytes dummy (0xFF) con CS ALTO para entrar en modo SPI
- 140:Core/Src/freertos.c ****   uint8_t dummy = 0xFF;
-  79              		.loc 1 140 3 view .LVU8
-  80              		.loc 1 140 11 is_stmt 0 view .LVU9
-  81 0016 FF23     		movs	r3, #255
-  82 0018 8DF80330 		strb	r3, [sp, #3]
- 141:Core/Src/freertos.c ****   for(int i=0; i<20; i++) {
-  83              		.loc 1 141 3 is_stmt 1 view .LVU10
-  84              	.LBB2:
-  85              		.loc 1 141 7 view .LVU11
-  86              	.LVL4:
-  87              		.loc 1 141 11 is_stmt 0 view .LVU12
-  88 001c 0024     		movs	r4, #0
-  89              		.loc 1 141 3 view .LVU13
-  90 001e 07E0     		b	.L2
-  91              	.LVL5:
-  92              	.L3:
- 142:Core/Src/freertos.c ****       HAL_SPI_Transmit(&hspi1, &dummy, 1, 10);
-  93              		.loc 1 142 7 is_stmt 1 discriminator 3 view .LVU14
-  94 0020 0A23     		movs	r3, #10
-  95 0022 0122     		movs	r2, #1
-  96 0024 0DF10301 		add	r1, sp, #3
-  97 0028 2248     		ldr	r0, .L10+4
-  98 002a FFF7FEFF 		bl	HAL_SPI_Transmit
-  99              	.LVL6:
- 141:Core/Src/freertos.c ****   for(int i=0; i<20; i++) {
- 100              		.loc 1 141 22 discriminator 3 view .LVU15
- 141:Core/Src/freertos.c ****   for(int i=0; i<20; i++) {
- 101              		.loc 1 141 23 is_stmt 0 discriminator 3 view .LVU16
- 102 002e 0134     		adds	r4, r4, #1
- 103              	.LVL7:
- 104              	.L2:
- 141:Core/Src/freertos.c ****   for(int i=0; i<20; i++) {
- 105              		.loc 1 141 16 is_stmt 1 discriminator 1 view .LVU17
- 141:Core/Src/freertos.c ****   for(int i=0; i<20; i++) {
- 106              		.loc 1 141 3 is_stmt 0 discriminator 1 view .LVU18
- 107 0030 132C     		cmp	r4, #19
- 108 0032 F5DD     		ble	.L3
- 109              	.LBE2:
- 143:Core/Src/freertos.c ****   }
- 144:Core/Src/freertos.c **** 
- 145:Core/Src/freertos.c ****   printf("Intentando montar SD...\r\n");
- 110              		.loc 1 145 3 is_stmt 1 view .LVU19
- 111 0034 2048     		ldr	r0, .L10+8
- 112 0036 FFF7FEFF 		bl	puts
- 113              	.LVL8:
- 146:Core/Src/freertos.c **** 
- 147:Core/Src/freertos.c ****   // 3. Mount con '1' para forzar inicialización inmediata
- 148:Core/Src/freertos.c ****   FRESULT res = f_mount(&fs, USERPath, 1);
- 114              		.loc 1 148 3 view .LVU20
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 6
-
-
- 115              		.loc 1 148 17 is_stmt 0 view .LVU21
- 116 003a 0122     		movs	r2, #1
- 117 003c 1F49     		ldr	r1, .L10+12
- 118 003e 8DA8     		add	r0, sp, #564
- 119 0040 FFF7FEFF 		bl	f_mount
- 120              	.LVL9:
- 149:Core/Src/freertos.c ****   
- 150:Core/Src/freertos.c ****   if (res != FR_OK) {
- 121              		.loc 1 150 3 is_stmt 1 view .LVU22
- 122              		.loc 1 150 6 is_stmt 0 view .LVU23
- 123 0044 0146     		mov	r1, r0
- 124 0046 60B1     		cbz	r0, .L4
- 151:Core/Src/freertos.c ****       printf("Error f_mount: %d\r\n", res);
- 125              		.loc 1 151 7 is_stmt 1 view .LVU24
- 126 0048 1D48     		ldr	r0, .L10+16
- 127              	.LVL10:
- 128              		.loc 1 151 7 is_stmt 0 view .LVU25
- 129 004a FFF7FEFF 		bl	printf
- 130              	.LVL11:
- 131              	.L5:
- 152:Core/Src/freertos.c ****       // Si el error es 13 (FR_NO_FILESYSTEM), intenta f_mkfs o revisa el formato
- 153:Core/Src/freertos.c ****       while(1) { 
- 132              		.loc 1 153 7 is_stmt 1 discriminator 1 view .LVU26
- 154:Core/Src/freertos.c ****           HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); 
- 133              		.loc 1 154 11 discriminator 1 view .LVU27
- 134 004e 4FF40051 		mov	r1, #8192
- 135 0052 1C48     		ldr	r0, .L10+20
- 136 0054 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 137              	.LVL12:
- 155:Core/Src/freertos.c ****           osDelay(1000); 
- 138              		.loc 1 155 11 discriminator 1 view .LVU28
- 139 0058 4FF47A70 		mov	r0, #1000
- 140 005c FFF7FEFF 		bl	osDelay
- 141              	.LVL13:
- 153:Core/Src/freertos.c ****           HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); 
- 142              		.loc 1 153 12 discriminator 1 view .LVU29
- 143 0060 F5E7     		b	.L5
- 144              	.LVL14:
- 145              	.L4:
- 156:Core/Src/freertos.c ****       }
- 157:Core/Src/freertos.c ****   }
- 158:Core/Src/freertos.c **** 
- 159:Core/Src/freertos.c ****   printf("SD Montada con éxito!\r\n");
- 146              		.loc 1 159 3 view .LVU30
- 147 0062 1948     		ldr	r0, .L10+24
- 148              	.LVL15:
- 149              		.loc 1 159 3 is_stmt 0 view .LVU31
- 150 0064 FFF7FEFF 		bl	puts
- 151              	.LVL16:
- 160:Core/Src/freertos.c ****   /* Open file */
- 161:Core/Src/freertos.c ****   if (f_open(&file, "test.txt", FA_OPEN_ALWAYS | FA_WRITE) != FR_OK)
- 152              		.loc 1 161 3 is_stmt 1 view .LVU32
- 153              		.loc 1 161 7 is_stmt 0 view .LVU33
- 154 0068 1222     		movs	r2, #18
- 155 006a 1849     		ldr	r1, .L10+28
- 156 006c 02A8     		add	r0, sp, #8
- 157 006e FFF7FEFF 		bl	f_open
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 7
-
-
- 158              	.LVL17:
- 159              		.loc 1 161 6 view .LVU34
- 160 0072 58B1     		cbz	r0, .L6
- 161              	.L7:
- 162:Core/Src/freertos.c ****   {
- 163:Core/Src/freertos.c ****       while(1){
- 162              		.loc 1 163 7 is_stmt 1 discriminator 1 view .LVU35
- 164:Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
- 163              		.loc 1 164 9 discriminator 1 view .LVU36
- 164 0074 4FF40051 		mov	r1, #8192
- 165 0078 1248     		ldr	r0, .L10+20
- 166 007a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 167              	.LVL18:
- 165:Core/Src/freertos.c ****         osDelay(200);
- 168              		.loc 1 165 9 discriminator 1 view .LVU37
- 169 007e C820     		movs	r0, #200
- 170 0080 FFF7FEFF 		bl	osDelay
- 171              	.LVL19:
- 166:Core/Src/freertos.c ****         printf("Error al abrir\r\n");
- 172              		.loc 1 166 9 discriminator 1 view .LVU38
- 173 0084 1248     		ldr	r0, .L10+32
- 174 0086 FFF7FEFF 		bl	puts
- 175              	.LVL20:
- 163:Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
- 176              		.loc 1 163 12 discriminator 1 view .LVU39
- 177 008a F3E7     		b	.L7
- 178              	.L6:
- 167:Core/Src/freertos.c ****       };   // error open
- 179              		.loc 1 167 8 view .LVU40
- 168:Core/Src/freertos.c ****   }
- 169:Core/Src/freertos.c **** 
- 170:Core/Src/freertos.c ****   /* Append */
- 171:Core/Src/freertos.c ****   f_lseek(&file, f_size(&file));
- 180              		.loc 1 171 3 view .LVU41
- 181 008c 8599     		ldr	r1, [sp, #532]
- 182 008e 02A8     		add	r0, sp, #8
- 183 0090 FFF7FEFF 		bl	f_lseek
- 184              	.LVL21:
- 185              	.L8:
- 172:Core/Src/freertos.c ****   for (;;)
- 186              		.loc 1 172 3 discriminator 1 view .LVU42
- 173:Core/Src/freertos.c ****   {
- 174:Core/Src/freertos.c ****       f_write(&file, "Hello SD\r\n", 10, &bw);
- 187              		.loc 1 174 7 discriminator 1 view .LVU43
- 188 0094 01AB     		add	r3, sp, #4
- 189 0096 0A22     		movs	r2, #10
- 190 0098 0E49     		ldr	r1, .L10+36
- 191 009a 02A8     		add	r0, sp, #8
- 192 009c FFF7FEFF 		bl	f_write
- 193              	.LVL22:
- 175:Core/Src/freertos.c ****       f_sync(&file);
- 194              		.loc 1 175 7 discriminator 1 view .LVU44
- 195 00a0 02A8     		add	r0, sp, #8
- 196 00a2 FFF7FEFF 		bl	f_sync
- 197              	.LVL23:
- 176:Core/Src/freertos.c ****       osDelay(1000);
- 198              		.loc 1 176 7 discriminator 1 view .LVU45
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 8
-
-
- 199 00a6 4FF47A70 		mov	r0, #1000
- 200 00aa FFF7FEFF 		bl	osDelay
- 201              	.LVL24:
- 172:Core/Src/freertos.c ****   {
- 202              		.loc 1 172 9 discriminator 1 view .LVU46
- 203 00ae F1E7     		b	.L8
- 204              	.L11:
- 205              		.align	2
- 206              	.L10:
- 207 00b0 00080140 		.word	1073809408
- 208 00b4 00000000 		.word	hspi1
- 209 00b8 00000000 		.word	.LC2
- 210 00bc 00000000 		.word	USERPath
- 211 00c0 1C000000 		.word	.LC3
- 212 00c4 00100140 		.word	1073811456
- 213 00c8 30000000 		.word	.LC4
- 214 00cc 48000000 		.word	.LC5
- 215 00d0 54000000 		.word	.LC6
- 216 00d4 64000000 		.word	.LC7
- 217              		.cfi_endproc
- 218              	.LFE75:
- 220              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
- 221              		.align	1
- 222              		.global	vApplicationGetIdleTaskMemory
- 223              		.syntax unified
- 224              		.thumb
- 225              		.thumb_func
- 227              	vApplicationGetIdleTaskMemory:
- 228              	.LVL25:
- 229              	.LFB73:
-  76:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
- 230              		.loc 1 76 1 view -0
- 231              		.cfi_startproc
- 232              		@ args = 0, pretend = 0, frame = 0
- 233              		@ frame_needed = 0, uses_anonymous_args = 0
- 234              		@ link register save eliminated.
-  77:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 235              		.loc 1 77 3 view .LVU48
-  77:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 236              		.loc 1 77 25 is_stmt 0 view .LVU49
- 237 0000 034B     		ldr	r3, .L13
- 238 0002 0360     		str	r3, [r0]
-  78:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 239              		.loc 1 78 3 is_stmt 1 view .LVU50
-  78:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 240              		.loc 1 78 27 is_stmt 0 view .LVU51
- 241 0004 034B     		ldr	r3, .L13+4
- 242 0006 0B60     		str	r3, [r1]
-  79:Core/Src/freertos.c ****   /* place for user code */
- 243              		.loc 1 79 3 is_stmt 1 view .LVU52
-  79:Core/Src/freertos.c ****   /* place for user code */
- 244              		.loc 1 79 25 is_stmt 0 view .LVU53
- 245 0008 8023     		movs	r3, #128
- 246 000a 1360     		str	r3, [r2]
-  81:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
- 247              		.loc 1 81 1 view .LVU54
- 248 000c 7047     		bx	lr
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 9
-
-
- 249              	.L14:
- 250 000e 00BF     		.align	2
- 251              	.L13:
- 252 0010 00000000 		.word	.LANCHOR0
- 253 0014 00000000 		.word	.LANCHOR1
- 254              		.cfi_endproc
- 255              	.LFE73:
- 257              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
- 258              		.align	1
- 259              		.global	MX_FREERTOS_Init
- 260              		.syntax unified
- 261              		.thumb
- 262              		.thumb_func
- 264              	MX_FREERTOS_Init:
- 265              	.LFB74:
-  89:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
- 266              		.loc 1 89 29 is_stmt 1 view -0
- 267              		.cfi_startproc
- 268              		@ args = 0, pretend = 0, frame = 32
- 269              		@ frame_needed = 0, uses_anonymous_args = 0
- 270 0000 10B5     		push	{r4, lr}
- 271              	.LCFI2:
- 272              		.cfi_def_cfa_offset 8
- 273              		.cfi_offset 4, -8
- 274              		.cfi_offset 14, -4
- 275 0002 88B0     		sub	sp, sp, #32
- 276              	.LCFI3:
- 277              		.cfi_def_cfa_offset 40
- 112:Core/Src/freertos.c ****   loggerHandle = osThreadCreate(osThread(logger), NULL);
- 278              		.loc 1 112 3 view .LVU56
- 279 0004 0DF1040C 		add	ip, sp, #4
- 280 0008 074C     		ldr	r4, .L17
- 281 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
- 282 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
- 283 0010 94E80700 		ldm	r4, {r0, r1, r2}
- 284 0014 8CE80700 		stm	ip, {r0, r1, r2}
- 113:Core/Src/freertos.c **** 
- 285              		.loc 1 113 3 view .LVU57
- 113:Core/Src/freertos.c **** 
- 286              		.loc 1 113 18 is_stmt 0 view .LVU58
- 287 0018 0021     		movs	r1, #0
- 288 001a 01A8     		add	r0, sp, #4
- 289 001c FFF7FEFF 		bl	osThreadCreate
- 290              	.LVL26:
- 113:Core/Src/freertos.c **** 
- 291              		.loc 1 113 16 view .LVU59
- 292 0020 024B     		ldr	r3, .L17+4
- 293 0022 1860     		str	r0, [r3]
+ 118:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
  119:Core/Src/freertos.c **** 
- 294              		.loc 1 119 1 view .LVU60
- 295 0024 08B0     		add	sp, sp, #32
- 296              	.LCFI4:
- 297              		.cfi_def_cfa_offset 8
- 298              		@ sp needed
- 299 0026 10BD     		pop	{r4, pc}
- 300              	.L18:
- 301              		.align	2
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 10
+ 120:Core/Src/freertos.c **** }
+ 121:Core/Src/freertos.c **** 
+ 122:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartLogger */
+ 123:Core/Src/freertos.c **** /**
+ 124:Core/Src/freertos.c ****   * @brief  Function implementing the logger thread.
+ 125:Core/Src/freertos.c ****   * @param  argument: Not used
+ 126:Core/Src/freertos.c ****   * @retval None
+ 127:Core/Src/freertos.c ****   */
+ 128:Core/Src/freertos.c **** /* USER CODE END Header_StartLogger */
+ 129:Core/Src/freertos.c **** void StartLogger(void const * argument)
+ 130:Core/Src/freertos.c **** {
+  68              		.loc 1 130 1 view -0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 1128
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		.loc 1 130 1 is_stmt 0 view .LVU1
+  73 0000 00B5     		push	{lr}
+  74              	.LCFI0:
+  75              		.cfi_def_cfa_offset 4
+  76              		.cfi_offset 14, -4
+  77 0002 ADF26C4D 		subw	sp, sp, #1132
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 1136
+ 131:Core/Src/freertos.c ****   /* USER CODE BEGIN StartLogger */
+ 132:Core/Src/freertos.c ****   FATFS fs;
+  80              		.loc 1 132 3 is_stmt 1 view .LVU2
+ 133:Core/Src/freertos.c ****   FIL file;
+  81              		.loc 1 133 3 view .LVU3
+ 134:Core/Src/freertos.c ****   FRESULT res;
+  82              		.loc 1 134 3 view .LVU4
+ 135:Core/Src/freertos.c ****   UINT bw;
+  83              		.loc 1 135 3 view .LVU5
+ 136:Core/Src/freertos.c ****   char *logMsg = "Hello SD con driver nuevo\r\n";
+  84              		.loc 1 136 3 view .LVU6
+  85              	.LVL1:
+ 137:Core/Src/freertos.c **** 
+ 138:Core/Src/freertos.c ****   printf("\r\n--- Sistema de Log SD con Drivers de eziya ---\r\n");
+  86              		.loc 1 138 3 view .LVU7
+  87 0006 2D48     		ldr	r0, .L13
+  88              	.LVL2:
+  89              		.loc 1 138 3 is_stmt 0 view .LVU8
+  90 0008 FFF7FEFF 		bl	puts
+  91              	.LVL3:
+  92              	.L5:
+ 139:Core/Src/freertos.c **** 
+ 140:Core/Src/freertos.c ****   /* 1. BUCLE DE MONTAJE INFINITO */
+ 141:Core/Src/freertos.c ****   while (1) 
+  93              		.loc 1 141 3 is_stmt 1 view .LVU9
+ 142:Core/Src/freertos.c ****   {
+ 143:Core/Src/freertos.c ****       printf("Intentando montar SD (f_mount)... ");
+  94              		.loc 1 143 7 view .LVU10
+  95 000c 2C48     		ldr	r0, .L13+4
+  96 000e FFF7FEFF 		bl	printf
+  97              	.LVL4:
+ 144:Core/Src/freertos.c **** 
+ARM GAS  /tmp/ccnCbwOm.s 			page 6
 
 
- 302              	.L17:
- 303 0028 00000000 		.word	.LANCHOR2
- 304 002c 00000000 		.word	.LANCHOR3
- 305              		.cfi_endproc
- 306              	.LFE74:
- 308              		.global	loggerHandle
- 309              		.section	.rodata
- 310              		.align	2
- 311              		.set	.LANCHOR2,. + 0
- 312              	.LC8:
- 313 0000 00000000 		.word	.LC0
- 314 0004 00000000 		.word	StartLogger
- 315 0008 0000     		.short	0
- 316 000a 0000     		.space	2
- 317 000c 00000000 		.word	0
- 318 0010 00020000 		.word	512
- 319 0014 00000000 		.word	0
- 320 0018 00000000 		.word	0
- 321              		.section	.bss.loggerHandle,"aw",%nobits
- 322              		.align	2
- 323              		.set	.LANCHOR3,. + 0
- 326              	loggerHandle:
- 327 0000 00000000 		.space	4
- 328              		.section	.bss.xIdleStack,"aw",%nobits
- 329              		.align	2
- 330              		.set	.LANCHOR1,. + 0
- 333              	xIdleStack:
- 334 0000 00000000 		.space	512
- 334      00000000 
- 334      00000000 
- 334      00000000 
- 334      00000000 
- 335              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
- 336              		.align	2
- 337              		.set	.LANCHOR0,. + 0
- 340              	xIdleTaskTCBBuffer:
- 341 0000 00000000 		.space	84
- 341      00000000 
- 341      00000000 
- 341      00000000 
- 341      00000000 
- 342              		.text
- 343              	.Letext0:
- 344              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 345              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 346              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
- 347              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
- 348              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
- 349              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 350              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 351              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 352              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 353              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
- 354              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
- 355              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"
- 356              		.file 14 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 357              		.file 15 "Middlewares/Third_Party/FatFs/src/integer.h"
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 11
+ 145:Core/Src/freertos.c ****       // Intentamos montar. f_mount llamará internamente a SD_disk_initialize
+ 146:Core/Src/freertos.c ****       // El parámetro '1' fuerza la inicialización física inmediata.
+ 147:Core/Src/freertos.c ****       res = f_mount(&fs, USERPath, 1);
+  98              		.loc 1 147 7 view .LVU11
+  99              		.loc 1 147 13 is_stmt 0 view .LVU12
+ 100 0012 0122     		movs	r2, #1
+ 101 0014 2B49     		ldr	r1, .L13+8
+ 102 0016 8DA8     		add	r0, sp, #564
+ 103 0018 FFF7FEFF 		bl	f_mount
+ 104              	.LVL5:
+ 148:Core/Src/freertos.c **** 
+ 149:Core/Src/freertos.c ****       if (res == FR_OK) 
+ 105              		.loc 1 149 7 is_stmt 1 view .LVU13
+ 106              		.loc 1 149 10 is_stmt 0 view .LVU14
+ 107 001c 0146     		mov	r1, r0
+ 108 001e 60B1     		cbz	r0, .L12
+ 150:Core/Src/freertos.c ****       {
+ 151:Core/Src/freertos.c ****           printf("¡EXITO! Sistema de archivos reconocido.\r\n");
+ 152:Core/Src/freertos.c ****           break; // Salimos del bucle
+ 153:Core/Src/freertos.c ****       } 
+ 154:Core/Src/freertos.c ****       else 
+ 155:Core/Src/freertos.c ****       {
+ 156:Core/Src/freertos.c ****           // Si da Error 1 o 3, el parpadeo del LED indica que seguimos intentando
+ 157:Core/Src/freertos.c ****           printf("FALLO (Código FatFS: %d). Reintentando en 2s...\r\n", res);
+ 109              		.loc 1 157 11 is_stmt 1 view .LVU15
+ 110 0020 2948     		ldr	r0, .L13+12
+ 111              	.LVL6:
+ 112              		.loc 1 157 11 is_stmt 0 view .LVU16
+ 113 0022 FFF7FEFF 		bl	printf
+ 114              	.LVL7:
+ 158:Core/Src/freertos.c ****           HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); 
+ 115              		.loc 1 158 11 is_stmt 1 view .LVU17
+ 116 0026 4FF40051 		mov	r1, #8192
+ 117 002a 2848     		ldr	r0, .L13+16
+ 118 002c FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 119              	.LVL8:
+ 159:Core/Src/freertos.c ****           osDelay(2000); 
+ 120              		.loc 1 159 11 view .LVU18
+ 121 0030 4FF4FA60 		mov	r0, #2000
+ 122 0034 FFF7FEFF 		bl	osDelay
+ 123              	.LVL9:
+ 141:Core/Src/freertos.c ****   {
+ 124              		.loc 1 141 9 view .LVU19
+ 143:Core/Src/freertos.c **** 
+ 125              		.loc 1 143 7 is_stmt 0 view .LVU20
+ 126 0038 E8E7     		b	.L5
+ 127              	.LVL10:
+ 128              	.L12:
+ 151:Core/Src/freertos.c ****           break; // Salimos del bucle
+ 129              		.loc 1 151 11 is_stmt 1 view .LVU21
+ 130 003a 2548     		ldr	r0, .L13+20
+ 131              	.LVL11:
+ 151:Core/Src/freertos.c ****           break; // Salimos del bucle
+ 132              		.loc 1 151 11 is_stmt 0 view .LVU22
+ 133 003c FFF7FEFF 		bl	puts
+ 134              	.LVL12:
+ 152:Core/Src/freertos.c ****       } 
+ARM GAS  /tmp/ccnCbwOm.s 			page 7
 
 
- 358              		.file 16 "Middlewares/Third_Party/FatFs/src/ff.h"
- 359              		.file 17 "FATFS/App/fatfs.h"
- 360              		.file 18 "Core/Inc/spi.h"
- 361              		.file 19 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
- 362              		.file 20 "<built-in>"
-ARM GAS  /tmp/cc8Rg4Jz.s 			page 12
+ 135              		.loc 1 152 11 is_stmt 1 view .LVU23
+ 160:Core/Src/freertos.c ****       }
+ 161:Core/Src/freertos.c ****   }
+ 162:Core/Src/freertos.c **** 
+ 163:Core/Src/freertos.c ****   /* 2. APERTURA DE ARCHIVO */
+ 164:Core/Src/freertos.c ****   // Usamos FA_OPEN_APPEND si tu versión de FatFS lo soporta, 
+ 165:Core/Src/freertos.c ****   // si no, FA_OPEN_ALWAYS | FA_WRITE es lo más seguro.
+ 166:Core/Src/freertos.c ****   printf("Abriendo 'test.txt'...\r\n");
+ 136              		.loc 1 166 3 view .LVU24
+ 137 0040 2448     		ldr	r0, .L13+24
+ 138 0042 FFF7FEFF 		bl	puts
+ 139              	.LVL13:
+ 167:Core/Src/freertos.c ****   res = f_open(&file, "test.txt", FA_OPEN_ALWAYS | FA_WRITE);
+ 140              		.loc 1 167 3 view .LVU25
+ 141              		.loc 1 167 9 is_stmt 0 view .LVU26
+ 142 0046 1222     		movs	r2, #18
+ 143 0048 2349     		ldr	r1, .L13+28
+ 144 004a 02A8     		add	r0, sp, #8
+ 145 004c FFF7FEFF 		bl	f_open
+ 146              	.LVL14:
+ 168:Core/Src/freertos.c ****   
+ 169:Core/Src/freertos.c ****   if (res != FR_OK)
+ 147              		.loc 1 169 3 is_stmt 1 view .LVU27
+ 148              		.loc 1 169 6 is_stmt 0 view .LVU28
+ 149 0050 0146     		mov	r1, r0
+ 150 0052 38B9     		cbnz	r0, .L3
+ 170:Core/Src/freertos.c ****   {
+ 171:Core/Src/freertos.c ****       printf("Error crítico al abrir archivo: %d\r\n", res);
+ 172:Core/Src/freertos.c ****       while(1) // Bloqueo por error de apertura (parpadeo rápido)
+ 173:Core/Src/freertos.c ****       {
+ 174:Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+ 175:Core/Src/freertos.c ****         osDelay(100);
+ 176:Core/Src/freertos.c ****       }
+ 177:Core/Src/freertos.c ****   }
+ 178:Core/Src/freertos.c **** 
+ 179:Core/Src/freertos.c ****   /* 3. BUCLE DE ESCRITURA */
+ 180:Core/Src/freertos.c ****   // Movemos el puntero al final del archivo por si ya tenía datos
+ 181:Core/Src/freertos.c ****   f_lseek(&file, f_size(&file));
+ 151              		.loc 1 181 3 is_stmt 1 view .LVU29
+ 152 0054 8599     		ldr	r1, [sp, #532]
+ 153 0056 02A8     		add	r0, sp, #8
+ 154              	.LVL15:
+ 155              		.loc 1 181 3 is_stmt 0 view .LVU30
+ 156 0058 FFF7FEFF 		bl	f_lseek
+ 157              	.LVL16:
+ 182:Core/Src/freertos.c ****   printf("Escribiendo datos cada 1 segundo...\r\n");
+ 158              		.loc 1 182 3 is_stmt 1 view .LVU31
+ 159 005c 1F48     		ldr	r0, .L13+32
+ 160 005e FFF7FEFF 		bl	puts
+ 161              	.LVL17:
+ 162 0062 17E0     		b	.L9
+ 163              	.LVL18:
+ 164              	.L3:
+ 171:Core/Src/freertos.c ****       while(1) // Bloqueo por error de apertura (parpadeo rápido)
+ 165              		.loc 1 171 7 view .LVU32
+ 166 0064 1E48     		ldr	r0, .L13+36
+ 167              	.LVL19:
+ARM GAS  /tmp/ccnCbwOm.s 			page 8
+
+
+ 171:Core/Src/freertos.c ****       while(1) // Bloqueo por error de apertura (parpadeo rápido)
+ 168              		.loc 1 171 7 is_stmt 0 view .LVU33
+ 169 0066 FFF7FEFF 		bl	printf
+ 170              	.LVL20:
+ 171              	.L6:
+ 172:Core/Src/freertos.c ****       {
+ 172              		.loc 1 172 7 is_stmt 1 discriminator 1 view .LVU34
+ 174:Core/Src/freertos.c ****         osDelay(100);
+ 173              		.loc 1 174 9 discriminator 1 view .LVU35
+ 174 006a 4FF40051 		mov	r1, #8192
+ 175 006e 1748     		ldr	r0, .L13+16
+ 176 0070 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 177              	.LVL21:
+ 175:Core/Src/freertos.c ****       }
+ 178              		.loc 1 175 9 discriminator 1 view .LVU36
+ 179 0074 6420     		movs	r0, #100
+ 180 0076 FFF7FEFF 		bl	osDelay
+ 181              	.LVL22:
+ 172:Core/Src/freertos.c ****       {
+ 182              		.loc 1 172 12 discriminator 1 view .LVU37
+ 183 007a F6E7     		b	.L6
+ 184              	.LVL23:
+ 185              	.L7:
+ 183:Core/Src/freertos.c **** 
+ 184:Core/Src/freertos.c ****   for (;;)
+ 185:Core/Src/freertos.c ****   {
+ 186:Core/Src/freertos.c ****       // Escribimos el mensaje
+ 187:Core/Src/freertos.c ****       res = f_write(&file, logMsg, strlen(logMsg), &bw);
+ 188:Core/Src/freertos.c ****       
+ 189:Core/Src/freertos.c ****       if (res == FR_OK && bw > 0)
+ 190:Core/Src/freertos.c ****       {
+ 191:Core/Src/freertos.c ****           // Sincronizamos para asegurar que los datos se guarden físicamente
+ 192:Core/Src/freertos.c ****           f_sync(&file);
+ 193:Core/Src/freertos.c ****           printf("Dato guardado: %d bytes\r\n", bw);
+ 194:Core/Src/freertos.c ****       }
+ 195:Core/Src/freertos.c ****       else
+ 196:Core/Src/freertos.c ****       {
+ 197:Core/Src/freertos.c ****           printf("Error de escritura física: %d\r\n", res);
+ 186              		.loc 1 197 11 view .LVU38
+ 187 007c 1948     		ldr	r0, .L13+40
+ 188              	.LVL24:
+ 189              		.loc 1 197 11 is_stmt 0 view .LVU39
+ 190 007e FFF7FEFF 		bl	printf
+ 191              	.LVL25:
+ 192              	.L8:
+ 198:Core/Src/freertos.c ****       }
+ 199:Core/Src/freertos.c **** 
+ 200:Core/Src/freertos.c ****       HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Flash de actividad
+ 193              		.loc 1 200 7 is_stmt 1 view .LVU40
+ 194 0082 4FF40051 		mov	r1, #8192
+ 195 0086 1148     		ldr	r0, .L13+16
+ 196 0088 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 197              	.LVL26:
+ 201:Core/Src/freertos.c ****       osDelay(1000);
+ 198              		.loc 1 201 7 view .LVU41
+ 199 008c 4FF47A70 		mov	r0, #1000
+ 200 0090 FFF7FEFF 		bl	osDelay
+ARM GAS  /tmp/ccnCbwOm.s 			page 9
+
+
+ 201              	.LVL27:
+ 184:Core/Src/freertos.c ****   {
+ 202              		.loc 1 184 9 view .LVU42
+ 203              	.L9:
+ 184:Core/Src/freertos.c ****   {
+ 204              		.loc 1 184 3 view .LVU43
+ 187:Core/Src/freertos.c ****       
+ 205              		.loc 1 187 7 view .LVU44
+ 187:Core/Src/freertos.c ****       
+ 206              		.loc 1 187 13 is_stmt 0 view .LVU45
+ 207 0094 01AB     		add	r3, sp, #4
+ 208 0096 1B22     		movs	r2, #27
+ 209 0098 1349     		ldr	r1, .L13+44
+ 210 009a 02A8     		add	r0, sp, #8
+ 211 009c FFF7FEFF 		bl	f_write
+ 212              	.LVL28:
+ 189:Core/Src/freertos.c ****       {
+ 213              		.loc 1 189 7 is_stmt 1 view .LVU46
+ 189:Core/Src/freertos.c ****       {
+ 214              		.loc 1 189 10 is_stmt 0 view .LVU47
+ 215 00a0 0146     		mov	r1, r0
+ 216 00a2 0028     		cmp	r0, #0
+ 217 00a4 EAD1     		bne	.L7
+ 189:Core/Src/freertos.c ****       {
+ 218              		.loc 1 189 30 discriminator 1 view .LVU48
+ 219 00a6 019B     		ldr	r3, [sp, #4]
+ 189:Core/Src/freertos.c ****       {
+ 220              		.loc 1 189 24 discriminator 1 view .LVU49
+ 221 00a8 002B     		cmp	r3, #0
+ 222 00aa E7D0     		beq	.L7
+ 192:Core/Src/freertos.c ****           printf("Dato guardado: %d bytes\r\n", bw);
+ 223              		.loc 1 192 11 is_stmt 1 view .LVU50
+ 224 00ac 02A8     		add	r0, sp, #8
+ 225              	.LVL29:
+ 192:Core/Src/freertos.c ****           printf("Dato guardado: %d bytes\r\n", bw);
+ 226              		.loc 1 192 11 is_stmt 0 view .LVU51
+ 227 00ae FFF7FEFF 		bl	f_sync
+ 228              	.LVL30:
+ 193:Core/Src/freertos.c ****       }
+ 229              		.loc 1 193 11 is_stmt 1 view .LVU52
+ 230 00b2 0199     		ldr	r1, [sp, #4]
+ 231 00b4 0D48     		ldr	r0, .L13+48
+ 232 00b6 FFF7FEFF 		bl	printf
+ 233              	.LVL31:
+ 234 00ba E2E7     		b	.L8
+ 235              	.L14:
+ 236              		.align	2
+ 237              	.L13:
+ 238 00bc 00000000 		.word	.LC2
+ 239 00c0 34000000 		.word	.LC3
+ 240 00c4 00000000 		.word	USERPath
+ 241 00c8 A8000000 		.word	.LC7
+ 242 00cc 00100140 		.word	1073811456
+ 243 00d0 58000000 		.word	.LC4
+ 244 00d4 84000000 		.word	.LC5
+ 245 00d8 9C000000 		.word	.LC6
+ 246 00dc 04010000 		.word	.LC9
+ARM GAS  /tmp/ccnCbwOm.s 			page 10
+
+
+ 247 00e0 DC000000 		.word	.LC8
+ 248 00e4 64010000 		.word	.LC12
+ 249 00e8 2C010000 		.word	.LC10
+ 250 00ec 48010000 		.word	.LC11
+ 251              		.cfi_endproc
+ 252              	.LFE75:
+ 254              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+ 255              		.align	1
+ 256              		.global	vApplicationGetIdleTaskMemory
+ 257              		.syntax unified
+ 258              		.thumb
+ 259              		.thumb_func
+ 261              	vApplicationGetIdleTaskMemory:
+ 262              	.LVL32:
+ 263              	.LFB73:
+  77:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+ 264              		.loc 1 77 1 view -0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+  78:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 269              		.loc 1 78 3 view .LVU54
+  78:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 270              		.loc 1 78 25 is_stmt 0 view .LVU55
+ 271 0000 034B     		ldr	r3, .L16
+ 272 0002 0360     		str	r3, [r0]
+  79:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 273              		.loc 1 79 3 is_stmt 1 view .LVU56
+  79:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 274              		.loc 1 79 27 is_stmt 0 view .LVU57
+ 275 0004 034B     		ldr	r3, .L16+4
+ 276 0006 0B60     		str	r3, [r1]
+  80:Core/Src/freertos.c ****   /* place for user code */
+ 277              		.loc 1 80 3 is_stmt 1 view .LVU58
+  80:Core/Src/freertos.c ****   /* place for user code */
+ 278              		.loc 1 80 25 is_stmt 0 view .LVU59
+ 279 0008 8023     		movs	r3, #128
+ 280 000a 1360     		str	r3, [r2]
+  82:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+ 281              		.loc 1 82 1 view .LVU60
+ 282 000c 7047     		bx	lr
+ 283              	.L17:
+ 284 000e 00BF     		.align	2
+ 285              	.L16:
+ 286 0010 00000000 		.word	.LANCHOR0
+ 287 0014 00000000 		.word	.LANCHOR1
+ 288              		.cfi_endproc
+ 289              	.LFE73:
+ 291              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	MX_FREERTOS_Init
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	MX_FREERTOS_Init:
+ 299              	.LFB74:
+ARM GAS  /tmp/ccnCbwOm.s 			page 11
+
+
+  90:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 300              		.loc 1 90 29 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 32
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304 0000 10B5     		push	{r4, lr}
+ 305              	.LCFI2:
+ 306              		.cfi_def_cfa_offset 8
+ 307              		.cfi_offset 4, -8
+ 308              		.cfi_offset 14, -4
+ 309 0002 88B0     		sub	sp, sp, #32
+ 310              	.LCFI3:
+ 311              		.cfi_def_cfa_offset 40
+ 113:Core/Src/freertos.c ****   loggerHandle = osThreadCreate(osThread(logger), NULL);
+ 312              		.loc 1 113 3 view .LVU62
+ 313 0004 0DF1040C 		add	ip, sp, #4
+ 314 0008 074C     		ldr	r4, .L20
+ 315 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 316 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 317 0010 94E80700 		ldm	r4, {r0, r1, r2}
+ 318 0014 8CE80700 		stm	ip, {r0, r1, r2}
+ 114:Core/Src/freertos.c **** 
+ 319              		.loc 1 114 3 view .LVU63
+ 114:Core/Src/freertos.c **** 
+ 320              		.loc 1 114 18 is_stmt 0 view .LVU64
+ 321 0018 0021     		movs	r1, #0
+ 322 001a 01A8     		add	r0, sp, #4
+ 323 001c FFF7FEFF 		bl	osThreadCreate
+ 324              	.LVL33:
+ 114:Core/Src/freertos.c **** 
+ 325              		.loc 1 114 16 view .LVU65
+ 326 0020 024B     		ldr	r3, .L20+4
+ 327 0022 1860     		str	r0, [r3]
+ 120:Core/Src/freertos.c **** 
+ 328              		.loc 1 120 1 view .LVU66
+ 329 0024 08B0     		add	sp, sp, #32
+ 330              	.LCFI4:
+ 331              		.cfi_def_cfa_offset 8
+ 332              		@ sp needed
+ 333 0026 10BD     		pop	{r4, pc}
+ 334              	.L21:
+ 335              		.align	2
+ 336              	.L20:
+ 337 0028 00000000 		.word	.LANCHOR2
+ 338 002c 00000000 		.word	.LANCHOR3
+ 339              		.cfi_endproc
+ 340              	.LFE74:
+ 342              		.global	loggerHandle
+ 343              		.section	.rodata
+ 344              		.align	2
+ 345              		.set	.LANCHOR2,. + 0
+ 346              	.LC13:
+ 347 0000 00000000 		.word	.LC0
+ 348 0004 00000000 		.word	StartLogger
+ 349 0008 0000     		.short	0
+ 350 000a 0000     		.space	2
+ 351 000c 00000000 		.word	0
+ARM GAS  /tmp/ccnCbwOm.s 			page 12
+
+
+ 352 0010 00020000 		.word	512
+ 353 0014 00000000 		.word	0
+ 354 0018 00000000 		.word	0
+ 355              		.section	.bss.loggerHandle,"aw",%nobits
+ 356              		.align	2
+ 357              		.set	.LANCHOR3,. + 0
+ 360              	loggerHandle:
+ 361 0000 00000000 		.space	4
+ 362              		.section	.bss.xIdleStack,"aw",%nobits
+ 363              		.align	2
+ 364              		.set	.LANCHOR1,. + 0
+ 367              	xIdleStack:
+ 368 0000 00000000 		.space	512
+ 368      00000000 
+ 368      00000000 
+ 368      00000000 
+ 368      00000000 
+ 369              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 370              		.align	2
+ 371              		.set	.LANCHOR0,. + 0
+ 374              	xIdleTaskTCBBuffer:
+ 375 0000 00000000 		.space	84
+ 375      00000000 
+ 375      00000000 
+ 375      00000000 
+ 375      00000000 
+ 376              		.text
+ 377              	.Letext0:
+ 378              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 379              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 380              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 381              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 382              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 383              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 384              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 385              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"
+ 386              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 387              		.file 11 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 388              		.file 12 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 389              		.file 13 "FATFS/App/fatfs.h"
+ 390              		.file 14 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 391              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 392              		.file 16 "<built-in>"
+ARM GAS  /tmp/ccnCbwOm.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/cc8Rg4Jz.s:15     .rodata.str1.4:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:22     .rodata.StartLogger.str1.4:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:41     .text.StartLogger:0000000000000000 $t
-     /tmp/cc8Rg4Jz.s:47     .text.StartLogger:0000000000000000 StartLogger
-     /tmp/cc8Rg4Jz.s:207    .text.StartLogger:00000000000000b0 $d
-     /tmp/cc8Rg4Jz.s:221    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
-     /tmp/cc8Rg4Jz.s:227    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
-     /tmp/cc8Rg4Jz.s:252    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
-     /tmp/cc8Rg4Jz.s:258    .text.MX_FREERTOS_Init:0000000000000000 $t
-     /tmp/cc8Rg4Jz.s:264    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
-     /tmp/cc8Rg4Jz.s:303    .text.MX_FREERTOS_Init:0000000000000028 $d
-     /tmp/cc8Rg4Jz.s:326    .bss.loggerHandle:0000000000000000 loggerHandle
-     /tmp/cc8Rg4Jz.s:310    .rodata:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:322    .bss.loggerHandle:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:329    .bss.xIdleStack:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:333    .bss.xIdleStack:0000000000000000 xIdleStack
-     /tmp/cc8Rg4Jz.s:336    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
-     /tmp/cc8Rg4Jz.s:340    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
+     /tmp/ccnCbwOm.s:15     .rodata.str1.4:0000000000000000 $d
+     /tmp/ccnCbwOm.s:22     .rodata.StartLogger.str1.4:0000000000000000 $d
+     /tmp/ccnCbwOm.s:58     .text.StartLogger:0000000000000000 $t
+     /tmp/ccnCbwOm.s:64     .text.StartLogger:0000000000000000 StartLogger
+     /tmp/ccnCbwOm.s:238    .text.StartLogger:00000000000000bc $d
+     /tmp/ccnCbwOm.s:255    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
+     /tmp/ccnCbwOm.s:261    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
+     /tmp/ccnCbwOm.s:286    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
+     /tmp/ccnCbwOm.s:292    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/ccnCbwOm.s:298    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/ccnCbwOm.s:337    .text.MX_FREERTOS_Init:0000000000000028 $d
+     /tmp/ccnCbwOm.s:360    .bss.loggerHandle:0000000000000000 loggerHandle
+     /tmp/ccnCbwOm.s:344    .rodata:0000000000000000 $d
+     /tmp/ccnCbwOm.s:356    .bss.loggerHandle:0000000000000000 $d
+     /tmp/ccnCbwOm.s:363    .bss.xIdleStack:0000000000000000 $d
+     /tmp/ccnCbwOm.s:367    .bss.xIdleStack:0000000000000000 xIdleStack
+     /tmp/ccnCbwOm.s:370    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
+     /tmp/ccnCbwOm.s:374    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
 
 UNDEFINED SYMBOLS
-HAL_GPIO_WritePin
-osDelay
-HAL_SPI_Transmit
 puts
-f_mount
 printf
+f_mount
 HAL_GPIO_TogglePin
+osDelay
 f_open
 f_lseek
 f_write
 f_sync
-hspi1
 USERPath
 osThreadCreate
