@@ -16,8 +16,6 @@ Archive member included to satisfy reference by file (symbol)
                               build/freertos.o (printf)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
                               build/freertos.o (puts)
-/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
-                              build/freertos.o (sprintf)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
                               build/freertos.o (strlen)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
@@ -38,12 +36,10 @@ Archive member included to satisfy reference by file (symbol)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o) (_free_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o) (_malloc_r)
-/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o) (_svfprintf_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-printf.o) (_vfprintf_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
+                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o) (_printf_i)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
@@ -61,13 +57,13 @@ Archive member included to satisfy reference by file (symbol)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o) (_lseek_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o) (memchr)
+                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o) (memchr)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o) (memmove)
+                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o) (memmove)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o) (__malloc_lock)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
+                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o) (_realloc_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o) (_read_r)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
@@ -1459,11 +1455,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
- .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
- .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
- .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
- .text._sprintf_r
-                0x0000000000000000       0x38 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
@@ -1532,11 +1523,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .text.__ssprint_r
-                0x0000000000000000       0xf6 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
@@ -1584,12 +1570,21 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+ .text.memmove  0x0000000000000000       0x34 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+ .debug_frame   0x0000000000000000       0x28 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+ .text._realloc_r
+                0x0000000000000000       0x5e /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x0000000000000000       0x3c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
@@ -1603,6 +1598,11 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .text._malloc_usable_size_r
+                0x0000000000000000       0x10 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x0000000000000000       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
@@ -1694,7 +1694,7 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
                 0x0000000008000000                g_pfnVectors
                 0x000000000800010c                . = ALIGN (0x4)
 
-.text           0x0000000008000110     0x6fb8
+.text           0x0000000008000110     0x6c1c
                 0x0000000008000110                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000110       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
@@ -1831,224 +1831,224 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .text._lseek   0x0000000008001104        0x4 build/syscalls.o
                 0x0000000008001104                _lseek
  .text.StartLogger
-                0x0000000008001108       0xe4 build/freertos.o
+                0x0000000008001108       0xe8 build/freertos.o
                 0x0000000008001108                StartLogger
  .text.vApplicationGetIdleTaskMemory
-                0x00000000080011ec       0x18 build/freertos.o
-                0x00000000080011ec                vApplicationGetIdleTaskMemory
+                0x00000000080011f0       0x18 build/freertos.o
+                0x00000000080011f0                vApplicationGetIdleTaskMemory
  .text.MX_FREERTOS_Init
-                0x0000000008001204       0x30 build/freertos.o
-                0x0000000008001204                MX_FREERTOS_Init
+                0x0000000008001208       0x30 build/freertos.o
+                0x0000000008001208                MX_FREERTOS_Init
  .text.HAL_InitTick
-                0x0000000008001234       0xa0 build/stm32f1xx_hal_timebase_tim.o
-                0x0000000008001234                HAL_InitTick
+                0x0000000008001238       0xa0 build/stm32f1xx_hal_timebase_tim.o
+                0x0000000008001238                HAL_InitTick
  .text.HAL_TIM_Base_MspInit
-                0x00000000080012d4        0x2 build/stm32f1xx_hal_tim.o
-                0x00000000080012d4                HAL_TIM_Base_MspInit
- *fill*         0x00000000080012d6        0x2 
+                0x00000000080012d8        0x2 build/stm32f1xx_hal_tim.o
+                0x00000000080012d8                HAL_TIM_Base_MspInit
+ *fill*         0x00000000080012da        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x00000000080012d8       0x68 build/stm32f1xx_hal_tim.o
-                0x00000000080012d8                HAL_TIM_Base_Start_IT
+                0x00000000080012dc       0x68 build/stm32f1xx_hal_tim.o
+                0x00000000080012dc                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x0000000008001340        0x2 build/stm32f1xx_hal_tim.o
-                0x0000000008001340                HAL_TIM_OC_DelayElapsedCallback
- .text.HAL_TIM_IC_CaptureCallback
-                0x0000000008001342        0x2 build/stm32f1xx_hal_tim.o
-                0x0000000008001342                HAL_TIM_IC_CaptureCallback
- .text.HAL_TIM_PWM_PulseFinishedCallback
                 0x0000000008001344        0x2 build/stm32f1xx_hal_tim.o
-                0x0000000008001344                HAL_TIM_PWM_PulseFinishedCallback
- .text.HAL_TIM_TriggerCallback
+                0x0000000008001344                HAL_TIM_OC_DelayElapsedCallback
+ .text.HAL_TIM_IC_CaptureCallback
                 0x0000000008001346        0x2 build/stm32f1xx_hal_tim.o
-                0x0000000008001346                HAL_TIM_TriggerCallback
+                0x0000000008001346                HAL_TIM_IC_CaptureCallback
+ .text.HAL_TIM_PWM_PulseFinishedCallback
+                0x0000000008001348        0x2 build/stm32f1xx_hal_tim.o
+                0x0000000008001348                HAL_TIM_PWM_PulseFinishedCallback
+ .text.HAL_TIM_TriggerCallback
+                0x000000000800134a        0x2 build/stm32f1xx_hal_tim.o
+                0x000000000800134a                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x0000000008001348      0x15e build/stm32f1xx_hal_tim.o
-                0x0000000008001348                HAL_TIM_IRQHandler
- *fill*         0x00000000080014a6        0x2 
+                0x000000000800134c      0x15e build/stm32f1xx_hal_tim.o
+                0x000000000800134c                HAL_TIM_IRQHandler
+ *fill*         0x00000000080014aa        0x2 
  .text.TIM_Base_SetConfig
-                0x00000000080014a8       0x84 build/stm32f1xx_hal_tim.o
-                0x00000000080014a8                TIM_Base_SetConfig
+                0x00000000080014ac       0x84 build/stm32f1xx_hal_tim.o
+                0x00000000080014ac                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x000000000800152c       0x58 build/stm32f1xx_hal_tim.o
-                0x000000000800152c                HAL_TIM_Base_Init
+                0x0000000008001530       0x58 build/stm32f1xx_hal_tim.o
+                0x0000000008001530                HAL_TIM_Base_Init
  .text.HAL_TIMEx_CommutCallback
-                0x0000000008001584        0x2 build/stm32f1xx_hal_tim_ex.o
-                0x0000000008001584                HAL_TIMEx_CommutCallback
+                0x0000000008001588        0x2 build/stm32f1xx_hal_tim_ex.o
+                0x0000000008001588                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x0000000008001586        0x2 build/stm32f1xx_hal_tim_ex.o
-                0x0000000008001586                HAL_TIMEx_BreakCallback
+                0x000000000800158a        0x2 build/stm32f1xx_hal_tim_ex.o
+                0x000000000800158a                HAL_TIMEx_BreakCallback
  .text.vListInitialise
-                0x0000000008001588       0x16 build/list.o
-                0x0000000008001588                vListInitialise
+                0x000000000800158c       0x16 build/list.o
+                0x000000000800158c                vListInitialise
  .text.vListInitialiseItem
-                0x000000000800159e        0x6 build/list.o
-                0x000000000800159e                vListInitialiseItem
+                0x00000000080015a2        0x6 build/list.o
+                0x00000000080015a2                vListInitialiseItem
  .text.vListInsertEnd
-                0x00000000080015a4       0x16 build/list.o
-                0x00000000080015a4                vListInsertEnd
+                0x00000000080015a8       0x16 build/list.o
+                0x00000000080015a8                vListInsertEnd
  .text.vListInsert
-                0x00000000080015ba       0x32 build/list.o
-                0x00000000080015ba                vListInsert
+                0x00000000080015be       0x32 build/list.o
+                0x00000000080015be                vListInsert
  .text.uxListRemove
-                0x00000000080015ec       0x26 build/list.o
-                0x00000000080015ec                uxListRemove
+                0x00000000080015f0       0x26 build/list.o
+                0x00000000080015f0                uxListRemove
  .text.prvGetDisinheritPriorityAfterTimeout
-                0x0000000008001612       0x10 build/queue.o
+                0x0000000008001616       0x10 build/queue.o
  .text.prvIsQueueFull
-                0x0000000008001622       0x1e build/queue.o
+                0x0000000008001626       0x1e build/queue.o
  .text.prvIsQueueEmpty
-                0x0000000008001640       0x1a build/queue.o
+                0x0000000008001644       0x1a build/queue.o
  .text.prvCopyDataToQueue
-                0x000000000800165a       0x76 build/queue.o
+                0x000000000800165e       0x76 build/queue.o
  .text.prvCopyDataFromQueue
-                0x00000000080016d0       0x24 build/queue.o
+                0x00000000080016d4       0x24 build/queue.o
  .text.prvUnlockQueue
-                0x00000000080016f4       0x6e build/queue.o
+                0x00000000080016f8       0x6e build/queue.o
  .text.xQueueGenericReset
-                0x0000000008001762       0x84 build/queue.o
-                0x0000000008001762                xQueueGenericReset
+                0x0000000008001766       0x84 build/queue.o
+                0x0000000008001766                xQueueGenericReset
  .text.prvInitialiseNewQueue
-                0x00000000080017e6       0x1c build/queue.o
+                0x00000000080017ea       0x1c build/queue.o
  .text.xQueueGenericCreateStatic
-                0x0000000008001802       0x94 build/queue.o
-                0x0000000008001802                xQueueGenericCreateStatic
+                0x0000000008001806       0x94 build/queue.o
+                0x0000000008001806                xQueueGenericCreateStatic
  .text.xQueueGenericCreate
-                0x0000000008001896       0x48 build/queue.o
-                0x0000000008001896                xQueueGenericCreate
+                0x000000000800189a       0x48 build/queue.o
+                0x000000000800189a                xQueueGenericCreate
  .text.xQueueGenericSend
-                0x00000000080018de      0x188 build/queue.o
-                0x00000000080018de                xQueueGenericSend
+                0x00000000080018e2      0x188 build/queue.o
+                0x00000000080018e2                xQueueGenericSend
  .text.xQueueGiveFromISR
-                0x0000000008001a66       0xb2 build/queue.o
-                0x0000000008001a66                xQueueGiveFromISR
+                0x0000000008001a6a       0xb2 build/queue.o
+                0x0000000008001a6a                xQueueGiveFromISR
  .text.xQueueSemaphoreTake
-                0x0000000008001b18      0x1a6 build/queue.o
-                0x0000000008001b18                xQueueSemaphoreTake
+                0x0000000008001b1c      0x1a6 build/queue.o
+                0x0000000008001b1c                xQueueSemaphoreTake
  .text.xQueueReceiveFromISR
-                0x0000000008001cbe       0xa8 build/queue.o
-                0x0000000008001cbe                xQueueReceiveFromISR
- *fill*         0x0000000008001d66        0x2 
+                0x0000000008001cc2       0xa8 build/queue.o
+                0x0000000008001cc2                xQueueReceiveFromISR
+ *fill*         0x0000000008001d6a        0x2 
  .text.vQueueUnregisterQueue
-                0x0000000008001d68       0x2c build/queue.o
-                0x0000000008001d68                vQueueUnregisterQueue
+                0x0000000008001d6c       0x2c build/queue.o
+                0x0000000008001d6c                vQueueUnregisterQueue
  .text.vQueueDelete
-                0x0000000008001d94       0x2c build/queue.o
-                0x0000000008001d94                vQueueDelete
+                0x0000000008001d98       0x2c build/queue.o
+                0x0000000008001d98                vQueueDelete
  .text.prvResetNextTaskUnblockTime
-                0x0000000008001dc0       0x2c build/tasks.o
+                0x0000000008001dc4       0x2c build/tasks.o
  .text.prvInitialiseNewTask
-                0x0000000008001dec       0xa2 build/tasks.o
- *fill*         0x0000000008001e8e        0x2 
+                0x0000000008001df0       0xa2 build/tasks.o
+ *fill*         0x0000000008001e92        0x2 
  .text.prvInitialiseTaskLists
-                0x0000000008001e90       0x68 build/tasks.o
+                0x0000000008001e94       0x68 build/tasks.o
  .text.prvAddNewTaskToReadyList
-                0x0000000008001ef8       0xa8 build/tasks.o
+                0x0000000008001efc       0xa8 build/tasks.o
  .text.prvDeleteTCB
-                0x0000000008001fa0       0x38 build/tasks.o
+                0x0000000008001fa4       0x38 build/tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x0000000008001fd8       0x4c build/tasks.o
+                0x0000000008001fdc       0x4c build/tasks.o
  .text.prvIdleTask
-                0x0000000008002024       0x28 build/tasks.o
+                0x0000000008002028       0x28 build/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x000000000800204c       0x98 build/tasks.o
+                0x0000000008002050       0x98 build/tasks.o
  .text.xTaskCreateStatic
-                0x00000000080020e4       0x76 build/tasks.o
-                0x00000000080020e4                xTaskCreateStatic
+                0x00000000080020e8       0x76 build/tasks.o
+                0x00000000080020e8                xTaskCreateStatic
  .text.xTaskCreate
-                0x000000000800215a       0x68 build/tasks.o
-                0x000000000800215a                xTaskCreate
- *fill*         0x00000000080021c2        0x2 
+                0x000000000800215e       0x68 build/tasks.o
+                0x000000000800215e                xTaskCreate
+ *fill*         0x00000000080021c6        0x2 
  .text.vTaskStartScheduler
-                0x00000000080021c4       0x74 build/tasks.o
-                0x00000000080021c4                vTaskStartScheduler
+                0x00000000080021c8       0x74 build/tasks.o
+                0x00000000080021c8                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x0000000008002238       0x10 build/tasks.o
-                0x0000000008002238                vTaskSuspendAll
+                0x000000000800223c       0x10 build/tasks.o
+                0x000000000800223c                vTaskSuspendAll
  .text.xTaskIncrementTick
-                0x0000000008002248      0x118 build/tasks.o
-                0x0000000008002248                xTaskIncrementTick
+                0x000000000800224c      0x118 build/tasks.o
+                0x000000000800224c                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x0000000008002360       0xf8 build/tasks.o
-                0x0000000008002360                xTaskResumeAll
+                0x0000000008002364       0xf8 build/tasks.o
+                0x0000000008002364                xTaskResumeAll
  .text.vTaskDelay
-                0x0000000008002458       0x4c build/tasks.o
-                0x0000000008002458                vTaskDelay
+                0x000000000800245c       0x4c build/tasks.o
+                0x000000000800245c                vTaskDelay
  .text.vTaskSwitchContext
-                0x00000000080024a4       0x98 build/tasks.o
-                0x00000000080024a4                vTaskSwitchContext
+                0x00000000080024a8       0x98 build/tasks.o
+                0x00000000080024a8                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x000000000800253c       0x30 build/tasks.o
-                0x000000000800253c                vTaskPlaceOnEventList
+                0x0000000008002540       0x30 build/tasks.o
+                0x0000000008002540                vTaskPlaceOnEventList
  .text.xTaskRemoveFromEventList
-                0x000000000800256c       0x8c build/tasks.o
-                0x000000000800256c                xTaskRemoveFromEventList
+                0x0000000008002570       0x8c build/tasks.o
+                0x0000000008002570                xTaskRemoveFromEventList
  .text.vTaskInternalSetTimeOutState
-                0x00000000080025f8       0x18 build/tasks.o
-                0x00000000080025f8                vTaskInternalSetTimeOutState
+                0x00000000080025fc       0x18 build/tasks.o
+                0x00000000080025fc                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x0000000008002610       0x84 build/tasks.o
-                0x0000000008002610                xTaskCheckForTimeOut
+                0x0000000008002614       0x84 build/tasks.o
+                0x0000000008002614                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x0000000008002694        0xc build/tasks.o
-                0x0000000008002694                vTaskMissedYield
+                0x0000000008002698        0xc build/tasks.o
+                0x0000000008002698                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x00000000080026a0       0x20 build/tasks.o
-                0x00000000080026a0                xTaskGetSchedulerState
+                0x00000000080026a4       0x20 build/tasks.o
+                0x00000000080026a4                xTaskGetSchedulerState
  .text.xTaskPriorityInherit
-                0x00000000080026c0       0xac build/tasks.o
-                0x00000000080026c0                xTaskPriorityInherit
+                0x00000000080026c4       0xac build/tasks.o
+                0x00000000080026c4                xTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x000000000800276c       0xb4 build/tasks.o
-                0x000000000800276c                xTaskPriorityDisinherit
+                0x0000000008002770       0xb4 build/tasks.o
+                0x0000000008002770                xTaskPriorityDisinherit
  .text.vTaskPriorityDisinheritAfterTimeout
-                0x0000000008002820       0xb4 build/tasks.o
-                0x0000000008002820                vTaskPriorityDisinheritAfterTimeout
+                0x0000000008002824       0xb4 build/tasks.o
+                0x0000000008002824                vTaskPriorityDisinheritAfterTimeout
  .text.pvTaskIncrementMutexHeldCount
-                0x00000000080028d4       0x1c build/tasks.o
-                0x00000000080028d4                pvTaskIncrementMutexHeldCount
+                0x00000000080028d8       0x1c build/tasks.o
+                0x00000000080028d8                pvTaskIncrementMutexHeldCount
  .text.makeFreeRtosPriority
-                0x00000000080028f0        0xc build/cmsis_os.o
+                0x00000000080028f4        0xc build/cmsis_os.o
  .text.inHandlerMode
-                0x00000000080028fc        0xc build/cmsis_os.o
+                0x0000000008002900        0xc build/cmsis_os.o
  .text.osKernelStart
-                0x0000000008002908        0xa build/cmsis_os.o
-                0x0000000008002908                osKernelStart
+                0x000000000800290c        0xa build/cmsis_os.o
+                0x000000000800290c                osKernelStart
  .text.osThreadCreate
-                0x0000000008002912       0x6a build/cmsis_os.o
-                0x0000000008002912                osThreadCreate
- .text.osDelay  0x000000000800297c        0xe build/cmsis_os.o
-                0x000000000800297c                osDelay
+                0x0000000008002916       0x6a build/cmsis_os.o
+                0x0000000008002916                osThreadCreate
+ .text.osDelay  0x0000000008002980        0xe build/cmsis_os.o
+                0x0000000008002980                osDelay
  .text.osSemaphoreCreate
-                0x000000000800298a       0x48 build/cmsis_os.o
-                0x000000000800298a                osSemaphoreCreate
+                0x000000000800298e       0x48 build/cmsis_os.o
+                0x000000000800298e                osSemaphoreCreate
  .text.osSemaphoreWait
-                0x00000000080029d2       0x5e build/cmsis_os.o
-                0x00000000080029d2                osSemaphoreWait
+                0x00000000080029d6       0x5e build/cmsis_os.o
+                0x00000000080029d6                osSemaphoreWait
  .text.osSemaphoreRelease
-                0x0000000008002a30       0x5a build/cmsis_os.o
-                0x0000000008002a30                osSemaphoreRelease
+                0x0000000008002a34       0x5a build/cmsis_os.o
+                0x0000000008002a34                osSemaphoreRelease
  .text.osSemaphoreDelete
-                0x0000000008002a8a       0x18 build/cmsis_os.o
-                0x0000000008002a8a                osSemaphoreDelete
- *fill*         0x0000000008002aa2        0x2 
+                0x0000000008002a8e       0x18 build/cmsis_os.o
+                0x0000000008002a8e                osSemaphoreDelete
+ *fill*         0x0000000008002aa6        0x2 
  .text.prvHeapInit
-                0x0000000008002aa4       0x64 build/heap_4.o
+                0x0000000008002aa8       0x64 build/heap_4.o
  .text.prvInsertBlockIntoFreeList
-                0x0000000008002b08       0x60 build/heap_4.o
+                0x0000000008002b0c       0x60 build/heap_4.o
  .text.pvPortMalloc
-                0x0000000008002b68       0xfc build/heap_4.o
-                0x0000000008002b68                pvPortMalloc
+                0x0000000008002b6c       0xfc build/heap_4.o
+                0x0000000008002b6c                pvPortMalloc
  .text.vPortFree
-                0x0000000008002c64       0x7c build/heap_4.o
-                0x0000000008002c64                vPortFree
+                0x0000000008002c68       0x7c build/heap_4.o
+                0x0000000008002c68                vPortFree
  .text.prvTaskExitError
-                0x0000000008002ce0       0x40 build/port.o
+                0x0000000008002ce4       0x40 build/port.o
  .text.prvPortStartFirstTask
-                0x0000000008002d20       0x20 build/port.o
+                0x0000000008002d24       0x20 build/port.o
  .text.pxPortInitialiseStack
-                0x0000000008002d40       0x24 build/port.o
-                0x0000000008002d40                pxPortInitialiseStack
- *fill*         0x0000000008002d64        0xc 
+                0x0000000008002d44       0x24 build/port.o
+                0x0000000008002d44                pxPortInitialiseStack
+ *fill*         0x0000000008002d68        0x8 
  .text.SVC_Handler
                 0x0000000008002d70       0x24 build/port.o
                 0x0000000008002d70                SVC_Handler
@@ -2334,260 +2334,238 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
                 0x0000000008005d30                _puts_r
  .text.puts     0x0000000008005e0c       0x10 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
                 0x0000000008005e0c                puts
- .text.sprintf  0x0000000008005e1c       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
-                0x0000000008005e1c                sprintf
-                0x0000000008005e1c                siprintf
  .text.__swbuf_r
-                0x0000000008005e5c       0xa4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
-                0x0000000008005e5c                __swbuf_r
+                0x0000000008005e1c       0xa4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
+                0x0000000008005e1c                __swbuf_r
  .text.__swsetup_r
-                0x0000000008005f00       0xdc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
-                0x0000000008005f00                __swsetup_r
+                0x0000000008005ec0       0xdc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
+                0x0000000008005ec0                __swsetup_r
  .text.__sflush_r
-                0x0000000008005fdc      0x104 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
-                0x0000000008005fdc                __sflush_r
+                0x0000000008005f9c      0x104 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
+                0x0000000008005f9c                __sflush_r
  .text._fflush_r
-                0x00000000080060e0       0x78 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
-                0x00000000080060e0                _fflush_r
- .text.std      0x0000000008006158       0x48 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x00000000080060a0       0x78 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
+                0x00000000080060a0                _fflush_r
+ .text.std      0x0000000008006118       0x48 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
  .text._cleanup_r
-                0x00000000080061a0        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061a0                _cleanup_r
+                0x0000000008006160        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006160                _cleanup_r
  .text.__sfmoreglue
-                0x00000000080061ac       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061ac                __sfmoreglue
+                0x000000000800616c       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x000000000800616c                __sfmoreglue
  .text.__sfp_lock_acquire
-                0x00000000080061d8        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061d8                __sfp_lock_acquire
+                0x0000000008006198        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006198                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x00000000080061e4        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061e4                __sfp_lock_release
+                0x00000000080061a4        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x00000000080061a4                __sfp_lock_release
  .text.__sinit_lock_acquire
-                0x00000000080061f0        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061f0                __sinit_lock_acquire
+                0x00000000080061b0        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x00000000080061b0                __sinit_lock_acquire
  .text.__sinit_lock_release
-                0x00000000080061fc        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080061fc                __sinit_lock_release
- .text.__sinit  0x0000000008006208       0x70 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x0000000008006208                __sinit
- .text.__sfp    0x0000000008006278       0x8c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x0000000008006278                __sfp
+                0x00000000080061bc        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x00000000080061bc                __sinit_lock_release
+ .text.__sinit  0x00000000080061c8       0x70 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x00000000080061c8                __sinit
+ .text.__sfp    0x0000000008006238       0x8c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006238                __sfp
  .text._fwalk_reent
-                0x0000000008006304       0x3e /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
-                0x0000000008006304                _fwalk_reent
+                0x00000000080062c4       0x3e /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
+                0x00000000080062c4                _fwalk_reent
  .text.__retarget_lock_init_recursive
-                0x0000000008006342        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
-                0x0000000008006342                __retarget_lock_init_recursive
+                0x0000000008006302        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x0000000008006302                __retarget_lock_init_recursive
  .text.__retarget_lock_acquire_recursive
-                0x0000000008006344        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
-                0x0000000008006344                __retarget_lock_acquire_recursive
+                0x0000000008006304        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x0000000008006304                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x0000000008006346        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
-                0x0000000008006346                __retarget_lock_release_recursive
+                0x0000000008006306        0x2 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x0000000008006306                __retarget_lock_release_recursive
  .text.__swhatbuf_r
-                0x0000000008006348       0x4a /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
-                0x0000000008006348                __swhatbuf_r
- *fill*         0x0000000008006392        0x2 
+                0x0000000008006308       0x4a /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
+                0x0000000008006308                __swhatbuf_r
+ *fill*         0x0000000008006352        0x2 
  .text.__smakebuf_r
-                0x0000000008006394       0x80 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
-                0x0000000008006394                __smakebuf_r
- .text._free_r  0x0000000008006414       0x90 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
-                0x0000000008006414                _free_r
+                0x0000000008006354       0x80 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
+                0x0000000008006354                __smakebuf_r
+ .text._free_r  0x00000000080063d4       0x90 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+                0x00000000080063d4                _free_r
  .text.sbrk_aligned
-                0x00000000080064a4       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000008006464       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .text._malloc_r
-                0x00000000080064e4       0xe8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
-                0x00000000080064e4                _malloc_r
- .text.__ssputs_r
-                0x00000000080065cc       0xb6 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-                0x00000000080065cc                __ssputs_r
- *fill*         0x0000000008006682        0x2 
- .text._svfprintf_r
-                0x0000000008006684      0x200 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-                0x0000000008006684                _svfprintf_r
-                0x0000000008006684                _svfiprintf_r
+                0x00000000080064a4       0xe8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000080064a4                _malloc_r
  .text.__sfputc_r
-                0x0000000008006884       0x2a /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x000000000800658c       0x2a /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x00000000080068ae       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
-                0x00000000080068ae                __sfputs_r
- *fill*         0x00000000080068d2        0x2 
+                0x00000000080065b6       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x00000000080065b6                __sfputs_r
+ *fill*         0x00000000080065da        0x2 
  .text._vfprintf_r
-                0x00000000080068d4      0x260 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
-                0x00000000080068d4                _vfiprintf_r
-                0x00000000080068d4                _vfprintf_r
+                0x00000000080065dc      0x260 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x00000000080065dc                _vfiprintf_r
+                0x00000000080065dc                _vfprintf_r
  .text._printf_common
-                0x0000000008006b34       0xde /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000000008006b34                _printf_common
- *fill*         0x0000000008006c12        0x2 
+                0x000000000800683c       0xde /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000800683c                _printf_common
+ *fill*         0x000000000800691a        0x2 
  .text._printf_i
-                0x0000000008006c14      0x24c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000000008006c14                _printf_i
- .text._sbrk_r  0x0000000008006e60       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
-                0x0000000008006e60                _sbrk_r
- .text.__sread  0x0000000008006e80       0x22 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
-                0x0000000008006e80                __sread
+                0x000000000800691c      0x24c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000800691c                _printf_i
+ .text._sbrk_r  0x0000000008006b68       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+                0x0000000008006b68                _sbrk_r
+ .text.__sread  0x0000000008006b88       0x22 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+                0x0000000008006b88                __sread
  .text.__swrite
-                0x0000000008006ea2       0x38 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
-                0x0000000008006ea2                __swrite
- .text.__sseek  0x0000000008006eda       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
-                0x0000000008006eda                __sseek
+                0x0000000008006baa       0x38 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+                0x0000000008006baa                __swrite
+ .text.__sseek  0x0000000008006be2       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+                0x0000000008006be2                __sseek
  .text.__sclose
-                0x0000000008006efe        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
-                0x0000000008006efe                __sclose
- *fill*         0x0000000008006f06        0x2 
+                0x0000000008006c06        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+                0x0000000008006c06                __sclose
+ *fill*         0x0000000008006c0e        0x2 
  .text._write_r
-                0x0000000008006f08       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
-                0x0000000008006f08                _write_r
+                0x0000000008006c10       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
+                0x0000000008006c10                _write_r
  .text._close_r
-                0x0000000008006f2c       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
-                0x0000000008006f2c                _close_r
+                0x0000000008006c34       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
+                0x0000000008006c34                _close_r
  .text._fstat_r
-                0x0000000008006f4c       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
-                0x0000000008006f4c                _fstat_r
+                0x0000000008006c54       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
+                0x0000000008006c54                _fstat_r
  .text._isatty_r
-                0x0000000008006f70       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
-                0x0000000008006f70                _isatty_r
+                0x0000000008006c78       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
+                0x0000000008006c78                _isatty_r
  .text._lseek_r
-                0x0000000008006f90       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
-                0x0000000008006f90                _lseek_r
- .text.memchr   0x0000000008006fb4       0x1c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
-                0x0000000008006fb4                memchr
- .text.memmove  0x0000000008006fd0       0x34 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
-                0x0000000008006fd0                memmove
+                0x0000000008006c98       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
+                0x0000000008006c98                _lseek_r
+ .text.memchr   0x0000000008006cbc       0x1c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+                0x0000000008006cbc                memchr
  .text.__malloc_lock
-                0x0000000008007004        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
-                0x0000000008007004                __malloc_lock
+                0x0000000008006cd8        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+                0x0000000008006cd8                __malloc_lock
  .text.__malloc_unlock
-                0x0000000008007010        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
-                0x0000000008007010                __malloc_unlock
- .text._realloc_r
-                0x000000000800701c       0x5e /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
-                0x000000000800701c                _realloc_r
- *fill*         0x000000000800707a        0x2 
- .text._read_r  0x000000000800707c       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
-                0x000000000800707c                _read_r
- .text._malloc_usable_size_r
-                0x00000000080070a0       0x10 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
-                0x00000000080070a0                _malloc_usable_size_r
+                0x0000000008006ce4        0xc /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+                0x0000000008006ce4                __malloc_unlock
+ .text._read_r  0x0000000008006cf0       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
+                0x0000000008006cf0                _read_r
  *(.glue_7)
- .glue_7        0x00000000080070b0        0x0 linker stubs
+ .glue_7        0x0000000008006d14        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00000000080070b0        0x0 linker stubs
+ .glue_7t       0x0000000008006d14        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00000000080070b0        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x0000000008006d14        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x00000000080070b0        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x00000000080070b0                _init
- .init          0x00000000080070b4        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ .init          0x0000000008006d14        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x0000000008006d14                _init
+ .init          0x0000000008006d18        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x00000000080070bc        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x00000000080070bc                _fini
- .fini          0x00000000080070c0        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
-                0x00000000080070c8                . = ALIGN (0x4)
-                0x00000000080070c8                _etext = .
+ .fini          0x0000000008006d20        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x0000000008006d20                _fini
+ .fini          0x0000000008006d24        0x8 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                0x0000000008006d2c                . = ALIGN (0x4)
+                0x0000000008006d2c                _etext = .
 
-.vfp11_veneer   0x00000000080070c8        0x0
- .vfp11_veneer  0x00000000080070c8        0x0 linker stubs
+.vfp11_veneer   0x0000000008006d2c        0x0
+ .vfp11_veneer  0x0000000008006d2c        0x0 linker stubs
 
-.v4_bx          0x00000000080070c8        0x0
- .v4_bx         0x00000000080070c8        0x0 linker stubs
+.v4_bx          0x0000000008006d2c        0x0
+ .v4_bx         0x0000000008006d2c        0x0 linker stubs
 
-.iplt           0x00000000080070c8        0x0
- .iplt          0x00000000080070c8        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x0000000008006d2c        0x0
+ .iplt          0x0000000008006d2c        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x00000000080070c8      0x25c
-                0x00000000080070c8                . = ALIGN (0x4)
+.rodata         0x0000000008006d2c      0x250
+                0x0000000008006d2c                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x00000000080070c8       0x1c build/freertos.o
+ .rodata        0x0000000008006d2c       0x1c build/freertos.o
  *(.rodata*)
  .rodata.aPLLMULFactorTable.1
-                0x00000000080070e4       0x10 build/stm32f1xx_hal_rcc.o
+                0x0000000008006d48       0x10 build/stm32f1xx_hal_rcc.o
  .rodata.aPredivFactorTable.0
-                0x00000000080070f4        0x2 build/stm32f1xx_hal_rcc.o
- *fill*         0x00000000080070f6        0x2 
+                0x0000000008006d58        0x2 build/stm32f1xx_hal_rcc.o
+ *fill*         0x0000000008006d5a        0x2 
  .rodata.AHBPrescTable
-                0x00000000080070f8       0x10 build/system_stm32f1xx.o
-                0x00000000080070f8                AHBPrescTable
+                0x0000000008006d5c       0x10 build/system_stm32f1xx.o
+                0x0000000008006d5c                AHBPrescTable
  .rodata.APBPrescTable
-                0x0000000008007108        0x8 build/system_stm32f1xx.o
-                0x0000000008007108                APBPrescTable
+                0x0000000008006d6c        0x8 build/system_stm32f1xx.o
+                0x0000000008006d6c                APBPrescTable
  .rodata.str1.4
-                0x0000000008007110        0x7 build/freertos.o
- *fill*         0x0000000008007117        0x1 
+                0x0000000008006d74        0x7 build/freertos.o
+ *fill*         0x0000000008006d7b        0x1 
  .rodata.StartLogger.str1.4
-                0x0000000008007118       0xda build/freertos.o
- *fill*         0x00000000080071f2        0x2 
+                0x0000000008006d7c       0xce build/freertos.o
+ *fill*         0x0000000008006e4a        0x2 
  .rodata.vTaskStartScheduler.str1.4
-                0x00000000080071f4        0x5 build/tasks.o
- *fill*         0x00000000080071f9        0x3 
+                0x0000000008006e4c        0x5 build/tasks.o
+ *fill*         0x0000000008006e51        0x3 
  .rodata.create_name.str1.4
-                0x00000000080071fc        0xf build/ff.o
- *fill*         0x000000000800720b        0x1 
- .rodata.ExCvt  0x000000000800720c       0x80 build/ff.o
+                0x0000000008006e54        0xf build/ff.o
+ *fill*         0x0000000008006e63        0x1 
+ .rodata.ExCvt  0x0000000008006e64       0x80 build/ff.o
  .rodata._global_impure_ptr
-                0x000000000800728c        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
-                0x000000000800728c                _global_impure_ptr
+                0x0000000008006ee4        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-impure.o)
+                0x0000000008006ee4                _global_impure_ptr
  .rodata.__sf_fake_stderr
-                0x0000000008007290       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x0000000008007290                __sf_fake_stderr
+                0x0000000008006ee8       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006ee8                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x00000000080072b0       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080072b0                __sf_fake_stdin
+                0x0000000008006f08       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006f08                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x00000000080072d0       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-                0x00000000080072d0                __sf_fake_stdout
- .rodata._svfprintf_r.str1.1
-                0x00000000080072f0       0x11 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x0000000008006f28       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000008006f28                __sf_fake_stdout
  .rodata._vfprintf_r.str1.1
-                0x0000000008007301       0x11 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000008006f48       0x11 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
  .rodata._printf_i.str1.1
-                0x0000000008007301       0x22 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000000008007324                . = ALIGN (0x4)
- *fill*         0x0000000008007323        0x1 
+                0x0000000008006f59       0x22 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000008006f7c                . = ALIGN (0x4)
+ *fill*         0x0000000008006f7b        0x1 
 
-.rel.dyn        0x0000000008007324        0x0
- .rel.iplt      0x0000000008007324        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x0000000008006f7c        0x0
+ .rel.iplt      0x0000000008006f7c        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.ARM.extab      0x0000000008007324        0x0
-                0x0000000008007324                . = ALIGN (0x4)
+.ARM.extab      0x0000000008006f7c        0x0
+                0x0000000008006f7c                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008007324                . = ALIGN (0x4)
+                0x0000000008006f7c                . = ALIGN (0x4)
 
-.ARM            0x0000000008007324        0x0
-                0x0000000008007324                . = ALIGN (0x4)
-                0x0000000008007324                __exidx_start = .
+.ARM            0x0000000008006f7c        0x0
+                0x0000000008006f7c                . = ALIGN (0x4)
+                0x0000000008006f7c                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008007324                __exidx_end = .
-                0x0000000008007324                . = ALIGN (0x4)
+                0x0000000008006f7c                __exidx_end = .
+                0x0000000008006f7c                . = ALIGN (0x4)
 
-.preinit_array  0x0000000008007324        0x0
-                0x0000000008007324                . = ALIGN (0x4)
-                0x0000000008007324                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008006f7c        0x0
+                0x0000000008006f7c                . = ALIGN (0x4)
+                0x0000000008006f7c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008007324                PROVIDE (__preinit_array_end = .)
-                0x0000000008007324                . = ALIGN (0x4)
+                0x0000000008006f7c                PROVIDE (__preinit_array_end = .)
+                0x0000000008006f7c                . = ALIGN (0x4)
 
-.init_array     0x0000000008007324        0x4
-                0x0000000008007324                . = ALIGN (0x4)
-                0x0000000008007324                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008006f7c        0x4
+                0x0000000008006f7c                . = ALIGN (0x4)
+                0x0000000008006f7c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008007324        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x0000000008007328                PROVIDE (__init_array_end = .)
-                0x0000000008007328                . = ALIGN (0x4)
+ .init_array    0x0000000008006f7c        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x0000000008006f80                PROVIDE (__init_array_end = .)
+                0x0000000008006f80                . = ALIGN (0x4)
 
-.fini_array     0x0000000008007328        0x4
-                0x0000000008007328                . = ALIGN (0x4)
+.fini_array     0x0000000008006f80        0x4
+                0x0000000008006f80                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008007328        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .fini_array    0x0000000008006f80        0x4 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x000000000800732c                . = ALIGN (0x4)
-                0x000000000800732c                _sidata = LOADADDR (.data)
+                0x0000000008006f84                . = ALIGN (0x4)
+                0x0000000008006f84                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x8c load address 0x000000000800732c
+.data           0x0000000020000000       0x8c load address 0x0000000008006f84
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2619,11 +2597,11 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
                 0x000000002000008c                . = ALIGN (0x4)
                 0x000000002000008c                _edata = .
 
-.igot.plt       0x000000002000008c        0x0 load address 0x00000000080073b8
+.igot.plt       0x000000002000008c        0x0 load address 0x0000000008007010
  .igot.plt      0x000000002000008c        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
                 0x000000002000008c                . = ALIGN (0x4)
 
-.bss            0x000000002000008c     0x251c load address 0x00000000080073b8
+.bss            0x000000002000008c     0x251c load address 0x0000000008007010
                 0x000000002000008c                _sbss = .
                 0x000000002000008c                __bss_start__ = _sbss
  *(.bss)
@@ -2756,7 +2734,7 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
                 0x00000000200025a8                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x00000000200025a8      0x600 load address 0x00000000080073b8
+                0x00000000200025a8      0x600 load address 0x0000000008007010
                 0x00000000200025a8                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
                 0x00000000200025a8                PROVIDE (_end = .)
@@ -2863,63 +2841,53 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .ARM.attributes
                 0x0000000000000719       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
  .ARM.attributes
-                0x0000000000000746       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
+                0x0000000000000746       0x17 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
  .ARM.attributes
-                0x0000000000000773       0x17 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
+                0x000000000000075d       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
  .ARM.attributes
-                0x000000000000078a       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
+                0x000000000000078a       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x00000000000007b7       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
+                0x00000000000007b7       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
  .ARM.attributes
-                0x00000000000007e4       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
+                0x00000000000007e4       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
  .ARM.attributes
-                0x0000000000000811       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+                0x0000000000000811       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x000000000000083e       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
+                0x000000000000083e       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
  .ARM.attributes
-                0x000000000000086b       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+                0x000000000000086b       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x0000000000000898       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
+                0x0000000000000898       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x00000000000008c5       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+                0x00000000000008c5       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000000000008f2       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000000008f2       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
  .ARM.attributes
-                0x000000000000091f       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000000091f       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .ARM.attributes
-                0x000000000000094c       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x000000000000094c       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x0000000000000979       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000000000979       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000000000009a6       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+                0x00000000000009a6       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000000000009d3       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+                0x00000000000009d3       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
  .ARM.attributes
-                0x0000000000000a00       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
+                0x0000000000000a00       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
  .ARM.attributes
-                0x0000000000000a2d       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
+                0x0000000000000a2d       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
  .ARM.attributes
-                0x0000000000000a5a       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
+                0x0000000000000a5a       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x0000000000000a87       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
+                0x0000000000000a87       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x0000000000000ab4       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
+                0x0000000000000ab4       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
  .ARM.attributes
-                0x0000000000000ae1       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+                0x0000000000000ae1       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
  .ARM.attributes
-                0x0000000000000b0e       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
+                0x0000000000000b0e       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
  .ARM.attributes
-                0x0000000000000b3b       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .ARM.attributes
-                0x0000000000000b68       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
- .ARM.attributes
-                0x0000000000000b95       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
- .ARM.attributes
-                0x0000000000000bc2       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
- .ARM.attributes
-                0x0000000000000bef       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
- .ARM.attributes
-                0x0000000000000c1c       0x1d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                0x0000000000000b3b       0x1d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
 
 .comment        0x0000000000000000       0x49
  .comment       0x0000000000000000       0x49 build/main.o
@@ -2956,7 +2924,7 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .comment       0x0000000000000049       0x4a build/ff_gen_drv.o
  .comment       0x0000000000000049       0x4a build/syscall.o
 
-.debug_info     0x0000000000000000    0x226b4
+.debug_info     0x0000000000000000    0x22682
  .debug_info    0x0000000000000000      0xdc8 build/main.o
  .debug_info    0x0000000000000dc8      0x365 build/gpio.o
  .debug_info    0x000000000000112d      0x90b build/usart.o
@@ -2970,26 +2938,26 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_info    0x0000000000009023      0x26e build/system_stm32f1xx.o
  .debug_info    0x0000000000009291      0x185 build/sysmem.o
  .debug_info    0x0000000000009416      0x840 build/syscalls.o
- .debug_info    0x0000000000009c56      0xbd2 build/freertos.o
- .debug_info    0x000000000000a828      0xb07 build/stm32f1xx_hal_timebase_tim.o
- .debug_info    0x000000000000b32f     0x4074 build/stm32f1xx_hal_tim.o
- .debug_info    0x000000000000f3a3     0x1c39 build/stm32f1xx_hal_tim_ex.o
- .debug_info    0x0000000000010fdc      0x30f build/list.o
- .debug_info    0x00000000000112eb     0x2407 build/queue.o
- .debug_info    0x00000000000136f2     0x2ad1 build/tasks.o
- .debug_info    0x00000000000161c3     0x2409 build/cmsis_os.o
- .debug_info    0x00000000000185cc      0x61a build/heap_4.o
- .debug_info    0x0000000000018be6      0x569 build/port.o
- .debug_info    0x000000000001914f      0x93d build/spi.o
- .debug_info    0x0000000000019a8c     0x1322 build/fatfs_sd.o
- .debug_info    0x000000000001adae      0x5be build/fatfs.o
- .debug_info    0x000000000001b36c      0x450 build/user_diskio.o
- .debug_info    0x000000000001b7bc     0x1df8 build/stm32f1xx_hal_spi.o
- .debug_info    0x000000000001d5b4      0x4e8 build/diskio.o
- .debug_info    0x000000000001da9c     0x42cb build/ff.o
- .debug_info    0x0000000000021d67      0x43b build/ff_gen_drv.o
- .debug_info    0x00000000000221a2      0x4f0 build/syscall.o
- .debug_info    0x0000000000022692       0x22 build/startup_stm32f103xb.o
+ .debug_info    0x0000000000009c56      0xba0 build/freertos.o
+ .debug_info    0x000000000000a7f6      0xb07 build/stm32f1xx_hal_timebase_tim.o
+ .debug_info    0x000000000000b2fd     0x4074 build/stm32f1xx_hal_tim.o
+ .debug_info    0x000000000000f371     0x1c39 build/stm32f1xx_hal_tim_ex.o
+ .debug_info    0x0000000000010faa      0x30f build/list.o
+ .debug_info    0x00000000000112b9     0x2407 build/queue.o
+ .debug_info    0x00000000000136c0     0x2ad1 build/tasks.o
+ .debug_info    0x0000000000016191     0x2409 build/cmsis_os.o
+ .debug_info    0x000000000001859a      0x61a build/heap_4.o
+ .debug_info    0x0000000000018bb4      0x569 build/port.o
+ .debug_info    0x000000000001911d      0x93d build/spi.o
+ .debug_info    0x0000000000019a5a     0x1322 build/fatfs_sd.o
+ .debug_info    0x000000000001ad7c      0x5be build/fatfs.o
+ .debug_info    0x000000000001b33a      0x450 build/user_diskio.o
+ .debug_info    0x000000000001b78a     0x1df8 build/stm32f1xx_hal_spi.o
+ .debug_info    0x000000000001d582      0x4e8 build/diskio.o
+ .debug_info    0x000000000001da6a     0x42cb build/ff.o
+ .debug_info    0x0000000000021d35      0x43b build/ff_gen_drv.o
+ .debug_info    0x0000000000022170      0x4f0 build/syscall.o
+ .debug_info    0x0000000000022660       0x22 build/startup_stm32f103xb.o
 
 .debug_abbrev   0x0000000000000000     0x46a3
  .debug_abbrev  0x0000000000000000      0x28b build/main.o
@@ -3026,7 +2994,7 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_abbrev  0x00000000000044ed      0x1a4 build/syscall.o
  .debug_abbrev  0x0000000000004691       0x12 build/startup_stm32f103xb.o
 
-.debug_loc      0x0000000000000000    0x1e266
+.debug_loc      0x0000000000000000    0x1e259
  .debug_loc     0x0000000000000000      0x161 build/main.o
  .debug_loc     0x0000000000000161       0x38 build/gpio.o
  .debug_loc     0x0000000000000199      0x108 build/usart.o
@@ -3040,25 +3008,25 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_loc     0x0000000000006672       0xff build/system_stm32f1xx.o
  .debug_loc     0x0000000000006771       0x84 build/sysmem.o
  .debug_loc     0x00000000000067f5      0x511 build/syscalls.o
- .debug_loc     0x0000000000006d06      0x139 build/freertos.o
- .debug_loc     0x0000000000006e3f      0x152 build/stm32f1xx_hal_timebase_tim.o
- .debug_loc     0x0000000000006f91     0x5c88 build/stm32f1xx_hal_tim.o
- .debug_loc     0x000000000000cc19     0x20f3 build/stm32f1xx_hal_tim_ex.o
- .debug_loc     0x000000000000ed0c       0xe5 build/list.o
- .debug_loc     0x000000000000edf1     0x1a84 build/queue.o
- .debug_loc     0x0000000000010875     0x245f build/tasks.o
- .debug_loc     0x0000000000012cd4     0x1a22 build/cmsis_os.o
- .debug_loc     0x00000000000146f6      0x4e4 build/heap_4.o
- .debug_loc     0x0000000000014bda      0x16c build/port.o
- .debug_loc     0x0000000000014d46      0x108 build/spi.o
- .debug_loc     0x0000000000014e4e      0xd65 build/fatfs_sd.o
- .debug_loc     0x0000000000015bb3       0x20 build/fatfs.o
- .debug_loc     0x0000000000015bd3      0x281 build/user_diskio.o
- .debug_loc     0x0000000000015e54     0x22e5 build/stm32f1xx_hal_spi.o
- .debug_loc     0x0000000000018139      0x323 build/diskio.o
- .debug_loc     0x000000000001845c     0x5969 build/ff.o
- .debug_loc     0x000000000001ddc5      0x2f6 build/ff_gen_drv.o
- .debug_loc     0x000000000001e0bb      0x1ab build/syscall.o
+ .debug_loc     0x0000000000006d06      0x12c build/freertos.o
+ .debug_loc     0x0000000000006e32      0x152 build/stm32f1xx_hal_timebase_tim.o
+ .debug_loc     0x0000000000006f84     0x5c88 build/stm32f1xx_hal_tim.o
+ .debug_loc     0x000000000000cc0c     0x20f3 build/stm32f1xx_hal_tim_ex.o
+ .debug_loc     0x000000000000ecff       0xe5 build/list.o
+ .debug_loc     0x000000000000ede4     0x1a84 build/queue.o
+ .debug_loc     0x0000000000010868     0x245f build/tasks.o
+ .debug_loc     0x0000000000012cc7     0x1a22 build/cmsis_os.o
+ .debug_loc     0x00000000000146e9      0x4e4 build/heap_4.o
+ .debug_loc     0x0000000000014bcd      0x16c build/port.o
+ .debug_loc     0x0000000000014d39      0x108 build/spi.o
+ .debug_loc     0x0000000000014e41      0xd65 build/fatfs_sd.o
+ .debug_loc     0x0000000000015ba6       0x20 build/fatfs.o
+ .debug_loc     0x0000000000015bc6      0x281 build/user_diskio.o
+ .debug_loc     0x0000000000015e47     0x22e5 build/stm32f1xx_hal_spi.o
+ .debug_loc     0x000000000001812c      0x323 build/diskio.o
+ .debug_loc     0x000000000001844f     0x5969 build/ff.o
+ .debug_loc     0x000000000001ddb8      0x2f6 build/ff_gen_drv.o
+ .debug_loc     0x000000000001e0ae      0x1ab build/syscall.o
 
 .debug_aranges  0x0000000000000000     0x1780
  .debug_aranges
@@ -3163,7 +3131,7 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_ranges  0x0000000000001788       0x28 build/syscall.o
  .debug_ranges  0x00000000000017b0       0x20 build/startup_stm32f103xb.o
 
-.debug_line     0x0000000000000000    0x1ced5
+.debug_line     0x0000000000000000    0x1cec3
  .debug_line    0x0000000000000000      0x490 build/main.o
  .debug_line    0x0000000000000490      0x226 build/gpio.o
  .debug_line    0x00000000000006b6      0x325 build/usart.o
@@ -3177,28 +3145,28 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_line    0x0000000000006f89      0x278 build/system_stm32f1xx.o
  .debug_line    0x0000000000007201      0x237 build/sysmem.o
  .debug_line    0x0000000000007438      0x450 build/syscalls.o
- .debug_line    0x0000000000007888      0x48e build/freertos.o
- .debug_line    0x0000000000007d16      0x337 build/stm32f1xx_hal_timebase_tim.o
- .debug_line    0x000000000000804d     0x499e build/stm32f1xx_hal_tim.o
- .debug_line    0x000000000000c9eb     0x1bfd build/stm32f1xx_hal_tim_ex.o
- .debug_line    0x000000000000e5e8      0x3a6 build/list.o
- .debug_line    0x000000000000e98e     0x1c7b build/queue.o
- .debug_line    0x0000000000010609     0x254e build/tasks.o
- .debug_line    0x0000000000012b57     0x11d7 build/cmsis_os.o
- .debug_line    0x0000000000013d2e      0x7a6 build/heap_4.o
- .debug_line    0x00000000000144d4      0x657 build/port.o
- .debug_line    0x0000000000014b2b      0x340 build/spi.o
- .debug_line    0x0000000000014e6b      0xbd9 build/fatfs_sd.o
- .debug_line    0x0000000000015a44      0x279 build/fatfs.o
- .debug_line    0x0000000000015cbd      0x139 build/user_diskio.o
- .debug_line    0x0000000000015df6     0x264a build/stm32f1xx_hal_spi.o
- .debug_line    0x0000000000018440      0x28d build/diskio.o
- .debug_line    0x00000000000186cd     0x41b9 build/ff.o
- .debug_line    0x000000000001c886      0x2cd build/ff_gen_drv.o
- .debug_line    0x000000000001cb53      0x30e build/syscall.o
- .debug_line    0x000000000001ce61       0x74 build/startup_stm32f103xb.o
+ .debug_line    0x0000000000007888      0x47c build/freertos.o
+ .debug_line    0x0000000000007d04      0x337 build/stm32f1xx_hal_timebase_tim.o
+ .debug_line    0x000000000000803b     0x499e build/stm32f1xx_hal_tim.o
+ .debug_line    0x000000000000c9d9     0x1bfd build/stm32f1xx_hal_tim_ex.o
+ .debug_line    0x000000000000e5d6      0x3a6 build/list.o
+ .debug_line    0x000000000000e97c     0x1c7b build/queue.o
+ .debug_line    0x00000000000105f7     0x254e build/tasks.o
+ .debug_line    0x0000000000012b45     0x11d7 build/cmsis_os.o
+ .debug_line    0x0000000000013d1c      0x7a6 build/heap_4.o
+ .debug_line    0x00000000000144c2      0x657 build/port.o
+ .debug_line    0x0000000000014b19      0x340 build/spi.o
+ .debug_line    0x0000000000014e59      0xbd9 build/fatfs_sd.o
+ .debug_line    0x0000000000015a32      0x279 build/fatfs.o
+ .debug_line    0x0000000000015cab      0x139 build/user_diskio.o
+ .debug_line    0x0000000000015de4     0x264a build/stm32f1xx_hal_spi.o
+ .debug_line    0x000000000001842e      0x28d build/diskio.o
+ .debug_line    0x00000000000186bb     0x41b9 build/ff.o
+ .debug_line    0x000000000001c874      0x2cd build/ff_gen_drv.o
+ .debug_line    0x000000000001cb41      0x30e build/syscall.o
+ .debug_line    0x000000000001ce4f       0x74 build/startup_stm32f103xb.o
 
-.debug_str      0x0000000000000000     0x6839
+.debug_str      0x0000000000000000     0x6831
  .debug_str     0x0000000000000000      0x9f7 build/main.o
                                         0xaf3 (size before relaxing)
  .debug_str     0x00000000000009f7       0xd0 build/gpio.o
@@ -3225,48 +3193,48 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
                                         0x216 (size before relaxing)
  .debug_str     0x000000000000200e      0x1cf build/syscalls.o
                                         0x3ea (size before relaxing)
- .debug_str     0x00000000000021dd      0x539 build/freertos.o
-                                        0x778 (size before relaxing)
- .debug_str     0x0000000000002716       0x84 build/stm32f1xx_hal_timebase_tim.o
+ .debug_str     0x00000000000021dd      0x531 build/freertos.o
+                                        0x770 (size before relaxing)
+ .debug_str     0x000000000000270e       0x84 build/stm32f1xx_hal_timebase_tim.o
                                         0xb10 (size before relaxing)
- .debug_str     0x000000000000279a      0xeb3 build/stm32f1xx_hal_tim.o
+ .debug_str     0x0000000000002792      0xeb3 build/stm32f1xx_hal_tim.o
                                        0x164d (size before relaxing)
- .debug_str     0x000000000000364d      0x591 build/stm32f1xx_hal_tim_ex.o
+ .debug_str     0x0000000000003645      0x591 build/stm32f1xx_hal_tim_ex.o
                                         0xe3e (size before relaxing)
- .debug_str     0x0000000000003bde      0x136 build/list.o
+ .debug_str     0x0000000000003bd6      0x136 build/list.o
                                         0x2f3 (size before relaxing)
- .debug_str     0x0000000000003d14      0x840 build/queue.o
+ .debug_str     0x0000000000003d0c      0x840 build/queue.o
                                         0xb5c (size before relaxing)
- .debug_str     0x0000000000004554      0x99d build/tasks.o
+ .debug_str     0x000000000000454c      0x99d build/tasks.o
                                        0x100c (size before relaxing)
- .debug_str     0x0000000000004ef1      0x756 build/cmsis_os.o
+ .debug_str     0x0000000000004ee9      0x756 build/cmsis_os.o
                                        0x103a (size before relaxing)
- .debug_str     0x0000000000005647      0x2c8 build/heap_4.o
+ .debug_str     0x000000000000563f      0x2c8 build/heap_4.o
                                         0x501 (size before relaxing)
- .debug_str     0x000000000000590f      0x16d build/port.o
+ .debug_str     0x0000000000005907      0x16d build/port.o
                                         0x45f (size before relaxing)
- .debug_str     0x0000000000005a7c      0x1c0 build/spi.o
+ .debug_str     0x0000000000005a74      0x1c0 build/spi.o
                                         0x689 (size before relaxing)
- .debug_str     0x0000000000005c3c      0x19f build/fatfs_sd.o
+ .debug_str     0x0000000000005c34      0x19f build/fatfs_sd.o
                                         0x78e (size before relaxing)
- .debug_str     0x0000000000005ddb       0x68 build/fatfs.o
+ .debug_str     0x0000000000005dd3       0x68 build/fatfs.o
                                         0x394 (size before relaxing)
- .debug_str     0x0000000000005e43       0x57 build/user_diskio.o
+ .debug_str     0x0000000000005e3b       0x57 build/user_diskio.o
                                         0x2da (size before relaxing)
- .debug_str     0x0000000000005e9a      0x4c0 build/stm32f1xx_hal_spi.o
+ .debug_str     0x0000000000005e92      0x4c0 build/stm32f1xx_hal_spi.o
                                         0xb5f (size before relaxing)
- .debug_str     0x000000000000635a       0x4f build/diskio.o
+ .debug_str     0x0000000000006352       0x4f build/diskio.o
                                         0x299 (size before relaxing)
- .debug_str     0x00000000000063a9      0x396 build/ff.o
+ .debug_str     0x00000000000063a1      0x396 build/ff.o
                                         0x848 (size before relaxing)
- .debug_str     0x000000000000673f       0x8e build/ff_gen_drv.o
+ .debug_str     0x0000000000006737       0x8e build/ff_gen_drv.o
                                         0x2ea (size before relaxing)
- .debug_str     0x00000000000067cd       0x48 build/syscall.o
+ .debug_str     0x00000000000067c5       0x48 build/syscall.o
                                         0x4b2 (size before relaxing)
- .debug_str     0x0000000000006815       0x24 build/startup_stm32f103xb.o
+ .debug_str     0x000000000000680d       0x24 build/startup_stm32f103xb.o
                                          0x71 (size before relaxing)
 
-.debug_frame    0x0000000000000000     0x4bec
+.debug_frame    0x0000000000000000     0x4a6c
  .debug_frame   0x0000000000000000       0x98 build/main.o
  .debug_frame   0x0000000000000098       0x34 build/gpio.o
  .debug_frame   0x00000000000000cc       0x60 build/usart.o
@@ -3305,33 +3273,28 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .debug_frame   0x000000000000422c       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
  .debug_frame   0x000000000000424c       0x74 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-printf.o)
  .debug_frame   0x00000000000042c0       0x3c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
- .debug_frame   0x00000000000042fc       0x6c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
- .debug_frame   0x0000000000004368       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
- .debug_frame   0x00000000000043a8       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
- .debug_frame   0x00000000000043d4       0x5c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
- .debug_frame   0x0000000000004430      0x14c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
- .debug_frame   0x000000000000457c       0x54 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
- .debug_frame   0x00000000000045d0       0xb0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
- .debug_frame   0x0000000000004680       0x58 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
- .debug_frame   0x00000000000046d8       0x38 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x0000000000004710       0x4c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x000000000000475c       0x90 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00000000000047ec       0xac /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
- .debug_frame   0x0000000000004898       0x60 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x00000000000048f8       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x0000000000004924       0x88 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
- .debug_frame   0x00000000000049ac       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
- .debug_frame   0x00000000000049d8       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
- .debug_frame   0x0000000000004a04       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
- .debug_frame   0x0000000000004a30       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
- .debug_frame   0x0000000000004a5c       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
- .debug_frame   0x0000000000004a88       0x28 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x0000000000004ab0       0x28 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
- .debug_frame   0x0000000000004ad8       0x30 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
- .debug_frame   0x0000000000004b08       0x3c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x0000000000004b44       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
- .debug_frame   0x0000000000004b70       0x5c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
- .debug_frame   0x0000000000004bcc       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00000000000042fc       0x40 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
+ .debug_frame   0x000000000000433c       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
+ .debug_frame   0x0000000000004368       0x5c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
+ .debug_frame   0x00000000000043c4      0x14c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
+ .debug_frame   0x0000000000004510       0x54 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fwalk.o)
+ .debug_frame   0x0000000000004564       0xb0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lock.o)
+ .debug_frame   0x0000000000004614       0x58 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
+ .debug_frame   0x000000000000466c       0x38 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00000000000046a4       0x4c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00000000000046f0       0xac /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
+ .debug_frame   0x000000000000479c       0x60 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00000000000047fc       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000004828       0x88 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
+ .debug_frame   0x00000000000048b0       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-writer.o)
+ .debug_frame   0x00000000000048dc       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-closer.o)
+ .debug_frame   0x0000000000004908       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fstatr.o)
+ .debug_frame   0x0000000000004934       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-isattyr.o)
+ .debug_frame   0x0000000000004960       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-lseekr.o)
+ .debug_frame   0x000000000000498c       0x28 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00000000000049b4       0x30 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000049e4       0x2c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-readr.o)
+ .debug_frame   0x0000000000004a10       0x5c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
 
 Cross Reference Table
 
@@ -3977,8 +3940,6 @@ __sread                                           /home/santiago/gcc-arm-none-ea
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
 __sseek                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
-__ssprint_r                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-__ssputs_r                                        /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 __stack                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 __swbuf                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
 __swbuf_r                                         /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
@@ -4017,7 +3978,6 @@ _free_r                                           /home/santiago/gcc-arm-none-ea
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
 _fstat                                            build/syscalls.o
@@ -4041,7 +4001,6 @@ _impure_ptr                                       /home/santiago/gcc-arm-none-ea
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fflush.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wsetup.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-wbuf.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-printf.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-errno.o)
@@ -4062,7 +4021,6 @@ _mainCRTStartup                                   /home/santiago/gcc-arm-none-ea
 _malloc_r                                         /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-makebuf.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
 _malloc_usable_size_r                             /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
@@ -4070,10 +4028,8 @@ _malloc_usable_size_r                             /home/santiago/gcc-arm-none-ea
 _open                                             build/syscalls.o
 _printf_common                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
 _printf_float                                     /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 _printf_i                                         /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 _printf_r                                         /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-printf.o)
 _puts_r                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-puts.o)
 _read                                             build/syscalls.o
@@ -4082,7 +4038,6 @@ _read_r                                           /home/santiago/gcc-arm-none-ea
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-stdio.o)
 _realloc_r                                        /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 _reclaim_reent                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-reent.o)
 _sbrk                                             build/sysmem.o
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o)
@@ -4091,14 +4046,9 @@ _sbrk_r                                           /home/santiago/gcc-arm-none-ea
 _sbss                                             build/startup_stm32f103xb.o
 _sdata                                            build/startup_stm32f103xb.o
 _sidata                                           build/startup_stm32f103xb.o
-_siprintf_r                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
-_sprintf_r                                        /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
 _stack_init                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 _start                                            /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 _stat                                             build/syscalls.o
-_svfiprintf_r                                     /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-_svfprintf_r                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
 _times                                            build/syscalls.o
 _unlink                                           build/syscalls.o
 _vfiprintf_r                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
@@ -4195,16 +4145,13 @@ memchr                                            /home/santiago/gcc-arm-none-ea
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf_i.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-vfprintf.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 memcpy                                            /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
                                                   build/stream_buffer.o
                                                   build/queue.o
 memmove                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memmove.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-fvwrite.o)
-                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-svfprintf.o)
 memset                                            /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-findfp.o)
                                                   build/stream_buffer.o
@@ -4292,10 +4239,7 @@ pxCurrentTCB                                      build/tasks.o
 pxPortInitialiseStack                             build/port.o
                                                   build/tasks.o
 retUSER                                           build/fatfs.o
-siprintf                                          /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
 software_init_hook                                /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-sprintf                                           /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sprintf.o)
-                                                  build/freertos.o
 strlen                                            /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-strlen.o)
                                                   build/freertos.o
 ulTaskNotifyTake                                  build/tasks.o

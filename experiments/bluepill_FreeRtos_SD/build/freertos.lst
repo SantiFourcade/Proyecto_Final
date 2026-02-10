@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc6CChQX.s 			page 1
+ARM GAS  /tmp/ccebI6XP.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -39,12 +39,12 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   27      53443A20 
   28 0039 000000   		.align	2
   29              	.LC4:
-  30 003c C2A15344 		.ascii	"\302\241SD montada con \303\251xito!\015\000"
+  30 003c C2A15344 		.ascii	"\302\241SD montada con exito!\015\000"
   30      206D6F6E 
   30      74616461 
   30      20636F6E 
-  30      20C3A978 
-  31 0056 0000     		.align	2
+  30      20657869 
+  31 0055 000000   		.align	2
   32              	.LC5:
   33 0058 4C4F472E 		.ascii	"LOG.TXT\000"
   33      54585400 
@@ -57,24 +57,24 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   36      20646520 
   37 007d 000000   		.align	2
   38              	.LC7:
-  39 0080 4C6F6720 		.ascii	"Log numero: %d | Status: OK\015\012\000"
-ARM GAS  /tmp/cc6CChQX.s 			page 2
+  39 0080 42726961 		.ascii	"Brian se la come\000"
+ARM GAS  /tmp/ccebI6XP.s 			page 2
 
 
-  39      6E756D65 
-  39      726F3A20 
-  39      2564207C 
-  39      20537461 
-  40 009e 0000     		.align	2
+  39      6E207365 
+  39      206C6120 
+  39      636F6D65 
+  39      00
+  40 0091 000000   		.align	2
   41              	.LC8:
-  42 00a0 4572726F 		.ascii	"Error escribiendo: %d\015\012\000"
+  42 0094 4572726F 		.ascii	"Error escribiendo: %d\015\012\000"
   42      72206573 
   42      63726962 
   42      69656E64 
   42      6F3A2025 
   43              		.align	2
   44              	.LC9:
-  45 00b8 4E6F2073 		.ascii	"No se pudo abrir el archivo: %d\015\012\000"
+  45 00ac 4E6F2073 		.ascii	"No se pudo abrir el archivo: %d\015\012\000"
   45      65207075 
   45      646F2061 
   45      62726972 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   27:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
   28:Core/Src/freertos.c **** #include "ff.h"
   29:Core/Src/freertos.c **** #include "ff_gen_drv.h"
-ARM GAS  /tmp/cc6CChQX.s 			page 3
+ARM GAS  /tmp/ccebI6XP.s 			page 3
 
 
   30:Core/Src/freertos.c **** #include "fatfs.h"
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   84:Core/Src/freertos.c ****   * @param  None
   85:Core/Src/freertos.c ****   * @retval None
   86:Core/Src/freertos.c ****   */
-ARM GAS  /tmp/cc6CChQX.s 			page 4
+ARM GAS  /tmp/ccebI6XP.s 			page 4
 
 
   87:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  128:Core/Src/freertos.c ****   FATFS fs;         // Objeto del sistema de archivos
   70              		.loc 1 128 3 is_stmt 1 view .LVU2
  129:Core/Src/freertos.c ****   FIL file;          // Objeto del archivo
-ARM GAS  /tmp/cc6CChQX.s 			page 5
+ARM GAS  /tmp/ccebI6XP.s 			page 5
 
 
   71              		.loc 1 129 3 view .LVU3
@@ -254,7 +254,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  134:Core/Src/freertos.c **** 
  135:Core/Src/freertos.c ****   printf("\r\n--- Iniciando Tarea SD ---\r\n");
   77              		.loc 1 135 3 view .LVU8
-  78 0006 2D48     		ldr	r0, .L11
+  78 0006 2E48     		ldr	r0, .L11
   79              	.LVL2:
   80              		.loc 1 135 3 is_stmt 0 view .LVU9
   81 0008 FFF7FEFF 		bl	puts
@@ -266,7 +266,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   83              		.loc 1 139 3 is_stmt 1 view .LVU10
   84              		.loc 1 139 9 is_stmt 0 view .LVU11
   85 000c 0122     		movs	r2, #1
-  86 000e 2C49     		ldr	r1, .L11+4
+  86 000e 2D49     		ldr	r1, .L11+4
   87 0010 9DA8     		add	r0, sp, #628
   88 0012 FFF7FEFF 		bl	f_mount
   89              	.LVL4:
@@ -290,7 +290,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
   98 001a 91B1     		cbz	r1, .L10
   99              	.LVL6:
  100              	.L7:
- 149:Core/Src/freertos.c ****       printf("¡SD montada con éxito!\r\n");
+ 149:Core/Src/freertos.c ****       printf("¡SD montada con exito!\r\n");
  150:Core/Src/freertos.c **** 
  151:Core/Src/freertos.c ****       /* 2. Abrir o Crear el archivo */
  152:Core/Src/freertos.c ****       // FA_OPEN_ALWAYS: Abre si existe, crea si no.
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  154:Core/Src/freertos.c ****       res = f_open(&file, "LOG.TXT", FA_OPEN_ALWAYS | FA_WRITE);
  155:Core/Src/freertos.c **** 
  156:Core/Src/freertos.c ****       if (res == FR_OK) {
-ARM GAS  /tmp/cc6CChQX.s 			page 6
+ARM GAS  /tmp/ccebI6XP.s 			page 6
 
 
  157:Core/Src/freertos.c ****           /* 3. Ir al final del archivo para hacer un 'Append' */
@@ -309,8 +309,8 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  162:Core/Src/freertos.c ****           /* Bucle infinito de escritura */
  163:Core/Src/freertos.c ****           for(;;) {
  164:Core/Src/freertos.c ****               contador++;
- 165:Core/Src/freertos.c ****               sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
- 166:Core/Src/freertos.c **** 
+ 165:Core/Src/freertos.c ****               //sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
+ 166:Core/Src/freertos.c ****               sprintf(buffer, "Brian se la come");
  167:Core/Src/freertos.c ****               res = f_write(&file, buffer, strlen(buffer), &bw);
  168:Core/Src/freertos.c ****               
  169:Core/Src/freertos.c ****               if (res == FR_OK) {
@@ -349,7 +349,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  109              	.L9:
  142:Core/Src/freertos.c ****       // Si falla, podrías intentar un reintento tras un delay
  110              		.loc 1 142 7 view .LVU19
- 111 0026 2748     		ldr	r0, .L11+8
+ 111 0026 2848     		ldr	r0, .L11+8
  112              	.LVL9:
  142:Core/Src/freertos.c ****       // Si falla, podrías intentar un reintento tras un delay
  113              		.loc 1 142 7 is_stmt 0 view .LVU20
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  144:Core/Src/freertos.c ****       res = f_mount(&fs, USERPath, 1);
  116              		.loc 1 144 7 is_stmt 1 view .LVU21
  117 002c 4FF47A70 		mov	r0, #1000
-ARM GAS  /tmp/cc6CChQX.s 			page 7
+ARM GAS  /tmp/ccebI6XP.s 			page 7
 
 
  118 0030 FFF7FEFF 		bl	osDelay
@@ -368,7 +368,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  145:Core/Src/freertos.c ****   }
  121              		.loc 1 145 13 is_stmt 0 view .LVU23
  122 0034 0122     		movs	r2, #1
- 123 0036 2249     		ldr	r1, .L11+4
+ 123 0036 2349     		ldr	r1, .L11+4
  124 0038 9DA8     		add	r0, sp, #628
  125 003a FFF7FEFF 		bl	f_mount
  126              	.LVL12:
@@ -380,7 +380,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  131              	.L10:
  149:Core/Src/freertos.c **** 
  132              		.loc 1 149 7 is_stmt 1 view .LVU25
- 133 0042 2148     		ldr	r0, .L11+12
+ 133 0042 2248     		ldr	r0, .L11+12
  134 0044 FFF7FEFF 		bl	puts
  135              	.LVL14:
  154:Core/Src/freertos.c **** 
@@ -388,7 +388,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  154:Core/Src/freertos.c **** 
  137              		.loc 1 154 13 is_stmt 0 view .LVU27
  138 0048 1222     		movs	r2, #18
- 139 004a 2049     		ldr	r1, .L11+16
+ 139 004a 2149     		ldr	r1, .L11+16
  140 004c 12A8     		add	r0, sp, #72
  141 004e FFF7FEFF 		bl	f_open
  142              	.LVL15:
@@ -397,7 +397,7 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  156:Core/Src/freertos.c ****           /* 3. Ir al final del archivo para hacer un 'Append' */
  144              		.loc 1 156 10 is_stmt 0 view .LVU29
  145 0052 0146     		mov	r1, r0
- 146 0054 68BB     		cbnz	r0, .L4
+ 146 0054 78BB     		cbnz	r0, .L4
  158:Core/Src/freertos.c ****           
  147              		.loc 1 158 11 is_stmt 1 view .LVU30
  148 0056 9599     		ldr	r1, [sp, #596]
@@ -409,307 +409,300 @@ ARM GAS  /tmp/cc6CChQX.s 			page 1
  153              	.LVL17:
  160:Core/Src/freertos.c **** 
  154              		.loc 1 160 11 is_stmt 1 view .LVU32
- 155 005e 1C49     		ldr	r1, .L11+20
+ 155 005e 1D49     		ldr	r1, .L11+20
  156 0060 12A8     		add	r0, sp, #72
  157 0062 FFF7FEFF 		bl	f_printf
  158              	.LVL18:
- 133:Core/Src/freertos.c **** 
- 159              		.loc 1 133 7 is_stmt 0 view .LVU33
- 160 0066 0024     		movs	r4, #0
- 161              	.LVL19:
- 162              	.L6:
-ARM GAS  /tmp/cc6CChQX.s 			page 8
-
-
+ 159              	.L6:
  163:Core/Src/freertos.c ****               contador++;
- 163              		.loc 1 163 11 is_stmt 1 view .LVU34
- 164:Core/Src/freertos.c ****               sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
- 164              		.loc 1 164 15 view .LVU35
- 164:Core/Src/freertos.c ****               sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
- 165              		.loc 1 164 23 is_stmt 0 view .LVU36
- 166 0068 0134     		adds	r4, r4, #1
- 167              	.LVL20:
- 165:Core/Src/freertos.c **** 
- 168              		.loc 1 165 15 is_stmt 1 view .LVU37
- 169 006a 2246     		mov	r2, r4
- 170 006c 1949     		ldr	r1, .L11+24
- 171 006e 01A8     		add	r0, sp, #4
- 172 0070 FFF7FEFF 		bl	sprintf
- 173              	.LVL21:
+ 160              		.loc 1 163 11 view .LVU33
+ 164:Core/Src/freertos.c ****               //sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
+ 161              		.loc 1 164 15 view .LVU34
+ARM GAS  /tmp/ccebI6XP.s 			page 8
+
+
+ 166:Core/Src/freertos.c ****               res = f_write(&file, buffer, strlen(buffer), &bw);
+ 162              		.loc 1 166 15 view .LVU35
+ 163 0066 0DF1040C 		add	ip, sp, #4
+ 164 006a 1B4C     		ldr	r4, .L11+24
+ 165 006c 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 166 006e ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 167 0072 2368     		ldr	r3, [r4]
+ 168 0074 8CF80030 		strb	r3, [ip]
  167:Core/Src/freertos.c ****               
- 174              		.loc 1 167 15 view .LVU38
+ 169              		.loc 1 167 15 view .LVU36
  167:Core/Src/freertos.c ****               
- 175              		.loc 1 167 21 is_stmt 0 view .LVU39
- 176 0074 01A8     		add	r0, sp, #4
- 177 0076 FFF7FEFF 		bl	strlen
- 178              	.LVL22:
- 179 007a 0246     		mov	r2, r0
- 180 007c 11AB     		add	r3, sp, #68
- 181 007e 01A9     		add	r1, sp, #4
- 182 0080 12A8     		add	r0, sp, #72
- 183 0082 FFF7FEFF 		bl	f_write
- 184              	.LVL23:
+ 170              		.loc 1 167 21 is_stmt 0 view .LVU37
+ 171 0078 01A8     		add	r0, sp, #4
+ 172 007a FFF7FEFF 		bl	strlen
+ 173              	.LVL19:
+ 174 007e 0246     		mov	r2, r0
+ 175 0080 11AB     		add	r3, sp, #68
+ 176 0082 01A9     		add	r1, sp, #4
+ 177 0084 12A8     		add	r0, sp, #72
+ 178 0086 FFF7FEFF 		bl	f_write
+ 179              	.LVL20:
  169:Core/Src/freertos.c ****                   // f_sync asegura que los datos se guarden físicamente
- 185              		.loc 1 169 15 is_stmt 1 view .LVU40
+ 180              		.loc 1 169 15 is_stmt 1 view .LVU38
  169:Core/Src/freertos.c ****                   // f_sync asegura que los datos se guarden físicamente
- 186              		.loc 1 169 18 is_stmt 0 view .LVU41
- 187 0086 0146     		mov	r1, r0
- 188 0088 60B9     		cbnz	r0, .L5
+ 181              		.loc 1 169 18 is_stmt 0 view .LVU39
+ 182 008a 0146     		mov	r1, r0
+ 183 008c 60B9     		cbnz	r0, .L5
  172:Core/Src/freertos.c ****                   
- 189              		.loc 1 172 19 is_stmt 1 view .LVU42
- 190 008a 12A8     		add	r0, sp, #72
- 191              	.LVL24:
+ 184              		.loc 1 172 19 is_stmt 1 view .LVU40
+ 185 008e 12A8     		add	r0, sp, #72
+ 186              	.LVL21:
  172:Core/Src/freertos.c ****                   
- 192              		.loc 1 172 19 is_stmt 0 view .LVU43
- 193 008c FFF7FEFF 		bl	f_sync
- 194              	.LVL25:
+ 187              		.loc 1 172 19 is_stmt 0 view .LVU41
+ 188 0090 FFF7FEFF 		bl	f_sync
+ 189              	.LVL22:
  175:Core/Src/freertos.c ****               } else {
- 195              		.loc 1 175 19 is_stmt 1 view .LVU44
- 196 0090 4FF40051 		mov	r1, #8192
- 197 0094 1048     		ldr	r0, .L11+28
- 198 0096 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 199              	.LVL26:
+ 190              		.loc 1 175 19 is_stmt 1 view .LVU42
+ 191 0094 4FF40051 		mov	r1, #8192
+ 192 0098 1048     		ldr	r0, .L11+28
+ 193 009a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 194              	.LVL23:
  181:Core/Src/freertos.c ****           }
- 200              		.loc 1 181 15 view .LVU45
- 201 009a 4FF47A70 		mov	r0, #1000
- 202 009e FFF7FEFF 		bl	osDelay
- 203              	.LVL27:
+ 195              		.loc 1 181 15 view .LVU43
+ 196 009e 4FF47A70 		mov	r0, #1000
+ 197 00a2 FFF7FEFF 		bl	osDelay
+ 198              	.LVL24:
  163:Core/Src/freertos.c ****               contador++;
- 204              		.loc 1 163 16 view .LVU46
- 164:Core/Src/freertos.c ****               sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
- 205              		.loc 1 164 23 is_stmt 0 view .LVU47
-ARM GAS  /tmp/cc6CChQX.s 			page 9
+ 199              		.loc 1 163 16 view .LVU44
+ 164:Core/Src/freertos.c ****               //sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
+ 200              		.loc 1 164 23 is_stmt 0 view .LVU45
+ 201 00a6 DEE7     		b	.L6
+ 202              	.LVL25:
+ 203              	.L5:
+ 177:Core/Src/freertos.c ****                   break; // Salir si hay error físico (ej. sacaron la SD)
+ 204              		.loc 1 177 19 is_stmt 1 view .LVU46
+ 205 00a8 0D48     		ldr	r0, .L11+32
+ 206              	.LVL26:
+ARM GAS  /tmp/ccebI6XP.s 			page 9
 
 
- 206 00a2 E1E7     		b	.L6
- 207              	.LVL28:
- 208              	.L5:
  177:Core/Src/freertos.c ****                   break; // Salir si hay error físico (ej. sacaron la SD)
- 209              		.loc 1 177 19 is_stmt 1 view .LVU48
- 210 00a4 0D48     		ldr	r0, .L11+32
- 211              	.LVL29:
- 177:Core/Src/freertos.c ****                   break; // Salir si hay error físico (ej. sacaron la SD)
- 212              		.loc 1 177 19 is_stmt 0 view .LVU49
- 213 00a6 FFF7FEFF 		bl	printf
- 214              	.LVL30:
+ 207              		.loc 1 177 19 is_stmt 0 view .LVU47
+ 208 00aa FFF7FEFF 		bl	printf
+ 209              	.LVL27:
  178:Core/Src/freertos.c ****               }
- 215              		.loc 1 178 19 is_stmt 1 view .LVU50
+ 210              		.loc 1 178 19 is_stmt 1 view .LVU48
  184:Core/Src/freertos.c ****       } else {
- 216              		.loc 1 184 11 view .LVU51
- 217 00aa 12A8     		add	r0, sp, #72
- 218 00ac FFF7FEFF 		bl	f_close
- 219              	.LVL31:
- 220 00b0 B4E7     		b	.L7
- 221              	.LVL32:
- 222              	.L4:
+ 211              		.loc 1 184 11 view .LVU49
+ 212 00ae 12A8     		add	r0, sp, #72
+ 213 00b0 FFF7FEFF 		bl	f_close
+ 214              	.LVL28:
+ 215 00b4 B2E7     		b	.L7
+ 216              	.LVL29:
+ 217              	.L4:
  186:Core/Src/freertos.c ****       }
- 223              		.loc 1 186 11 view .LVU52
- 224 00b2 0B48     		ldr	r0, .L11+36
- 225              	.LVL33:
+ 218              		.loc 1 186 11 view .LVU50
+ 219 00b6 0B48     		ldr	r0, .L11+36
+ 220              	.LVL30:
  186:Core/Src/freertos.c ****       }
- 226              		.loc 1 186 11 is_stmt 0 view .LVU53
- 227 00b4 FFF7FEFF 		bl	printf
- 228              	.LVL34:
- 229 00b8 B0E7     		b	.L7
- 230              	.L12:
- 231 00ba 00BF     		.align	2
- 232              	.L11:
- 233 00bc 00000000 		.word	.LC2
- 234 00c0 00000000 		.word	USERPath
- 235 00c4 20000000 		.word	.LC3
- 236 00c8 3C000000 		.word	.LC4
- 237 00cc 58000000 		.word	.LC5
- 238 00d0 60000000 		.word	.LC6
- 239 00d4 80000000 		.word	.LC7
- 240 00d8 00100140 		.word	1073811456
- 241 00dc A0000000 		.word	.LC8
- 242 00e0 B8000000 		.word	.LC9
- 243              		.cfi_endproc
- 244              	.LFE75:
- 246              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
- 247              		.align	1
- 248              		.global	vApplicationGetIdleTaskMemory
- 249              		.syntax unified
- 250              		.thumb
- 251              		.thumb_func
- 253              	vApplicationGetIdleTaskMemory:
- 254              	.LVL35:
- 255              	.LFB73:
+ 221              		.loc 1 186 11 is_stmt 0 view .LVU51
+ 222 00b8 FFF7FEFF 		bl	printf
+ 223              	.LVL31:
+ 224 00bc AEE7     		b	.L7
+ 225              	.L12:
+ 226 00be 00BF     		.align	2
+ 227              	.L11:
+ 228 00c0 00000000 		.word	.LC2
+ 229 00c4 00000000 		.word	USERPath
+ 230 00c8 20000000 		.word	.LC3
+ 231 00cc 3C000000 		.word	.LC4
+ 232 00d0 58000000 		.word	.LC5
+ 233 00d4 60000000 		.word	.LC6
+ 234 00d8 80000000 		.word	.LC7
+ 235 00dc 00100140 		.word	1073811456
+ 236 00e0 94000000 		.word	.LC8
+ 237 00e4 AC000000 		.word	.LC9
+ 238              		.cfi_endproc
+ 239              	.LFE75:
+ 241              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+ 242              		.align	1
+ 243              		.global	vApplicationGetIdleTaskMemory
+ 244              		.syntax unified
+ 245              		.thumb
+ 246              		.thumb_func
+ 248              	vApplicationGetIdleTaskMemory:
+ 249              	.LVL32:
+ 250              	.LFB73:
   74:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
- 256              		.loc 1 74 1 is_stmt 1 view -0
- 257              		.cfi_startproc
-ARM GAS  /tmp/cc6CChQX.s 			page 10
+ 251              		.loc 1 74 1 is_stmt 1 view -0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              		@ link register save eliminated.
+  75:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 256              		.loc 1 75 3 view .LVU53
+  75:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 257              		.loc 1 75 25 is_stmt 0 view .LVU54
+ARM GAS  /tmp/ccebI6XP.s 			page 10
 
 
- 258              		@ args = 0, pretend = 0, frame = 0
- 259              		@ frame_needed = 0, uses_anonymous_args = 0
- 260              		@ link register save eliminated.
-  75:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 261              		.loc 1 75 3 view .LVU55
-  75:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 262              		.loc 1 75 25 is_stmt 0 view .LVU56
- 263 0000 034B     		ldr	r3, .L14
- 264 0002 0360     		str	r3, [r0]
+ 258 0000 034B     		ldr	r3, .L14
+ 259 0002 0360     		str	r3, [r0]
   76:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 265              		.loc 1 76 3 is_stmt 1 view .LVU57
+ 260              		.loc 1 76 3 is_stmt 1 view .LVU55
   76:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 266              		.loc 1 76 27 is_stmt 0 view .LVU58
- 267 0004 034B     		ldr	r3, .L14+4
- 268 0006 0B60     		str	r3, [r1]
+ 261              		.loc 1 76 27 is_stmt 0 view .LVU56
+ 262 0004 034B     		ldr	r3, .L14+4
+ 263 0006 0B60     		str	r3, [r1]
   77:Core/Src/freertos.c ****   /* place for user code */
- 269              		.loc 1 77 3 is_stmt 1 view .LVU59
+ 264              		.loc 1 77 3 is_stmt 1 view .LVU57
   77:Core/Src/freertos.c ****   /* place for user code */
- 270              		.loc 1 77 25 is_stmt 0 view .LVU60
- 271 0008 8023     		movs	r3, #128
- 272 000a 1360     		str	r3, [r2]
+ 265              		.loc 1 77 25 is_stmt 0 view .LVU58
+ 266 0008 8023     		movs	r3, #128
+ 267 000a 1360     		str	r3, [r2]
   79:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
- 273              		.loc 1 79 1 view .LVU61
- 274 000c 7047     		bx	lr
- 275              	.L15:
- 276 000e 00BF     		.align	2
- 277              	.L14:
- 278 0010 00000000 		.word	.LANCHOR0
- 279 0014 00000000 		.word	.LANCHOR1
- 280              		.cfi_endproc
- 281              	.LFE73:
- 283              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
- 284              		.align	1
- 285              		.global	MX_FREERTOS_Init
- 286              		.syntax unified
- 287              		.thumb
- 288              		.thumb_func
- 290              	MX_FREERTOS_Init:
- 291              	.LFB74:
+ 268              		.loc 1 79 1 view .LVU59
+ 269 000c 7047     		bx	lr
+ 270              	.L15:
+ 271 000e 00BF     		.align	2
+ 272              	.L14:
+ 273 0010 00000000 		.word	.LANCHOR0
+ 274 0014 00000000 		.word	.LANCHOR1
+ 275              		.cfi_endproc
+ 276              	.LFE73:
+ 278              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	MX_FREERTOS_Init
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 285              	MX_FREERTOS_Init:
+ 286              	.LFB74:
   87:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
- 292              		.loc 1 87 29 is_stmt 1 view -0
- 293              		.cfi_startproc
- 294              		@ args = 0, pretend = 0, frame = 32
- 295              		@ frame_needed = 0, uses_anonymous_args = 0
- 296 0000 10B5     		push	{r4, lr}
- 297              	.LCFI2:
- 298              		.cfi_def_cfa_offset 8
- 299              		.cfi_offset 4, -8
- 300              		.cfi_offset 14, -4
- 301 0002 88B0     		sub	sp, sp, #32
- 302              	.LCFI3:
- 303              		.cfi_def_cfa_offset 40
+ 287              		.loc 1 87 29 is_stmt 1 view -0
+ 288              		.cfi_startproc
+ 289              		@ args = 0, pretend = 0, frame = 32
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291 0000 10B5     		push	{r4, lr}
+ 292              	.LCFI2:
+ 293              		.cfi_def_cfa_offset 8
+ 294              		.cfi_offset 4, -8
+ 295              		.cfi_offset 14, -4
+ 296 0002 88B0     		sub	sp, sp, #32
+ 297              	.LCFI3:
+ 298              		.cfi_def_cfa_offset 40
  110:Core/Src/freertos.c ****   loggerHandle = osThreadCreate(osThread(logger), NULL);
- 304              		.loc 1 110 3 view .LVU63
- 305 0004 0DF1040C 		add	ip, sp, #4
- 306 0008 074C     		ldr	r4, .L18
- 307 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
-ARM GAS  /tmp/cc6CChQX.s 			page 11
+ 299              		.loc 1 110 3 view .LVU61
+ 300 0004 0DF1040C 		add	ip, sp, #4
+ 301 0008 074C     		ldr	r4, .L18
+ 302 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 303 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 304 0010 94E80700 		ldm	r4, {r0, r1, r2}
+ 305 0014 8CE80700 		stm	ip, {r0, r1, r2}
+ 111:Core/Src/freertos.c **** 
+ 306              		.loc 1 111 3 view .LVU62
+ 111:Core/Src/freertos.c **** 
+ 307              		.loc 1 111 18 is_stmt 0 view .LVU63
+ARM GAS  /tmp/ccebI6XP.s 			page 11
 
 
- 308 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
- 309 0010 94E80700 		ldm	r4, {r0, r1, r2}
- 310 0014 8CE80700 		stm	ip, {r0, r1, r2}
+ 308 0018 0021     		movs	r1, #0
+ 309 001a 01A8     		add	r0, sp, #4
+ 310 001c FFF7FEFF 		bl	osThreadCreate
+ 311              	.LVL33:
  111:Core/Src/freertos.c **** 
- 311              		.loc 1 111 3 view .LVU64
- 111:Core/Src/freertos.c **** 
- 312              		.loc 1 111 18 is_stmt 0 view .LVU65
- 313 0018 0021     		movs	r1, #0
- 314 001a 01A8     		add	r0, sp, #4
- 315 001c FFF7FEFF 		bl	osThreadCreate
- 316              	.LVL36:
- 111:Core/Src/freertos.c **** 
- 317              		.loc 1 111 16 view .LVU66
- 318 0020 024B     		ldr	r3, .L18+4
- 319 0022 1860     		str	r0, [r3]
+ 312              		.loc 1 111 16 view .LVU64
+ 313 0020 024B     		ldr	r3, .L18+4
+ 314 0022 1860     		str	r0, [r3]
  117:Core/Src/freertos.c **** 
- 320              		.loc 1 117 1 view .LVU67
- 321 0024 08B0     		add	sp, sp, #32
- 322              	.LCFI4:
- 323              		.cfi_def_cfa_offset 8
- 324              		@ sp needed
- 325 0026 10BD     		pop	{r4, pc}
- 326              	.L19:
- 327              		.align	2
- 328              	.L18:
- 329 0028 00000000 		.word	.LANCHOR2
- 330 002c 00000000 		.word	.LANCHOR3
- 331              		.cfi_endproc
- 332              	.LFE74:
- 334              		.global	loggerHandle
- 335              		.section	.rodata
- 336              		.align	2
- 337              		.set	.LANCHOR2,. + 0
- 338              	.LC10:
- 339 0000 00000000 		.word	.LC0
- 340 0004 00000000 		.word	StartLogger
- 341 0008 0000     		.short	0
- 342 000a 0000     		.space	2
- 343 000c 00000000 		.word	0
- 344 0010 00020000 		.word	512
- 345 0014 00000000 		.word	0
- 346 0018 00000000 		.word	0
- 347              		.section	.bss.loggerHandle,"aw",%nobits
- 348              		.align	2
- 349              		.set	.LANCHOR3,. + 0
- 352              	loggerHandle:
- 353 0000 00000000 		.space	4
- 354              		.section	.bss.xIdleStack,"aw",%nobits
- 355              		.align	2
- 356              		.set	.LANCHOR1,. + 0
- 359              	xIdleStack:
- 360 0000 00000000 		.space	512
- 360      00000000 
- 360      00000000 
- 360      00000000 
- 360      00000000 
- 361              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
-ARM GAS  /tmp/cc6CChQX.s 			page 12
+ 315              		.loc 1 117 1 view .LVU65
+ 316 0024 08B0     		add	sp, sp, #32
+ 317              	.LCFI4:
+ 318              		.cfi_def_cfa_offset 8
+ 319              		@ sp needed
+ 320 0026 10BD     		pop	{r4, pc}
+ 321              	.L19:
+ 322              		.align	2
+ 323              	.L18:
+ 324 0028 00000000 		.word	.LANCHOR2
+ 325 002c 00000000 		.word	.LANCHOR3
+ 326              		.cfi_endproc
+ 327              	.LFE74:
+ 329              		.global	loggerHandle
+ 330              		.section	.rodata
+ 331              		.align	2
+ 332              		.set	.LANCHOR2,. + 0
+ 333              	.LC10:
+ 334 0000 00000000 		.word	.LC0
+ 335 0004 00000000 		.word	StartLogger
+ 336 0008 0000     		.short	0
+ 337 000a 0000     		.space	2
+ 338 000c 00000000 		.word	0
+ 339 0010 00020000 		.word	512
+ 340 0014 00000000 		.word	0
+ 341 0018 00000000 		.word	0
+ 342              		.section	.bss.loggerHandle,"aw",%nobits
+ 343              		.align	2
+ 344              		.set	.LANCHOR3,. + 0
+ 347              	loggerHandle:
+ 348 0000 00000000 		.space	4
+ 349              		.section	.bss.xIdleStack,"aw",%nobits
+ 350              		.align	2
+ 351              		.set	.LANCHOR1,. + 0
+ 354              	xIdleStack:
+ 355 0000 00000000 		.space	512
+ 355      00000000 
+ 355      00000000 
+ 355      00000000 
+ 355      00000000 
+ 356              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 357              		.align	2
+ 358              		.set	.LANCHOR0,. + 0
+ 361              	xIdleTaskTCBBuffer:
+ 362 0000 00000000 		.space	84
+ 362      00000000 
+ 362      00000000 
+ 362      00000000 
+ARM GAS  /tmp/ccebI6XP.s 			page 12
 
 
- 362              		.align	2
- 363              		.set	.LANCHOR0,. + 0
- 366              	xIdleTaskTCBBuffer:
- 367 0000 00000000 		.space	84
- 367      00000000 
- 367      00000000 
- 367      00000000 
- 367      00000000 
- 368              		.text
- 369              	.Letext0:
- 370              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 371              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 372              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
- 373              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
- 374              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
- 375              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 376              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
- 377              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"
- 378              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 379              		.file 11 "Middlewares/Third_Party/FatFs/src/integer.h"
- 380              		.file 12 "Middlewares/Third_Party/FatFs/src/ff.h"
- 381              		.file 13 "FATFS/App/fatfs.h"
- 382              		.file 14 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
- 383              		.file 15 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
- 384              		.file 16 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 385              		.file 17 "<built-in>"
-ARM GAS  /tmp/cc6CChQX.s 			page 13
+ 362      00000000 
+ 363              		.text
+ 364              	.Letext0:
+ 365              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 366              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 367              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 368              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 369              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 370              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 371              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 372              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"
+ 373              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 374              		.file 11 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 375              		.file 12 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 376              		.file 13 "FATFS/App/fatfs.h"
+ 377              		.file 14 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 378              		.file 15 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 379              		.file 16 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 380              		.file 17 "<built-in>"
+ARM GAS  /tmp/ccebI6XP.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/cc6CChQX.s:15     .rodata.str1.4:0000000000000000 $d
-     /tmp/cc6CChQX.s:22     .rodata.StartLogger.str1.4:0000000000000000 $d
-     /tmp/cc6CChQX.s:47     .text.StartLogger:0000000000000000 $t
-     /tmp/cc6CChQX.s:53     .text.StartLogger:0000000000000000 StartLogger
-     /tmp/cc6CChQX.s:233    .text.StartLogger:00000000000000bc $d
-     /tmp/cc6CChQX.s:247    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
-     /tmp/cc6CChQX.s:253    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
-     /tmp/cc6CChQX.s:278    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
-     /tmp/cc6CChQX.s:284    .text.MX_FREERTOS_Init:0000000000000000 $t
-     /tmp/cc6CChQX.s:290    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
-     /tmp/cc6CChQX.s:329    .text.MX_FREERTOS_Init:0000000000000028 $d
-     /tmp/cc6CChQX.s:352    .bss.loggerHandle:0000000000000000 loggerHandle
-     /tmp/cc6CChQX.s:336    .rodata:0000000000000000 $d
-     /tmp/cc6CChQX.s:348    .bss.loggerHandle:0000000000000000 $d
-     /tmp/cc6CChQX.s:355    .bss.xIdleStack:0000000000000000 $d
-     /tmp/cc6CChQX.s:359    .bss.xIdleStack:0000000000000000 xIdleStack
-     /tmp/cc6CChQX.s:362    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
-     /tmp/cc6CChQX.s:366    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
+     /tmp/ccebI6XP.s:15     .rodata.str1.4:0000000000000000 $d
+     /tmp/ccebI6XP.s:22     .rodata.StartLogger.str1.4:0000000000000000 $d
+     /tmp/ccebI6XP.s:47     .text.StartLogger:0000000000000000 $t
+     /tmp/ccebI6XP.s:53     .text.StartLogger:0000000000000000 StartLogger
+     /tmp/ccebI6XP.s:228    .text.StartLogger:00000000000000c0 $d
+     /tmp/ccebI6XP.s:242    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
+     /tmp/ccebI6XP.s:248    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
+     /tmp/ccebI6XP.s:273    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
+     /tmp/ccebI6XP.s:279    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/ccebI6XP.s:285    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/ccebI6XP.s:324    .text.MX_FREERTOS_Init:0000000000000028 $d
+     /tmp/ccebI6XP.s:347    .bss.loggerHandle:0000000000000000 loggerHandle
+     /tmp/ccebI6XP.s:331    .rodata:0000000000000000 $d
+     /tmp/ccebI6XP.s:343    .bss.loggerHandle:0000000000000000 $d
+     /tmp/ccebI6XP.s:350    .bss.xIdleStack:0000000000000000 $d
+     /tmp/ccebI6XP.s:354    .bss.xIdleStack:0000000000000000 xIdleStack
+     /tmp/ccebI6XP.s:357    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
+     /tmp/ccebI6XP.s:361    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
 
 UNDEFINED SYMBOLS
 puts
@@ -719,7 +712,6 @@ printf
 f_open
 f_lseek
 f_printf
-sprintf
 strlen
 f_write
 f_sync

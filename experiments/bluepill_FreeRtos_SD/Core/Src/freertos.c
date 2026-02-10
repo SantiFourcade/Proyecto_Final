@@ -146,7 +146,7 @@ void StartLogger(void const * argument)
   }
 
   if (res == FR_OK) {
-      printf("¡SD montada con éxito!\r\n");
+      printf("¡SD montada con exito!\r\n");
 
       /* 2. Abrir o Crear el archivo */
       // FA_OPEN_ALWAYS: Abre si existe, crea si no.
@@ -163,7 +163,6 @@ void StartLogger(void const * argument)
           for(;;) {
               contador++;
               sprintf(buffer, "Log numero: %d | Status: OK\r\n", contador);
-
               res = f_write(&file, buffer, strlen(buffer), &bw);
               
               if (res == FR_OK) {
