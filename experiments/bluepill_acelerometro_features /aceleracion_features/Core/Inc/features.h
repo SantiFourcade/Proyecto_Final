@@ -17,6 +17,11 @@ typedef struct {
     float crest;
 } vib_features_t;
 
+typedef struct {
+    accel_window_t accel;
+    uint16_t temp;
+} raw_data_t;
+
 void Features_ComputeRMSPeak(const accel_window_t *window,
                              vib_features_t *features);
 

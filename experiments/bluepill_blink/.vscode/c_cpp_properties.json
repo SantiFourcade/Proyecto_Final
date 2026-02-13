@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "STM32F103",
-      "compilerPath": "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc",
+      "compilerPath": "/usr/bin/arm-none-eabi-gcc",
       "cStandard": "c11",
       "intelliSenseMode": "gcc-arm",
       "defines": [

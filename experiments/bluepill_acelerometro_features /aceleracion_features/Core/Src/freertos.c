@@ -18,30 +18,28 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+//#include "FreeRTOS.h"
+//#include "task.h"
+//#include "main.h"
+//#include "cmsis_os.h"
+
 #include "FreeRTOS.h"
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "adxl345.h"
-#include "i2c.h"
-#include "usart.h"
-#include <stdint.h>
-#include "features.h"
-#include "can_app.h"
-#include "usart.h"
-#include <stdio.h>
 #include "queue.h"
 
-/* RTOS objects */
-osThreadId accelTaskHandle;
-osThreadId featureTaskHandle;
-osThreadId canTaskHandle;
+#include "adxl345.h"
 
-osMessageQId accelQueueHandle;
-osMessageQId featureQueueHandle;
+#include "i2c.h"
+#include "usart.h"
 
-QueueHandle_t accelQueue;
-QueueHandle_t featureQueue;
+#include "features.h"
+#include "can_app.h"
+
+#include <stdint.h>
+#include <stdio.h>
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -50,7 +48,35 @@ QueueHandle_t featureQueue;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+//typedef struct {
+  //  int16_t ax;
+  //  int16_t ay;
+  //  int16_t az;
+//} accel_msg_t;
 
+//typedef struct {
+//    accel_window_t accel;
+//    uint16_t temp;
+//} raw_data_t;
+
+//typedef struct {
+//    uint16_t rms;
+//    uint16_t variance;
+//    uint16_t temp;
+//} feature_frame_t;
+
+//typedef enum {
+//    CAN_MSG_ACCEL,
+//    CAN_MSG_FEATURE
+//} can_msg_type_t;
+
+//typedef struct {
+//    can_msg_type_t type;
+//    union {
+//        accel_msg_t        accel;
+//        feature_frame_t    feature;
+//    };
+//} can_msg_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -67,16 +93,24 @@ QueueHandle_t featureQueue;
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId AccelTaskHandle;
+osThreadId acquireHandle;
+osThreadId packageHandle;
+osThreadId txCANHandle;
+
+osMessageQId rawQueueHandle;
+osMessageQId canQueueHandle;
+
+QueueHandle_t rawQueue;
+QueueHandle_t canQueue;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-void StartAccelTask(void const * argument);
-void StartFeatureTask(void const * argument);
-void StartCANTask(void const * argument);
+
 /* USER CODE END FunctionPrototypes */
 
-void StartAccelTask(void const * argument);
+void StartAcquireTask(void const * argument);
+void StartPackageTask(void const * argument);
+void StartTxCAN(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -118,131 +152,134 @@ void MX_FREERTOS_Init(void) {
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
+  /* Create the queue(s) */
+  /* definition and creation of rawQueue */
+  //osMessageQDef(rawQueue, 16, sizeof(raw_data_t));
+  //rawQueueHandle = osMessageCreate(osMessageQ(rawQueue), NULL);
+
+  /* definition and creation of canQueue */
+  //osMessageQDef(canQueue, 16, sizeof(can_msg_t));
+  //canQueueHandle = osMessageCreate(osMessageQ(canQueue), NULL);
+
+
+  rawQueue = xQueueCreate(2, sizeof(accel_window_t));
+  canQueue = xQueueCreate(2, sizeof(vib_features_t));
+
+  configASSERT(rawQueue);
+  configASSERT(canQueue);
   /* USER CODE BEGIN RTOS_QUEUES */
-  //osMessageQDef(accelQueue, 2, accel_window_t);
-  //accelQueueHandle = osMessageCreate(osMessageQ(accelQueue), NULL);
-
-  //osMessageQDef(featureQueue, 2, vib_features_t);
-  //featureQueueHandle = osMessageCreate(osMessageQ(featureQueue), NULL);
-
-  accelQueue = xQueueCreate(2, sizeof(accel_window_t));
-  featureQueue = xQueueCreate(2, sizeof(vib_features_t));
-
-  configASSERT(accelQueue);
-  configASSERT(featureQueue);
+  /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of AccelTask */
+  /* definition and creation of acquire */
+  osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 256);
+  acquireHandle = osThreadCreate(osThread(acquire), NULL);
+
+  /* definition and creation of package */
+  osThreadDef(package, StartPackageTask, osPriorityNormal, 0, 256);
+  packageHandle = osThreadCreate(osThread(package), NULL);
+
+  /* definition and creation of txCAN */
+  osThreadDef(txCAN, StartTxCAN, osPriorityAboveNormal, 0, 256);
+  txCANHandle = osThreadCreate(osThread(txCAN), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
- osThreadDef(accelTask, StartAccelTask, osPriorityNormal, 0, 256);
- accelTaskHandle = osThreadCreate(osThread(accelTask), NULL);
-
- osThreadDef(featureTask, StartFeatureTask, osPriorityAboveNormal, 0, 1024);
- featureTaskHandle = osThreadCreate(osThread(featureTask), NULL);
-
- osThreadDef(canTask, StartCANTask, osPriorityLow, 0, 256);
- canTaskHandle = osThreadCreate(osThread(canTask), NULL);
+  /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
 }
 
-
-
-/* USER CODE BEGIN Header_StartAccelTask */
+/* USER CODE BEGIN Header_StartAcquireTask */
 /**
-* @brief Function implementing the AccelTask thread.
+  * @brief  Function implementing the acquire thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartAcquireTask */
+void StartAcquireTask(void const * argument)
+{
+  /* USER CODE BEGIN StartAcquireTask */
+  /* Infinite loop */
+  static accel_window_t window;
+  uint16_t idx = 0;
+  raw_data_t raw;
+  for(;;)
+  {
+        // -------- ADC --------
+    //HAL_ADC_Start(&hadc1);
+    //HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+    //raw.temp = HAL_ADC_GetValue(&hadc1);
+    //HAL_ADC_Stop(&hadc1);
+
+    // -------- Accel (placeholder) --------
+    ADXL345_ReadXYZ(&window.ax[idx],
+                    &window.ay[idx],
+                    &window.az[idx]);
+    idx++;
+    if (idx >= WINDOW_SIZE)
+    {
+        printf("RAW -> X:%d | Y:%d | Z:%d\r\n", 
+            window.ax[idx-1], 
+            window.ay[idx-1], 
+            window.az[idx-1]);
+        xQueueSend(rawQueue, &window, portMAX_DELAY);
+        idx = 0;
+    }
+    osDelay(2); // ej 10 Hz temperatura
+  }
+  /* USER CODE END StartAcquireTask */
+}
+
+/* USER CODE BEGIN Header_StartPackageTask */
+/**
+* @brief Function implementing the package thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartAccelTask */
-void StartAccelTask(void const * argument)
+/* USER CODE END Header_StartPackageTask */
+void StartPackageTask(void const * argument)
 {
-    static accel_window_t window;
-    uint16_t idx = 0;
+  /* USER CODE BEGIN StartPackageTask */
+  static accel_window_t window;
+  vib_features_t features;
+  char uart_buf[128];
+  /* Infinite loop */
+  for(;;)
+  {
+  xQueueReceive(rawQueue, &window, portMAX_DELAY);
+  Features_ComputeRMSPeak(&window, &features);
+  xQueueSend(canQueue, &features, portMAX_DELAY);
 
-    printf("Accel task started\r\n");
-
-    for (;;)
-    {
-        ADXL345_ReadXYZ(&window.ax[idx],
-                        &window.ay[idx],
-                        &window.az[idx]);
-
-        idx++;
-
-        if (idx >= WINDOW_SIZE)
-        {
-            printf("Accel window ready\r\n");
-
-            xQueueSend(accelQueue, &window, portMAX_DELAY);
-            idx = 0;
-        }
-
-        osDelay(2);
-    }
+  }
+  /* USER CODE END StartPackageTask */
 }
 
-
-
-
-void StartFeatureTask(void const * argument)
+/* USER CODE BEGIN Header_StartTxCAN */
+/**
+* @brief Function implementing the txCAN thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTxCAN */
+void StartTxCAN(void const * argument)
 {
-    accel_window_t window;
-    vib_features_t features;
-    char uart_buf[128];
-
-    printf("Feature task started\r\n");
-
-    for (;;)
-    {
-        xQueueReceive(accelQueue, &window, portMAX_DELAY);
-
-        //printf("Feature: window received\r\n");
-
-        Features_ComputeRMSPeak(&window, &features);
-
-        //snprintf(uart_buf, sizeof(uart_buf),
-          //       "RMS=%.3f | PEAK=%.3f | CREST=%.3f\r\n",
-            //     features.rms,
-              //   features.peak,
-                // features.crest);
-
-        //HAL_UART_Transmit(&huart1,
-          //                (uint8_t *)uart_buf,
-            //              strlen(uart_buf),
-              //            HAL_MAX_DELAY);
-
-        xQueueSend(featureQueue, &features, portMAX_DELAY);
-    }
+  /* USER CODE BEGIN StartTxCAN */
+  vib_features_t features;
+  /* Infinite loop */
+  for(;;)
+  {
+  xQueueReceive(canQueue, &features, portMAX_DELAY);
+  printf("CAN TX: RMS=%.3f CREST=%.3f PEAK=%.3f\r\n",
+          features.rms,
+          features.crest,
+          features.peak);
+  CAN_SendFloat(0x101, features.rms);
+  CAN_SendFloat(0x102, features.crest);
+  CAN_SendFloat(0x103, features.peak);
+  }
+  /* USER CODE END StartTxCAN */
 }
-
-
-
-void StartCANTask(void const * argument)
-{
-    vib_features_t features;
-
-    printf("CAN task started\r\n");
-
-    for (;;)
-    {
-        xQueueReceive(featureQueue, &features, portMAX_DELAY);
-
-        printf("CAN TX: RMS=%.3f CREST=%.3f PEAK=%.3f\r\n",
-               features.rms,
-               features.crest,
-               features.peak);
-
-        CAN_SendFloat(0x101, features.rms);
-        CAN_SendFloat(0x102, features.crest);
-        CAN_SendFloat(0x103, features.peak);
-    }
-}
-
-
-
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
