@@ -1,0 +1,263 @@
+ARM GAS  /tmp/ccruqwUD.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"features.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/features.c"
+  18              		.global	__aeabi_i2f
+  19              		.global	__aeabi_fmul
+  20              		.global	__aeabi_fadd
+  21              		.global	__aeabi_fcmpgt
+  22              		.global	__aeabi_fdiv
+  23              		.section	.text.Features_ComputeRMSPeak,"ax",%progbits
+  24              		.align	1
+  25              		.global	Features_ComputeRMSPeak
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	Features_ComputeRMSPeak:
+  31              	.LVL0:
+  32              	.LFB0:
+   1:Core/Src/features.c **** #include "features.h"
+   2:Core/Src/features.c **** #include <math.h>
+   3:Core/Src/features.c **** 
+   4:Core/Src/features.c **** void Features_ComputeRMSPeak(const accel_window_t *window,
+   5:Core/Src/features.c ****                              vib_features_t *features)
+   6:Core/Src/features.c **** {
+  33              		.loc 1 6 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37              		.loc 1 6 1 is_stmt 0 view .LVU1
+  38 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 32
+  41              		.cfi_offset 3, -32
+  42              		.cfi_offset 4, -28
+  43              		.cfi_offset 5, -24
+  44              		.cfi_offset 6, -20
+  45              		.cfi_offset 7, -16
+  46              		.cfi_offset 8, -12
+  47              		.cfi_offset 9, -8
+  48              		.cfi_offset 14, -4
+  49 0004 8046     		mov	r8, r0
+  50 0006 8946     		mov	r9, r1
+   7:Core/Src/features.c ****     float sum_sq = 0.0f;
+  51              		.loc 1 7 5 is_stmt 1 view .LVU2
+ARM GAS  /tmp/ccruqwUD.s 			page 2
+
+
+  52              	.LVL1:
+   8:Core/Src/features.c ****     float peak = 0.0f;
+  53              		.loc 1 8 5 view .LVU3
+   9:Core/Src/features.c ****     for (int i = 0; i < WINDOW_SIZE; i++)
+  54              		.loc 1 9 5 view .LVU4
+  55              	.LBB2:
+  56              		.loc 1 9 10 view .LVU5
+  57              		.loc 1 9 14 is_stmt 0 view .LVU6
+  58 0008 0025     		movs	r5, #0
+  59              	.LBE2:
+   8:Core/Src/features.c ****     float peak = 0.0f;
+  60              		.loc 1 8 11 view .LVU7
+  61 000a 0027     		movs	r7, #0
+   7:Core/Src/features.c ****     float sum_sq = 0.0f;
+  62              		.loc 1 7 11 view .LVU8
+  63 000c 3E46     		mov	r6, r7
+  64              	.LBB4:
+  65              		.loc 1 9 5 view .LVU9
+  66 000e 00E0     		b	.L2
+  67              	.LVL2:
+  68              	.L3:
+  69              		.loc 1 9 39 is_stmt 1 discriminator 2 view .LVU10
+  70 0010 0135     		adds	r5, r5, #1
+  71              	.LVL3:
+  72              	.L2:
+  73              		.loc 1 9 23 discriminator 1 view .LVU11
+  74 0012 092D     		cmp	r5, #9
+  75 0014 16DC     		bgt	.L7
+  76              	.LBB3:
+  10:Core/Src/features.c ****     {
+  11:Core/Src/features.c ****         float a = (float)window->ax[i];
+  77              		.loc 1 11 9 view .LVU12
+  78              		.loc 1 11 15 is_stmt 0 view .LVU13
+  79 0016 38F91500 		ldrsh	r0, [r8, r5, lsl #1]
+  80 001a FFF7FEFF 		bl	__aeabi_i2f
+  81              	.LVL4:
+  82 001e 0446     		mov	r4, r0
+  83              	.LVL5:
+  12:Core/Src/features.c ****         sum_sq += a * a;
+  84              		.loc 1 12 9 is_stmt 1 view .LVU14
+  85              		.loc 1 12 21 is_stmt 0 view .LVU15
+  86 0020 0146     		mov	r1, r0
+  87 0022 FFF7FEFF 		bl	__aeabi_fmul
+  88              	.LVL6:
+  89              		.loc 1 12 21 view .LVU16
+  90 0026 0146     		mov	r1, r0
+  91              		.loc 1 12 16 view .LVU17
+  92 0028 3046     		mov	r0, r6
+  93 002a FFF7FEFF 		bl	__aeabi_fadd
+  94              	.LVL7:
+  95 002e 0646     		mov	r6, r0
+  96              	.LVL8:
+  13:Core/Src/features.c ****         if (fabsf(a) > peak)
+  97              		.loc 1 13 9 is_stmt 1 view .LVU18
+  98              		.loc 1 13 13 is_stmt 0 view .LVU19
+  99 0030 24F00044 		bic	r4, r4, #-2147483648
+ 100              	.LVL9:
+ARM GAS  /tmp/ccruqwUD.s 			page 3
+
+
+ 101              		.loc 1 13 12 view .LVU20
+ 102 0034 3946     		mov	r1, r7
+ 103 0036 2046     		mov	r0, r4
+ 104              	.LVL10:
+ 105              		.loc 1 13 12 view .LVU21
+ 106 0038 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 107              	.LVL11:
+ 108 003c 0028     		cmp	r0, #0
+ 109 003e E7D0     		beq	.L3
+  14:Core/Src/features.c ****             peak = fabsf(a);
+ 110              		.loc 1 14 18 view .LVU22
+ 111 0040 2746     		mov	r7, r4
+ 112              	.LVL12:
+ 113              		.loc 1 14 18 view .LVU23
+ 114 0042 E5E7     		b	.L3
+ 115              	.LVL13:
+ 116              	.L7:
+ 117              		.loc 1 14 18 view .LVU24
+ 118              	.LBE3:
+ 119              	.LBE4:
+  15:Core/Src/features.c ****     }
+  16:Core/Src/features.c ****     features->rms = sqrtf(sum_sq / WINDOW_SIZE);
+ 120              		.loc 1 16 5 is_stmt 1 view .LVU25
+ 121              		.loc 1 16 21 is_stmt 0 view .LVU26
+ 122 0044 0849     		ldr	r1, .L8
+ 123 0046 3046     		mov	r0, r6
+ 124 0048 FFF7FEFF 		bl	__aeabi_fdiv
+ 125              	.LVL14:
+ 126 004c FFF7FEFF 		bl	sqrtf
+ 127              	.LVL15:
+ 128 0050 0146     		mov	r1, r0
+ 129              		.loc 1 16 19 discriminator 1 view .LVU27
+ 130 0052 C9F80000 		str	r0, [r9]	@ float
+  17:Core/Src/features.c ****     features->peak = peak;
+ 131              		.loc 1 17 5 is_stmt 1 view .LVU28
+ 132              		.loc 1 17 20 is_stmt 0 view .LVU29
+ 133 0056 C9F80470 		str	r7, [r9, #4]	@ float
+  18:Core/Src/features.c ****     features->crest = peak / features->rms;
+ 134              		.loc 1 18 5 is_stmt 1 view .LVU30
+ 135              		.loc 1 18 28 is_stmt 0 view .LVU31
+ 136 005a 3846     		mov	r0, r7
+ 137 005c FFF7FEFF 		bl	__aeabi_fdiv
+ 138              	.LVL16:
+ 139              		.loc 1 18 21 view .LVU32
+ 140 0060 C9F80800 		str	r0, [r9, #8]	@ float
+  19:Core/Src/features.c **** }
+ 141              		.loc 1 19 1 view .LVU33
+ 142 0064 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 143              	.LVL17:
+ 144              	.L9:
+ 145              		.loc 1 19 1 view .LVU34
+ 146              		.align	2
+ 147              	.L8:
+ 148 0068 00002041 		.word	1092616192
+ 149              		.cfi_endproc
+ 150              	.LFE0:
+ 152              		.global	__aeabi_ui2f
+ARM GAS  /tmp/ccruqwUD.s 			page 4
+
+
+ 153              		.section	.text.ADC_To_Temp,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	ADC_To_Temp
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	ADC_To_Temp:
+ 161              	.LVL18:
+ 162              	.LFB1:
+  20:Core/Src/features.c **** 
+  21:Core/Src/features.c **** float ADC_To_Temp(uint16_t adc)
+  22:Core/Src/features.c **** {
+ 163              		.loc 1 22 1 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		.loc 1 22 1 is_stmt 0 view .LVU36
+ 168 0000 08B5     		push	{r3, lr}
+ 169              	.LCFI1:
+ 170              		.cfi_def_cfa_offset 8
+ 171              		.cfi_offset 3, -8
+ 172              		.cfi_offset 14, -4
+  23:Core/Src/features.c ****     float v = (float)adc * 3.3f / 4095.0f;
+ 173              		.loc 1 23 5 is_stmt 1 view .LVU37
+ 174              		.loc 1 23 15 is_stmt 0 view .LVU38
+ 175 0002 FFF7FEFF 		bl	__aeabi_ui2f
+ 176              	.LVL19:
+ 177              		.loc 1 23 26 view .LVU39
+ 178 0006 0549     		ldr	r1, .L12
+ 179 0008 FFF7FEFF 		bl	__aeabi_fmul
+ 180              	.LVL20:
+ 181              		.loc 1 23 11 view .LVU40
+ 182 000c 0449     		ldr	r1, .L12+4
+ 183 000e FFF7FEFF 		bl	__aeabi_fdiv
+ 184              	.LVL21:
+  24:Core/Src/features.c ****     return v / 0.01f;   // LM35: 10mV/°C
+ 185              		.loc 1 24 5 is_stmt 1 view .LVU41
+ 186              		.loc 1 24 14 is_stmt 0 view .LVU42
+ 187 0012 0449     		ldr	r1, .L12+8
+ 188 0014 FFF7FEFF 		bl	__aeabi_fdiv
+ 189              	.LVL22:
+  25:Core/Src/features.c **** }...
+ 190              		.loc 1 25 1 view .LVU43
+ 191 0018 08BD     		pop	{r3, pc}
+ 192              	.L13:
+ 193 001a 00BF     		.align	2
+ 194              	.L12:
+ 195 001c 33335340 		.word	1079194419
+ 196 0020 00F07F45 		.word	1166012416
+ 197 0024 0AD7233C 		.word	1008981770
+ 198              		.cfi_endproc
+ 199              	.LFE1:
+ 201              		.text
+ 202              	.Letext0:
+ 203              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ 204              		.file 3 "Core/Inc/features.h"
+ 205              		.file 4 "/usr/include/newlib/math.h"
+ARM GAS  /tmp/ccruqwUD.s 			page 5
+
+
+ARM GAS  /tmp/ccruqwUD.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 features.c
+     /tmp/ccruqwUD.s:24     .text.Features_ComputeRMSPeak:00000000 $t
+     /tmp/ccruqwUD.s:30     .text.Features_ComputeRMSPeak:00000000 Features_ComputeRMSPeak
+     /tmp/ccruqwUD.s:148    .text.Features_ComputeRMSPeak:00000068 $d
+     /tmp/ccruqwUD.s:154    .text.ADC_To_Temp:00000000 $t
+     /tmp/ccruqwUD.s:160    .text.ADC_To_Temp:00000000 ADC_To_Temp
+     /tmp/ccruqwUD.s:195    .text.ADC_To_Temp:0000001c $d
+
+UNDEFINED SYMBOLS
+__aeabi_i2f
+__aeabi_fmul
+__aeabi_fadd
+__aeabi_fcmpgt
+__aeabi_fdiv
+sqrtf
+__aeabi_ui2f
