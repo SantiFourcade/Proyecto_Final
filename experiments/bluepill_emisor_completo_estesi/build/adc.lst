@@ -1,0 +1,286 @@
+ARM GAS  /tmp/cczzh9NN.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"adc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/adc.c"
+  18              		.section	.text.MX_ADC1_Init,"ax",%progbits
+  19              		.align	1
+  20              		.global	MX_ADC1_Init
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	MX_ADC1_Init:
+  26              	.LFB65:
+   1:Core/Src/adc.c **** #include "main.h" 
+   2:Core/Src/adc.c **** #include "adc.h"
+   3:Core/Src/adc.c **** #include <stdint.h>
+   4:Core/Src/adc.c **** 
+   5:Core/Src/adc.c **** /* ADC handle */
+   6:Core/Src/adc.c **** ADC_HandleTypeDef hadc1;
+   7:Core/Src/adc.c **** 
+   8:Core/Src/adc.c **** void MX_ADC1_Init(void)
+   9:Core/Src/adc.c **** {
+  27              		.loc 1 9 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 30B5     		push	{r4, r5, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  37 0002 85B0     		sub	sp, sp, #20
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 32
+  10:Core/Src/adc.c ****     ADC_ChannelConfTypeDef sConfig = {0};
+  40              		.loc 1 10 5 view .LVU1
+  41              		.loc 1 10 28 is_stmt 0 view .LVU2
+  42 0004 0023     		movs	r3, #0
+  43 0006 0193     		str	r3, [sp, #4]
+  44 0008 0293     		str	r3, [sp, #8]
+  45 000a 0393     		str	r3, [sp, #12]
+  11:Core/Src/adc.c **** 
+  12:Core/Src/adc.c ****     /* Habilitar clock ADC1 */
+  13:Core/Src/adc.c ****     __HAL_RCC_ADC1_CLK_ENABLE();
+ARM GAS  /tmp/cczzh9NN.s 			page 2
+
+
+  46              		.loc 1 13 5 is_stmt 1 view .LVU3
+  47              	.LBB2:
+  48              		.loc 1 13 5 view .LVU4
+  49              		.loc 1 13 5 view .LVU5
+  50 000c 164A     		ldr	r2, .L3
+  51 000e 9169     		ldr	r1, [r2, #24]
+  52 0010 41F40071 		orr	r1, r1, #512
+  53 0014 9161     		str	r1, [r2, #24]
+  54              		.loc 1 13 5 view .LVU6
+  55 0016 9169     		ldr	r1, [r2, #24]
+  56 0018 01F40071 		and	r1, r1, #512
+  57 001c 0091     		str	r1, [sp]
+  58              		.loc 1 13 5 view .LVU7
+  59 001e 0099     		ldr	r1, [sp]
+  60              	.LBE2:
+  61              		.loc 1 13 5 view .LVU8
+  14:Core/Src/adc.c **** 
+  15:Core/Src/adc.c **** __HAL_RCC_ADC_CONFIG(RCC_ADCPCLK2_DIV6);
+  62              		.loc 1 15 1 view .LVU9
+  63 0020 5168     		ldr	r1, [r2, #4]
+  64 0022 21F44041 		bic	r1, r1, #49152
+  65 0026 41F40041 		orr	r1, r1, #32768
+  66 002a 5160     		str	r1, [r2, #4]
+  16:Core/Src/adc.c ****     /* Configuración básica ADC */
+  17:Core/Src/adc.c ****     hadc1.Instance = ADC1;
+  67              		.loc 1 17 5 view .LVU10
+  68              		.loc 1 17 20 is_stmt 0 view .LVU11
+  69 002c 0F4C     		ldr	r4, .L3+4
+  70 002e A2F56C42 		sub	r2, r2, #60416
+  71 0032 2260     		str	r2, [r4]
+  18:Core/Src/adc.c **** 
+  19:Core/Src/adc.c ****     hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  72              		.loc 1 19 5 is_stmt 1 view .LVU12
+  73              		.loc 1 19 29 is_stmt 0 view .LVU13
+  74 0034 A360     		str	r3, [r4, #8]
+  20:Core/Src/adc.c ****     hadc1.Init.ContinuousConvMode = DISABLE;
+  75              		.loc 1 20 5 is_stmt 1 view .LVU14
+  76              		.loc 1 20 35 is_stmt 0 view .LVU15
+  77 0036 2373     		strb	r3, [r4, #12]
+  21:Core/Src/adc.c ****     hadc1.Init.DiscontinuousConvMode = DISABLE;
+  78              		.loc 1 21 5 is_stmt 1 view .LVU16
+  79              		.loc 1 21 38 is_stmt 0 view .LVU17
+  80 0038 2375     		strb	r3, [r4, #20]
+  22:Core/Src/adc.c **** 
+  23:Core/Src/adc.c ****     hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  81              		.loc 1 23 5 is_stmt 1 view .LVU18
+  82              		.loc 1 23 33 is_stmt 0 view .LVU19
+  83 003a 4FF46022 		mov	r2, #917504
+  84 003e E261     		str	r2, [r4, #28]
+  24:Core/Src/adc.c ****     hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  85              		.loc 1 24 5 is_stmt 1 view .LVU20
+  86              		.loc 1 24 26 is_stmt 0 view .LVU21
+  87 0040 6360     		str	r3, [r4, #4]
+  25:Core/Src/adc.c ****     hadc1.Init.NbrOfConversion = 1;
+  88              		.loc 1 25 5 is_stmt 1 view .LVU22
+  89              		.loc 1 25 32 is_stmt 0 view .LVU23
+  90 0042 0125     		movs	r5, #1
+ARM GAS  /tmp/cczzh9NN.s 			page 3
+
+
+  91 0044 2561     		str	r5, [r4, #16]
+  26:Core/Src/adc.c **** 
+  27:Core/Src/adc.c ****     HAL_ADC_Init(&hadc1);
+  92              		.loc 1 27 5 is_stmt 1 view .LVU24
+  93 0046 2046     		mov	r0, r4
+  94 0048 FFF7FEFF 		bl	HAL_ADC_Init
+  95              	.LVL0:
+  28:Core/Src/adc.c **** 
+  29:Core/Src/adc.c ****     /* Canal (CAMBIAR SEGÚN PIN) */
+  30:Core/Src/adc.c ****     sConfig.Channel = ADC_CHANNEL_1;   // PA1
+  96              		.loc 1 30 5 view .LVU25
+  97              		.loc 1 30 21 is_stmt 0 view .LVU26
+  98 004c 0195     		str	r5, [sp, #4]
+  31:Core/Src/adc.c ****     sConfig.Rank = ADC_REGULAR_RANK_1;
+  99              		.loc 1 31 5 is_stmt 1 view .LVU27
+ 100              		.loc 1 31 18 is_stmt 0 view .LVU28
+ 101 004e 0295     		str	r5, [sp, #8]
+  32:Core/Src/adc.c **** 
+  33:Core/Src/adc.c ****     /* Sampling largo para LM35 */
+  34:Core/Src/adc.c ****     sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+ 102              		.loc 1 34 5 is_stmt 1 view .LVU29
+ 103              		.loc 1 34 26 is_stmt 0 view .LVU30
+ 104 0050 0723     		movs	r3, #7
+ 105 0052 0393     		str	r3, [sp, #12]
+  35:Core/Src/adc.c **** 
+  36:Core/Src/adc.c ****     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ 106              		.loc 1 36 5 is_stmt 1 view .LVU31
+ 107 0054 01A9     		add	r1, sp, #4
+ 108 0056 2046     		mov	r0, r4
+ 109 0058 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 110              	.LVL1:
+  37:Core/Src/adc.c **** 
+  38:Core/Src/adc.c ****     /* Calibración */
+  39:Core/Src/adc.c ****     HAL_ADCEx_Calibration_Start(&hadc1);
+ 111              		.loc 1 39 5 view .LVU32
+ 112 005c 2046     		mov	r0, r4
+ 113 005e FFF7FEFF 		bl	HAL_ADCEx_Calibration_Start
+ 114              	.LVL2:
+  40:Core/Src/adc.c **** }
+ 115              		.loc 1 40 1 is_stmt 0 view .LVU33
+ 116 0062 05B0     		add	sp, sp, #20
+ 117              	.LCFI2:
+ 118              		.cfi_def_cfa_offset 12
+ 119              		@ sp needed
+ 120 0064 30BD     		pop	{r4, r5, pc}
+ 121              	.L4:
+ 122 0066 00BF     		.align	2
+ 123              	.L3:
+ 124 0068 00100240 		.word	1073876992
+ 125 006c 00000000 		.word	hadc1
+ 126              		.cfi_endproc
+ 127              	.LFE65:
+ 129              		.section	.text.ADC_Select_Channel,"ax",%progbits
+ 130              		.align	1
+ 131              		.global	ADC_Select_Channel
+ 132              		.syntax unified
+ 133              		.thumb
+ARM GAS  /tmp/cczzh9NN.s 			page 4
+
+
+ 134              		.thumb_func
+ 136              	ADC_Select_Channel:
+ 137              	.LVL3:
+ 138              	.LFB66:
+  41:Core/Src/adc.c **** 
+  42:Core/Src/adc.c **** void ADC_Select_Channel(uint32_t channel)
+  43:Core/Src/adc.c **** {
+ 139              		.loc 1 43 1 is_stmt 1 view -0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 16
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143              		.loc 1 43 1 is_stmt 0 view .LVU35
+ 144 0000 00B5     		push	{lr}
+ 145              	.LCFI3:
+ 146              		.cfi_def_cfa_offset 4
+ 147              		.cfi_offset 14, -4
+ 148 0002 85B0     		sub	sp, sp, #20
+ 149              	.LCFI4:
+ 150              		.cfi_def_cfa_offset 24
+  44:Core/Src/adc.c ****     ADC_ChannelConfTypeDef sConfig = {0};
+ 151              		.loc 1 44 5 is_stmt 1 view .LVU36
+ 152              		.loc 1 44 28 is_stmt 0 view .LVU37
+ 153 0004 0023     		movs	r3, #0
+ 154 0006 0193     		str	r3, [sp, #4]
+ 155 0008 0293     		str	r3, [sp, #8]
+ 156 000a 0393     		str	r3, [sp, #12]
+  45:Core/Src/adc.c **** 
+  46:Core/Src/adc.c ****     sConfig.Channel = channel;
+ 157              		.loc 1 46 5 is_stmt 1 view .LVU38
+ 158              		.loc 1 46 21 is_stmt 0 view .LVU39
+ 159 000c 0190     		str	r0, [sp, #4]
+  47:Core/Src/adc.c ****     sConfig.Rank = ADC_REGULAR_RANK_1;
+ 160              		.loc 1 47 5 is_stmt 1 view .LVU40
+ 161              		.loc 1 47 18 is_stmt 0 view .LVU41
+ 162 000e 0123     		movs	r3, #1
+ 163 0010 0293     		str	r3, [sp, #8]
+  48:Core/Src/adc.c ****     sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+ 164              		.loc 1 48 5 is_stmt 1 view .LVU42
+ 165              		.loc 1 48 26 is_stmt 0 view .LVU43
+ 166 0012 0723     		movs	r3, #7
+ 167 0014 0393     		str	r3, [sp, #12]
+  49:Core/Src/adc.c **** 
+  50:Core/Src/adc.c ****     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ 168              		.loc 1 50 5 is_stmt 1 view .LVU44
+ 169 0016 01A9     		add	r1, sp, #4
+ 170 0018 0248     		ldr	r0, .L7
+ 171              	.LVL4:
+ 172              		.loc 1 50 5 is_stmt 0 view .LVU45
+ 173 001a FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 174              	.LVL5:
+  51:Core/Src/adc.c **** }...
+ 175              		.loc 1 51 1 view .LVU46
+ 176 001e 05B0     		add	sp, sp, #20
+ 177              	.LCFI5:
+ 178              		.cfi_def_cfa_offset 4
+ 179              		@ sp needed
+ 180 0020 5DF804FB 		ldr	pc, [sp], #4
+ARM GAS  /tmp/cczzh9NN.s 			page 5
+
+
+ 181              	.L8:
+ 182              		.align	2
+ 183              	.L7:
+ 184 0024 00000000 		.word	hadc1
+ 185              		.cfi_endproc
+ 186              	.LFE66:
+ 188              		.global	hadc1
+ 189              		.section	.bss.hadc1,"aw",%nobits
+ 190              		.align	2
+ 193              	hadc1:
+ 194 0000 00000000 		.space	48
+ 194      00000000 
+ 194      00000000 
+ 194      00000000 
+ 194      00000000 
+ 195              		.text
+ 196              	.Letext0:
+ 197              		.file 2 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 198              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ 199              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 200              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 201              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 202              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 203              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h"
+ 204              		.file 9 "Core/Inc/adc.h"
+ARM GAS  /tmp/cczzh9NN.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+     /tmp/cczzh9NN.s:19     .text.MX_ADC1_Init:00000000 $t
+     /tmp/cczzh9NN.s:25     .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+     /tmp/cczzh9NN.s:124    .text.MX_ADC1_Init:00000068 $d
+     /tmp/cczzh9NN.s:193    .bss.hadc1:00000000 hadc1
+     /tmp/cczzh9NN.s:130    .text.ADC_Select_Channel:00000000 $t
+     /tmp/cczzh9NN.s:136    .text.ADC_Select_Channel:00000000 ADC_Select_Channel
+     /tmp/cczzh9NN.s:184    .text.ADC_Select_Channel:00000024 $d
+     /tmp/cczzh9NN.s:190    .bss.hadc1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_ADC_Init
+HAL_ADC_ConfigChannel
+HAL_ADCEx_Calibration_Start
