@@ -25,6 +25,7 @@
 #include "queue.h"
 #include "can.h"
 #include "adxl345.h"
+#include "math.h"
 
 #include "i2c.h"
 #include "usart.h"
@@ -62,13 +63,16 @@
 extern volatile uint8_t flag_pulso;
 extern volatile uint32_t diff_ticks;
 extern volatile uint8_t new_read;
+extern volatile uint16_t adc_buffer_corriente[100]; // Buffer para 100 muestras (100ms)
+extern volatile uint8_t buffer_listo; // Bandera para la tarea
 /* USER CODE END Variables */
 
 osThreadId acquireHandle;
 osThreadId packageHandle;
 osThreadId txCANHandle;
+//osThreadId pulsoDebugHandle;
 //osThreadId loggerHandle;
-osThreadId pulsoDebugHandle;
+osThreadId samplerHandle;
 
 QueueHandle_t rawQueue;
 QueueHandle_t canQueue;
@@ -79,15 +83,15 @@ extern CAN_HandleTypeDef hcan;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+float Procesar_Corriente_RMS(void);
 /* USER CODE END FunctionPrototypes */
 
 void StartAcquireTask(void const * argument);
 void StartPackageTask(void const * argument);
 void StartTxCAN(void const * argument);
-void Pulso_Debug(void const * argument);
+//void Pulso_Debug(void const * argument);
 //void StartLogger(void const * argument);
-
+void StartSampler(void const * argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
@@ -152,13 +156,15 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(txCAN, StartTxCAN, osPriorityNormal, 0, 512);
   txCANHandle = osThreadCreate(osThread(txCAN), NULL);
 
-  /* Logger Task (from second code) */
-  //osThreadDef(logger, StartLogger, osPriorityNormal, 0, 512);
+  // osThreadDef(logger, StartLogger, osPriorityNormal, 0, 512);
   //loggerHandle = osThreadCreate(osThread(logger), NULL);
 
-  /* Pulso Debug Task */
-  osThreadDef(pulsoDebug, Pulso_Debug, osPriorityLow, 0, 256);
-  pulsoDebugHandle = osThreadCreate(osThread(pulsoDebug), NULL);
+  osThreadDef(sampler, StartSampler, osPriorityHigh, 0, 128);
+  samplerHandle = osThreadCreate(osThread(sampler), NULL);
+
+//   /* Pulso Debug Task */
+//   osThreadDef(pulsoDebug, Pulso_Debug, osPriorityLow, 0, 256);
+//   pulsoDebugHandle = osThreadCreate(osThread(pulsoDebug), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -171,9 +177,100 @@ void MX_FREERTOS_Init(void) {
 volatile uint16_t buffer[N];
 volatile uint16_t i = 0;
 
+// void StartLogger(void const * argument)
+// {
+//   /* USER CODE BEGIN StartLogger */
+//   printf("Iniciando Logger...\r\n");
+//   /* Infinite loop */
+//   uint32_t acumulador_temp = 0;
+//   uint32_t cuenta_muestras_temp = 0;
+//   float temp_filtrada = 0.0f;
+//   float corriente_actual = 0.0f;
+
+//   /* Infinite loop */
+//   for(;;)
+//   {
+//     if (buffer_listo) {
+//         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
+//         corriente_actual = Procesar_Corriente_RMS();
+//         buffer_listo = 0; // Liberamos el buffer al toque
+
+//         // 2. TOMAMOS UNA SOLA MUESTRA DE TEMPERATURA
+//         // Como pasó 100ms desde la última vez, el capacitor interno está limpísimo (0 crosstalk)
+//         HAL_ADC_Start(&hadc2);
+//         if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
+//             acumulador_temp += HAL_ADC_GetValue(&hadc2);
+//             cuenta_muestras_temp++;
+//         }
+//         HAL_ADC_Stop(&hadc2);
+
+//         // 3. ¿YA TENEMOS LAS 32 MUESTRAS? (Pasan cada ~3.2 segundos)
+//         if (cuenta_muestras_temp >= 32) {
+//             float promedio_ticks = (float)acumulador_temp / 32.0f;
+//             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+//             temp_filtrada = voltaje_mv / 10.0f;
+
+//             // Reseteamos para el próximo ciclo largo
+//             acumulador_temp = 0;
+//             cuenta_muestras_temp = 0;
+//         }
+
+//         // 4. ENVIAMOS A PYTHON
+//         // Manda la corriente nueva siempre, y la temperatura se actualiza cada 3.2s
+//         printf("%.2f,%.2f\r\n", temp_filtrada, corriente_actual);
+//     } 
+    
+//     vTaskDelay(pdMS_TO_TICKS(1));  
+//   }
+//   /* USER CODE END StartLogger */
+// }
+
+
+void StartSampler(void const * argument)
+{
+  /* USER CODE BEGIN StartSampler */
+  /* Infinite loop */
+  TickType_t xLastWakeTime;
+  const TickType_t xFrequency = pdMS_TO_TICKS(1); // 1 ms exacto
+  xLastWakeTime = xTaskGetTickCount();
+
+  for(;;) {
+      vTaskDelayUntil(&xLastWakeTime, xFrequency);
+      HAL_ADC_Start_IT(&hadc1); // Disparo manual cada 1ms
+  }
+  /* USER CODE END StartSampler */
+}
+/* Private application code --------------------------------------------------*/
+/* USER CODE BEGIN Application */
+/* USER CODE BEGIN 4 */
+
+/**
+ * @brief Calcula la corriente RMS centrando la señal con el offset calibrado.
+ * @retval Valor de corriente eficaz en Voltios (basado en VREF de 3.262V).
+ */
+float Procesar_Corriente_RMS(void) {
+    float suma_cuadrados = 0.0f;        
+    
+    for(int i = 0; i < 100; i++) {
+        // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+        int32_t centrado = (int32_t)adc_buffer_corriente[i] - 2048;
+        suma_cuadrados += (float)(centrado * centrado);
+    }
+    
+    float rms_raw = sqrtf(suma_cuadrados / 100.0f);
+    return (rms_raw * (3.262f / 4096.0f)); 
+}
+
+float temp_filtrada = 0.0f;
+float corriente_actual = 0.0f;
+
 void StartAcquireTask(void const * argument)
 {
-    printf("Acquire task started\r\n");
+  /* USER CODE BEGIN StartLogger */
+  printf("Iniciando Logger...\r\n");
+  /* Infinite loop */
+  uint32_t acumulador_temp = 0;
+  uint32_t cuenta_muestras_temp = 0;
 
     static raw_data_t raw;
     uint16_t idx = 0;
@@ -235,12 +332,43 @@ void StartAcquireTask(void const * argument)
             }
         }
 
-        printf("%d,%d,%d,%.2f\r\n",
-       raw.accel.ax[idx],
-       raw.accel.ay[idx],
-       raw.accel.az[idx],
-       rpm);
+    //     printf("%d,%d,%d,%.2f\r\n",
+    //    raw.accel.ax[idx],
+    //    raw.accel.ay[idx],
+    //    raw.accel.az[idx],
+    //    rpm);
         raw.speed = rpm;
+
+
+            if (buffer_listo) {
+        // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
+        corriente_actual = Procesar_Corriente_RMS();
+        buffer_listo = 0; // Liberamos el buffer al toque
+
+        // 2. TOMAMOS UNA SOLA MUESTRA DE TEMPERATURA
+        // Como pasó 100ms desde la última vez, el capacitor interno está limpísimo (0 crosstalk)
+        HAL_ADC_Start(&hadc2);
+        if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
+            acumulador_temp += HAL_ADC_GetValue(&hadc2);
+            cuenta_muestras_temp++;
+        }
+        HAL_ADC_Stop(&hadc2);
+
+        // 3. ¿YA TENEMOS LAS 32 MUESTRAS? (Pasan cada ~3.2 segundos)
+        if (cuenta_muestras_temp >= 32) {
+            float promedio_ticks = (float)acumulador_temp / 32.0f;
+            float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+            temp_filtrada = voltaje_mv / 10.0f;
+
+            // Reseteamos para el próximo ciclo largo
+            acumulador_temp = 0;
+            cuenta_muestras_temp = 0;
+        }
+
+        // 4. ENVIAMOS A PYTHON
+        // Manda la corriente nueva siempre, y la temperatura se actualiza cada 3.2s
+        //printf("%.2f,%.2f\r\n", temp_filtrada, corriente_actual);
+    } 
 
         idx++;
 
@@ -254,43 +382,6 @@ void StartAcquireTask(void const * argument)
     }
 }
 
-// void StartLogger(void const * argument) {
-//      /* Variables locales para el cálculo */ 
-//      uint32_t acumulador_ticks = 0; 
-//      uint8_t contador_pulsos = 0; 
-//      float rpm_suave = 0.0f; 
-//      for(;;) { 
-
-//         if (new_read) { 
-
-//             taskENTER_CRITICAL(); 
-//             uint32_t current_ticks = diff_ticks; 
-//             new_read = 0; taskEXIT_CRITICAL(); // 8 pulsos para promediar la vuelta completa 
-//             acumulador_ticks += current_ticks; 
-//             contador_pulsos++; 
-
-//             if (contador_pulsos >= 8) { 
-
-//                 // 2. Calculamos el promedio de la vuelta 
-//                 float promedio_ticks = (float)acumulador_ticks / 8; 
-
-//                 // 3. RPM = 60,000,000 / (promedio * 8) 
-//                 // O simplificado: 7,500,000 / promedio 
-//                 rpm_suave = 7500000.0f / promedio_ticks; 
-
-//                 // 4. Limpiamos para la siguiente vuelta 
-//                 acumulador_ticks = 0; contador_pulsos = 0; 
-
-//                 // 5. Imprimir el dato limpio para el modelo de ML 
-//                 printf("%.2f\n", rpm_suave); 
-//             } 
-//         } 
-
-//                 // Un delay pequeño para no saturar la CPU 
-//                 vTaskDelay(pdMS_TO_TICKS(5)); 
-//     }
-// }
-
 
 void StartPackageTask(void const * argument)
 {
@@ -303,25 +394,25 @@ void StartPackageTask(void const * argument)
         xQueueReceive(rawQueue, &raw, portMAX_DELAY);
 
         /* Features vibración */
-        // Features_ComputeRMSPeak(&raw.accel, &frame.vib);
+        Features_ComputeRMSPeak(&raw.accel, &frame.vib);
         // printf("RMS  Val=%.2f\r\n", frame.vib.rms);
         // printf("PEAK  Val=%.2f\r\n", frame.vib.peak);
         // printf("CREST  Val=%.2f\r\n", frame.vib.crest);
 
         /* Conversión temperatura */
-        //frame.temperature = ADC_To_Temp(raw.temp);
+        frame.temperature = temp_filtrada;
         //printf("TEMP  Val=%.2f\r\n", frame.temperature);
 
         /* Conversión corriente */
-        //frame.current = ADC_To_Current(raw.current);
+        frame.current = corriente_actual;
         //printf("CURRENT  Val=%.2f\r\n", frame.current);
 
 
-        //frame.speed=raw.speed;
+        frame.speed=raw.speed;
         //printf("SPEED  Val=%.2f\r\n", frame.speed);
 
 
-        //xQueueSend(canQueue, &frame, portMAX_DELAY);
+        xQueueSend(canQueue, &frame, portMAX_DELAY);
     }
 }
 
@@ -331,53 +422,54 @@ void StartTxCAN(void const * argument)
     uint32_t temp_cnt = 0;
     printf("TxCAN task started\r\n");
 
-    for (;;)
-    {
-        // xQueueReceive(canQueue, &frame, portMAX_DELAY);
+     for (;;)
+     {
+         xQueueReceive(canQueue, &frame, portMAX_DELAY);
 
         // /* Vibración siempre */
-        // CAN_SendFloat(0x101, frame.vib.rms);
+         CAN_SendFloat(0x101, frame.vib.rms);
         // //printf("[CAN TX] RMS   ID=0x101  Val=%.2f\r\n", frame.vib.rms);
         
         // uint32_t tx_mailboxes = HAL_CAN_GetTxMailboxesFreeLevel(&hcan);
 
-        // CAN_SendFloat(0x102, frame.vib.crest);
-        // //printf("[CAN TX] CREST ID=0x102  Val=%.2f\r\n", frame.vib.crest);
+         CAN_SendFloat(0x102, frame.vib.crest);
+        //printf("[CAN TX] CREST ID=0x102  Val=%.2f\r\n", frame.vib.crest);
 
-        // CAN_SendFloat(0x103, frame.vib.peak);
-        // //printf("[CAN TX] PEAK  ID=0x103  Val=%.2f\r\n", frame.vib.peak);
+         CAN_SendFloat(0x103, frame.vib.peak);
+        //printf("[CAN TX] PEAK  ID=0x103  Val=%.2f\r\n", frame.vib.peak);
 
-        // CAN_SendFloat(0x105, frame.current);
-        // //printf("[CAN TX] CURRENT  ID=0x105  Val=%.2f\r\n", frame.current);
+         CAN_SendFloat(0x105, frame.current);
+        //printf("[CAN TX] CURRENT  ID=0x105  Val=%.2f\r\n", frame.current);
 
-        // CAN_SendFloat(0x106, frame.speed);
-        // //printf("[CAN TX] SPEED  ID=0x106  Val=%.2f\r\n", frame.speed);
+         CAN_SendFloat(0x106, frame.speed);
+        //printf("[CAN TX] SPEED  ID=0x106  Val=%.2f\r\n", frame.speed);
 
         // /* Temperatura cada 20 frames */
         // temp_cnt++;
         // if (temp_cnt >= 20)
         // {
-        //     CAN_SendFloat(0x104, frame.temperature);
-        //     //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f C\r\n", frame.temperature);
-        //     temp_cnt = 0;
-        // }
+            CAN_SendFloat(0x104, frame.temperature);
+            //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f C\r\n", frame.temperature);
+            //temp_cnt = 0;
+        //}
+        osDelay(1);
     }
 }
 
 
-void Pulso_Debug(void const * argument)
-{
-    printf("-Tarea Pulso-\r\n");
-    for(;;)
-    {
-        if (flag_pulso)
-        {
-            flag_pulso = 0;
-            printf("-PULSO-\r\n");
-        }
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
-}
+// void Pulso_Debug(void const * argument)
+// {
+//     printf("-Tarea Pulso-\r\n");
+//     for(;;)
+//     {
+//         if (flag_pulso)
+//         {
+//             flag_pulso = 0;
+//             printf("-PULSO-\r\n");
+//         }
+//         vTaskDelay(pdMS_TO_TICKS(10));
+//     }
+// }
 
 /* USER CODE BEGIN Application */
 

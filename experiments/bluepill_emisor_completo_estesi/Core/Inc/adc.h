@@ -12,9 +12,11 @@ extern "C" {
 
 /* Handle ADC */
 extern ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc2;
 
 /* Init function */
 void MX_ADC1_Init(void);
+void MX_ADC2_Init(void);
 void ADC_Select_Channel(uint32_t channel);
 
 #ifdef __cplusplus

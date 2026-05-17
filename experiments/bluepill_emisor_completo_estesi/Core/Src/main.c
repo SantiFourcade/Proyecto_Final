@@ -28,6 +28,9 @@
 /* USER CODE BEGIN PV */
 volatile uint8_t flag_pulso = 0;
 volatile uint32_t pulsos = 0;
+volatile uint16_t adc_buffer_corriente[100]; // Buffer para 100 muestras (100ms)
+volatile uint16_t indice_adc = 0;
+volatile uint8_t buffer_listo = 0; // Bandera para la tarea
 
 /* Variables para el cálculo de RPM */
 volatile uint32_t diff_ticks = 0;
@@ -57,17 +60,24 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
+  MX_ADC1_Init(); // Activa el perisferico ADC
+  MX_ADC2_Init();
   
   MX_I2C1_Init();
   ADXL345_Init(&hi2c1);
-  //MX_CAN_Init();
+  MX_CAN_Init();
 
-  //if (HAL_CAN_Start(&hcan) != HAL_OK)
-  //{
-   //Error_Handler();
-  //}
+  if (HAL_CAN_Start(&hcan) != HAL_OK)
+  {
+   Error_Handler();
+  }
 
-  MX_ADC1_Init(); // Activa el perisferico ADC
+  /* Activar interrupciones CAN */
+HAL_CAN_ActivateNotification(&hcan,
+                             CAN_IT_TX_MAILBOX_EMPTY |
+                             CAN_IT_BUSOFF |
+                             CAN_IT_ERROR);
+
   
   /* Inicialización de Timer para Input Capture (RPM) */
   MX_TIM3_Init();
@@ -96,23 +106,24 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /** Initializes the RCC Oscillators 
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON; // Activamos el cristal de la placa
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9; // 8MHz * 9 = 72MHz
-  
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks 
+  /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -122,6 +133,12 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV8;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
@@ -149,6 +166,42 @@ int _write(int file, char *ptr, int len)
 {
   HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, HAL_MAX_DELAY);
   return len;
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
+    if (hadc->Instance == ADC1) {
+        // Almacenamiento puro
+        adc_buffer_corriente[indice_adc] = HAL_ADC_GetValue(hadc);
+        indice_adc++;
+
+        // Cuando llenamos el buffer (ej. 100 muestras = 100ms a 1kHz)
+        if (indice_adc >= 100) {
+            indice_adc = 0;
+            buffer_listo = 1; // Avisamos a la tarea
+        }
+    }
+}
+
+void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    printf("MAILBOX0 TX OK\r\n");
+}
+
+void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    printf("MAILBOX1 TX OK\r\n");
+}
+
+void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    printf("MAILBOX2 TX OK\r\n");
+}
+
+void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
+{
+    uint32_t err = HAL_CAN_GetError(hcan);
+
+    printf("CAN ERROR: %lu\r\n", err);
 }
 
 /* USER CODE END 4 */

@@ -30,16 +30,33 @@ void CAN_SendFloat(uint16_t id, float value)
 
     if (HAL_CAN_AddTxMessage(&hcan, &TxHeader, data.bytes, &TxMailbox) == HAL_OK)
     {
-        //printf(
-          //  "[CAN SEND] ID=0x%03X  DLC=%d  DATA=%02X %02X %02X %02X  (%.3f)\r\n",
-           // id,
-           // TxHeader.DLC,
-           // data.bytes[0],
-           // data.bytes[1],
-           // data.bytes[2],
-           // data.bytes[3],
-           // value
-        //);
+        uint32_t timeout = HAL_GetTick();
+        uint8_t tx_ok = 1;
+
+        while(HAL_CAN_IsTxMessagePending(&hcan, TxMailbox))
+        {
+            if((HAL_GetTick() - timeout) > 10)
+            {
+                printf("TX TIMEOUT\r\n");
+                tx_ok = 0;
+                break;
+            }
+        }
+
+    if(tx_ok)
+    {
+        printf(
+           "[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02X (%.3f)\r\n",
+           id,
+           TxHeader.DLC,
+           data.bytes[0],
+           data.bytes[1],
+           data.bytes[2],
+           data.bytes[3],
+           value
+        );
+    }
+
     }
     else
     {
