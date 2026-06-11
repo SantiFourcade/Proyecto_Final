@@ -145,7 +145,7 @@ void MX_FREERTOS_Init(void) {
   /* Create the thread(s) */
   
   /* Acquire Task */
-  osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 256);
+  osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 512);
   acquireHandle = osThreadCreate(osThread(acquire), NULL);
 
   /* Package Task */
@@ -266,11 +266,9 @@ float corriente_actual = 0.0f;
 
 void StartAcquireTask(void const * argument)
 {
-  /* USER CODE BEGIN StartLogger */
-  printf("Iniciando Logger...\r\n");
-  /* Infinite loop */
-  uint32_t acumulador_temp = 0;
-  uint32_t cuenta_muestras_temp = 0;
+    printf("Iniciando Adquisidor...\r\n");
+    uint32_t acumulador_temp = 0;
+    uint32_t cuenta_muestras_temp = 0;
 
     static raw_data_t raw;
     uint16_t idx = 0;
@@ -281,8 +279,7 @@ void StartAcquireTask(void const * argument)
     float rpm = 0.0f;
 
     for(;;)
-    {
-    
+    {    
         // ACELERÓMETRO
         ADXL345_ReadXYZ(&raw.accel.ax[idx],
                         &raw.accel.ay[idx],
@@ -291,24 +288,6 @@ void StartAcquireTask(void const * argument)
         //     raw.accel.ax[idx],
         //     raw.accel.ay[idx],
         //     raw.accel.az[idx]);
-        // TEMPERATURA (LM35)
-        //  ADC_Select_Channel(ADC_CHANNEL_0);
-        //  HAL_Delay(2);
-        //  HAL_ADC_Start(&hadc1);
-        //  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-        //  raw.temp = HAL_ADC_GetValue(&hadc1);
-        //  printf("TEMP RAW = %u\r\n", raw.temp);
-        //  HAL_ADC_Stop(&hadc1);
-
-        //CORRIENTE 
-        // ADC_Select_Channel(ADC_CHANNEL_1);
-        // HAL_ADC_Start(&hadc1);
-        // HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-        // raw.current[idx] = HAL_ADC_GetValue(&hadc1);
-        // printf("CURRENT RAW = %d\r\n", raw.current[idx]);        
-        // HAL_ADC_Stop(&hadc1);
-
-        //VELOCIDAD (RPM)
         if (new_read)
         {
             taskENTER_CRITICAL();
@@ -332,52 +311,37 @@ void StartAcquireTask(void const * argument)
             }
         }
 
-    //     printf("%d,%d,%d,%.2f\r\n",
-    //    raw.accel.ax[idx],
-    //    raw.accel.ay[idx],
-    //    raw.accel.az[idx],
-    //    rpm);
         raw.speed = rpm;
 
+        if (buffer_listo) {
+            corriente_actual = Procesar_Corriente_RMS();
+            buffer_listo = 0;
 
-            if (buffer_listo) {
-        // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
-        corriente_actual = Procesar_Corriente_RMS();
-        buffer_listo = 0; // Liberamos el buffer al toque
+            HAL_ADC_Start(&hadc2);
+            if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
+                acumulador_temp += HAL_ADC_GetValue(&hadc2);
+                cuenta_muestras_temp++;
+            }
+            HAL_ADC_Stop(&hadc2);
 
-        // 2. TOMAMOS UNA SOLA MUESTRA DE TEMPERATURA
-        // Como pasó 100ms desde la última vez, el capacitor interno está limpísimo (0 crosstalk)
-        HAL_ADC_Start(&hadc2);
-        if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
-            acumulador_temp += HAL_ADC_GetValue(&hadc2);
-            cuenta_muestras_temp++;
-        }
-        HAL_ADC_Stop(&hadc2);
+            if (cuenta_muestras_temp >= 32) {
+                float promedio_ticks = (float)acumulador_temp / 32.0f;
+                float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+                temp_filtrada = voltaje_mv / 10.0f;
 
-        // 3. ¿YA TENEMOS LAS 32 MUESTRAS? (Pasan cada ~3.2 segundos)
-        if (cuenta_muestras_temp >= 32) {
-            float promedio_ticks = (float)acumulador_temp / 32.0f;
-            float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
-            temp_filtrada = voltaje_mv / 10.0f;
-
-            // Reseteamos para el próximo ciclo largo
-            acumulador_temp = 0;
-            cuenta_muestras_temp = 0;
-        }
-
-        // 4. ENVIAMOS A PYTHON
-        // Manda la corriente nueva siempre, y la temperatura se actualiza cada 3.2s
-        //printf("%.2f,%.2f\r\n", temp_filtrada, corriente_actual);
-    } 
+                acumulador_temp = 0;
+                cuenta_muestras_temp = 0;
+            }
+        } 
 
     //ENVIO A PYTHON
-// printf("%d,%d,%d,%.2f,%.2f,%.2f\r\n",
-//        raw.accel.ax[idx],
-//        raw.accel.ay[idx],
-//        raw.accel.az[idx],
-//        temp_filtrada,
-//        corriente_actual,
-//        rpm);
+    // printf("%d,%d,%d,%.2f,%.2f,%.2f\r\n",
+    //        raw.accel.ax[idx],
+    //        raw.accel.ay[idx],
+    //        raw.accel.az[idx],
+    //        temp_filtrada,
+    //        corriente_actual,
+    //        rpm);
 
         idx++;
 
@@ -416,10 +380,8 @@ void StartPackageTask(void const * argument)
         frame.current = corriente_actual;
         //printf("CURRENT  Val=%.2f\r\n", frame.current);
 
-
         frame.speed=raw.speed;
         //printf("SPEED  Val=%.2f\r\n", frame.speed);
-
 
         xQueueSend(canQueue, &frame, portMAX_DELAY);
     }
@@ -428,58 +390,31 @@ void StartPackageTask(void const * argument)
 void StartTxCAN(void const * argument)
 {
     data_frame_t frame;
-    uint32_t temp_cnt = 0;
     printf("TxCAN task started\r\n");
 
      for (;;)
      {
          xQueueReceive(canQueue, &frame, portMAX_DELAY);
 
-        // /* Vibración siempre */
-         CAN_SendFloat(0x101, frame.vib.rms);
-        // //printf("[CAN TX] RMS   ID=0x101  Val=%.2f\r\n", frame.vib.rms);
+         CAN_SendFloat(0x101, frame.vib.rms);   vTaskDelay(pdMS_TO_TICKS(10));
+         //printf("[CAN TX] RMS   ID=0x101  Val=%.2f\r\n", frame.vib.rms);
         
-        // uint32_t tx_mailboxes = HAL_CAN_GetTxMailboxesFreeLevel(&hcan);
-
-         CAN_SendFloat(0x102, frame.vib.crest);
+         CAN_SendFloat(0x102, frame.vib.crest); vTaskDelay(pdMS_TO_TICKS(10));
         //printf("[CAN TX] CREST ID=0x102  Val=%.2f\r\n", frame.vib.crest);
 
-         CAN_SendFloat(0x103, frame.vib.peak);
+         CAN_SendFloat(0x103, frame.vib.peak); vTaskDelay(pdMS_TO_TICKS(10));
         //printf("[CAN TX] PEAK  ID=0x103  Val=%.2f\r\n", frame.vib.peak);
+        
+        CAN_SendFloat(0x104, frame.temperature); vTaskDelay(pdMS_TO_TICKS(10));
+        //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f\r\n", frame.temperature);
 
-         CAN_SendFloat(0x105, frame.current);
+         CAN_SendFloat(0x105, frame.current); vTaskDelay(pdMS_TO_TICKS(10));
         //printf("[CAN TX] CURRENT  ID=0x105  Val=%.2f\r\n", frame.current);
 
-         CAN_SendFloat(0x106, frame.speed);
+         CAN_SendFloat(0x106, frame.speed); vTaskDelay(pdMS_TO_TICKS(10));
         //printf("[CAN TX] SPEED  ID=0x106  Val=%.2f\r\n", frame.speed);
-
-        // /* Temperatura cada 20 frames */
-        // temp_cnt++;
-        // if (temp_cnt >= 20)
-        // {
-            CAN_SendFloat(0x104, frame.temperature);
-            //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f C\r\n", frame.temperature);
-            //temp_cnt = 0;
-        //}
-        osDelay(1);
     }
 }
-
-
-// void Pulso_Debug(void const * argument)
-// {
-//     printf("-Tarea Pulso-\r\n");
-//     for(;;)
-//     {
-//         if (flag_pulso)
-//         {
-//             flag_pulso = 0;
-//             printf("-PULSO-\r\n");
-//         }
-//         vTaskDelay(pdMS_TO_TICKS(10));
-//     }
-// }
-
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */

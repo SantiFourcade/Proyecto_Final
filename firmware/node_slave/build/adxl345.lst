@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccr1ZbFc.s 			page 1
+ARM GAS  /tmp/ccjn89RK.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,16 +17,16 @@ ARM GAS  /tmp/ccr1ZbFc.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/adxl345.c"
-  18              		.section	.text.ADXL345_Init,"ax",%progbits
-  19              		.align	1
-  20              		.global	ADXL345_Init
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	ADXL345_Init:
-  26              	.LVL0:
-  27              	.LFB65:
+  17              		.section	.text.ADXL345_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	ADXL345_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	ADXL345_Init:
+  25              	.LVL0:
+  26              	.LFB65:
+  27              		.file 1 "Core/Src/adxl345.c"
    1:Core/Src/adxl345.c **** #include "adxl345.h"
    2:Core/Src/adxl345.c **** 
    3:Core/Src/adxl345.c **** static I2C_HandleTypeDef *adxl_i2c;
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccr1ZbFc.s 			page 1
   47              		.loc 1 9 14 is_stmt 0 view .LVU4
   48 0006 114D     		ldr	r5, .L3
   49 0008 2860     		str	r0, [r5]
-ARM GAS  /tmp/ccr1ZbFc.s 			page 2
+ARM GAS  /tmp/ccjn89RK.s 			page 2
 
 
   10:Core/Src/adxl345.c **** 
@@ -118,10 +118,10 @@ ARM GAS  /tmp/ccr1ZbFc.s 			page 1
   87              	.L4:
   88 004a 00BF     		.align	2
   89              	.L3:
-ARM GAS  /tmp/ccr1ZbFc.s 			page 3
+ARM GAS  /tmp/ccjn89RK.s 			page 3
 
 
-  90 004c 00000000 		.word	adxl_i2c
+  90 004c 00000000 		.word	.LANCHOR0
   91              		.cfi_endproc
   92              	.LFE65:
   94              		.section	.text.ADXL345_ReadXYZ,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccr1ZbFc.s 			page 1
  140 0020 0068     		ldr	r0, [r0]
  141 0022 FFF7FEFF 		bl	HAL_I2C_Mem_Read
  142              	.LVL7:
-ARM GAS  /tmp/ccr1ZbFc.s 			page 4
+ARM GAS  /tmp/ccjn89RK.s 			page 4
 
 
   33:Core/Src/adxl345.c ****                      ADXL345_DATAX0,
@@ -231,36 +231,38 @@ ARM GAS  /tmp/ccr1ZbFc.s 			page 1
  180              		.loc 1 42 1 view .LVU37
  181 0056 00BF     		.align	2
  182              	.L7:
- 183 0058 00000000 		.word	adxl_i2c
+ 183 0058 00000000 		.word	.LANCHOR0
  184              		.cfi_endproc
  185              	.LFE66:
  187              		.section	.bss.adxl_i2c,"aw",%nobits
  188              		.align	2
- 191              	adxl_i2c:
- 192 0000 00000000 		.space	4
-ARM GAS  /tmp/ccr1ZbFc.s 			page 5
+ 189              		.set	.LANCHOR0,. + 0
+ 192              	adxl_i2c:
+ARM GAS  /tmp/ccjn89RK.s 			page 5
 
 
- 193              		.text
- 194              	.Letext0:
- 195              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 196              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 197              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 198              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 199              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
-ARM GAS  /tmp/ccr1ZbFc.s 			page 6
+ 193 0000 00000000 		.space	4
+ 194              		.text
+ 195              	.Letext0:
+ 196              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 197              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 198              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 199              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 200              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 201              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ARM GAS  /tmp/ccjn89RK.s 			page 6
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 adxl345.c
-     /tmp/ccr1ZbFc.s:19     .text.ADXL345_Init:00000000 $t
-     /tmp/ccr1ZbFc.s:25     .text.ADXL345_Init:00000000 ADXL345_Init
-     /tmp/ccr1ZbFc.s:90     .text.ADXL345_Init:0000004c $d
-     /tmp/ccr1ZbFc.s:191    .bss.adxl_i2c:00000000 adxl_i2c
-     /tmp/ccr1ZbFc.s:95     .text.ADXL345_ReadXYZ:00000000 $t
-     /tmp/ccr1ZbFc.s:101    .text.ADXL345_ReadXYZ:00000000 ADXL345_ReadXYZ
-     /tmp/ccr1ZbFc.s:183    .text.ADXL345_ReadXYZ:00000058 $d
-     /tmp/ccr1ZbFc.s:188    .bss.adxl_i2c:00000000 $d
+                            *ABS*:0000000000000000 adxl345.c
+     /tmp/ccjn89RK.s:18     .text.ADXL345_Init:0000000000000000 $t
+     /tmp/ccjn89RK.s:24     .text.ADXL345_Init:0000000000000000 ADXL345_Init
+     /tmp/ccjn89RK.s:90     .text.ADXL345_Init:000000000000004c $d
+     /tmp/ccjn89RK.s:95     .text.ADXL345_ReadXYZ:0000000000000000 $t
+     /tmp/ccjn89RK.s:101    .text.ADXL345_ReadXYZ:0000000000000000 ADXL345_ReadXYZ
+     /tmp/ccjn89RK.s:183    .text.ADXL345_ReadXYZ:0000000000000058 $d
+     /tmp/ccjn89RK.s:188    .bss.adxl_i2c:0000000000000000 $d
+     /tmp/ccjn89RK.s:192    .bss.adxl_i2c:0000000000000000 adxl_i2c
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write

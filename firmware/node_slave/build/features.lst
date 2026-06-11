@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccnwPDQw.s 			page 1
+ARM GAS  /tmp/ccFMuaZc.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,21 +17,21 @@ ARM GAS  /tmp/ccnwPDQw.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/features.c"
-  18              		.global	__aeabi_i2f
-  19              		.global	__aeabi_fmul
-  20              		.global	__aeabi_fadd
-  21              		.global	__aeabi_fcmpgt
-  22              		.global	__aeabi_fdiv
-  23              		.section	.text.Features_ComputeRMSPeak,"ax",%progbits
-  24              		.align	1
-  25              		.global	Features_ComputeRMSPeak
-  26              		.syntax unified
-  27              		.thumb
-  28              		.thumb_func
-  30              	Features_ComputeRMSPeak:
-  31              	.LVL0:
-  32              	.LFB0:
+  17              		.global	__aeabi_i2f
+  18              		.global	__aeabi_fmul
+  19              		.global	__aeabi_fadd
+  20              		.global	__aeabi_fcmpgt
+  21              		.global	__aeabi_fdiv
+  22              		.section	.text.Features_ComputeRMSPeak,"ax",%progbits
+  23              		.align	1
+  24              		.global	Features_ComputeRMSPeak
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  29              	Features_ComputeRMSPeak:
+  30              	.LVL0:
+  31              	.LFB0:
+  32              		.file 1 "Core/Src/features.c"
    1:Core/Src/features.c **** #include "features.h"
    2:Core/Src/features.c **** #include <math.h>
    3:Core/Src/features.c **** 
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccnwPDQw.s 			page 1
   50 0006 8946     		mov	r9, r1
    7:Core/Src/features.c ****     float sum_sq = 0.0f;
   51              		.loc 1 7 5 is_stmt 1 view .LVU2
-ARM GAS  /tmp/ccnwPDQw.s 			page 2
+ARM GAS  /tmp/ccFMuaZc.s 			page 2
 
 
   52              	.LVL1:
@@ -82,313 +82,320 @@ ARM GAS  /tmp/ccnwPDQw.s 			page 1
   66 000e 00E0     		b	.L2
   67              	.LVL2:
   68              	.L3:
-  69              		.loc 1 9 39 is_stmt 1 discriminator 2 view .LVU10
-  70 0010 0135     		adds	r5, r5, #1
-  71              	.LVL3:
-  72              	.L2:
-  73              		.loc 1 9 23 discriminator 1 view .LVU11
-  74 0012 1D2D     		cmp	r5, #29
-  75 0014 16DC     		bgt	.L7
-  76              	.LBB3:
+  69              		.loc 1 9 38 is_stmt 1 discriminator 2 view .LVU10
+  70              		.loc 1 9 39 is_stmt 0 discriminator 2 view .LVU11
+  71 0010 0135     		adds	r5, r5, #1
+  72              	.LVL3:
+  73              	.L2:
+  74              		.loc 1 9 21 is_stmt 1 discriminator 1 view .LVU12
+  75              		.loc 1 9 5 is_stmt 0 discriminator 1 view .LVU13
+  76 0012 1D2D     		cmp	r5, #29
+  77 0014 16DC     		bgt	.L7
+  78              	.LBB3:
   10:Core/Src/features.c ****     {
   11:Core/Src/features.c ****         float a = (float)window->ax[i];
-  77              		.loc 1 11 9 view .LVU12
-  78              		.loc 1 11 15 is_stmt 0 view .LVU13
-  79 0016 38F91500 		ldrsh	r0, [r8, r5, lsl #1]
-  80 001a FFF7FEFF 		bl	__aeabi_i2f
-  81              	.LVL4:
-  82 001e 0446     		mov	r4, r0
-  83              	.LVL5:
+  79              		.loc 1 11 9 is_stmt 1 view .LVU14
+  80              		.loc 1 11 15 is_stmt 0 view .LVU15
+  81 0016 38F91500 		ldrsh	r0, [r8, r5, lsl #1]
+  82 001a FFF7FEFF 		bl	__aeabi_i2f
+  83              	.LVL4:
+  84 001e 0446     		mov	r4, r0
+  85              	.LVL5:
   12:Core/Src/features.c ****         sum_sq += a * a;
-  84              		.loc 1 12 9 is_stmt 1 view .LVU14
-  85              		.loc 1 12 21 is_stmt 0 view .LVU15
-  86 0020 0146     		mov	r1, r0
-  87 0022 FFF7FEFF 		bl	__aeabi_fmul
-  88              	.LVL6:
-  89              		.loc 1 12 21 view .LVU16
-  90 0026 0146     		mov	r1, r0
-  91              		.loc 1 12 16 view .LVU17
-  92 0028 3046     		mov	r0, r6
-  93 002a FFF7FEFF 		bl	__aeabi_fadd
-  94              	.LVL7:
-  95 002e 0646     		mov	r6, r0
-  96              	.LVL8:
+  86              		.loc 1 12 9 is_stmt 1 view .LVU16
+  87              		.loc 1 12 21 is_stmt 0 view .LVU17
+  88 0020 0146     		mov	r1, r0
+  89 0022 FFF7FEFF 		bl	__aeabi_fmul
+  90              	.LVL6:
+  91              		.loc 1 12 21 view .LVU18
+  92 0026 0146     		mov	r1, r0
+  93              		.loc 1 12 16 view .LVU19
+  94 0028 3046     		mov	r0, r6
+  95 002a FFF7FEFF 		bl	__aeabi_fadd
+  96              	.LVL7:
+  97 002e 0646     		mov	r6, r0
+  98              	.LVL8:
   13:Core/Src/features.c ****         if (fabsf(a) > peak)
-  97              		.loc 1 13 9 is_stmt 1 view .LVU18
-  98              		.loc 1 13 13 is_stmt 0 view .LVU19
-  99 0030 24F00044 		bic	r4, r4, #-2147483648
- 100              	.LVL9:
-ARM GAS  /tmp/ccnwPDQw.s 			page 3
+  99              		.loc 1 13 9 is_stmt 1 view .LVU20
+ 100              		.loc 1 13 13 is_stmt 0 view .LVU21
+ARM GAS  /tmp/ccFMuaZc.s 			page 3
 
 
- 101              		.loc 1 13 12 view .LVU20
- 102 0034 3946     		mov	r1, r7
- 103 0036 2046     		mov	r0, r4
- 104              	.LVL10:
- 105              		.loc 1 13 12 view .LVU21
- 106 0038 FFF7FEFF 		bl	__aeabi_fcmpgt
- 107              	.LVL11:
- 108 003c 0028     		cmp	r0, #0
- 109 003e E7D0     		beq	.L3
+ 101 0030 24F00044 		bic	r4, r4, #-2147483648
+ 102              	.LVL9:
+ 103              		.loc 1 13 12 view .LVU22
+ 104 0034 3946     		mov	r1, r7
+ 105 0036 2046     		mov	r0, r4
+ 106              	.LVL10:
+ 107              		.loc 1 13 12 view .LVU23
+ 108 0038 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 109              	.LVL11:
+ 110 003c 0028     		cmp	r0, #0
+ 111 003e E7D0     		beq	.L3
   14:Core/Src/features.c ****             peak = fabsf(a);
- 110              		.loc 1 14 18 view .LVU22
- 111 0040 2746     		mov	r7, r4
- 112              	.LVL12:
- 113              		.loc 1 14 18 view .LVU23
- 114 0042 E5E7     		b	.L3
- 115              	.LVL13:
- 116              	.L7:
- 117              		.loc 1 14 18 view .LVU24
- 118              	.LBE3:
- 119              	.LBE4:
+ 112              		.loc 1 14 18 view .LVU24
+ 113 0040 2746     		mov	r7, r4
+ 114              	.LVL12:
+ 115              		.loc 1 14 18 view .LVU25
+ 116 0042 E5E7     		b	.L3
+ 117              	.LVL13:
+ 118              	.L7:
+ 119              		.loc 1 14 18 view .LVU26
+ 120              	.LBE3:
+ 121              	.LBE4:
   15:Core/Src/features.c ****     }
   16:Core/Src/features.c ****     features->rms = sqrtf(sum_sq / WINDOW_SIZE); // Valor RMS 
- 120              		.loc 1 16 5 is_stmt 1 view .LVU25
- 121              		.loc 1 16 21 is_stmt 0 view .LVU26
- 122 0044 0849     		ldr	r1, .L8
- 123 0046 3046     		mov	r0, r6
- 124 0048 FFF7FEFF 		bl	__aeabi_fdiv
- 125              	.LVL14:
- 126 004c FFF7FEFF 		bl	sqrtf
- 127              	.LVL15:
- 128 0050 0146     		mov	r1, r0
- 129              		.loc 1 16 19 discriminator 1 view .LVU27
- 130 0052 C9F80000 		str	r0, [r9]	@ float
+ 122              		.loc 1 16 5 is_stmt 1 view .LVU27
+ 123              		.loc 1 16 21 is_stmt 0 view .LVU28
+ 124 0044 0849     		ldr	r1, .L8
+ 125 0046 3046     		mov	r0, r6
+ 126 0048 FFF7FEFF 		bl	__aeabi_fdiv
+ 127              	.LVL14:
+ 128 004c FFF7FEFF 		bl	sqrtf
+ 129              	.LVL15:
+ 130 0050 0146     		mov	r1, r0
+ 131              		.loc 1 16 19 view .LVU29
+ 132 0052 C9F80000 		str	r0, [r9]	@ float
   17:Core/Src/features.c ****     features->peak = peak;                       // Valor Pico
- 131              		.loc 1 17 5 is_stmt 1 view .LVU28
- 132              		.loc 1 17 20 is_stmt 0 view .LVU29
- 133 0056 C9F80470 		str	r7, [r9, #4]	@ float
+ 133              		.loc 1 17 5 is_stmt 1 view .LVU30
+ 134              		.loc 1 17 20 is_stmt 0 view .LVU31
+ 135 0056 C9F80470 		str	r7, [r9, #4]	@ float
   18:Core/Src/features.c ****     features->crest = peak / features->rms;      // Factor de cresta = Pico/RMS (bajo si la vibraci
- 134              		.loc 1 18 5 is_stmt 1 view .LVU30
- 135              		.loc 1 18 28 is_stmt 0 view .LVU31
- 136 005a 3846     		mov	r0, r7
- 137 005c FFF7FEFF 		bl	__aeabi_fdiv
- 138              	.LVL16:
- 139              		.loc 1 18 21 view .LVU32
- 140 0060 C9F80800 		str	r0, [r9, #8]	@ float
+ 136              		.loc 1 18 5 is_stmt 1 view .LVU32
+ 137              		.loc 1 18 28 is_stmt 0 view .LVU33
+ 138 005a 3846     		mov	r0, r7
+ 139 005c FFF7FEFF 		bl	__aeabi_fdiv
+ 140              	.LVL16:
+ 141              		.loc 1 18 21 view .LVU34
+ 142 0060 C9F80800 		str	r0, [r9, #8]	@ float
   19:Core/Src/features.c **** }
- 141              		.loc 1 19 1 view .LVU33
- 142 0064 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
- 143              	.LVL17:
- 144              	.L9:
- 145              		.loc 1 19 1 view .LVU34
- 146              		.align	2
- 147              	.L8:
- 148 0068 0000F041 		.word	1106247680
- 149              		.cfi_endproc
- 150              	.LFE0:
- 152              		.global	__aeabi_ui2f
-ARM GAS  /tmp/ccnwPDQw.s 			page 4
+ 143              		.loc 1 19 1 view .LVU35
+ 144 0064 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 145              	.LVL17:
+ 146              	.L9:
+ 147              		.loc 1 19 1 view .LVU36
+ 148              		.align	2
+ 149              	.L8:
+ 150 0068 0000F041 		.word	1106247680
+ 151              		.cfi_endproc
+ARM GAS  /tmp/ccFMuaZc.s 			page 4
 
 
- 153              		.section	.text.ADC_To_Temp,"ax",%progbits
- 154              		.align	1
- 155              		.global	ADC_To_Temp
- 156              		.syntax unified
- 157              		.thumb
- 158              		.thumb_func
- 160              	ADC_To_Temp:
- 161              	.LVL18:
- 162              	.LFB1:
+ 152              	.LFE0:
+ 154              		.global	__aeabi_ui2f
+ 155              		.section	.text.ADC_To_Temp,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	ADC_To_Temp
+ 158              		.syntax unified
+ 159              		.thumb
+ 160              		.thumb_func
+ 162              	ADC_To_Temp:
+ 163              	.LVL18:
+ 164              	.LFB1:
   20:Core/Src/features.c **** 
   21:Core/Src/features.c **** float ADC_To_Temp(uint16_t adc)
   22:Core/Src/features.c **** {
- 163              		.loc 1 22 1 is_stmt 1 view -0
- 164              		.cfi_startproc
- 165              		@ args = 0, pretend = 0, frame = 0
- 166              		@ frame_needed = 0, uses_anonymous_args = 0
- 167              		.loc 1 22 1 is_stmt 0 view .LVU36
- 168 0000 08B5     		push	{r3, lr}
- 169              	.LCFI1:
- 170              		.cfi_def_cfa_offset 8
- 171              		.cfi_offset 3, -8
- 172              		.cfi_offset 14, -4
+ 165              		.loc 1 22 1 is_stmt 1 view -0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              		.loc 1 22 1 is_stmt 0 view .LVU38
+ 170 0000 08B5     		push	{r3, lr}
+ 171              	.LCFI1:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 3, -8
+ 174              		.cfi_offset 14, -4
   23:Core/Src/features.c ****     float v = (float)adc * 3.3f / 4095.0f;
- 173              		.loc 1 23 5 is_stmt 1 view .LVU37
- 174              		.loc 1 23 15 is_stmt 0 view .LVU38
- 175 0002 FFF7FEFF 		bl	__aeabi_ui2f
- 176              	.LVL19:
- 177              		.loc 1 23 26 view .LVU39
- 178 0006 0549     		ldr	r1, .L12
- 179 0008 FFF7FEFF 		bl	__aeabi_fmul
- 180              	.LVL20:
- 181              		.loc 1 23 11 view .LVU40
- 182 000c 0449     		ldr	r1, .L12+4
- 183 000e FFF7FEFF 		bl	__aeabi_fdiv
- 184              	.LVL21:
+ 175              		.loc 1 23 5 is_stmt 1 view .LVU39
+ 176              		.loc 1 23 15 is_stmt 0 view .LVU40
+ 177 0002 FFF7FEFF 		bl	__aeabi_ui2f
+ 178              	.LVL19:
+ 179              		.loc 1 23 26 view .LVU41
+ 180 0006 0549     		ldr	r1, .L12
+ 181 0008 FFF7FEFF 		bl	__aeabi_fmul
+ 182              	.LVL20:
+ 183              		.loc 1 23 11 view .LVU42
+ 184 000c 0449     		ldr	r1, .L12+4
+ 185 000e FFF7FEFF 		bl	__aeabi_fdiv
+ 186              	.LVL21:
   24:Core/Src/features.c ****     return v / 0.01f;   // LM35: 10mV/°C
- 185              		.loc 1 24 5 is_stmt 1 view .LVU41
- 186              		.loc 1 24 14 is_stmt 0 view .LVU42
- 187 0012 0449     		ldr	r1, .L12+8
- 188 0014 FFF7FEFF 		bl	__aeabi_fdiv
- 189              	.LVL22:
+ 187              		.loc 1 24 5 is_stmt 1 view .LVU43
+ 188              		.loc 1 24 14 is_stmt 0 view .LVU44
+ 189 0012 0449     		ldr	r1, .L12+8
+ 190 0014 FFF7FEFF 		bl	__aeabi_fdiv
+ 191              	.LVL22:
   25:Core/Src/features.c **** }
- 190              		.loc 1 25 1 view .LVU43
- 191 0018 08BD     		pop	{r3, pc}
- 192              	.L13:
- 193 001a 00BF     		.align	2
- 194              	.L12:
- 195 001c 33335340 		.word	1079194419
- 196 0020 00F07F45 		.word	1166012416
- 197 0024 0AD7233C 		.word	1008981770
- 198              		.cfi_endproc
- 199              	.LFE1:
- 201              		.global	__aeabi_fsub
- 202              		.section	.text.ADC_To_Current,"ax",%progbits
- 203              		.align	1
- 204              		.global	ADC_To_Current
- 205              		.syntax unified
-ARM GAS  /tmp/ccnwPDQw.s 			page 5
+ 192              		.loc 1 25 1 view .LVU45
+ 193 0018 08BD     		pop	{r3, pc}
+ 194              	.L13:
+ 195 001a 00BF     		.align	2
+ 196              	.L12:
+ 197 001c 33335340 		.word	1079194419
+ 198 0020 00F07F45 		.word	1166012416
+ 199 0024 0AD7233C 		.word	1008981770
+ 200              		.cfi_endproc
+ 201              	.LFE1:
+ 203              		.global	__aeabi_fsub
+ 204              		.section	.text.ADC_To_Current,"ax",%progbits
+ 205              		.align	1
+ARM GAS  /tmp/ccFMuaZc.s 			page 5
 
 
- 206              		.thumb
- 207              		.thumb_func
- 209              	ADC_To_Current:
- 210              	.LVL23:
- 211              	.LFB2:
+ 206              		.global	ADC_To_Current
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 211              	ADC_To_Current:
+ 212              	.LVL23:
+ 213              	.LFB2:
   26:Core/Src/features.c **** 
   27:Core/Src/features.c **** float ADC_To_Current(uint16_t *samples)
   28:Core/Src/features.c **** {
- 212              		.loc 1 28 1 is_stmt 1 view -0
- 213              		.cfi_startproc
- 214              		@ args = 0, pretend = 0, frame = 0
- 215              		@ frame_needed = 0, uses_anonymous_args = 0
- 216              		.loc 1 28 1 is_stmt 0 view .LVU45
- 217 0000 70B5     		push	{r4, r5, r6, lr}
- 218              	.LCFI2:
- 219              		.cfi_def_cfa_offset 16
- 220              		.cfi_offset 4, -16
- 221              		.cfi_offset 5, -12
- 222              		.cfi_offset 6, -8
- 223              		.cfi_offset 14, -4
- 224 0002 0646     		mov	r6, r0
+ 214              		.loc 1 28 1 is_stmt 1 view -0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218              		.loc 1 28 1 is_stmt 0 view .LVU47
+ 219 0000 70B5     		push	{r4, r5, r6, lr}
+ 220              	.LCFI2:
+ 221              		.cfi_def_cfa_offset 16
+ 222              		.cfi_offset 4, -16
+ 223              		.cfi_offset 5, -12
+ 224              		.cfi_offset 6, -8
+ 225              		.cfi_offset 14, -4
+ 226 0002 0646     		mov	r6, r0
   29:Core/Src/features.c ****     float sum_sq = 0.0f;
- 225              		.loc 1 29 5 is_stmt 1 view .LVU46
- 226              	.LVL24:
+ 227              		.loc 1 29 5 is_stmt 1 view .LVU48
+ 228              	.LVL24:
   30:Core/Src/features.c **** 
   31:Core/Src/features.c ****     for (int i = 0; i < WINDOW_SIZE; i++)
- 227              		.loc 1 31 5 view .LVU47
- 228              	.LBB5:
- 229              		.loc 1 31 10 view .LVU48
- 230              		.loc 1 31 14 is_stmt 0 view .LVU49
- 231 0004 0024     		movs	r4, #0
- 232              	.LBE5:
+ 229              		.loc 1 31 5 view .LVU49
+ 230              	.LBB5:
+ 231              		.loc 1 31 10 view .LVU50
+ 232              		.loc 1 31 14 is_stmt 0 view .LVU51
+ 233 0004 0024     		movs	r4, #0
+ 234              	.LBE5:
   29:Core/Src/features.c ****     float sum_sq = 0.0f;
- 233              		.loc 1 29 11 view .LVU50
- 234 0006 0025     		movs	r5, #0
- 235              	.LBB7:
- 236              		.loc 1 31 5 view .LVU51
- 237 0008 15E0     		b	.L15
- 238              	.LVL25:
- 239              	.L16:
- 240              	.LBB6:
+ 235              		.loc 1 29 11 view .LVU52
+ 236 0006 0025     		movs	r5, #0
+ 237              	.LBB7:
+ 238              		.loc 1 31 5 view .LVU53
+ 239 0008 15E0     		b	.L15
+ 240              	.LVL25:
+ 241              	.L16:
+ 242              	.LBB6:
   32:Core/Src/features.c ****     {
   33:Core/Src/features.c ****         float v = ((float)samples[i] * 3.3f / 4095.0f) - 1.65f; // volts centrado
- 241              		.loc 1 33 9 is_stmt 1 view .LVU52
- 242              		.loc 1 33 20 is_stmt 0 view .LVU53
- 243 000a 36F81400 		ldrh	r0, [r6, r4, lsl #1]
- 244 000e FFF7FEFF 		bl	__aeabi_ui2f
- 245              	.LVL26:
- 246              		.loc 1 33 38 view .LVU54
- 247 0012 0F49     		ldr	r1, .L18
- 248 0014 FFF7FEFF 		bl	__aeabi_fmul
- 249              	.LVL27:
- 250              		.loc 1 33 45 view .LVU55
- 251 0018 0E49     		ldr	r1, .L18+4
- 252 001a FFF7FEFF 		bl	__aeabi_fdiv
- 253              	.LVL28:
- 254              		.loc 1 33 15 view .LVU56
-ARM GAS  /tmp/ccnwPDQw.s 			page 6
+ 243              		.loc 1 33 9 is_stmt 1 discriminator 3 view .LVU54
+ 244              		.loc 1 33 20 is_stmt 0 discriminator 3 view .LVU55
+ 245 000a 36F81400 		ldrh	r0, [r6, r4, lsl #1]
+ 246 000e FFF7FEFF 		bl	__aeabi_ui2f
+ 247              	.LVL26:
+ 248              		.loc 1 33 38 discriminator 3 view .LVU56
+ 249 0012 0F49     		ldr	r1, .L18
+ 250 0014 FFF7FEFF 		bl	__aeabi_fmul
+ 251              	.LVL27:
+ 252              		.loc 1 33 45 discriminator 3 view .LVU57
+ 253 0018 0E49     		ldr	r1, .L18+4
+ 254 001a FFF7FEFF 		bl	__aeabi_fdiv
+ARM GAS  /tmp/ccFMuaZc.s 			page 6
 
 
- 255 001e 0E49     		ldr	r1, .L18+8
- 256 0020 FFF7FEFF 		bl	__aeabi_fsub
- 257              	.LVL29:
- 258 0024 0146     		mov	r1, r0
- 259              	.LVL30:
+ 255              	.LVL28:
+ 256              		.loc 1 33 15 discriminator 3 view .LVU58
+ 257 001e 0E49     		ldr	r1, .L18+8
+ 258 0020 FFF7FEFF 		bl	__aeabi_fsub
+ 259              	.LVL29:
+ 260 0024 0146     		mov	r1, r0
+ 261              	.LVL30:
   34:Core/Src/features.c ****         sum_sq += v * v;
- 260              		.loc 1 34 9 is_stmt 1 view .LVU57
- 261              		.loc 1 34 21 is_stmt 0 view .LVU58
- 262 0026 FFF7FEFF 		bl	__aeabi_fmul
- 263              	.LVL31:
- 264              		.loc 1 34 21 view .LVU59
- 265 002a 0146     		mov	r1, r0
- 266              		.loc 1 34 16 view .LVU60
- 267 002c 2846     		mov	r0, r5
- 268 002e FFF7FEFF 		bl	__aeabi_fadd
- 269              	.LVL32:
- 270 0032 0546     		mov	r5, r0
- 271              	.LVL33:
- 272              		.loc 1 34 16 view .LVU61
- 273              	.LBE6:
+ 262              		.loc 1 34 9 is_stmt 1 discriminator 3 view .LVU59
+ 263              		.loc 1 34 21 is_stmt 0 discriminator 3 view .LVU60
+ 264 0026 FFF7FEFF 		bl	__aeabi_fmul
+ 265              	.LVL31:
+ 266              		.loc 1 34 21 discriminator 3 view .LVU61
+ 267 002a 0146     		mov	r1, r0
+ 268              		.loc 1 34 16 discriminator 3 view .LVU62
+ 269 002c 2846     		mov	r0, r5
+ 270 002e FFF7FEFF 		bl	__aeabi_fadd
+ 271              	.LVL32:
+ 272 0032 0546     		mov	r5, r0
+ 273              	.LVL33:
+ 274              		.loc 1 34 16 discriminator 3 view .LVU63
+ 275              	.LBE6:
   31:Core/Src/features.c ****     {
- 274              		.loc 1 31 39 is_stmt 1 discriminator 3 view .LVU62
- 275 0034 0134     		adds	r4, r4, #1
- 276              	.LVL34:
- 277              	.L15:
+ 276              		.loc 1 31 38 is_stmt 1 discriminator 3 view .LVU64
   31:Core/Src/features.c ****     {
- 278              		.loc 1 31 23 discriminator 1 view .LVU63
- 279 0036 1D2C     		cmp	r4, #29
- 280 0038 E7DD     		ble	.L16
- 281              	.LBE7:
+ 277              		.loc 1 31 39 is_stmt 0 discriminator 3 view .LVU65
+ 278 0034 0134     		adds	r4, r4, #1
+ 279              	.LVL34:
+ 280              	.L15:
+  31:Core/Src/features.c ****     {
+ 281              		.loc 1 31 21 is_stmt 1 discriminator 1 view .LVU66
+  31:Core/Src/features.c ****     {
+ 282              		.loc 1 31 5 is_stmt 0 discriminator 1 view .LVU67
+ 283 0036 1D2C     		cmp	r4, #29
+ 284 0038 E7DD     		ble	.L16
+ 285              	.LBE7:
   35:Core/Src/features.c ****     }
   36:Core/Src/features.c **** 
   37:Core/Src/features.c ****     float v_rms = sqrtf(sum_sq / WINDOW_SIZE);
- 282              		.loc 1 37 5 view .LVU64
- 283              		.loc 1 37 19 is_stmt 0 view .LVU65
- 284 003a 0849     		ldr	r1, .L18+12
- 285 003c 2846     		mov	r0, r5
- 286 003e FFF7FEFF 		bl	__aeabi_fdiv
- 287              	.LVL35:
- 288 0042 FFF7FEFF 		bl	sqrtf
- 289              	.LVL36:
+ 286              		.loc 1 37 5 is_stmt 1 view .LVU68
+ 287              		.loc 1 37 19 is_stmt 0 view .LVU69
+ 288 003a 0849     		ldr	r1, .L18+12
+ 289 003c 2846     		mov	r0, r5
+ 290 003e FFF7FEFF 		bl	__aeabi_fdiv
+ 291              	.LVL35:
+ 292 0042 FFF7FEFF 		bl	sqrtf
+ 293              	.LVL36:
   38:Core/Src/features.c **** 
   39:Core/Src/features.c ****     float sensitivity = 0.2f;
- 290              		.loc 1 39 5 is_stmt 1 view .LVU66
+ 294              		.loc 1 39 5 is_stmt 1 view .LVU70
   40:Core/Src/features.c **** 
   41:Core/Src/features.c ****     return v_rms / sensitivity;
- 291              		.loc 1 41 5 view .LVU67
- 292              		.loc 1 41 18 is_stmt 0 view .LVU68
- 293 0046 0649     		ldr	r1, .L18+16
- 294 0048 FFF7FEFF 		bl	__aeabi_fdiv
- 295              	.LVL37:
+ 295              		.loc 1 41 5 view .LVU71
+ 296              		.loc 1 41 18 is_stmt 0 view .LVU72
+ 297 0046 0649     		ldr	r1, .L18+16
+ 298 0048 FFF7FEFF 		bl	__aeabi_fdiv
+ 299              	.LVL37:
+ARM GAS  /tmp/ccFMuaZc.s 			page 7
+
+
   42:Core/Src/features.c **** }...
- 296              		.loc 1 42 1 view .LVU69
- 297 004c 70BD     		pop	{r4, r5, r6, pc}
- 298              	.LVL38:
- 299              	.L19:
- 300              		.loc 1 42 1 view .LVU70
-ARM GAS  /tmp/ccnwPDQw.s 			page 7
-
-
- 301 004e 00BF     		.align	2
- 302              	.L18:
- 303 0050 33335340 		.word	1079194419
- 304 0054 00F07F45 		.word	1166012416
- 305 0058 3333D33F 		.word	1070805811
- 306 005c 0000F041 		.word	1106247680
- 307 0060 CDCC4C3E 		.word	1045220557
- 308              		.cfi_endproc
- 309              	.LFE2:
- 311              		.text
- 312              	.Letext0:
- 313              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 314              		.file 3 "Core/Inc/features.h"
- 315              		.file 4 "/usr/include/newlib/math.h"
-ARM GAS  /tmp/ccnwPDQw.s 			page 8
+ 300              		.loc 1 42 1 view .LVU73
+ 301 004c 70BD     		pop	{r4, r5, r6, pc}
+ 302              	.LVL38:
+ 303              	.L19:
+ 304              		.loc 1 42 1 view .LVU74
+ 305 004e 00BF     		.align	2
+ 306              	.L18:
+ 307 0050 33335340 		.word	1079194419
+ 308 0054 00F07F45 		.word	1166012416
+ 309 0058 3333D33F 		.word	1070805811
+ 310 005c 0000F041 		.word	1106247680
+ 311 0060 CDCC4C3E 		.word	1045220557
+ 312              		.cfi_endproc
+ 313              	.LFE2:
+ 315              		.text
+ 316              	.Letext0:
+ 317              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 318              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 319              		.file 4 "Core/Inc/features.h"
+ 320              		.file 5 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ARM GAS  /tmp/ccFMuaZc.s 			page 8
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 features.c
-     /tmp/ccnwPDQw.s:24     .text.Features_ComputeRMSPeak:00000000 $t
-     /tmp/ccnwPDQw.s:30     .text.Features_ComputeRMSPeak:00000000 Features_ComputeRMSPeak
-     /tmp/ccnwPDQw.s:148    .text.Features_ComputeRMSPeak:00000068 $d
-     /tmp/ccnwPDQw.s:154    .text.ADC_To_Temp:00000000 $t
-     /tmp/ccnwPDQw.s:160    .text.ADC_To_Temp:00000000 ADC_To_Temp
-     /tmp/ccnwPDQw.s:195    .text.ADC_To_Temp:0000001c $d
-     /tmp/ccnwPDQw.s:203    .text.ADC_To_Current:00000000 $t
-     /tmp/ccnwPDQw.s:209    .text.ADC_To_Current:00000000 ADC_To_Current
-     /tmp/ccnwPDQw.s:303    .text.ADC_To_Current:00000050 $d
+                            *ABS*:0000000000000000 features.c
+     /tmp/ccFMuaZc.s:23     .text.Features_ComputeRMSPeak:0000000000000000 $t
+     /tmp/ccFMuaZc.s:29     .text.Features_ComputeRMSPeak:0000000000000000 Features_ComputeRMSPeak
+     /tmp/ccFMuaZc.s:150    .text.Features_ComputeRMSPeak:0000000000000068 $d
+     /tmp/ccFMuaZc.s:156    .text.ADC_To_Temp:0000000000000000 $t
+     /tmp/ccFMuaZc.s:162    .text.ADC_To_Temp:0000000000000000 ADC_To_Temp
+     /tmp/ccFMuaZc.s:197    .text.ADC_To_Temp:000000000000001c $d
+     /tmp/ccFMuaZc.s:205    .text.ADC_To_Current:0000000000000000 $t
+     /tmp/ccFMuaZc.s:211    .text.ADC_To_Current:0000000000000000 ADC_To_Current
+     /tmp/ccFMuaZc.s:307    .text.ADC_To_Current:0000000000000050 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2f

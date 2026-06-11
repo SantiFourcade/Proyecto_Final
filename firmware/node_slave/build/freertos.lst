@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjkNbhh.s 			page 1
+ARM GAS  /tmp/ccN1nt23.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -14,19 +14,36 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   11              		.eabi_attribute 34, 1
   12              		.eabi_attribute 18, 4
   13              		.file	"freertos.c"
-  14              		.text
-  15              	.Ltext0:
-  16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/freertos.c"
-  18              		.section	.text.StartSampler,"ax",%progbits
-  19              		.align	1
-  20              		.global	StartSampler
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	StartSampler:
-  26              	.LVL0:
-  27              	.LFB75:
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC0:
+  17 0000 61637175 		.ascii	"acquire\000"
+  17      69726500 
+  18              		.align	2
+  19              	.LC2:
+  20 0008 7061636B 		.ascii	"package\000"
+  20      61676500 
+  21              		.align	2
+  22              	.LC4:
+  23 0010 74784341 		.ascii	"txCAN\000"
+  23      4E00
+  24 0016 0000     		.align	2
+  25              	.LC6:
+  26 0018 73616D70 		.ascii	"sampler\000"
+  26      6C657200 
+  27              		.text
+  28              	.Ltext0:
+  29              		.cfi_sections	.debug_frame
+  30              		.section	.text.StartSampler,"ax",%progbits
+  31              		.align	1
+  32              		.global	StartSampler
+  33              		.syntax unified
+  34              		.thumb
+  35              		.thumb_func
+  37              	StartSampler:
+  38              	.LVL0:
+  39              	.LFB75:
+  40              		.file 1 "Core/Src/freertos.c"
    1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
    2:Core/Src/freertos.c **** /**
    3:Core/Src/freertos.c ****   ******************************************************************************
@@ -41,6 +58,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   12:Core/Src/freertos.c ****   * This software is licensed under terms that can be found in the LICENSE file
   13:Core/Src/freertos.c ****   * in the root directory of this software component.
   14:Core/Src/freertos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+ARM GAS  /tmp/ccN1nt23.s 			page 2
+
+
   15:Core/Src/freertos.c ****   *
   16:Core/Src/freertos.c ****   ******************************************************************************
   17:Core/Src/freertos.c ****   */
@@ -58,9 +78,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   29:Core/Src/freertos.c **** 
   30:Core/Src/freertos.c **** #include "i2c.h"
   31:Core/Src/freertos.c **** #include "usart.h"
-ARM GAS  /tmp/ccjkNbhh.s 			page 2
-
-
   32:Core/Src/freertos.c **** #include "adc.h"
   33:Core/Src/freertos.c **** 
   34:Core/Src/freertos.c **** #include "features.h"
@@ -101,6 +118,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   69:Core/Src/freertos.c **** 
   70:Core/Src/freertos.c **** osThreadId acquireHandle;
   71:Core/Src/freertos.c **** osThreadId packageHandle;
+ARM GAS  /tmp/ccN1nt23.s 			page 3
+
+
   72:Core/Src/freertos.c **** osThreadId txCANHandle;
   73:Core/Src/freertos.c **** //osThreadId pulsoDebugHandle;
   74:Core/Src/freertos.c **** //osThreadId loggerHandle;
@@ -118,9 +138,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   86:Core/Src/freertos.c **** float Procesar_Corriente_RMS(void);
   87:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
   88:Core/Src/freertos.c **** 
-ARM GAS  /tmp/ccjkNbhh.s 			page 3
-
-
   89:Core/Src/freertos.c **** void StartAcquireTask(void const * argument);
   90:Core/Src/freertos.c **** void StartPackageTask(void const * argument);
   91:Core/Src/freertos.c **** void StartTxCAN(void const * argument);
@@ -161,6 +178,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  126:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
  127:Core/Src/freertos.c ****   /* add semaphores, ... */
  128:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+ARM GAS  /tmp/ccN1nt23.s 			page 4
+
+
  129:Core/Src/freertos.c **** 
  130:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
  131:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
@@ -178,12 +198,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  143:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
  144:Core/Src/freertos.c **** 
  145:Core/Src/freertos.c ****   /* Create the thread(s) */
-ARM GAS  /tmp/ccjkNbhh.s 			page 4
-
-
  146:Core/Src/freertos.c ****   
  147:Core/Src/freertos.c ****   /* Acquire Task */
- 148:Core/Src/freertos.c ****   osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 256);
+ 148:Core/Src/freertos.c ****   osThreadDef(acquire, StartAcquireTask, osPriorityNormal, 0, 512);
  149:Core/Src/freertos.c ****   acquireHandle = osThreadCreate(osThread(acquire), NULL);
  150:Core/Src/freertos.c **** 
  151:Core/Src/freertos.c ****   /* Package Task */
@@ -221,6 +238,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  183:Core/Src/freertos.c **** //   printf("Iniciando Logger...\r\n");
  184:Core/Src/freertos.c **** //   /* Infinite loop */
  185:Core/Src/freertos.c **** //   uint32_t acumulador_temp = 0;
+ARM GAS  /tmp/ccN1nt23.s 			page 5
+
+
  186:Core/Src/freertos.c **** //   uint32_t cuenta_muestras_temp = 0;
  187:Core/Src/freertos.c **** //   float temp_filtrada = 0.0f;
  188:Core/Src/freertos.c **** //   float corriente_actual = 0.0f;
@@ -238,9 +258,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  200:Core/Src/freertos.c **** //         HAL_ADC_Start(&hadc2);
  201:Core/Src/freertos.c **** //         if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
  202:Core/Src/freertos.c **** //             acumulador_temp += HAL_ADC_GetValue(&hadc2);
-ARM GAS  /tmp/ccjkNbhh.s 			page 5
-
-
  203:Core/Src/freertos.c **** //             cuenta_muestras_temp++;
  204:Core/Src/freertos.c **** //         }
  205:Core/Src/freertos.c **** //         HAL_ADC_Stop(&hadc2);
@@ -269,78 +286,81 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  228:Core/Src/freertos.c **** 
  229:Core/Src/freertos.c **** void StartSampler(void const * argument)
  230:Core/Src/freertos.c **** {
-  28              		.loc 1 230 1 view -0
-  29              		.cfi_startproc
-  30              		@ args = 0, pretend = 0, frame = 8
-  31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		.loc 1 230 1 is_stmt 0 view .LVU1
-  33 0000 00B5     		push	{lr}
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 4
-  36              		.cfi_offset 14, -4
-  37 0002 83B0     		sub	sp, sp, #12
-  38              	.LCFI1:
-  39              		.cfi_def_cfa_offset 16
+  41              		.loc 1 230 1 view -0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 8
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		.loc 1 230 1 is_stmt 0 view .LVU1
+  46 0000 00B5     		push	{lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 4
+  49              		.cfi_offset 14, -4
+  50 0002 83B0     		sub	sp, sp, #12
+  51              	.LCFI1:
+  52              		.cfi_def_cfa_offset 16
+ARM GAS  /tmp/ccN1nt23.s 			page 6
+
+
  231:Core/Src/freertos.c ****   /* USER CODE BEGIN StartSampler */
  232:Core/Src/freertos.c ****   /* Infinite loop */
  233:Core/Src/freertos.c ****   TickType_t xLastWakeTime;
-  40              		.loc 1 233 3 is_stmt 1 view .LVU2
+  53              		.loc 1 233 3 is_stmt 1 view .LVU2
  234:Core/Src/freertos.c ****   const TickType_t xFrequency = pdMS_TO_TICKS(1); // 1 ms exacto
-  41              		.loc 1 234 3 view .LVU3
-  42              	.LVL1:
+  54              		.loc 1 234 3 view .LVU3
+  55              	.LVL1:
  235:Core/Src/freertos.c ****   xLastWakeTime = xTaskGetTickCount();
-  43              		.loc 1 235 3 view .LVU4
-  44              		.loc 1 235 19 is_stmt 0 view .LVU5
-  45 0004 FFF7FEFF 		bl	xTaskGetTickCount
-  46              	.LVL2:
-  47              		.loc 1 235 17 discriminator 1 view .LVU6
-  48 0008 0190     		str	r0, [sp, #4]
-  49              	.L2:
+  56              		.loc 1 235 3 view .LVU4
+  57              		.loc 1 235 19 is_stmt 0 view .LVU5
+  58 0004 FFF7FEFF 		bl	xTaskGetTickCount
+  59              	.LVL2:
+  60              		.loc 1 235 17 view .LVU6
+  61 0008 0190     		str	r0, [sp, #4]
+  62              	.L2:
  236:Core/Src/freertos.c **** 
  237:Core/Src/freertos.c ****   for(;;) {
-ARM GAS  /tmp/ccjkNbhh.s 			page 6
-
-
-  50              		.loc 1 237 3 is_stmt 1 view .LVU7
+  63              		.loc 1 237 3 is_stmt 1 discriminator 1 view .LVU7
  238:Core/Src/freertos.c ****       vTaskDelayUntil(&xLastWakeTime, xFrequency);
-  51              		.loc 1 238 7 view .LVU8
-  52 000a 0121     		movs	r1, #1
-  53 000c 01A8     		add	r0, sp, #4
-  54 000e FFF7FEFF 		bl	vTaskDelayUntil
-  55              	.LVL3:
+  64              		.loc 1 238 7 discriminator 1 view .LVU8
+  65 000a 0121     		movs	r1, #1
+  66 000c 01A8     		add	r0, sp, #4
+  67 000e FFF7FEFF 		bl	vTaskDelayUntil
+  68              	.LVL3:
  239:Core/Src/freertos.c ****       HAL_ADC_Start_IT(&hadc1); // Disparo manual cada 1ms
-  56              		.loc 1 239 7 discriminator 1 view .LVU9
-  57 0012 0248     		ldr	r0, .L4
-  58 0014 FFF7FEFF 		bl	HAL_ADC_Start_IT
-  59              	.LVL4:
+  69              		.loc 1 239 7 discriminator 1 view .LVU9
+  70 0012 0248     		ldr	r0, .L4
+  71 0014 FFF7FEFF 		bl	HAL_ADC_Start_IT
+  72              	.LVL4:
  237:Core/Src/freertos.c ****       vTaskDelayUntil(&xLastWakeTime, xFrequency);
-  60              		.loc 1 237 3 view .LVU10
-  61 0018 F7E7     		b	.L2
-  62              	.L5:
-  63 001a 00BF     		.align	2
-  64              	.L4:
-  65 001c 00000000 		.word	hadc1
-  66              		.cfi_endproc
-  67              	.LFE75:
-  69              		.section	.rodata.StartPackageTask.str1.4,"aMS",%progbits,1
-  70              		.align	2
-  71              	.LC8:
-  72 0000 5061636B 		.ascii	"Package task started\015\000"
-  72      61676520 
-  72      7461736B 
-  72      20737461 
-  72      72746564 
-  73              		.section	.text.StartPackageTask,"ax",%progbits
-  74              		.align	1
-  75              		.global	StartPackageTask
-  76              		.syntax unified
-  77              		.thumb
-  78              		.thumb_func
-  80              	StartPackageTask:
-  81              	.LVL5:
-  82              	.LFB78:
+  73              		.loc 1 237 8 discriminator 1 view .LVU10
+  74 0018 F7E7     		b	.L2
+  75              	.L5:
+  76 001a 00BF     		.align	2
+  77              	.L4:
+  78 001c 00000000 		.word	hadc1
+  79              		.cfi_endproc
+  80              	.LFE75:
+  82              		.section	.rodata.StartPackageTask.str1.4,"aMS",%progbits,1
+  83              		.align	2
+  84              	.LC8:
+  85 0000 5061636B 		.ascii	"Package task started\015\000"
+  85      61676520 
+  85      7461736B 
+  85      20737461 
+  85      72746564 
+  86              		.section	.text.StartPackageTask,"ax",%progbits
+  87              		.align	1
+  88              		.global	StartPackageTask
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	StartPackageTask:
+  94              	.LVL5:
+  95              	.LFB78:
  240:Core/Src/freertos.c ****   }
  241:Core/Src/freertos.c ****   /* USER CODE END StartSampler */
+ARM GAS  /tmp/ccN1nt23.s 			page 7
+
+
  242:Core/Src/freertos.c **** }
  243:Core/Src/freertos.c **** /* Private application code --------------------------------------------------*/
  244:Core/Src/freertos.c **** /* USER CODE BEGIN Application */
@@ -358,9 +378,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  256:Core/Src/freertos.c ****         int32_t centrado = (int32_t)adc_buffer_corriente[i] - 2048;
  257:Core/Src/freertos.c ****         suma_cuadrados += (float)(centrado * centrado);
  258:Core/Src/freertos.c ****     }
-ARM GAS  /tmp/ccjkNbhh.s 			page 7
-
-
  259:Core/Src/freertos.c ****     
  260:Core/Src/freertos.c ****     float rms_raw = sqrtf(suma_cuadrados / 100.0f);
  261:Core/Src/freertos.c ****     return (rms_raw * (3.262f / 4096.0f)); 
@@ -371,596 +388,562 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  266:Core/Src/freertos.c **** 
  267:Core/Src/freertos.c **** void StartAcquireTask(void const * argument)
  268:Core/Src/freertos.c **** {
- 269:Core/Src/freertos.c ****   /* USER CODE BEGIN StartLogger */
- 270:Core/Src/freertos.c ****   printf("Iniciando Logger...\r\n");
- 271:Core/Src/freertos.c ****   /* Infinite loop */
- 272:Core/Src/freertos.c ****   uint32_t acumulador_temp = 0;
- 273:Core/Src/freertos.c ****   uint32_t cuenta_muestras_temp = 0;
- 274:Core/Src/freertos.c **** 
- 275:Core/Src/freertos.c ****     static raw_data_t raw;
- 276:Core/Src/freertos.c ****     uint16_t idx = 0;
- 277:Core/Src/freertos.c **** 
- 278:Core/Src/freertos.c ****     /* Variables para velocidad */
- 279:Core/Src/freertos.c ****     static uint32_t acumulador_ticks = 0;
- 280:Core/Src/freertos.c ****     static uint8_t contador_pulsos = 0;
- 281:Core/Src/freertos.c ****     float rpm = 0.0f;
- 282:Core/Src/freertos.c **** 
- 283:Core/Src/freertos.c ****     for(;;)
- 284:Core/Src/freertos.c ****     {
- 285:Core/Src/freertos.c ****     
- 286:Core/Src/freertos.c ****         // ACELERÓMETRO
- 287:Core/Src/freertos.c ****         ADXL345_ReadXYZ(&raw.accel.ax[idx],
- 288:Core/Src/freertos.c ****                         &raw.accel.ay[idx],
- 289:Core/Src/freertos.c ****                         &raw.accel.az[idx]);
- 290:Core/Src/freertos.c ****         // printf("%d,%d,%d\r\n",
- 291:Core/Src/freertos.c ****         //     raw.accel.ax[idx],
- 292:Core/Src/freertos.c ****         //     raw.accel.ay[idx],
- 293:Core/Src/freertos.c ****         //     raw.accel.az[idx]);
- 294:Core/Src/freertos.c ****         // TEMPERATURA (LM35)
- 295:Core/Src/freertos.c ****         //  ADC_Select_Channel(ADC_CHANNEL_0);
- 296:Core/Src/freertos.c ****         //  HAL_Delay(2);
- 297:Core/Src/freertos.c ****         //  HAL_ADC_Start(&hadc1);
- 298:Core/Src/freertos.c ****         //  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
- 299:Core/Src/freertos.c ****         //  raw.temp = HAL_ADC_GetValue(&hadc1);
- 300:Core/Src/freertos.c ****         //  printf("TEMP RAW = %u\r\n", raw.temp);
- 301:Core/Src/freertos.c ****         //  HAL_ADC_Stop(&hadc1);
- 302:Core/Src/freertos.c **** 
- 303:Core/Src/freertos.c ****         //CORRIENTE 
- 304:Core/Src/freertos.c ****         // ADC_Select_Channel(ADC_CHANNEL_1);
- 305:Core/Src/freertos.c ****         // HAL_ADC_Start(&hadc1);
- 306:Core/Src/freertos.c ****         // HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
- 307:Core/Src/freertos.c ****         // raw.current[idx] = HAL_ADC_GetValue(&hadc1);
- 308:Core/Src/freertos.c ****         // printf("CURRENT RAW = %d\r\n", raw.current[idx]);        
- 309:Core/Src/freertos.c ****         // HAL_ADC_Stop(&hadc1);
+ 269:Core/Src/freertos.c ****     printf("Iniciando Adquisidor...\r\n");
+ 270:Core/Src/freertos.c ****     uint32_t acumulador_temp = 0;
+ 271:Core/Src/freertos.c ****     uint32_t cuenta_muestras_temp = 0;
+ 272:Core/Src/freertos.c **** 
+ 273:Core/Src/freertos.c ****     static raw_data_t raw;
+ 274:Core/Src/freertos.c ****     uint16_t idx = 0;
+ 275:Core/Src/freertos.c **** 
+ 276:Core/Src/freertos.c ****     /* Variables para velocidad */
+ 277:Core/Src/freertos.c ****     static uint32_t acumulador_ticks = 0;
+ 278:Core/Src/freertos.c ****     static uint8_t contador_pulsos = 0;
+ 279:Core/Src/freertos.c ****     float rpm = 0.0f;
+ 280:Core/Src/freertos.c **** 
+ 281:Core/Src/freertos.c ****     for(;;)
+ 282:Core/Src/freertos.c ****     {    
+ 283:Core/Src/freertos.c ****         // ACELERÓMETRO
+ 284:Core/Src/freertos.c ****         ADXL345_ReadXYZ(&raw.accel.ax[idx],
+ 285:Core/Src/freertos.c ****                         &raw.accel.ay[idx],
+ 286:Core/Src/freertos.c ****                         &raw.accel.az[idx]);
+ 287:Core/Src/freertos.c ****         // printf("%d,%d,%d\r\n",
+ 288:Core/Src/freertos.c ****         //     raw.accel.ax[idx],
+ 289:Core/Src/freertos.c ****         //     raw.accel.ay[idx],
+ 290:Core/Src/freertos.c ****         //     raw.accel.az[idx]);
+ 291:Core/Src/freertos.c ****         if (new_read)
+ 292:Core/Src/freertos.c ****         {
+ 293:Core/Src/freertos.c ****             taskENTER_CRITICAL();
+ 294:Core/Src/freertos.c ****             uint32_t current_ticks = diff_ticks;
+ 295:Core/Src/freertos.c ****             new_read = 0;
+ 296:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
+ 297:Core/Src/freertos.c **** 
+ 298:Core/Src/freertos.c ****             acumulador_ticks += current_ticks;
+ARM GAS  /tmp/ccN1nt23.s 			page 8
+
+
+ 299:Core/Src/freertos.c ****             contador_pulsos++;
+ 300:Core/Src/freertos.c **** 
+ 301:Core/Src/freertos.c ****             if (contador_pulsos >= 8)
+ 302:Core/Src/freertos.c ****             {
+ 303:Core/Src/freertos.c ****                 float promedio_ticks = (float)acumulador_ticks / 8.0f;
+ 304:Core/Src/freertos.c **** 
+ 305:Core/Src/freertos.c ****                 /* Fórmula RPM */
+ 306:Core/Src/freertos.c ****                 rpm = 7500000.0f / promedio_ticks;
+ 307:Core/Src/freertos.c **** 
+ 308:Core/Src/freertos.c ****                 acumulador_ticks = 0;
+ 309:Core/Src/freertos.c ****                 contador_pulsos = 0;
  310:Core/Src/freertos.c **** 
- 311:Core/Src/freertos.c ****         //VELOCIDAD (RPM)
- 312:Core/Src/freertos.c ****         if (new_read)
- 313:Core/Src/freertos.c ****         {
- 314:Core/Src/freertos.c ****             taskENTER_CRITICAL();
- 315:Core/Src/freertos.c ****             uint32_t current_ticks = diff_ticks;
-ARM GAS  /tmp/ccjkNbhh.s 			page 8
-
-
- 316:Core/Src/freertos.c ****             new_read = 0;
- 317:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
- 318:Core/Src/freertos.c **** 
- 319:Core/Src/freertos.c ****             acumulador_ticks += current_ticks;
- 320:Core/Src/freertos.c ****             contador_pulsos++;
- 321:Core/Src/freertos.c **** 
- 322:Core/Src/freertos.c ****             if (contador_pulsos >= 8)
- 323:Core/Src/freertos.c ****             {
- 324:Core/Src/freertos.c ****                 float promedio_ticks = (float)acumulador_ticks / 8.0f;
- 325:Core/Src/freertos.c **** 
- 326:Core/Src/freertos.c ****                 /* Fórmula RPM */
- 327:Core/Src/freertos.c ****                 rpm = 7500000.0f / promedio_ticks;
- 328:Core/Src/freertos.c **** 
- 329:Core/Src/freertos.c ****                 acumulador_ticks = 0;
- 330:Core/Src/freertos.c ****                 contador_pulsos = 0;
+ 311:Core/Src/freertos.c ****             }
+ 312:Core/Src/freertos.c ****         }
+ 313:Core/Src/freertos.c **** 
+ 314:Core/Src/freertos.c ****         raw.speed = rpm;
+ 315:Core/Src/freertos.c **** 
+ 316:Core/Src/freertos.c ****         if (buffer_listo) {
+ 317:Core/Src/freertos.c ****             corriente_actual = Procesar_Corriente_RMS();
+ 318:Core/Src/freertos.c ****             buffer_listo = 0;
+ 319:Core/Src/freertos.c **** 
+ 320:Core/Src/freertos.c ****             HAL_ADC_Start(&hadc2);
+ 321:Core/Src/freertos.c ****             if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
+ 322:Core/Src/freertos.c ****                 acumulador_temp += HAL_ADC_GetValue(&hadc2);
+ 323:Core/Src/freertos.c ****                 cuenta_muestras_temp++;
+ 324:Core/Src/freertos.c ****             }
+ 325:Core/Src/freertos.c ****             HAL_ADC_Stop(&hadc2);
+ 326:Core/Src/freertos.c **** 
+ 327:Core/Src/freertos.c ****             if (cuenta_muestras_temp >= 32) {
+ 328:Core/Src/freertos.c ****                 float promedio_ticks = (float)acumulador_temp / 32.0f;
+ 329:Core/Src/freertos.c ****                 float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+ 330:Core/Src/freertos.c ****                 temp_filtrada = voltaje_mv / 10.0f;
  331:Core/Src/freertos.c **** 
- 332:Core/Src/freertos.c ****             }
- 333:Core/Src/freertos.c ****         }
- 334:Core/Src/freertos.c **** 
- 335:Core/Src/freertos.c ****     //     printf("%d,%d,%d,%.2f\r\n",
- 336:Core/Src/freertos.c ****     //    raw.accel.ax[idx],
- 337:Core/Src/freertos.c ****     //    raw.accel.ay[idx],
- 338:Core/Src/freertos.c ****     //    raw.accel.az[idx],
- 339:Core/Src/freertos.c ****     //    rpm);
- 340:Core/Src/freertos.c ****         raw.speed = rpm;
- 341:Core/Src/freertos.c **** 
- 342:Core/Src/freertos.c **** 
- 343:Core/Src/freertos.c ****             if (buffer_listo) {
- 344:Core/Src/freertos.c ****         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
- 345:Core/Src/freertos.c ****         corriente_actual = Procesar_Corriente_RMS();
- 346:Core/Src/freertos.c ****         buffer_listo = 0; // Liberamos el buffer al toque
+ 332:Core/Src/freertos.c ****                 acumulador_temp = 0;
+ 333:Core/Src/freertos.c ****                 cuenta_muestras_temp = 0;
+ 334:Core/Src/freertos.c ****             }
+ 335:Core/Src/freertos.c ****         } 
+ 336:Core/Src/freertos.c **** 
+ 337:Core/Src/freertos.c ****     //ENVIO A PYTHON
+ 338:Core/Src/freertos.c ****     // printf("%d,%d,%d,%.2f,%.2f,%.2f\r\n",
+ 339:Core/Src/freertos.c ****     //        raw.accel.ax[idx],
+ 340:Core/Src/freertos.c ****     //        raw.accel.ay[idx],
+ 341:Core/Src/freertos.c ****     //        raw.accel.az[idx],
+ 342:Core/Src/freertos.c ****     //        temp_filtrada,
+ 343:Core/Src/freertos.c ****     //        corriente_actual,
+ 344:Core/Src/freertos.c ****     //        rpm);
+ 345:Core/Src/freertos.c **** 
+ 346:Core/Src/freertos.c ****         idx++;
  347:Core/Src/freertos.c **** 
- 348:Core/Src/freertos.c ****         // 2. TOMAMOS UNA SOLA MUESTRA DE TEMPERATURA
- 349:Core/Src/freertos.c ****         // Como pasó 100ms desde la última vez, el capacitor interno está limpísimo (0 crosstal
- 350:Core/Src/freertos.c ****         HAL_ADC_Start(&hadc2);
- 351:Core/Src/freertos.c ****         if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
- 352:Core/Src/freertos.c ****             acumulador_temp += HAL_ADC_GetValue(&hadc2);
- 353:Core/Src/freertos.c ****             cuenta_muestras_temp++;
- 354:Core/Src/freertos.c ****         }
- 355:Core/Src/freertos.c ****         HAL_ADC_Stop(&hadc2);
- 356:Core/Src/freertos.c **** 
- 357:Core/Src/freertos.c ****         // 3. ¿YA TENEMOS LAS 32 MUESTRAS? (Pasan cada ~3.2 segundos)
- 358:Core/Src/freertos.c ****         if (cuenta_muestras_temp >= 32) {
- 359:Core/Src/freertos.c ****             float promedio_ticks = (float)acumulador_temp / 32.0f;
- 360:Core/Src/freertos.c ****             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
- 361:Core/Src/freertos.c ****             temp_filtrada = voltaje_mv / 10.0f;
- 362:Core/Src/freertos.c **** 
- 363:Core/Src/freertos.c ****             // Reseteamos para el próximo ciclo largo
- 364:Core/Src/freertos.c ****             acumulador_temp = 0;
- 365:Core/Src/freertos.c ****             cuenta_muestras_temp = 0;
- 366:Core/Src/freertos.c ****         }
- 367:Core/Src/freertos.c **** 
- 368:Core/Src/freertos.c ****         // 4. ENVIAMOS A PYTHON
- 369:Core/Src/freertos.c ****         // Manda la corriente nueva siempre, y la temperatura se actualiza cada 3.2s
- 370:Core/Src/freertos.c ****         //printf("%.2f,%.2f\r\n", temp_filtrada, corriente_actual);
- 371:Core/Src/freertos.c ****     } 
- 372:Core/Src/freertos.c **** 
-ARM GAS  /tmp/ccjkNbhh.s 			page 9
+ 348:Core/Src/freertos.c ****         if (idx >= WINDOW_SIZE)
+ 349:Core/Src/freertos.c ****         {
+ 350:Core/Src/freertos.c ****             xQueueSend(rawQueue, &raw, portMAX_DELAY);
+ 351:Core/Src/freertos.c ****             idx = 0;
+ 352:Core/Src/freertos.c ****         }
+ 353:Core/Src/freertos.c **** 
+ 354:Core/Src/freertos.c ****         osDelay(100); 
+ 355:Core/Src/freertos.c ****     }
+ARM GAS  /tmp/ccN1nt23.s 			page 9
 
 
- 373:Core/Src/freertos.c ****     //ENVIO A PYTHON
- 374:Core/Src/freertos.c **** // printf("%d,%d,%d,%.2f,%.2f,%.2f\r\n",
- 375:Core/Src/freertos.c **** //        raw.accel.ax[idx],
- 376:Core/Src/freertos.c **** //        raw.accel.ay[idx],
- 377:Core/Src/freertos.c **** //        raw.accel.az[idx],
- 378:Core/Src/freertos.c **** //        temp_filtrada,
- 379:Core/Src/freertos.c **** //        corriente_actual,
- 380:Core/Src/freertos.c **** //        rpm);
- 381:Core/Src/freertos.c **** 
- 382:Core/Src/freertos.c ****         idx++;
- 383:Core/Src/freertos.c **** 
- 384:Core/Src/freertos.c ****         if (idx >= WINDOW_SIZE)
- 385:Core/Src/freertos.c ****         {
- 386:Core/Src/freertos.c ****             xQueueSend(rawQueue, &raw, portMAX_DELAY);
- 387:Core/Src/freertos.c ****             idx = 0;
- 388:Core/Src/freertos.c ****         }
+ 356:Core/Src/freertos.c **** }
+ 357:Core/Src/freertos.c **** 
+ 358:Core/Src/freertos.c **** 
+ 359:Core/Src/freertos.c **** void StartPackageTask(void const * argument)
+ 360:Core/Src/freertos.c **** {
+  96              		.loc 1 360 1 view -0
+  97              		.cfi_startproc
+  98              		@ Volatile: function does not return.
+  99              		@ args = 0, pretend = 0, frame = 272
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		.loc 1 360 1 is_stmt 0 view .LVU12
+ 102 0000 00B5     		push	{lr}
+ 103              	.LCFI2:
+ 104              		.cfi_def_cfa_offset 4
+ 105              		.cfi_offset 14, -4
+ 106 0002 C5B0     		sub	sp, sp, #276
+ 107              	.LCFI3:
+ 108              		.cfi_def_cfa_offset 280
+ 361:Core/Src/freertos.c ****     printf("Package task started\r\n");
+ 109              		.loc 1 361 5 is_stmt 1 view .LVU13
+ 110 0004 0F48     		ldr	r0, .L9
+ 111              	.LVL6:
+ 112              		.loc 1 361 5 is_stmt 0 view .LVU14
+ 113 0006 FFF7FEFF 		bl	puts
+ 114              	.LVL7:
+ 115              	.L7:
+ 362:Core/Src/freertos.c ****     raw_data_t raw;
+ 116              		.loc 1 362 5 is_stmt 1 discriminator 1 view .LVU15
+ 363:Core/Src/freertos.c ****     data_frame_t frame;
+ 117              		.loc 1 363 5 discriminator 1 view .LVU16
+ 364:Core/Src/freertos.c **** 
+ 365:Core/Src/freertos.c ****     for(;;)
+ 118              		.loc 1 365 5 discriminator 1 view .LVU17
+ 366:Core/Src/freertos.c ****     {
+ 367:Core/Src/freertos.c ****         xQueueReceive(rawQueue, &raw, portMAX_DELAY);
+ 119              		.loc 1 367 9 discriminator 1 view .LVU18
+ 120 000a 4FF0FF32 		mov	r2, #-1
+ 121 000e 06A9     		add	r1, sp, #24
+ 122 0010 0D4B     		ldr	r3, .L9+4
+ 123 0012 1868     		ldr	r0, [r3]
+ 124 0014 FFF7FEFF 		bl	xQueueReceive
+ 125              	.LVL8:
+ 368:Core/Src/freertos.c **** 
+ 369:Core/Src/freertos.c ****         /* Features vibración */
+ 370:Core/Src/freertos.c ****         Features_ComputeRMSPeak(&raw.accel, &frame.vib);
+ 126              		.loc 1 370 9 discriminator 1 view .LVU19
+ 127 0018 6946     		mov	r1, sp
+ 128 001a 06A8     		add	r0, sp, #24
+ 129 001c FFF7FEFF 		bl	Features_ComputeRMSPeak
+ 130              	.LVL9:
+ 371:Core/Src/freertos.c ****         // printf("RMS  Val=%.2f\r\n", frame.vib.rms);
+ 372:Core/Src/freertos.c ****         // printf("PEAK  Val=%.2f\r\n", frame.vib.peak);
+ 373:Core/Src/freertos.c ****         // printf("CREST  Val=%.2f\r\n", frame.vib.crest);
+ 374:Core/Src/freertos.c **** 
+ 375:Core/Src/freertos.c ****         /* Conversión temperatura */
+ 376:Core/Src/freertos.c ****         frame.temperature = temp_filtrada;
+ 131              		.loc 1 376 9 discriminator 1 view .LVU20
+ARM GAS  /tmp/ccN1nt23.s 			page 10
+
+
+ 132              		.loc 1 376 27 is_stmt 0 discriminator 1 view .LVU21
+ 133 0020 0A4B     		ldr	r3, .L9+8
+ 134 0022 1B68     		ldr	r3, [r3]	@ float
+ 135 0024 0393     		str	r3, [sp, #12]	@ float
+ 377:Core/Src/freertos.c ****         //printf("TEMP  Val=%.2f\r\n", frame.temperature);
+ 378:Core/Src/freertos.c **** 
+ 379:Core/Src/freertos.c ****         /* Conversión corriente */
+ 380:Core/Src/freertos.c ****         frame.current = corriente_actual;
+ 136              		.loc 1 380 9 is_stmt 1 discriminator 1 view .LVU22
+ 137              		.loc 1 380 23 is_stmt 0 discriminator 1 view .LVU23
+ 138 0026 0A4B     		ldr	r3, .L9+12
+ 139 0028 1B68     		ldr	r3, [r3]	@ float
+ 140 002a 0493     		str	r3, [sp, #16]	@ float
+ 381:Core/Src/freertos.c ****         //printf("CURRENT  Val=%.2f\r\n", frame.current);
+ 382:Core/Src/freertos.c **** 
+ 383:Core/Src/freertos.c ****         frame.speed=raw.speed;
+ 141              		.loc 1 383 9 is_stmt 1 discriminator 1 view .LVU24
+ 142              		.loc 1 383 24 is_stmt 0 discriminator 1 view .LVU25
+ 143 002c 439B     		ldr	r3, [sp, #268]	@ float
+ 144              		.loc 1 383 20 discriminator 1 view .LVU26
+ 145 002e 0593     		str	r3, [sp, #20]	@ float
+ 384:Core/Src/freertos.c ****         //printf("SPEED  Val=%.2f\r\n", frame.speed);
+ 385:Core/Src/freertos.c **** 
+ 386:Core/Src/freertos.c ****         xQueueSend(canQueue, &frame, portMAX_DELAY);
+ 146              		.loc 1 386 9 is_stmt 1 discriminator 1 view .LVU27
+ 147 0030 0023     		movs	r3, #0
+ 148 0032 4FF0FF32 		mov	r2, #-1
+ 149 0036 6946     		mov	r1, sp
+ 150 0038 0648     		ldr	r0, .L9+16
+ 151 003a 0068     		ldr	r0, [r0]
+ 152 003c FFF7FEFF 		bl	xQueueGenericSend
+ 153              	.LVL10:
+ 365:Core/Src/freertos.c ****     {
+ 154              		.loc 1 365 10 discriminator 1 view .LVU28
+ 155 0040 E3E7     		b	.L7
+ 156              	.L10:
+ 157 0042 00BF     		.align	2
+ 158              	.L9:
+ 159 0044 00000000 		.word	.LC8
+ 160 0048 00000000 		.word	.LANCHOR0
+ 161 004c 00000000 		.word	.LANCHOR1
+ 162 0050 00000000 		.word	.LANCHOR2
+ 163 0054 00000000 		.word	.LANCHOR3
+ 164              		.cfi_endproc
+ 165              	.LFE78:
+ 167              		.section	.rodata.StartTxCAN.str1.4,"aMS",%progbits,1
+ 168              		.align	2
+ 169              	.LC9:
+ 170 0000 54784341 		.ascii	"TxCAN task started\015\000"
+ 170      4E207461 
+ 170      736B2073 
+ 170      74617274 
+ 170      65640D00 
+ 171              		.section	.text.StartTxCAN,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	StartTxCAN
+ 174              		.syntax unified
+ARM GAS  /tmp/ccN1nt23.s 			page 11
+
+
+ 175              		.thumb
+ 176              		.thumb_func
+ 178              	StartTxCAN:
+ 179              	.LVL11:
+ 180              	.LFB79:
+ 387:Core/Src/freertos.c ****     }
+ 388:Core/Src/freertos.c **** }
  389:Core/Src/freertos.c **** 
- 390:Core/Src/freertos.c ****         osDelay(100); 
- 391:Core/Src/freertos.c ****     }
- 392:Core/Src/freertos.c **** }
- 393:Core/Src/freertos.c **** 
+ 390:Core/Src/freertos.c **** void StartTxCAN(void const * argument)
+ 391:Core/Src/freertos.c **** {
+ 181              		.loc 1 391 1 view -0
+ 182              		.cfi_startproc
+ 183              		@ Volatile: function does not return.
+ 184              		@ args = 0, pretend = 0, frame = 24
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186              		.loc 1 391 1 is_stmt 0 view .LVU30
+ 187 0000 00B5     		push	{lr}
+ 188              	.LCFI4:
+ 189              		.cfi_def_cfa_offset 4
+ 190              		.cfi_offset 14, -4
+ 191 0002 87B0     		sub	sp, sp, #28
+ 192              	.LCFI5:
+ 193              		.cfi_def_cfa_offset 32
+ 392:Core/Src/freertos.c ****     data_frame_t frame;
+ 194              		.loc 1 392 5 is_stmt 1 view .LVU31
+ 393:Core/Src/freertos.c ****     printf("TxCAN task started\r\n");
+ 195              		.loc 1 393 5 view .LVU32
+ 196 0004 1D48     		ldr	r0, .L14
+ 197              	.LVL12:
+ 198              		.loc 1 393 5 is_stmt 0 view .LVU33
+ 199 0006 FFF7FEFF 		bl	puts
+ 200              	.LVL13:
+ 201              	.L12:
  394:Core/Src/freertos.c **** 
- 395:Core/Src/freertos.c **** void StartPackageTask(void const * argument)
- 396:Core/Src/freertos.c **** {
-  83              		.loc 1 396 1 view -0
-  84              		.cfi_startproc
-  85              		@ Volatile: function does not return.
-  86              		@ args = 0, pretend = 0, frame = 272
-  87              		@ frame_needed = 0, uses_anonymous_args = 0
-  88              		.loc 1 396 1 is_stmt 0 view .LVU12
-  89 0000 00B5     		push	{lr}
-  90              	.LCFI2:
-  91              		.cfi_def_cfa_offset 4
-  92              		.cfi_offset 14, -4
-  93 0002 C5B0     		sub	sp, sp, #276
-  94              	.LCFI3:
-  95              		.cfi_def_cfa_offset 280
- 397:Core/Src/freertos.c ****     printf("Package task started\r\n");
-  96              		.loc 1 397 5 is_stmt 1 view .LVU13
-  97 0004 0F48     		ldr	r0, .L9
-  98              	.LVL6:
-  99              		.loc 1 397 5 is_stmt 0 view .LVU14
- 100 0006 FFF7FEFF 		bl	puts
- 101              	.LVL7:
- 102              	.L7:
- 398:Core/Src/freertos.c ****     raw_data_t raw;
- 103              		.loc 1 398 5 is_stmt 1 view .LVU15
- 399:Core/Src/freertos.c ****     data_frame_t frame;
- 104              		.loc 1 399 5 view .LVU16
- 400:Core/Src/freertos.c **** 
- 401:Core/Src/freertos.c ****     for(;;)
- 105              		.loc 1 401 5 view .LVU17
- 402:Core/Src/freertos.c ****     {
- 403:Core/Src/freertos.c ****         xQueueReceive(rawQueue, &raw, portMAX_DELAY);
- 106              		.loc 1 403 9 view .LVU18
- 107 000a 4FF0FF32 		mov	r2, #-1
- 108 000e 06A9     		add	r1, sp, #24
-ARM GAS  /tmp/ccjkNbhh.s 			page 10
+ 395:Core/Src/freertos.c ****      for (;;)
+ 202              		.loc 1 395 6 is_stmt 1 discriminator 1 view .LVU34
+ 396:Core/Src/freertos.c ****      {
+ 397:Core/Src/freertos.c ****          xQueueReceive(canQueue, &frame, portMAX_DELAY);
+ 203              		.loc 1 397 10 discriminator 1 view .LVU35
+ 204 000a 4FF0FF32 		mov	r2, #-1
+ 205 000e 6946     		mov	r1, sp
+ 206 0010 1B4B     		ldr	r3, .L14+4
+ 207 0012 1868     		ldr	r0, [r3]
+ 208 0014 FFF7FEFF 		bl	xQueueReceive
+ 209              	.LVL14:
+ 398:Core/Src/freertos.c **** 
+ 399:Core/Src/freertos.c ****          CAN_SendFloat(0x101, frame.vib.rms);   vTaskDelay(pdMS_TO_TICKS(10));
+ 210              		.loc 1 399 10 discriminator 1 view .LVU36
+ 211 0018 0099     		ldr	r1, [sp]	@ float
+ 212 001a 40F20110 		movw	r0, #257
+ 213 001e FFF7FEFF 		bl	CAN_SendFloat
+ 214              	.LVL15:
+ 215              		.loc 1 399 49 discriminator 1 view .LVU37
+ 216 0022 0A20     		movs	r0, #10
+ 217 0024 FFF7FEFF 		bl	vTaskDelay
+ 218              	.LVL16:
+ 400:Core/Src/freertos.c ****          //printf("[CAN TX] RMS   ID=0x101  Val=%.2f\r\n", frame.vib.rms);
+ARM GAS  /tmp/ccN1nt23.s 			page 12
 
 
- 109 0010 0D4B     		ldr	r3, .L9+4
- 110 0012 1868     		ldr	r0, [r3]
- 111 0014 FFF7FEFF 		bl	xQueueReceive
- 112              	.LVL8:
+ 401:Core/Src/freertos.c ****         
+ 402:Core/Src/freertos.c ****          CAN_SendFloat(0x102, frame.vib.crest); vTaskDelay(pdMS_TO_TICKS(10));
+ 219              		.loc 1 402 10 discriminator 1 view .LVU38
+ 220 0028 0299     		ldr	r1, [sp, #8]	@ float
+ 221 002a 4FF48170 		mov	r0, #258
+ 222 002e FFF7FEFF 		bl	CAN_SendFloat
+ 223              	.LVL17:
+ 224              		.loc 1 402 49 discriminator 1 view .LVU39
+ 225 0032 0A20     		movs	r0, #10
+ 226 0034 FFF7FEFF 		bl	vTaskDelay
+ 227              	.LVL18:
+ 403:Core/Src/freertos.c ****         //printf("[CAN TX] CREST ID=0x102  Val=%.2f\r\n", frame.vib.crest);
  404:Core/Src/freertos.c **** 
- 405:Core/Src/freertos.c ****         /* Features vibración */
- 406:Core/Src/freertos.c ****         Features_ComputeRMSPeak(&raw.accel, &frame.vib);
- 113              		.loc 1 406 9 view .LVU19
- 114 0018 6946     		mov	r1, sp
- 115 001a 06A8     		add	r0, sp, #24
- 116 001c FFF7FEFF 		bl	Features_ComputeRMSPeak
- 117              	.LVL9:
- 407:Core/Src/freertos.c ****         // printf("RMS  Val=%.2f\r\n", frame.vib.rms);
- 408:Core/Src/freertos.c ****         // printf("PEAK  Val=%.2f\r\n", frame.vib.peak);
- 409:Core/Src/freertos.c ****         // printf("CREST  Val=%.2f\r\n", frame.vib.crest);
+ 405:Core/Src/freertos.c ****          CAN_SendFloat(0x103, frame.vib.peak); vTaskDelay(pdMS_TO_TICKS(10));
+ 228              		.loc 1 405 10 discriminator 1 view .LVU40
+ 229 0038 0199     		ldr	r1, [sp, #4]	@ float
+ 230 003a 40F20310 		movw	r0, #259
+ 231 003e FFF7FEFF 		bl	CAN_SendFloat
+ 232              	.LVL19:
+ 233              		.loc 1 405 48 discriminator 1 view .LVU41
+ 234 0042 0A20     		movs	r0, #10
+ 235 0044 FFF7FEFF 		bl	vTaskDelay
+ 236              	.LVL20:
+ 406:Core/Src/freertos.c ****         //printf("[CAN TX] PEAK  ID=0x103  Val=%.2f\r\n", frame.vib.peak);
+ 407:Core/Src/freertos.c ****         
+ 408:Core/Src/freertos.c ****         CAN_SendFloat(0x104, frame.temperature); vTaskDelay(pdMS_TO_TICKS(10));
+ 237              		.loc 1 408 9 discriminator 1 view .LVU42
+ 238 0048 0399     		ldr	r1, [sp, #12]	@ float
+ 239 004a 4FF48270 		mov	r0, #260
+ 240 004e FFF7FEFF 		bl	CAN_SendFloat
+ 241              	.LVL21:
+ 242              		.loc 1 408 50 discriminator 1 view .LVU43
+ 243 0052 0A20     		movs	r0, #10
+ 244 0054 FFF7FEFF 		bl	vTaskDelay
+ 245              	.LVL22:
+ 409:Core/Src/freertos.c ****         //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f\r\n", frame.temperature);
  410:Core/Src/freertos.c **** 
- 411:Core/Src/freertos.c ****         /* Conversión temperatura */
- 412:Core/Src/freertos.c ****         frame.temperature = temp_filtrada;
- 118              		.loc 1 412 9 view .LVU20
- 119              		.loc 1 412 27 is_stmt 0 view .LVU21
- 120 0020 0A4B     		ldr	r3, .L9+8
- 121 0022 1B68     		ldr	r3, [r3]	@ float
- 122 0024 0393     		str	r3, [sp, #12]	@ float
- 413:Core/Src/freertos.c ****         //printf("TEMP  Val=%.2f\r\n", frame.temperature);
- 414:Core/Src/freertos.c **** 
- 415:Core/Src/freertos.c ****         /* Conversión corriente */
- 416:Core/Src/freertos.c ****         frame.current = corriente_actual;
- 123              		.loc 1 416 9 is_stmt 1 view .LVU22
- 124              		.loc 1 416 23 is_stmt 0 view .LVU23
- 125 0026 0A4B     		ldr	r3, .L9+12
- 126 0028 1B68     		ldr	r3, [r3]	@ float
- 127 002a 0493     		str	r3, [sp, #16]	@ float
- 417:Core/Src/freertos.c ****         //printf("CURRENT  Val=%.2f\r\n", frame.current);
- 418:Core/Src/freertos.c **** 
- 419:Core/Src/freertos.c **** 
- 420:Core/Src/freertos.c ****         frame.speed=raw.speed;
- 128              		.loc 1 420 9 is_stmt 1 view .LVU24
- 129              		.loc 1 420 24 is_stmt 0 view .LVU25
- 130 002c 439B     		ldr	r3, [sp, #268]	@ float
- 131              		.loc 1 420 20 view .LVU26
- 132 002e 0593     		str	r3, [sp, #20]	@ float
- 421:Core/Src/freertos.c ****         //printf("SPEED  Val=%.2f\r\n", frame.speed);
- 422:Core/Src/freertos.c **** 
- 423:Core/Src/freertos.c **** 
- 424:Core/Src/freertos.c ****         xQueueSend(canQueue, &frame, portMAX_DELAY);
- 133              		.loc 1 424 9 is_stmt 1 discriminator 1 view .LVU27
- 134 0030 0023     		movs	r3, #0
- 135 0032 4FF0FF32 		mov	r2, #-1
- 136 0036 6946     		mov	r1, sp
- 137 0038 0648     		ldr	r0, .L9+16
- 138 003a 0068     		ldr	r0, [r0]
- 139 003c FFF7FEFF 		bl	xQueueGenericSend
- 140              	.LVL10:
- 401:Core/Src/freertos.c ****     {
- 141              		.loc 1 401 5 view .LVU28
- 142 0040 E3E7     		b	.L7
- 143              	.L10:
-ARM GAS  /tmp/ccjkNbhh.s 			page 11
-
-
- 144 0042 00BF     		.align	2
- 145              	.L9:
- 146 0044 00000000 		.word	.LC8
- 147 0048 00000000 		.word	rawQueue
- 148 004c 00000000 		.word	temp_filtrada
- 149 0050 00000000 		.word	corriente_actual
- 150 0054 00000000 		.word	canQueue
- 151              		.cfi_endproc
- 152              	.LFE78:
- 154              		.section	.rodata.StartTxCAN.str1.4,"aMS",%progbits,1
- 155              		.align	2
- 156              	.LC9:
- 157 0000 54784341 		.ascii	"TxCAN task started\015\000"
- 157      4E207461 
- 157      736B2073 
- 157      74617274 
- 157      65640D00 
- 158              		.section	.text.StartTxCAN,"ax",%progbits
- 159              		.align	1
- 160              		.global	StartTxCAN
- 161              		.syntax unified
- 162              		.thumb
- 163              		.thumb_func
- 165              	StartTxCAN:
- 166              	.LVL11:
- 167              	.LFB79:
- 425:Core/Src/freertos.c ****     }
- 426:Core/Src/freertos.c **** }
- 427:Core/Src/freertos.c **** 
- 428:Core/Src/freertos.c **** void StartTxCAN(void const * argument)
- 429:Core/Src/freertos.c **** {
- 168              		.loc 1 429 1 view -0
- 169              		.cfi_startproc
- 170              		@ args = 0, pretend = 0, frame = 24
- 171              		@ frame_needed = 0, uses_anonymous_args = 0
- 172              		.loc 1 429 1 is_stmt 0 view .LVU30
- 173 0000 00B5     		push	{lr}
- 174              	.LCFI4:
- 175              		.cfi_def_cfa_offset 4
- 176              		.cfi_offset 14, -4
- 177 0002 87B0     		sub	sp, sp, #28
- 178              	.LCFI5:
- 179              		.cfi_def_cfa_offset 32
- 430:Core/Src/freertos.c ****     data_frame_t frame;
- 180              		.loc 1 430 5 is_stmt 1 view .LVU31
- 431:Core/Src/freertos.c ****     uint32_t temp_cnt = 0;
- 181              		.loc 1 431 5 view .LVU32
- 182              	.LVL12:
- 432:Core/Src/freertos.c ****     printf("TxCAN task started\r\n");
- 183              		.loc 1 432 5 view .LVU33
- 184 0004 1548     		ldr	r0, .L14
- 185              	.LVL13:
- 186              		.loc 1 432 5 is_stmt 0 view .LVU34
- 187 0006 FFF7FEFF 		bl	puts
- 188              	.LVL14:
- 189              	.L12:
- 433:Core/Src/freertos.c **** 
-ARM GAS  /tmp/ccjkNbhh.s 			page 12
-
-
- 434:Core/Src/freertos.c ****      for (;;)
- 190              		.loc 1 434 6 is_stmt 1 view .LVU35
- 435:Core/Src/freertos.c ****      {
- 436:Core/Src/freertos.c ****          xQueueReceive(canQueue, &frame, portMAX_DELAY);
- 191              		.loc 1 436 10 view .LVU36
- 192 000a 4FF0FF32 		mov	r2, #-1
- 193 000e 6946     		mov	r1, sp
- 194 0010 134B     		ldr	r3, .L14+4
- 195 0012 1868     		ldr	r0, [r3]
- 196 0014 FFF7FEFF 		bl	xQueueReceive
- 197              	.LVL15:
- 437:Core/Src/freertos.c **** 
- 438:Core/Src/freertos.c ****         // /* Vibración siempre */
- 439:Core/Src/freertos.c ****          CAN_SendFloat(0x101, frame.vib.rms);
- 198              		.loc 1 439 10 view .LVU37
- 199 0018 0099     		ldr	r1, [sp]	@ float
- 200 001a 40F20110 		movw	r0, #257
- 201 001e FFF7FEFF 		bl	CAN_SendFloat
- 202              	.LVL16:
- 440:Core/Src/freertos.c ****         // //printf("[CAN TX] RMS   ID=0x101  Val=%.2f\r\n", frame.vib.rms);
- 441:Core/Src/freertos.c ****         
- 442:Core/Src/freertos.c ****         // uint32_t tx_mailboxes = HAL_CAN_GetTxMailboxesFreeLevel(&hcan);
- 443:Core/Src/freertos.c **** 
- 444:Core/Src/freertos.c ****          CAN_SendFloat(0x102, frame.vib.crest);
- 203              		.loc 1 444 10 view .LVU38
- 204 0022 0299     		ldr	r1, [sp, #8]	@ float
- 205 0024 4FF48170 		mov	r0, #258
- 206 0028 FFF7FEFF 		bl	CAN_SendFloat
- 207              	.LVL17:
- 445:Core/Src/freertos.c ****         //printf("[CAN TX] CREST ID=0x102  Val=%.2f\r\n", frame.vib.crest);
- 446:Core/Src/freertos.c **** 
- 447:Core/Src/freertos.c ****          CAN_SendFloat(0x103, frame.vib.peak);
- 208              		.loc 1 447 10 view .LVU39
- 209 002c 0199     		ldr	r1, [sp, #4]	@ float
- 210 002e 40F20310 		movw	r0, #259
- 211 0032 FFF7FEFF 		bl	CAN_SendFloat
- 212              	.LVL18:
- 448:Core/Src/freertos.c ****         //printf("[CAN TX] PEAK  ID=0x103  Val=%.2f\r\n", frame.vib.peak);
- 449:Core/Src/freertos.c **** 
- 450:Core/Src/freertos.c ****          CAN_SendFloat(0x105, frame.current);
- 213              		.loc 1 450 10 view .LVU40
- 214 0036 0499     		ldr	r1, [sp, #16]	@ float
- 215 0038 40F20510 		movw	r0, #261
- 216 003c FFF7FEFF 		bl	CAN_SendFloat
- 217              	.LVL19:
- 451:Core/Src/freertos.c ****         //printf("[CAN TX] CURRENT  ID=0x105  Val=%.2f\r\n", frame.current);
- 452:Core/Src/freertos.c **** 
- 453:Core/Src/freertos.c ****          CAN_SendFloat(0x106, frame.speed);
- 218              		.loc 1 453 10 view .LVU41
- 219 0040 0599     		ldr	r1, [sp, #20]	@ float
- 220 0042 4FF48370 		mov	r0, #262
- 221 0046 FFF7FEFF 		bl	CAN_SendFloat
- 222              	.LVL20:
- 454:Core/Src/freertos.c ****         //printf("[CAN TX] SPEED  ID=0x106  Val=%.2f\r\n", frame.speed);
- 455:Core/Src/freertos.c **** 
- 456:Core/Src/freertos.c ****         // /* Temperatura cada 20 frames */
- 457:Core/Src/freertos.c ****         // temp_cnt++;
-ARM GAS  /tmp/ccjkNbhh.s 			page 13
-
-
- 458:Core/Src/freertos.c ****         // if (temp_cnt >= 20)
- 459:Core/Src/freertos.c ****         // {
- 460:Core/Src/freertos.c ****             CAN_SendFloat(0x104, frame.temperature);
- 223              		.loc 1 460 13 view .LVU42
- 224 004a 0399     		ldr	r1, [sp, #12]	@ float
- 225 004c 4FF48270 		mov	r0, #260
- 226 0050 FFF7FEFF 		bl	CAN_SendFloat
- 227              	.LVL21:
- 461:Core/Src/freertos.c ****             //printf("[CAN TX] TEMP  ID=0x104  Val=%.2f C\r\n", frame.temperature);
- 462:Core/Src/freertos.c ****             //temp_cnt = 0;
- 463:Core/Src/freertos.c ****         //}
- 464:Core/Src/freertos.c ****         osDelay(1);
- 228              		.loc 1 464 9 discriminator 1 view .LVU43
- 229 0054 0120     		movs	r0, #1
- 230 0056 FFF7FEFF 		bl	osDelay
- 231              	.LVL22:
- 434:Core/Src/freertos.c ****      {
- 232              		.loc 1 434 6 view .LVU44
- 233 005a D6E7     		b	.L12
- 234              	.L15:
- 235              		.align	2
- 236              	.L14:
- 237 005c 00000000 		.word	.LC9
- 238 0060 00000000 		.word	canQueue
- 239              		.cfi_endproc
- 240              	.LFE79:
- 242              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
- 243              		.align	1
- 244              		.global	vApplicationGetIdleTaskMemory
- 245              		.syntax unified
- 246              		.thumb
- 247              		.thumb_func
- 249              	vApplicationGetIdleTaskMemory:
+ 411:Core/Src/freertos.c ****          CAN_SendFloat(0x105, frame.current); vTaskDelay(pdMS_TO_TICKS(10));
+ 246              		.loc 1 411 10 discriminator 1 view .LVU44
+ 247 0058 0499     		ldr	r1, [sp, #16]	@ float
+ 248 005a 40F20510 		movw	r0, #261
+ 249 005e FFF7FEFF 		bl	CAN_SendFloat
  250              	.LVL23:
- 251              	.LFB73:
+ 251              		.loc 1 411 47 discriminator 1 view .LVU45
+ 252 0062 0A20     		movs	r0, #10
+ 253 0064 FFF7FEFF 		bl	vTaskDelay
+ 254              	.LVL24:
+ 412:Core/Src/freertos.c ****         //printf("[CAN TX] CURRENT  ID=0x105  Val=%.2f\r\n", frame.current);
+ 413:Core/Src/freertos.c **** 
+ 414:Core/Src/freertos.c ****          CAN_SendFloat(0x106, frame.speed); vTaskDelay(pdMS_TO_TICKS(10));
+ 255              		.loc 1 414 10 discriminator 1 view .LVU46
+ 256 0068 0599     		ldr	r1, [sp, #20]	@ float
+ 257 006a 4FF48370 		mov	r0, #262
+ 258 006e FFF7FEFF 		bl	CAN_SendFloat
+ 259              	.LVL25:
+ 260              		.loc 1 414 45 discriminator 1 view .LVU47
+ 261 0072 0A20     		movs	r0, #10
+ARM GAS  /tmp/ccN1nt23.s 			page 13
+
+
+ 262 0074 FFF7FEFF 		bl	vTaskDelay
+ 263              	.LVL26:
+ 395:Core/Src/freertos.c ****      {
+ 264              		.loc 1 395 12 discriminator 1 view .LVU48
+ 265 0078 C7E7     		b	.L12
+ 266              	.L15:
+ 267 007a 00BF     		.align	2
+ 268              	.L14:
+ 269 007c 00000000 		.word	.LC9
+ 270 0080 00000000 		.word	.LANCHOR3
+ 271              		.cfi_endproc
+ 272              	.LFE79:
+ 274              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+ 275              		.align	1
+ 276              		.global	vApplicationGetIdleTaskMemory
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	vApplicationGetIdleTaskMemory:
+ 282              	.LVL27:
+ 283              	.LFB73:
  105:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
- 252              		.loc 1 105 1 view -0
- 253              		.cfi_startproc
- 254              		@ args = 0, pretend = 0, frame = 0
- 255              		@ frame_needed = 0, uses_anonymous_args = 0
- 256              		@ link register save eliminated.
+ 284              		.loc 1 105 1 view -0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              		@ link register save eliminated.
  106:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 257              		.loc 1 106 3 view .LVU46
+ 289              		.loc 1 106 3 view .LVU50
  106:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
- 258              		.loc 1 106 25 is_stmt 0 view .LVU47
- 259 0000 034B     		ldr	r3, .L17
- 260 0002 0360     		str	r3, [r0]
+ 290              		.loc 1 106 25 is_stmt 0 view .LVU51
+ 291 0000 034B     		ldr	r3, .L17
+ 292 0002 0360     		str	r3, [r0]
  107:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 261              		.loc 1 107 3 is_stmt 1 view .LVU48
+ 293              		.loc 1 107 3 is_stmt 1 view .LVU52
  107:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
- 262              		.loc 1 107 27 is_stmt 0 view .LVU49
- 263 0004 034B     		ldr	r3, .L17+4
- 264 0006 0B60     		str	r3, [r1]
+ 294              		.loc 1 107 27 is_stmt 0 view .LVU53
+ 295 0004 034B     		ldr	r3, .L17+4
+ 296 0006 0B60     		str	r3, [r1]
  108:Core/Src/freertos.c **** }
- 265              		.loc 1 108 3 is_stmt 1 view .LVU50
+ 297              		.loc 1 108 3 is_stmt 1 view .LVU54
  108:Core/Src/freertos.c **** }
- 266              		.loc 1 108 25 is_stmt 0 view .LVU51
-ARM GAS  /tmp/ccjkNbhh.s 			page 14
-
-
- 267 0008 8023     		movs	r3, #128
- 268 000a 1360     		str	r3, [r2]
+ 298              		.loc 1 108 25 is_stmt 0 view .LVU55
+ 299 0008 8023     		movs	r3, #128
+ 300 000a 1360     		str	r3, [r2]
  109:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
- 269              		.loc 1 109 1 view .LVU52
- 270 000c 7047     		bx	lr
- 271              	.L18:
- 272 000e 00BF     		.align	2
- 273              	.L17:
- 274 0010 00000000 		.word	xIdleTaskTCBBuffer
- 275 0014 00000000 		.word	xIdleStack
- 276              		.cfi_endproc
- 277              	.LFE73:
- 279              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
- 280              		.align	1
- 281              		.global	MX_FREERTOS_Init
- 282              		.syntax unified
- 283              		.thumb
- 284              		.thumb_func
- 286              	MX_FREERTOS_Init:
- 287              	.LFB74:
+ 301              		.loc 1 109 1 view .LVU56
+ 302 000c 7047     		bx	lr
+ 303              	.L18:
+ 304 000e 00BF     		.align	2
+ 305              	.L17:
+ 306 0010 00000000 		.word	.LANCHOR4
+ 307 0014 00000000 		.word	.LANCHOR5
+ 308              		.cfi_endproc
+ 309              	.LFE73:
+ 311              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 312              		.align	1
+ARM GAS  /tmp/ccN1nt23.s 			page 14
+
+
+ 313              		.global	MX_FREERTOS_Init
+ 314              		.syntax unified
+ 315              		.thumb
+ 316              		.thumb_func
+ 318              	MX_FREERTOS_Init:
+ 319              	.LFB74:
  117:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
- 288              		.loc 1 117 29 is_stmt 1 view -0
- 289              		.cfi_startproc
- 290              		@ args = 0, pretend = 0, frame = 112
- 291              		@ frame_needed = 0, uses_anonymous_args = 0
- 292 0000 10B5     		push	{r4, lr}
- 293              	.LCFI6:
- 294              		.cfi_def_cfa_offset 8
- 295              		.cfi_offset 4, -8
- 296              		.cfi_offset 14, -4
- 297 0002 9CB0     		sub	sp, sp, #112
- 298              	.LCFI7:
- 299              		.cfi_def_cfa_offset 120
+ 320              		.loc 1 117 29 is_stmt 1 view -0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 112
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324 0000 10B5     		push	{r4, lr}
+ 325              	.LCFI6:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 4, -8
+ 328              		.cfi_offset 14, -4
+ 329 0002 9CB0     		sub	sp, sp, #112
+ 330              	.LCFI7:
+ 331              		.cfi_def_cfa_offset 120
  135:Core/Src/freertos.c ****   canQueue = xQueueCreate(5, sizeof(data_frame_t));
- 300              		.loc 1 135 3 view .LVU54
+ 332              		.loc 1 135 3 view .LVU58
  135:Core/Src/freertos.c ****   canQueue = xQueueCreate(5, sizeof(data_frame_t));
- 301              		.loc 1 135 14 is_stmt 0 view .LVU55
- 302 0004 0022     		movs	r2, #0
- 303 0006 F821     		movs	r1, #248
- 304 0008 0220     		movs	r0, #2
- 305 000a FFF7FEFF 		bl	xQueueGenericCreate
- 306              	.LVL24:
+ 333              		.loc 1 135 14 is_stmt 0 view .LVU59
+ 334 0004 0022     		movs	r2, #0
+ 335 0006 F821     		movs	r1, #248
+ 336 0008 0220     		movs	r0, #2
+ 337 000a FFF7FEFF 		bl	xQueueGenericCreate
+ 338              	.LVL28:
  135:Core/Src/freertos.c ****   canQueue = xQueueCreate(5, sizeof(data_frame_t));
- 307              		.loc 1 135 12 discriminator 1 view .LVU56
- 308 000e 344C     		ldr	r4, .L27
- 309 0010 2060     		str	r0, [r4]
+ 339              		.loc 1 135 12 view .LVU60
+ 340 000e 344C     		ldr	r4, .L27
+ 341 0010 2060     		str	r0, [r4]
  136:Core/Src/freertos.c **** 
- 310              		.loc 1 136 3 is_stmt 1 view .LVU57
+ 342              		.loc 1 136 3 is_stmt 1 view .LVU61
  136:Core/Src/freertos.c **** 
- 311              		.loc 1 136 14 is_stmt 0 view .LVU58
- 312 0012 0022     		movs	r2, #0
- 313 0014 1821     		movs	r1, #24
- 314 0016 0520     		movs	r0, #5
- 315 0018 FFF7FEFF 		bl	xQueueGenericCreate
- 316              	.LVL25:
+ 343              		.loc 1 136 14 is_stmt 0 view .LVU62
+ 344 0012 0022     		movs	r2, #0
+ 345 0014 1821     		movs	r1, #24
+ 346 0016 0520     		movs	r0, #5
+ 347 0018 FFF7FEFF 		bl	xQueueGenericCreate
+ 348              	.LVL29:
  136:Core/Src/freertos.c **** 
- 317              		.loc 1 136 12 discriminator 1 view .LVU59
-ARM GAS  /tmp/ccjkNbhh.s 			page 15
+ 349              		.loc 1 136 12 view .LVU63
+ 350 001c 314B     		ldr	r3, .L27+4
+ 351 001e 1860     		str	r0, [r3]
+ 138:Core/Src/freertos.c ****   configASSERT(canQueue);
+ 352              		.loc 1 138 3 is_stmt 1 view .LVU64
+ 353 0020 2368     		ldr	r3, [r4]
+ 354 0022 002B     		cmp	r3, #0
+ 355 0024 4AD0     		beq	.L25
+ 138:Core/Src/freertos.c ****   configASSERT(canQueue);
+ 356              		.loc 1 138 25 discriminator 2 view .LVU65
+ 139:Core/Src/freertos.c **** 
+ 357              		.loc 1 139 3 discriminator 2 view .LVU66
+ 358 0026 0028     		cmp	r0, #0
+ 359 0028 51D0     		beq	.L26
+ 139:Core/Src/freertos.c **** 
+ARM GAS  /tmp/ccN1nt23.s 			page 15
 
 
- 318 001c 314B     		ldr	r3, .L27+4
- 319 001e 1860     		str	r0, [r3]
- 138:Core/Src/freertos.c ****   configASSERT(canQueue);
- 320              		.loc 1 138 3 is_stmt 1 view .LVU60
- 321 0020 2368     		ldr	r3, [r4]
- 322 0022 002B     		cmp	r3, #0
- 323 0024 4AD0     		beq	.L25
- 138:Core/Src/freertos.c ****   configASSERT(canQueue);
- 324              		.loc 1 138 25 discriminator 2 view .LVU61
- 139:Core/Src/freertos.c **** 
- 325              		.loc 1 139 3 view .LVU62
- 326 0026 0028     		cmp	r0, #0
- 327 0028 51D0     		beq	.L26
- 139:Core/Src/freertos.c **** 
- 328              		.loc 1 139 25 discriminator 2 view .LVU63
+ 360              		.loc 1 139 25 discriminator 2 view .LVU67
  148:Core/Src/freertos.c ****   acquireHandle = osThreadCreate(osThread(acquire), NULL);
- 329              		.loc 1 148 3 view .LVU64
- 330 002a 2F4C     		ldr	r4, .L27+8
- 331 002c 0DF1540C 		add	ip, sp, #84
- 332 0030 A646     		mov	lr, r4
- 333 0032 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
- 334 0036 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
- 335 003a 9EE80700 		ldm	lr, {r0, r1, r2}
- 336 003e 8CE80700 		stm	ip, {r0, r1, r2}
+ 361              		.loc 1 148 3 discriminator 2 view .LVU68
+ 362 002a 2F4C     		ldr	r4, .L27+8
+ 363 002c 0DF1540C 		add	ip, sp, #84
+ 364 0030 A646     		mov	lr, r4
+ 365 0032 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 366 0036 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 367 003a 9EE80700 		ldm	lr, {r0, r1, r2}
+ 368 003e 8CE80700 		stm	ip, {r0, r1, r2}
  149:Core/Src/freertos.c **** 
- 337              		.loc 1 149 3 view .LVU65
+ 369              		.loc 1 149 3 discriminator 2 view .LVU69
  149:Core/Src/freertos.c **** 
- 338              		.loc 1 149 19 is_stmt 0 view .LVU66
- 339 0042 0021     		movs	r1, #0
- 340 0044 15A8     		add	r0, sp, #84
- 341 0046 FFF7FEFF 		bl	osThreadCreate
- 342              	.LVL26:
+ 370              		.loc 1 149 19 is_stmt 0 discriminator 2 view .LVU70
+ 371 0042 0021     		movs	r1, #0
+ 372 0044 15A8     		add	r0, sp, #84
+ 373 0046 FFF7FEFF 		bl	osThreadCreate
+ 374              	.LVL30:
  149:Core/Src/freertos.c **** 
- 343              		.loc 1 149 17 discriminator 1 view .LVU67
- 344 004a 284B     		ldr	r3, .L27+12
- 345 004c 1860     		str	r0, [r3]
+ 375              		.loc 1 149 17 discriminator 2 view .LVU71
+ 376 004a 284B     		ldr	r3, .L27+12
+ 377 004c 1860     		str	r0, [r3]
  152:Core/Src/freertos.c ****   packageHandle = osThreadCreate(osThread(package), NULL);
- 346              		.loc 1 152 3 is_stmt 1 view .LVU68
- 347 004e 0DF1380C 		add	ip, sp, #56
- 348 0052 04F11C0E 		add	lr, r4, #28
- 349 0056 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
- 350 005a ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
- 351 005e 9EE80700 		ldm	lr, {r0, r1, r2}
- 352 0062 8CE80700 		stm	ip, {r0, r1, r2}
+ 378              		.loc 1 152 3 is_stmt 1 discriminator 2 view .LVU72
+ 379 004e 0DF1380C 		add	ip, sp, #56
+ 380 0052 04F11C0E 		add	lr, r4, #28
+ 381 0056 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 382 005a ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 383 005e 9EE80700 		ldm	lr, {r0, r1, r2}
+ 384 0062 8CE80700 		stm	ip, {r0, r1, r2}
  153:Core/Src/freertos.c **** 
- 353              		.loc 1 153 3 view .LVU69
+ 385              		.loc 1 153 3 discriminator 2 view .LVU73
  153:Core/Src/freertos.c **** 
- 354              		.loc 1 153 19 is_stmt 0 view .LVU70
- 355 0066 0021     		movs	r1, #0
- 356 0068 0EA8     		add	r0, sp, #56
- 357 006a FFF7FEFF 		bl	osThreadCreate
- 358              	.LVL27:
+ 386              		.loc 1 153 19 is_stmt 0 discriminator 2 view .LVU74
+ 387 0066 0021     		movs	r1, #0
+ 388 0068 0EA8     		add	r0, sp, #56
+ 389 006a FFF7FEFF 		bl	osThreadCreate
+ 390              	.LVL31:
  153:Core/Src/freertos.c **** 
- 359              		.loc 1 153 17 discriminator 1 view .LVU71
- 360 006e 204B     		ldr	r3, .L27+16
- 361 0070 1860     		str	r0, [r3]
+ 391              		.loc 1 153 17 discriminator 2 view .LVU75
+ 392 006e 204B     		ldr	r3, .L27+16
+ 393 0070 1860     		str	r0, [r3]
  156:Core/Src/freertos.c ****   txCANHandle = osThreadCreate(osThread(txCAN), NULL);
-ARM GAS  /tmp/ccjkNbhh.s 			page 16
+ 394              		.loc 1 156 3 is_stmt 1 discriminator 2 view .LVU76
+ 395 0072 0DF11C0C 		add	ip, sp, #28
+ 396 0076 04F1380E 		add	lr, r4, #56
+ 397 007a BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 398 007e ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 399 0082 9EE80700 		ldm	lr, {r0, r1, r2}
+ 400 0086 8CE80700 		stm	ip, {r0, r1, r2}
+ 157:Core/Src/freertos.c **** 
+ 401              		.loc 1 157 3 discriminator 2 view .LVU77
+ 157:Core/Src/freertos.c **** 
+ 402              		.loc 1 157 17 is_stmt 0 discriminator 2 view .LVU78
+ 403 008a 0021     		movs	r1, #0
+ 404 008c 07A8     		add	r0, sp, #28
+ 405 008e FFF7FEFF 		bl	osThreadCreate
+ARM GAS  /tmp/ccN1nt23.s 			page 16
 
 
- 362              		.loc 1 156 3 is_stmt 1 view .LVU72
- 363 0072 0DF11C0C 		add	ip, sp, #28
- 364 0076 04F1380E 		add	lr, r4, #56
- 365 007a BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
- 366 007e ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
- 367 0082 9EE80700 		ldm	lr, {r0, r1, r2}
- 368 0086 8CE80700 		stm	ip, {r0, r1, r2}
+ 406              	.LVL32:
  157:Core/Src/freertos.c **** 
- 369              		.loc 1 157 3 view .LVU73
- 157:Core/Src/freertos.c **** 
- 370              		.loc 1 157 17 is_stmt 0 view .LVU74
- 371 008a 0021     		movs	r1, #0
- 372 008c 07A8     		add	r0, sp, #28
- 373 008e FFF7FEFF 		bl	osThreadCreate
- 374              	.LVL28:
- 157:Core/Src/freertos.c **** 
- 375              		.loc 1 157 15 discriminator 1 view .LVU75
- 376 0092 184B     		ldr	r3, .L27+20
- 377 0094 1860     		str	r0, [r3]
+ 407              		.loc 1 157 15 discriminator 2 view .LVU79
+ 408 0092 184B     		ldr	r3, .L27+20
+ 409 0094 1860     		str	r0, [r3]
  162:Core/Src/freertos.c ****   samplerHandle = osThreadCreate(osThread(sampler), NULL);
- 378              		.loc 1 162 3 is_stmt 1 view .LVU76
- 379 0096 EE46     		mov	lr, sp
- 380 0098 04F1540C 		add	ip, r4, #84
- 381 009c BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
- 382 00a0 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
- 383 00a4 9CE80700 		ldm	ip, {r0, r1, r2}
- 384 00a8 8EE80700 		stm	lr, {r0, r1, r2}
+ 410              		.loc 1 162 3 is_stmt 1 discriminator 2 view .LVU80
+ 411 0096 EE46     		mov	lr, sp
+ 412 0098 04F1540C 		add	ip, r4, #84
+ 413 009c BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 414 00a0 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 415 00a4 9CE80700 		ldm	ip, {r0, r1, r2}
+ 416 00a8 8EE80700 		stm	lr, {r0, r1, r2}
  163:Core/Src/freertos.c **** 
- 385              		.loc 1 163 3 view .LVU77
+ 417              		.loc 1 163 3 discriminator 2 view .LVU81
  163:Core/Src/freertos.c **** 
- 386              		.loc 1 163 19 is_stmt 0 view .LVU78
- 387 00ac 0021     		movs	r1, #0
- 388 00ae 6846     		mov	r0, sp
- 389 00b0 FFF7FEFF 		bl	osThreadCreate
- 390              	.LVL29:
+ 418              		.loc 1 163 19 is_stmt 0 discriminator 2 view .LVU82
+ 419 00ac 0021     		movs	r1, #0
+ 420 00ae 6846     		mov	r0, sp
+ 421 00b0 FFF7FEFF 		bl	osThreadCreate
+ 422              	.LVL33:
  163:Core/Src/freertos.c **** 
- 391              		.loc 1 163 17 discriminator 1 view .LVU79
- 392 00b4 104B     		ldr	r3, .L27+24
- 393 00b6 1860     		str	r0, [r3]
+ 423              		.loc 1 163 17 discriminator 2 view .LVU83
+ 424 00b4 104B     		ldr	r3, .L27+24
+ 425 00b6 1860     		str	r0, [r3]
  172:Core/Src/freertos.c **** 
- 394              		.loc 1 172 1 view .LVU80
- 395 00b8 1CB0     		add	sp, sp, #112
- 396              	.LCFI8:
- 397              		.cfi_remember_state
- 398              		.cfi_def_cfa_offset 8
- 399              		@ sp needed
- 400 00ba 10BD     		pop	{r4, pc}
- 401              	.L25:
- 402              	.LCFI9:
- 403              		.cfi_restore_state
+ 426              		.loc 1 172 1 discriminator 2 view .LVU84
+ 427 00b8 1CB0     		add	sp, sp, #112
+ 428              	.LCFI8:
+ 429              		.cfi_remember_state
+ 430              		.cfi_def_cfa_offset 8
+ 431              		@ sp needed
+ 432 00ba 10BD     		pop	{r4, pc}
+ 433              	.L25:
+ 434              	.LCFI9:
+ 435              		.cfi_restore_state
  138:Core/Src/freertos.c ****   configASSERT(canQueue);
- 404              		.loc 1 138 3 is_stmt 1 discriminator 1 view .LVU81
- 405              	.LBB6:
- 406              	.LBI6:
- 407              		.file 2 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 436              		.loc 1 138 3 is_stmt 1 view .LVU85
+ 437              	.LBB6:
+ 438              	.LBI6:
+ 439              		.file 2 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
    1:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*
    2:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * FreeRTOS Kernel V10.3.1
-ARM GAS  /tmp/ccjkNbhh.s 			page 17
-
-
    3:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
    4:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
    5:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -975,6 +958,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   14:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
   15:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   16:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ARM GAS  /tmp/ccN1nt23.s 			page 17
+
+
   17:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
   18:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
   19:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
@@ -1018,9 +1004,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   57:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** typedef unsigned long UBaseType_t;
   58:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
   59:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
-ARM GAS  /tmp/ccjkNbhh.s 			page 18
-
-
   60:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	typedef uint16_t TickType_t;
   61:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffff
   62:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #else
@@ -1035,6 +1018,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
   71:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
   72:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Architecture specifics. */
   73:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
+ARM GAS  /tmp/ccN1nt23.s 			page 18
+
+
   74:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
   75:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portBYTE_ALIGNMENT			8
   76:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
@@ -1078,9 +1064,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  114:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  115:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Tickless idle/low power functionality. */
  116:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
-ARM GAS  /tmp/ccjkNbhh.s 			page 19
-
-
  117:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
  118:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdl
  119:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
@@ -1095,6 +1078,9 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  128:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  129:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Generic helper function. */
  130:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
+ARM GAS  /tmp/ccN1nt23.s 			page 19
+
+
  131:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	{
  132:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	uint8_t ucReturn;
  133:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
@@ -1138,9 +1124,6 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  171:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
  172:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
  173:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** uint32_t ulCurrentInterrupt;
-ARM GAS  /tmp/ccjkNbhh.s 			page 20
-
-
  174:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** BaseType_t xReturn;
  175:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  176:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Obtain the number of the currently executing interrupt. */
@@ -1155,844 +1138,856 @@ ARM GAS  /tmp/ccjkNbhh.s 			page 1
  185:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		xReturn = pdTRUE;
  186:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	}
  187:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ARM GAS  /tmp/ccN1nt23.s 			page 20
+
+
  188:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	return xReturn;
  189:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** }
  190:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  191:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
  192:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  193:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
- 408              		.loc 2 193 30 view .LVU82
- 409              	.LBB7:
+ 440              		.loc 2 193 30 view .LVU86
+ 441              	.LBB7:
  194:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
  195:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** uint32_t ulNewBASEPRI;
- 410              		.loc 2 195 1 view .LVU83
+ 442              		.loc 2 195 1 view .LVU87
  196:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  197:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__asm volatile
- 411              		.loc 2 197 2 view .LVU84
- 412              		.syntax unified
- 413              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
- 414 00bc 4FF05003 			mov r3, #80												
- 415 00c0 83F31188 		msr basepri, r3											
- 416 00c4 BFF36F8F 		isb														
- 417 00c8 BFF34F8F 		dsb														
- 418              	
- 419              	@ 0 "" 2
- 420              		.thumb
- 421              		.syntax unified
- 422              	.L21:
- 423              	.LBE7:
- 424              	.LBE6:
+ 443              		.loc 2 197 2 view .LVU88
+ 444              		.syntax unified
+ 445              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
+ 446 00bc 4FF05003 			mov r3, #80												
+ 447 00c0 83F31188 		msr basepri, r3											
+ 448 00c4 BFF36F8F 		isb														
+ 449 00c8 BFF34F8F 		dsb														
+ 450              	
+ 451              	@ 0 "" 2
+ 452              	.LVL34:
+ 453              		.thumb
+ 454              		.syntax unified
+ 455              	.L21:
+ 456              		.loc 2 197 2 is_stmt 0 view .LVU89
+ 457              	.LBE7:
+ 458              	.LBE6:
  138:Core/Src/freertos.c ****   configASSERT(canQueue);
- 425              		.loc 1 138 3 discriminator 3 view .LVU85
+ 459              		.loc 1 138 3 is_stmt 1 discriminator 1 view .LVU90
  138:Core/Src/freertos.c ****   configASSERT(canQueue);
- 426              		.loc 1 138 3 discriminator 3 view .LVU86
- 427 00cc FEE7     		b	.L21
- 428              	.L26:
+ 460              		.loc 1 138 3 discriminator 1 view .LVU91
+ 138:Core/Src/freertos.c ****   configASSERT(canQueue);
+ 461              		.loc 1 138 3 discriminator 1 view .LVU92
+ 462 00cc FEE7     		b	.L21
+ 463              	.L26:
  139:Core/Src/freertos.c **** 
- 429              		.loc 1 139 3 discriminator 1 view .LVU87
- 430              	.LBB8:
- 431              	.LBI8:
+ 464              		.loc 1 139 3 view .LVU93
+ 465              	.LBB8:
+ 466              	.LBI8:
  193:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
- 432              		.loc 2 193 30 view .LVU88
- 433              	.LBB9:
+ 467              		.loc 2 193 30 view .LVU94
+ 468              	.LBB9:
  195:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
- 434              		.loc 2 195 1 view .LVU89
- 435              		.loc 2 197 2 view .LVU90
-ARM GAS  /tmp/ccjkNbhh.s 			page 21
+ 469              		.loc 2 195 1 view .LVU95
+ 470              		.loc 2 197 2 view .LVU96
+ 471              		.syntax unified
+ 472              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
+ 473 00ce 4FF05003 			mov r3, #80												
+ 474 00d2 83F31188 		msr basepri, r3											
+ 475 00d6 BFF36F8F 		isb														
+ 476 00da BFF34F8F 		dsb														
+ 477              	
+ 478              	@ 0 "" 2
+ 479              	.LVL35:
+ 480              		.thumb
+ARM GAS  /tmp/ccN1nt23.s 			page 21
 
 
- 436              		.syntax unified
- 437              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
- 438 00ce 4FF05003 			mov r3, #80												
- 439 00d2 83F31188 		msr basepri, r3											
- 440 00d6 BFF36F8F 		isb														
- 441 00da BFF34F8F 		dsb														
- 442              	
- 443              	@ 0 "" 2
- 444              		.thumb
- 445              		.syntax unified
- 446              	.L23:
- 447              	.LBE9:
- 448              	.LBE8:
+ 481              		.syntax unified
+ 482              	.L23:
+ 483              		.loc 2 197 2 is_stmt 0 view .LVU97
+ 484              	.LBE9:
+ 485              	.LBE8:
  139:Core/Src/freertos.c **** 
- 449              		.loc 1 139 3 discriminator 3 view .LVU91
+ 486              		.loc 1 139 3 is_stmt 1 discriminator 2 view .LVU98
  139:Core/Src/freertos.c **** 
- 450              		.loc 1 139 3 discriminator 3 view .LVU92
- 451 00de FEE7     		b	.L23
- 452              	.L28:
- 453              		.align	2
- 454              	.L27:
- 455 00e0 00000000 		.word	rawQueue
- 456 00e4 00000000 		.word	canQueue
- 457 00e8 00000000 		.word	.LANCHOR0
- 458 00ec 00000000 		.word	acquireHandle
- 459 00f0 00000000 		.word	packageHandle
- 460 00f4 00000000 		.word	txCANHandle
- 461 00f8 00000000 		.word	samplerHandle
- 462              		.cfi_endproc
- 463              	.LFE74:
- 465              		.global	__aeabi_i2f
- 466              		.global	__aeabi_fadd
- 467              		.global	__aeabi_fdiv
- 468              		.global	__aeabi_fmul
- 469              		.section	.text.Procesar_Corriente_RMS,"ax",%progbits
- 470              		.align	1
- 471              		.global	Procesar_Corriente_RMS
- 472              		.syntax unified
- 473              		.thumb
- 474              		.thumb_func
- 476              	Procesar_Corriente_RMS:
- 477              	.LFB76:
+ 487              		.loc 1 139 3 discriminator 2 view .LVU99
+ 139:Core/Src/freertos.c **** 
+ 488              		.loc 1 139 3 discriminator 2 view .LVU100
+ 489 00de FEE7     		b	.L23
+ 490              	.L28:
+ 491              		.align	2
+ 492              	.L27:
+ 493 00e0 00000000 		.word	.LANCHOR0
+ 494 00e4 00000000 		.word	.LANCHOR3
+ 495 00e8 00000000 		.word	.LANCHOR6
+ 496 00ec 00000000 		.word	.LANCHOR7
+ 497 00f0 00000000 		.word	.LANCHOR8
+ 498 00f4 00000000 		.word	.LANCHOR9
+ 499 00f8 00000000 		.word	.LANCHOR10
+ 500              		.cfi_endproc
+ 501              	.LFE74:
+ 503              		.global	__aeabi_i2f
+ 504              		.global	__aeabi_fadd
+ 505              		.global	__aeabi_fdiv
+ 506              		.global	__aeabi_fmul
+ 507              		.section	.text.Procesar_Corriente_RMS,"ax",%progbits
+ 508              		.align	1
+ 509              		.global	Procesar_Corriente_RMS
+ 510              		.syntax unified
+ 511              		.thumb
+ 512              		.thumb_func
+ 514              	Procesar_Corriente_RMS:
+ 515              	.LFB76:
  251:Core/Src/freertos.c ****     float suma_cuadrados = 0.0f;        
- 478              		.loc 1 251 36 view -0
- 479              		.cfi_startproc
- 480              		@ args = 0, pretend = 0, frame = 0
- 481              		@ frame_needed = 0, uses_anonymous_args = 0
- 482 0000 38B5     		push	{r3, r4, r5, lr}
- 483              	.LCFI10:
- 484              		.cfi_def_cfa_offset 16
- 485              		.cfi_offset 3, -16
- 486              		.cfi_offset 4, -12
- 487              		.cfi_offset 5, -8
- 488              		.cfi_offset 14, -4
+ 516              		.loc 1 251 36 view -0
+ 517              		.cfi_startproc
+ 518              		@ args = 0, pretend = 0, frame = 0
+ 519              		@ frame_needed = 0, uses_anonymous_args = 0
+ 520 0000 38B5     		push	{r3, r4, r5, lr}
+ 521              	.LCFI10:
+ 522              		.cfi_def_cfa_offset 16
+ 523              		.cfi_offset 3, -16
+ 524              		.cfi_offset 4, -12
+ 525              		.cfi_offset 5, -8
+ 526              		.cfi_offset 14, -4
  252:Core/Src/freertos.c ****     
- 489              		.loc 1 252 5 view .LVU94
- 490              	.LVL30:
-ARM GAS  /tmp/ccjkNbhh.s 			page 22
+ 527              		.loc 1 252 5 view .LVU102
+ 528              	.LVL36:
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ 529              		.loc 1 254 5 view .LVU103
+ 530              	.LBB10:
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ 531              		.loc 1 254 9 view .LVU104
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ARM GAS  /tmp/ccN1nt23.s 			page 22
 
 
- 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 491              		.loc 1 254 5 view .LVU95
- 492              	.LBB10:
- 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 493              		.loc 1 254 9 view .LVU96
- 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 494              		.loc 1 254 13 is_stmt 0 view .LVU97
- 495 0002 0025     		movs	r5, #0
- 496              	.LBE10:
+ 532              		.loc 1 254 13 is_stmt 0 view .LVU105
+ 533 0002 0025     		movs	r5, #0
+ 534              	.LBE10:
  252:Core/Src/freertos.c ****     
- 497              		.loc 1 252 11 view .LVU98
- 498 0004 0024     		movs	r4, #0
- 499              	.LBB12:
+ 535              		.loc 1 252 11 view .LVU106
+ 536 0004 0024     		movs	r4, #0
+ 537              	.LBB12:
  254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 500              		.loc 1 254 5 view .LVU99
- 501 0006 0FE0     		b	.L30
- 502              	.LVL31:
- 503              	.L31:
- 504              	.LBB11:
+ 538              		.loc 1 254 5 view .LVU107
+ 539 0006 0FE0     		b	.L30
+ 540              	.LVL37:
+ 541              	.L31:
+ 542              	.LBB11:
  256:Core/Src/freertos.c ****         suma_cuadrados += (float)(centrado * centrado);
- 505              		.loc 1 256 9 is_stmt 1 view .LVU100
+ 543              		.loc 1 256 9 is_stmt 1 discriminator 3 view .LVU108
  256:Core/Src/freertos.c ****         suma_cuadrados += (float)(centrado * centrado);
- 506              		.loc 1 256 57 is_stmt 0 view .LVU101
- 507 0008 0D4B     		ldr	r3, .L33
- 508 000a 33F81530 		ldrh	r3, [r3, r5, lsl #1]
- 509 000e 9BB2     		uxth	r3, r3
+ 544              		.loc 1 256 57 is_stmt 0 discriminator 3 view .LVU109
+ 545 0008 0D4B     		ldr	r3, .L33
+ 546 000a 33F81530 		ldrh	r3, [r3, r5, lsl #1]
+ 547 000e 9BB2     		uxth	r3, r3
  256:Core/Src/freertos.c ****         suma_cuadrados += (float)(centrado * centrado);
- 510              		.loc 1 256 17 view .LVU102
- 511 0010 A3F50060 		sub	r0, r3, #2048
- 512              	.LVL32:
+ 548              		.loc 1 256 17 discriminator 3 view .LVU110
+ 549 0010 A3F50060 		sub	r0, r3, #2048
+ 550              	.LVL38:
  257:Core/Src/freertos.c ****     }
- 513              		.loc 1 257 9 is_stmt 1 view .LVU103
+ 551              		.loc 1 257 9 is_stmt 1 discriminator 3 view .LVU111
  257:Core/Src/freertos.c ****     }
- 514              		.loc 1 257 27 is_stmt 0 view .LVU104
- 515 0014 00FB00F0 		mul	r0, r0, r0
- 516              	.LVL33:
+ 552              		.loc 1 257 27 is_stmt 0 discriminator 3 view .LVU112
+ 553 0014 00FB00F0 		mul	r0, r0, r0
+ 554              	.LVL39:
  257:Core/Src/freertos.c ****     }
- 517              		.loc 1 257 27 view .LVU105
- 518 0018 FFF7FEFF 		bl	__aeabi_i2f
- 519              	.LVL34:
+ 555              		.loc 1 257 27 discriminator 3 view .LVU113
+ 556 0018 FFF7FEFF 		bl	__aeabi_i2f
+ 557              	.LVL40:
  257:Core/Src/freertos.c ****     }
- 520              		.loc 1 257 27 view .LVU106
- 521 001c 0146     		mov	r1, r0
+ 558              		.loc 1 257 27 discriminator 3 view .LVU114
+ 559 001c 0146     		mov	r1, r0
  257:Core/Src/freertos.c ****     }
- 522              		.loc 1 257 24 view .LVU107
- 523 001e 2046     		mov	r0, r4
- 524 0020 FFF7FEFF 		bl	__aeabi_fadd
- 525              	.LVL35:
- 526 0024 0446     		mov	r4, r0
- 527              	.LVL36:
+ 560              		.loc 1 257 24 discriminator 3 view .LVU115
+ 561 001e 2046     		mov	r0, r4
+ 562 0020 FFF7FEFF 		bl	__aeabi_fadd
+ 563              	.LVL41:
+ 564 0024 0446     		mov	r4, r0
+ 565              	.LVL42:
  257:Core/Src/freertos.c ****     }
- 528              		.loc 1 257 24 view .LVU108
- 529              	.LBE11:
+ 566              		.loc 1 257 24 discriminator 3 view .LVU116
+ 567              	.LBE11:
  254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 530              		.loc 1 254 30 is_stmt 1 discriminator 3 view .LVU109
- 531 0026 0135     		adds	r5, r5, #1
- 532              	.LVL37:
-ARM GAS  /tmp/ccjkNbhh.s 			page 23
+ 568              		.loc 1 254 29 is_stmt 1 discriminator 3 view .LVU117
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ 569              		.loc 1 254 30 is_stmt 0 discriminator 3 view .LVU118
+ 570 0026 0135     		adds	r5, r5, #1
+ 571              	.LVL43:
+ 572              	.L30:
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ 573              		.loc 1 254 20 is_stmt 1 discriminator 1 view .LVU119
+ 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
+ARM GAS  /tmp/ccN1nt23.s 			page 23
 
 
- 533              	.L30:
- 254:Core/Src/freertos.c ****         // Restamos offset usando tus 3.262V reales (1.631V = 2048 ticks)
- 534              		.loc 1 254 22 discriminator 1 view .LVU110
- 535 0028 632D     		cmp	r5, #99
- 536 002a EDDD     		ble	.L31
- 537              	.LBE12:
+ 574              		.loc 1 254 5 is_stmt 0 discriminator 1 view .LVU120
+ 575 0028 632D     		cmp	r5, #99
+ 576 002a EDDD     		ble	.L31
+ 577              	.LBE12:
  260:Core/Src/freertos.c ****     return (rms_raw * (3.262f / 4096.0f)); 
- 538              		.loc 1 260 5 view .LVU111
+ 578              		.loc 1 260 5 is_stmt 1 view .LVU121
  260:Core/Src/freertos.c ****     return (rms_raw * (3.262f / 4096.0f)); 
- 539              		.loc 1 260 21 is_stmt 0 view .LVU112
- 540 002c 0549     		ldr	r1, .L33+4
- 541 002e 2046     		mov	r0, r4
- 542 0030 FFF7FEFF 		bl	__aeabi_fdiv
- 543              	.LVL38:
- 544 0034 FFF7FEFF 		bl	sqrtf
- 545              	.LVL39:
+ 579              		.loc 1 260 21 is_stmt 0 view .LVU122
+ 580 002c 0549     		ldr	r1, .L33+4
+ 581 002e 2046     		mov	r0, r4
+ 582 0030 FFF7FEFF 		bl	__aeabi_fdiv
+ 583              	.LVL44:
+ 584 0034 FFF7FEFF 		bl	sqrtf
+ 585              	.LVL45:
  261:Core/Src/freertos.c **** }
- 546              		.loc 1 261 5 is_stmt 1 view .LVU113
+ 586              		.loc 1 261 5 is_stmt 1 view .LVU123
  261:Core/Src/freertos.c **** }
- 547              		.loc 1 261 21 is_stmt 0 view .LVU114
- 548 0038 0349     		ldr	r1, .L33+8
- 549 003a FFF7FEFF 		bl	__aeabi_fmul
- 550              	.LVL40:
+ 587              		.loc 1 261 21 is_stmt 0 view .LVU124
+ 588 0038 0349     		ldr	r1, .L33+8
+ 589 003a FFF7FEFF 		bl	__aeabi_fmul
+ 590              	.LVL46:
  262:Core/Src/freertos.c **** 
- 551              		.loc 1 262 1 view .LVU115
- 552 003e 38BD     		pop	{r3, r4, r5, pc}
- 553              	.LVL41:
- 554              	.L34:
+ 591              		.loc 1 262 1 view .LVU125
+ 592 003e 38BD     		pop	{r3, r4, r5, pc}
+ 593              	.LVL47:
+ 594              	.L34:
  262:Core/Src/freertos.c **** 
- 555              		.loc 1 262 1 view .LVU116
- 556              		.align	2
- 557              	.L33:
- 558 0040 00000000 		.word	adc_buffer_corriente
- 559 0044 0000C842 		.word	1120403456
- 560 0048 9CC4503A 		.word	978371740
- 561              		.cfi_endproc
- 562              	.LFE76:
- 564              		.section	.rodata.StartAcquireTask.str1.4,"aMS",%progbits,1
- 565              		.align	2
- 566              	.LC14:
- 567 0000 496E6963 		.ascii	"Iniciando Logger...\015\000"
- 567      69616E64 
- 567      6F204C6F 
- 567      67676572 
- 567      2E2E2E0D 
- 568              		.global	__aeabi_ui2f
- 569              		.section	.text.StartAcquireTask,"ax",%progbits
- 570              		.align	1
- 571              		.global	StartAcquireTask
- 572              		.syntax unified
- 573              		.thumb
- 574              		.thumb_func
- 576              	StartAcquireTask:
- 577              	.LVL42:
- 578              	.LFB77:
- 268:Core/Src/freertos.c ****   /* USER CODE BEGIN StartLogger */
- 579              		.loc 1 268 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccjkNbhh.s 			page 24
+ 595              		.loc 1 262 1 view .LVU126
+ 596              		.align	2
+ 597              	.L33:
+ 598 0040 00000000 		.word	adc_buffer_corriente
+ 599 0044 0000C842 		.word	1120403456
+ 600 0048 9CC4503A 		.word	978371740
+ 601              		.cfi_endproc
+ 602              	.LFE76:
+ 604              		.section	.rodata.StartAcquireTask.str1.4,"aMS",%progbits,1
+ 605              		.align	2
+ 606              	.LC14:
+ 607 0000 496E6963 		.ascii	"Iniciando Adquisidor...\015\000"
+ 607      69616E64 
+ 607      6F204164 
+ 607      71756973 
+ 607      69646F72 
+ 608              		.global	__aeabi_ui2f
+ 609              		.section	.text.StartAcquireTask,"ax",%progbits
+ 610              		.align	1
+ 611              		.global	StartAcquireTask
+ 612              		.syntax unified
+ 613              		.thumb
+ 614              		.thumb_func
+ 616              	StartAcquireTask:
+ 617              	.LVL48:
+ 618              	.LFB77:
+ 268:Core/Src/freertos.c ****     printf("Iniciando Adquisidor...\r\n");
+ 619              		.loc 1 268 1 is_stmt 1 view -0
+ 620              		.cfi_startproc
+ 621              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccN1nt23.s 			page 24
 
 
- 580              		.cfi_startproc
- 581              		@ args = 0, pretend = 0, frame = 0
- 582              		@ frame_needed = 0, uses_anonymous_args = 0
- 268:Core/Src/freertos.c ****   /* USER CODE BEGIN StartLogger */
- 583              		.loc 1 268 1 is_stmt 0 view .LVU118
- 584 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
- 585              	.LCFI11:
- 586              		.cfi_def_cfa_offset 24
- 587              		.cfi_offset 4, -24
- 588              		.cfi_offset 5, -20
- 589              		.cfi_offset 6, -16
- 590              		.cfi_offset 7, -12
- 591              		.cfi_offset 8, -8
- 592              		.cfi_offset 14, -4
- 270:Core/Src/freertos.c ****   /* Infinite loop */
- 593              		.loc 1 270 3 is_stmt 1 view .LVU119
- 594 0004 4348     		ldr	r0, .L46
- 595              	.LVL43:
- 270:Core/Src/freertos.c ****   /* Infinite loop */
- 596              		.loc 1 270 3 is_stmt 0 view .LVU120
- 597 0006 FFF7FEFF 		bl	puts
- 598              	.LVL44:
- 272:Core/Src/freertos.c ****   uint32_t cuenta_muestras_temp = 0;
- 599              		.loc 1 272 3 is_stmt 1 view .LVU121
- 273:Core/Src/freertos.c **** 
- 600              		.loc 1 273 3 view .LVU122
- 275:Core/Src/freertos.c ****     uint16_t idx = 0;
- 601              		.loc 1 275 5 view .LVU123
- 276:Core/Src/freertos.c **** 
- 602              		.loc 1 276 5 view .LVU124
- 279:Core/Src/freertos.c ****     static uint8_t contador_pulsos = 0;
- 603              		.loc 1 279 5 view .LVU125
- 280:Core/Src/freertos.c ****     float rpm = 0.0f;
- 604              		.loc 1 280 5 view .LVU126
- 281:Core/Src/freertos.c **** 
- 605              		.loc 1 281 5 view .LVU127
- 281:Core/Src/freertos.c **** 
- 606              		.loc 1 281 11 is_stmt 0 view .LVU128
- 607 000a 0025     		movs	r5, #0
- 276:Core/Src/freertos.c **** 
- 608              		.loc 1 276 14 view .LVU129
- 609 000c 0024     		movs	r4, #0
- 273:Core/Src/freertos.c **** 
- 610              		.loc 1 273 12 view .LVU130
- 611 000e 2746     		mov	r7, r4
- 272:Core/Src/freertos.c ****   uint32_t cuenta_muestras_temp = 0;
- 612              		.loc 1 272 12 view .LVU131
- 613 0010 2646     		mov	r6, r4
- 614 0012 60E0     		b	.L40
- 615              	.LVL45:
- 616              	.L43:
- 617              	.LBB13:
- 314:Core/Src/freertos.c ****             uint32_t current_ticks = diff_ticks;
- 618              		.loc 1 314 13 is_stmt 1 view .LVU132
- 619 0014 FFF7FEFF 		bl	vPortEnterCritical
- 620              	.LVL46:
- 315:Core/Src/freertos.c ****             new_read = 0;
-ARM GAS  /tmp/ccjkNbhh.s 			page 25
+ 622              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268:Core/Src/freertos.c ****     printf("Iniciando Adquisidor...\r\n");
+ 623              		.loc 1 268 1 is_stmt 0 view .LVU128
+ 624 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 625              	.LCFI11:
+ 626              		.cfi_def_cfa_offset 24
+ 627              		.cfi_offset 4, -24
+ 628              		.cfi_offset 5, -20
+ 629              		.cfi_offset 6, -16
+ 630              		.cfi_offset 7, -12
+ 631              		.cfi_offset 8, -8
+ 632              		.cfi_offset 14, -4
+ 269:Core/Src/freertos.c ****     uint32_t acumulador_temp = 0;
+ 633              		.loc 1 269 5 is_stmt 1 view .LVU129
+ 634 0004 4248     		ldr	r0, .L46
+ 635              	.LVL49:
+ 269:Core/Src/freertos.c ****     uint32_t acumulador_temp = 0;
+ 636              		.loc 1 269 5 is_stmt 0 view .LVU130
+ 637 0006 FFF7FEFF 		bl	puts
+ 638              	.LVL50:
+ 270:Core/Src/freertos.c ****     uint32_t cuenta_muestras_temp = 0;
+ 639              		.loc 1 270 5 is_stmt 1 view .LVU131
+ 271:Core/Src/freertos.c **** 
+ 640              		.loc 1 271 5 view .LVU132
+ 273:Core/Src/freertos.c ****     uint16_t idx = 0;
+ 641              		.loc 1 273 5 view .LVU133
+ 274:Core/Src/freertos.c **** 
+ 642              		.loc 1 274 5 view .LVU134
+ 277:Core/Src/freertos.c ****     static uint8_t contador_pulsos = 0;
+ 643              		.loc 1 277 5 view .LVU135
+ 278:Core/Src/freertos.c ****     float rpm = 0.0f;
+ 644              		.loc 1 278 5 view .LVU136
+ 279:Core/Src/freertos.c **** 
+ 645              		.loc 1 279 5 view .LVU137
+ 279:Core/Src/freertos.c **** 
+ 646              		.loc 1 279 11 is_stmt 0 view .LVU138
+ 647 000a 0025     		movs	r5, #0
+ 274:Core/Src/freertos.c **** 
+ 648              		.loc 1 274 14 view .LVU139
+ 649 000c 0024     		movs	r4, #0
+ 271:Core/Src/freertos.c **** 
+ 650              		.loc 1 271 14 view .LVU140
+ 651 000e 2746     		mov	r7, r4
+ 270:Core/Src/freertos.c ****     uint32_t cuenta_muestras_temp = 0;
+ 652              		.loc 1 270 14 view .LVU141
+ 653 0010 2646     		mov	r6, r4
+ 654 0012 5FE0     		b	.L40
+ 655              	.LVL51:
+ 656              	.L43:
+ 657              	.LBB13:
+ 293:Core/Src/freertos.c ****             uint32_t current_ticks = diff_ticks;
+ 658              		.loc 1 293 13 is_stmt 1 view .LVU142
+ 659 0014 FFF7FEFF 		bl	vPortEnterCritical
+ 660              	.LVL52:
+ 294:Core/Src/freertos.c ****             new_read = 0;
+ 661              		.loc 1 294 13 view .LVU143
+ 294:Core/Src/freertos.c ****             new_read = 0;
+ARM GAS  /tmp/ccN1nt23.s 			page 25
 
 
- 621              		.loc 1 315 13 view .LVU133
- 315:Core/Src/freertos.c ****             new_read = 0;
- 622              		.loc 1 315 22 is_stmt 0 view .LVU134
- 623 0018 3F4B     		ldr	r3, .L46+4
- 624 001a D3F80080 		ldr	r8, [r3]
- 625              	.LVL47:
- 316:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
- 626              		.loc 1 316 13 is_stmt 1 view .LVU135
- 316:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
- 627              		.loc 1 316 22 is_stmt 0 view .LVU136
- 628 001e 3F4B     		ldr	r3, .L46+8
- 629 0020 0022     		movs	r2, #0
- 630 0022 1A70     		strb	r2, [r3]
- 317:Core/Src/freertos.c **** 
- 631              		.loc 1 317 13 is_stmt 1 view .LVU137
- 632 0024 FFF7FEFF 		bl	vPortExitCritical
- 633              	.LVL48:
- 319:Core/Src/freertos.c ****             contador_pulsos++;
- 634              		.loc 1 319 13 view .LVU138
- 319:Core/Src/freertos.c ****             contador_pulsos++;
- 635              		.loc 1 319 30 is_stmt 0 view .LVU139
- 636 0028 3D4B     		ldr	r3, .L46+12
- 637 002a 1A68     		ldr	r2, [r3]
- 638 002c 08EB0200 		add	r0, r8, r2
- 639 0030 1860     		str	r0, [r3]
- 320:Core/Src/freertos.c **** 
- 640              		.loc 1 320 13 is_stmt 1 view .LVU140
- 320:Core/Src/freertos.c **** 
- 641              		.loc 1 320 28 is_stmt 0 view .LVU141
- 642 0032 3C4A     		ldr	r2, .L46+16
- 643 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 644 0036 0133     		adds	r3, r3, #1
- 645 0038 DBB2     		uxtb	r3, r3
- 646 003a 1370     		strb	r3, [r2]
- 322:Core/Src/freertos.c ****             {
- 647              		.loc 1 322 13 is_stmt 1 view .LVU142
- 322:Core/Src/freertos.c ****             {
- 648              		.loc 1 322 16 is_stmt 0 view .LVU143
- 649 003c 072B     		cmp	r3, #7
- 650 003e 5CD9     		bls	.L36
- 651              	.LBB14:
- 324:Core/Src/freertos.c **** 
- 652              		.loc 1 324 17 is_stmt 1 view .LVU144
- 324:Core/Src/freertos.c **** 
- 653              		.loc 1 324 40 is_stmt 0 view .LVU145
- 654 0040 FFF7FEFF 		bl	__aeabi_ui2f
- 655              	.LVL49:
- 324:Core/Src/freertos.c **** 
- 656              		.loc 1 324 23 view .LVU146
- 657 0044 4FF07851 		mov	r1, #1040187392
- 658 0048 FFF7FEFF 		bl	__aeabi_fmul
- 659              	.LVL50:
- 660 004c 0146     		mov	r1, r0
- 661              	.LVL51:
- 327:Core/Src/freertos.c **** 
- 662              		.loc 1 327 17 is_stmt 1 view .LVU147
- 327:Core/Src/freertos.c **** 
-ARM GAS  /tmp/ccjkNbhh.s 			page 26
+ 662              		.loc 1 294 22 is_stmt 0 view .LVU144
+ 663 0018 3E4B     		ldr	r3, .L46+4
+ 664 001a D3F80080 		ldr	r8, [r3]
+ 665              	.LVL53:
+ 295:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
+ 666              		.loc 1 295 13 is_stmt 1 view .LVU145
+ 295:Core/Src/freertos.c ****             taskEXIT_CRITICAL();
+ 667              		.loc 1 295 22 is_stmt 0 view .LVU146
+ 668 001e 3E4B     		ldr	r3, .L46+8
+ 669 0020 0022     		movs	r2, #0
+ 670 0022 1A70     		strb	r2, [r3]
+ 296:Core/Src/freertos.c **** 
+ 671              		.loc 1 296 13 is_stmt 1 view .LVU147
+ 672 0024 FFF7FEFF 		bl	vPortExitCritical
+ 673              	.LVL54:
+ 298:Core/Src/freertos.c ****             contador_pulsos++;
+ 674              		.loc 1 298 13 view .LVU148
+ 298:Core/Src/freertos.c ****             contador_pulsos++;
+ 675              		.loc 1 298 30 is_stmt 0 view .LVU149
+ 676 0028 3C4B     		ldr	r3, .L46+12
+ 677 002a 1868     		ldr	r0, [r3]
+ 678 002c 4044     		add	r0, r0, r8
+ 679 002e 1860     		str	r0, [r3]
+ 299:Core/Src/freertos.c **** 
+ 680              		.loc 1 299 13 is_stmt 1 view .LVU150
+ 299:Core/Src/freertos.c **** 
+ 681              		.loc 1 299 28 is_stmt 0 view .LVU151
+ 682 0030 3B4A     		ldr	r2, .L46+16
+ 683 0032 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 684 0034 0133     		adds	r3, r3, #1
+ 685 0036 DBB2     		uxtb	r3, r3
+ 686 0038 1370     		strb	r3, [r2]
+ 301:Core/Src/freertos.c ****             {
+ 687              		.loc 1 301 13 is_stmt 1 view .LVU152
+ 301:Core/Src/freertos.c ****             {
+ 688              		.loc 1 301 16 is_stmt 0 view .LVU153
+ 689 003a 072B     		cmp	r3, #7
+ 690 003c 5CD9     		bls	.L36
+ 691              	.LBB14:
+ 303:Core/Src/freertos.c **** 
+ 692              		.loc 1 303 17 is_stmt 1 view .LVU154
+ 303:Core/Src/freertos.c **** 
+ 693              		.loc 1 303 40 is_stmt 0 view .LVU155
+ 694 003e FFF7FEFF 		bl	__aeabi_ui2f
+ 695              	.LVL55:
+ 303:Core/Src/freertos.c **** 
+ 696              		.loc 1 303 23 view .LVU156
+ 697 0042 4FF07851 		mov	r1, #1040187392
+ 698 0046 FFF7FEFF 		bl	__aeabi_fmul
+ 699              	.LVL56:
+ 700 004a 0146     		mov	r1, r0
+ 701              	.LVL57:
+ 306:Core/Src/freertos.c **** 
+ 702              		.loc 1 306 17 is_stmt 1 view .LVU157
+ 306:Core/Src/freertos.c **** 
+ 703              		.loc 1 306 21 is_stmt 0 view .LVU158
+ 704 004c 3548     		ldr	r0, .L46+20
+ARM GAS  /tmp/ccN1nt23.s 			page 26
 
 
- 663              		.loc 1 327 21 is_stmt 0 view .LVU148
- 664 004e 3648     		ldr	r0, .L46+20
- 665              	.LVL52:
- 327:Core/Src/freertos.c **** 
- 666              		.loc 1 327 21 view .LVU149
- 667 0050 FFF7FEFF 		bl	__aeabi_fdiv
- 668              	.LVL53:
- 327:Core/Src/freertos.c **** 
- 669              		.loc 1 327 21 view .LVU150
- 670 0054 0546     		mov	r5, r0
- 671              	.LVL54:
- 329:Core/Src/freertos.c ****                 contador_pulsos = 0;
- 672              		.loc 1 329 17 is_stmt 1 view .LVU151
- 329:Core/Src/freertos.c ****                 contador_pulsos = 0;
- 673              		.loc 1 329 34 is_stmt 0 view .LVU152
- 674 0056 0023     		movs	r3, #0
- 675 0058 314A     		ldr	r2, .L46+12
- 676 005a 1360     		str	r3, [r2]
+ 705              	.LVL58:
+ 306:Core/Src/freertos.c **** 
+ 706              		.loc 1 306 21 view .LVU159
+ 707 004e FFF7FEFF 		bl	__aeabi_fdiv
+ 708              	.LVL59:
+ 306:Core/Src/freertos.c **** 
+ 709              		.loc 1 306 21 view .LVU160
+ 710 0052 0546     		mov	r5, r0
+ 711              	.LVL60:
+ 308:Core/Src/freertos.c ****                 contador_pulsos = 0;
+ 712              		.loc 1 308 17 is_stmt 1 view .LVU161
+ 308:Core/Src/freertos.c ****                 contador_pulsos = 0;
+ 713              		.loc 1 308 34 is_stmt 0 view .LVU162
+ 714 0054 0023     		movs	r3, #0
+ 715 0056 314A     		ldr	r2, .L46+12
+ 716 0058 1360     		str	r3, [r2]
+ 309:Core/Src/freertos.c **** 
+ 717              		.loc 1 309 17 is_stmt 1 view .LVU163
+ 309:Core/Src/freertos.c **** 
+ 718              		.loc 1 309 33 is_stmt 0 view .LVU164
+ 719 005a 314A     		ldr	r2, .L46+16
+ 720 005c 1370     		strb	r3, [r2]
+ 721 005e 4BE0     		b	.L36
+ 722              	.LVL61:
+ 723              	.L44:
+ 309:Core/Src/freertos.c **** 
+ 724              		.loc 1 309 33 view .LVU165
+ 725              	.LBE14:
+ 726              	.LBE13:
+ 317:Core/Src/freertos.c ****             buffer_listo = 0;
+ 727              		.loc 1 317 13 is_stmt 1 view .LVU166
+ 317:Core/Src/freertos.c ****             buffer_listo = 0;
+ 728              		.loc 1 317 32 is_stmt 0 view .LVU167
+ 729 0060 FFF7FEFF 		bl	Procesar_Corriente_RMS
+ 730              	.LVL62:
+ 317:Core/Src/freertos.c ****             buffer_listo = 0;
+ 731              		.loc 1 317 30 view .LVU168
+ 732 0064 304B     		ldr	r3, .L46+24
+ 733 0066 1860     		str	r0, [r3]	@ float
+ 318:Core/Src/freertos.c **** 
+ 734              		.loc 1 318 13 is_stmt 1 view .LVU169
+ 318:Core/Src/freertos.c **** 
+ 735              		.loc 1 318 26 is_stmt 0 view .LVU170
+ 736 0068 304B     		ldr	r3, .L46+28
+ 737 006a 0022     		movs	r2, #0
+ 738 006c 1A70     		strb	r2, [r3]
+ 320:Core/Src/freertos.c ****             if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
+ 739              		.loc 1 320 13 is_stmt 1 view .LVU171
+ 740 006e DFF8C080 		ldr	r8, .L46+32
+ 741 0072 4046     		mov	r0, r8
+ 742 0074 FFF7FEFF 		bl	HAL_ADC_Start
+ 743              	.LVL63:
+ 321:Core/Src/freertos.c ****                 acumulador_temp += HAL_ADC_GetValue(&hadc2);
+ 744              		.loc 1 321 13 view .LVU172
+ 321:Core/Src/freertos.c ****                 acumulador_temp += HAL_ADC_GetValue(&hadc2);
+ 745              		.loc 1 321 16 is_stmt 0 view .LVU173
+ 746 0078 0221     		movs	r1, #2
+ARM GAS  /tmp/ccN1nt23.s 			page 27
+
+
+ 747 007a 4046     		mov	r0, r8
+ 748 007c FFF7FEFF 		bl	HAL_ADC_PollForConversion
+ 749              	.LVL64:
+ 321:Core/Src/freertos.c ****                 acumulador_temp += HAL_ADC_GetValue(&hadc2);
+ 750              		.loc 1 321 15 view .LVU174
+ 751 0080 B0B1     		cbz	r0, .L42
+ 752              	.L38:
+ 325:Core/Src/freertos.c **** 
+ 753              		.loc 1 325 13 is_stmt 1 view .LVU175
+ 754 0082 2B48     		ldr	r0, .L46+32
+ 755 0084 FFF7FEFF 		bl	HAL_ADC_Stop
+ 756              	.LVL65:
+ 327:Core/Src/freertos.c ****                 float promedio_ticks = (float)acumulador_temp / 32.0f;
+ 757              		.loc 1 327 13 view .LVU176
+ 327:Core/Src/freertos.c ****                 float promedio_ticks = (float)acumulador_temp / 32.0f;
+ 758              		.loc 1 327 16 is_stmt 0 view .LVU177
+ 759 0088 1F2F     		cmp	r7, #31
+ 760 008a 3CD9     		bls	.L37
+ 761              	.LBB15:
+ 328:Core/Src/freertos.c ****                 float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+ 762              		.loc 1 328 17 is_stmt 1 view .LVU178
+ 328:Core/Src/freertos.c ****                 float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+ 763              		.loc 1 328 40 is_stmt 0 view .LVU179
+ 764 008c 3046     		mov	r0, r6
+ 765 008e FFF7FEFF 		bl	__aeabi_ui2f
+ 766              	.LVL66:
+ 328:Core/Src/freertos.c ****                 float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
+ 767              		.loc 1 328 23 view .LVU180
+ 768 0092 4FF07451 		mov	r1, #1023410176
+ 769 0096 FFF7FEFF 		bl	__aeabi_fmul
+ 770              	.LVL67:
+ 329:Core/Src/freertos.c ****                 temp_filtrada = voltaje_mv / 10.0f;
+ 771              		.loc 1 329 17 is_stmt 1 view .LVU181
+ 329:Core/Src/freertos.c ****                 temp_filtrada = voltaje_mv / 10.0f;
+ 772              		.loc 1 329 23 is_stmt 0 view .LVU182
+ 773 009a 2649     		ldr	r1, .L46+36
+ 774 009c FFF7FEFF 		bl	__aeabi_fmul
+ 775              	.LVL68:
  330:Core/Src/freertos.c **** 
- 677              		.loc 1 330 17 is_stmt 1 view .LVU153
+ 776              		.loc 1 330 17 is_stmt 1 view .LVU183
  330:Core/Src/freertos.c **** 
- 678              		.loc 1 330 33 is_stmt 0 view .LVU154
- 679 005c 314A     		ldr	r2, .L46+16
- 680 005e 1370     		strb	r3, [r2]
- 681 0060 4BE0     		b	.L36
- 682              	.LVL55:
- 683              	.L44:
+ 777              		.loc 1 330 44 is_stmt 0 view .LVU184
+ 778 00a0 2549     		ldr	r1, .L46+40
+ 779 00a2 FFF7FEFF 		bl	__aeabi_fdiv
+ 780              	.LVL69:
  330:Core/Src/freertos.c **** 
- 684              		.loc 1 330 33 view .LVU155
- 685              	.LBE14:
- 686              	.LBE13:
- 345:Core/Src/freertos.c ****         buffer_listo = 0; // Liberamos el buffer al toque
- 687              		.loc 1 345 9 is_stmt 1 view .LVU156
- 345:Core/Src/freertos.c ****         buffer_listo = 0; // Liberamos el buffer al toque
- 688              		.loc 1 345 28 is_stmt 0 view .LVU157
- 689 0062 FFF7FEFF 		bl	Procesar_Corriente_RMS
- 690              	.LVL56:
- 345:Core/Src/freertos.c ****         buffer_listo = 0; // Liberamos el buffer al toque
- 691              		.loc 1 345 26 discriminator 1 view .LVU158
- 692 0066 314B     		ldr	r3, .L46+24
- 693 0068 1860     		str	r0, [r3]	@ float
- 346:Core/Src/freertos.c **** 
- 694              		.loc 1 346 9 is_stmt 1 view .LVU159
- 346:Core/Src/freertos.c **** 
- 695              		.loc 1 346 22 is_stmt 0 view .LVU160
- 696 006a 314B     		ldr	r3, .L46+28
- 697 006c 0022     		movs	r2, #0
- 698 006e 1A70     		strb	r2, [r3]
- 350:Core/Src/freertos.c ****         if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
- 699              		.loc 1 350 9 is_stmt 1 view .LVU161
- 700 0070 DFF8C080 		ldr	r8, .L46+32
- 701 0074 4046     		mov	r0, r8
- 702 0076 FFF7FEFF 		bl	HAL_ADC_Start
- 703              	.LVL57:
- 351:Core/Src/freertos.c ****             acumulador_temp += HAL_ADC_GetValue(&hadc2);
- 704              		.loc 1 351 9 view .LVU162
- 351:Core/Src/freertos.c ****             acumulador_temp += HAL_ADC_GetValue(&hadc2);
-ARM GAS  /tmp/ccjkNbhh.s 			page 27
+ 781              		.loc 1 330 31 view .LVU185
+ 782 00a6 254B     		ldr	r3, .L46+44
+ 783 00a8 1860     		str	r0, [r3]	@ float
+ 332:Core/Src/freertos.c ****                 cuenta_muestras_temp = 0;
+ 784              		.loc 1 332 17 is_stmt 1 view .LVU186
+ 785              	.LVL70:
+ 333:Core/Src/freertos.c ****             }
+ 786              		.loc 1 333 17 view .LVU187
+ 333:Core/Src/freertos.c ****             }
+ 787              		.loc 1 333 38 is_stmt 0 view .LVU188
+ 788 00aa 0026     		movs	r6, #0
+ARM GAS  /tmp/ccN1nt23.s 			page 28
 
 
- 705              		.loc 1 351 12 is_stmt 0 view .LVU163
- 706 007a 0221     		movs	r1, #2
- 707 007c 4046     		mov	r0, r8
- 708 007e FFF7FEFF 		bl	HAL_ADC_PollForConversion
- 709              	.LVL58:
- 351:Core/Src/freertos.c ****             acumulador_temp += HAL_ADC_GetValue(&hadc2);
- 710              		.loc 1 351 11 discriminator 1 view .LVU164
- 711 0082 B0B1     		cbz	r0, .L42
- 712              	.L38:
- 355:Core/Src/freertos.c **** 
- 713              		.loc 1 355 9 is_stmt 1 view .LVU165
- 714 0084 2B48     		ldr	r0, .L46+32
- 715 0086 FFF7FEFF 		bl	HAL_ADC_Stop
- 716              	.LVL59:
- 358:Core/Src/freertos.c ****             float promedio_ticks = (float)acumulador_temp / 32.0f;
- 717              		.loc 1 358 9 view .LVU166
- 358:Core/Src/freertos.c ****             float promedio_ticks = (float)acumulador_temp / 32.0f;
- 718              		.loc 1 358 12 is_stmt 0 view .LVU167
- 719 008a 1F2F     		cmp	r7, #31
- 720 008c 3CD9     		bls	.L37
- 721              	.LBB15:
- 359:Core/Src/freertos.c ****             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
- 722              		.loc 1 359 13 is_stmt 1 view .LVU168
- 359:Core/Src/freertos.c ****             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
- 723              		.loc 1 359 36 is_stmt 0 view .LVU169
- 724 008e 3046     		mov	r0, r6
- 725 0090 FFF7FEFF 		bl	__aeabi_ui2f
- 726              	.LVL60:
- 359:Core/Src/freertos.c ****             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
- 727              		.loc 1 359 19 view .LVU170
- 728 0094 4FF07451 		mov	r1, #1023410176
- 729 0098 FFF7FEFF 		bl	__aeabi_fmul
- 730              	.LVL61:
- 360:Core/Src/freertos.c ****             temp_filtrada = voltaje_mv / 10.0f;
- 731              		.loc 1 360 13 is_stmt 1 view .LVU171
- 360:Core/Src/freertos.c ****             temp_filtrada = voltaje_mv / 10.0f;
- 732              		.loc 1 360 19 is_stmt 0 view .LVU172
- 733 009c 2649     		ldr	r1, .L46+36
- 734 009e FFF7FEFF 		bl	__aeabi_fmul
- 735              	.LVL62:
- 361:Core/Src/freertos.c **** 
- 736              		.loc 1 361 13 is_stmt 1 view .LVU173
- 361:Core/Src/freertos.c **** 
- 737              		.loc 1 361 40 is_stmt 0 view .LVU174
- 738 00a2 2649     		ldr	r1, .L46+40
- 739 00a4 FFF7FEFF 		bl	__aeabi_fdiv
- 740              	.LVL63:
- 361:Core/Src/freertos.c **** 
- 741              		.loc 1 361 27 view .LVU175
- 742 00a8 254B     		ldr	r3, .L46+44
- 743 00aa 1860     		str	r0, [r3]	@ float
- 364:Core/Src/freertos.c ****             cuenta_muestras_temp = 0;
- 744              		.loc 1 364 13 is_stmt 1 view .LVU176
- 745              	.LVL64:
- 365:Core/Src/freertos.c ****         }
- 746              		.loc 1 365 13 view .LVU177
- 365:Core/Src/freertos.c ****         }
-ARM GAS  /tmp/ccjkNbhh.s 			page 28
-
-
- 747              		.loc 1 365 34 is_stmt 0 view .LVU178
- 748 00ac 0026     		movs	r6, #0
- 364:Core/Src/freertos.c ****             cuenta_muestras_temp = 0;
- 749              		.loc 1 364 29 view .LVU179
- 750 00ae 3746     		mov	r7, r6
- 751 00b0 2AE0     		b	.L37
- 752              	.LVL65:
- 753              	.L42:
- 364:Core/Src/freertos.c ****             cuenta_muestras_temp = 0;
- 754              		.loc 1 364 29 view .LVU180
- 755              	.LBE15:
- 352:Core/Src/freertos.c ****             cuenta_muestras_temp++;
- 756              		.loc 1 352 13 is_stmt 1 view .LVU181
- 352:Core/Src/freertos.c ****             cuenta_muestras_temp++;
- 757              		.loc 1 352 32 is_stmt 0 view .LVU182
- 758 00b2 4046     		mov	r0, r8
- 759 00b4 FFF7FEFF 		bl	HAL_ADC_GetValue
- 760              	.LVL66:
- 352:Core/Src/freertos.c ****             cuenta_muestras_temp++;
- 761              		.loc 1 352 29 discriminator 1 view .LVU183
- 762 00b8 0644     		add	r6, r6, r0
- 763              	.LVL67:
- 353:Core/Src/freertos.c ****         }
- 764              		.loc 1 353 13 is_stmt 1 view .LVU184
- 353:Core/Src/freertos.c ****         }
- 765              		.loc 1 353 33 is_stmt 0 view .LVU185
- 766 00ba 0137     		adds	r7, r7, #1
- 767              	.LVL68:
- 353:Core/Src/freertos.c ****         }
- 768              		.loc 1 353 33 view .LVU186
- 769 00bc E2E7     		b	.L38
- 770              	.L45:
- 386:Core/Src/freertos.c ****             idx = 0;
- 771              		.loc 1 386 13 is_stmt 1 view .LVU187
- 772 00be 0023     		movs	r3, #0
- 773 00c0 4FF0FF32 		mov	r2, #-1
- 774 00c4 1F49     		ldr	r1, .L46+48
- 775 00c6 2048     		ldr	r0, .L46+52
- 776 00c8 0068     		ldr	r0, [r0]
- 777 00ca FFF7FEFF 		bl	xQueueGenericSend
- 778              	.LVL69:
- 387:Core/Src/freertos.c ****         }
- 779              		.loc 1 387 13 view .LVU188
- 387:Core/Src/freertos.c ****         }
- 780              		.loc 1 387 17 is_stmt 0 view .LVU189
- 781 00ce 0024     		movs	r4, #0
- 782              	.LVL70:
- 783              	.L39:
- 390:Core/Src/freertos.c ****     }
- 784              		.loc 1 390 9 is_stmt 1 view .LVU190
- 785 00d0 6420     		movs	r0, #100
- 786 00d2 FFF7FEFF 		bl	osDelay
- 787              	.LVL71:
- 283:Core/Src/freertos.c ****     {
- 788              		.loc 1 283 5 view .LVU191
- 789              	.L40:
- 283:Core/Src/freertos.c ****     {
-ARM GAS  /tmp/ccjkNbhh.s 			page 29
-
-
- 790              		.loc 1 283 5 view .LVU192
- 287:Core/Src/freertos.c ****                         &raw.accel.ay[idx],
- 791              		.loc 1 287 9 view .LVU193
- 792 00d6 04F13C02 		add	r2, r4, #60
- 793 00da 1A48     		ldr	r0, .L46+48
- 794 00dc 04F11C01 		add	r1, r4, #28
- 795 00e0 00EB4101 		add	r1, r0, r1, lsl #1
- 796 00e4 00EB4202 		add	r2, r0, r2, lsl #1
- 797 00e8 0431     		adds	r1, r1, #4
- 798 00ea 00EB4400 		add	r0, r0, r4, lsl #1
- 799 00ee FFF7FEFF 		bl	ADXL345_ReadXYZ
+ 332:Core/Src/freertos.c ****                 cuenta_muestras_temp = 0;
+ 789              		.loc 1 332 33 view .LVU189
+ 790 00ac 3746     		mov	r7, r6
+ 791 00ae 2AE0     		b	.L37
+ 792              	.LVL71:
+ 793              	.L42:
+ 332:Core/Src/freertos.c ****                 cuenta_muestras_temp = 0;
+ 794              		.loc 1 332 33 view .LVU190
+ 795              	.LBE15:
+ 322:Core/Src/freertos.c ****                 cuenta_muestras_temp++;
+ 796              		.loc 1 322 17 is_stmt 1 view .LVU191
+ 322:Core/Src/freertos.c ****                 cuenta_muestras_temp++;
+ 797              		.loc 1 322 36 is_stmt 0 view .LVU192
+ 798 00b0 4046     		mov	r0, r8
+ 799 00b2 FFF7FEFF 		bl	HAL_ADC_GetValue
  800              	.LVL72:
- 312:Core/Src/freertos.c ****         {
- 801              		.loc 1 312 9 view .LVU194
- 312:Core/Src/freertos.c ****         {
- 802              		.loc 1 312 13 is_stmt 0 view .LVU195
- 803 00f2 0A4B     		ldr	r3, .L46+8
- 804 00f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 312:Core/Src/freertos.c ****         {
- 805              		.loc 1 312 12 view .LVU196
- 806 00f6 002B     		cmp	r3, #0
- 807 00f8 8CD1     		bne	.L43
- 808              	.L36:
- 340:Core/Src/freertos.c **** 
- 809              		.loc 1 340 9 is_stmt 1 view .LVU197
- 340:Core/Src/freertos.c **** 
- 810              		.loc 1 340 19 is_stmt 0 view .LVU198
- 811 00fa 124B     		ldr	r3, .L46+48
- 812 00fc C3F8F450 		str	r5, [r3, #244]	@ float
- 343:Core/Src/freertos.c ****         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
- 813              		.loc 1 343 13 is_stmt 1 view .LVU199
- 343:Core/Src/freertos.c ****         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
- 814              		.loc 1 343 17 is_stmt 0 view .LVU200
- 815 0100 0B4B     		ldr	r3, .L46+28
- 816 0102 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 343:Core/Src/freertos.c ****         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
- 817              		.loc 1 343 16 view .LVU201
- 818 0104 002B     		cmp	r3, #0
- 819 0106 ACD1     		bne	.L44
- 820              	.LVL73:
- 821              	.L37:
- 382:Core/Src/freertos.c **** 
- 822              		.loc 1 382 9 is_stmt 1 view .LVU202
- 382:Core/Src/freertos.c **** 
- 823              		.loc 1 382 12 is_stmt 0 view .LVU203
- 824 0108 0134     		adds	r4, r4, #1
- 825              	.LVL74:
- 382:Core/Src/freertos.c **** 
- 826              		.loc 1 382 12 view .LVU204
- 827 010a A4B2     		uxth	r4, r4
- 828              	.LVL75:
- 384:Core/Src/freertos.c ****         {
- 829              		.loc 1 384 9 is_stmt 1 view .LVU205
- 384:Core/Src/freertos.c ****         {
- 830              		.loc 1 384 12 is_stmt 0 view .LVU206
- 831 010c 1D2C     		cmp	r4, #29
- 832 010e D6D8     		bhi	.L45
-ARM GAS  /tmp/ccjkNbhh.s 			page 30
+ 322:Core/Src/freertos.c ****                 cuenta_muestras_temp++;
+ 801              		.loc 1 322 33 view .LVU193
+ 802 00b6 0644     		add	r6, r6, r0
+ 803              	.LVL73:
+ 323:Core/Src/freertos.c ****             }
+ 804              		.loc 1 323 17 is_stmt 1 view .LVU194
+ 323:Core/Src/freertos.c ****             }
+ 805              		.loc 1 323 37 is_stmt 0 view .LVU195
+ 806 00b8 0137     		adds	r7, r7, #1
+ 807              	.LVL74:
+ 323:Core/Src/freertos.c ****             }
+ 808              		.loc 1 323 37 view .LVU196
+ 809 00ba E2E7     		b	.L38
+ 810              	.L45:
+ 350:Core/Src/freertos.c ****             idx = 0;
+ 811              		.loc 1 350 13 is_stmt 1 view .LVU197
+ 812 00bc 0023     		movs	r3, #0
+ 813 00be 4FF0FF32 		mov	r2, #-1
+ 814 00c2 1F49     		ldr	r1, .L46+48
+ 815 00c4 1F48     		ldr	r0, .L46+52
+ 816 00c6 0068     		ldr	r0, [r0]
+ 817 00c8 FFF7FEFF 		bl	xQueueGenericSend
+ 818              	.LVL75:
+ 351:Core/Src/freertos.c ****         }
+ 819              		.loc 1 351 13 view .LVU198
+ 351:Core/Src/freertos.c ****         }
+ 820              		.loc 1 351 17 is_stmt 0 view .LVU199
+ 821 00cc 0024     		movs	r4, #0
+ 822              	.LVL76:
+ 823              	.L39:
+ 354:Core/Src/freertos.c ****     }
+ 824              		.loc 1 354 9 is_stmt 1 view .LVU200
+ 825 00ce 6420     		movs	r0, #100
+ 826 00d0 FFF7FEFF 		bl	osDelay
+ 827              	.LVL77:
+ 281:Core/Src/freertos.c ****     {    
+ 828              		.loc 1 281 10 view .LVU201
+ 829              	.L40:
+ 281:Core/Src/freertos.c ****     {    
+ 830              		.loc 1 281 5 view .LVU202
+ 284:Core/Src/freertos.c ****                         &raw.accel.ay[idx],
+ARM GAS  /tmp/ccN1nt23.s 			page 29
 
 
- 833 0110 DEE7     		b	.L39
- 834              	.L47:
- 835 0112 00BF     		.align	2
- 836              	.L46:
- 837 0114 00000000 		.word	.LC14
- 838 0118 00000000 		.word	diff_ticks
- 839 011c 00000000 		.word	new_read
- 840 0120 00000000 		.word	acumulador_ticks.1
- 841 0124 00000000 		.word	contador_pulsos.0
- 842 0128 C0E1E44A 		.word	1256513984
- 843 012c 00000000 		.word	corriente_actual
- 844 0130 00000000 		.word	buffer_listo
- 845 0134 00000000 		.word	hadc2
- 846 0138 00E04B3F 		.word	1061937152
- 847 013c 00002041 		.word	1092616192
- 848 0140 00000000 		.word	temp_filtrada
- 849 0144 00000000 		.word	raw.2
- 850 0148 00000000 		.word	rawQueue
- 851              		.cfi_endproc
- 852              	.LFE77:
- 854              		.section	.bss.contador_pulsos.0,"aw",%nobits
- 857              	contador_pulsos.0:
- 858 0000 00       		.space	1
- 859              		.section	.bss.acumulador_ticks.1,"aw",%nobits
- 860              		.align	2
- 863              	acumulador_ticks.1:
- 864 0000 00000000 		.space	4
- 865              		.section	.bss.raw.2,"aw",%nobits
- 866              		.align	2
- 869              	raw.2:
- 870 0000 00000000 		.space	248
- 870      00000000 
- 870      00000000 
- 870      00000000 
- 870      00000000 
- 871              		.section	.rodata.str1.4,"aMS",%progbits,1
- 872              		.align	2
- 873              	.LC6:
- 874 0000 73616D70 		.ascii	"sampler\000"
- 874      6C657200 
+ 831              		.loc 1 284 9 view .LVU203
+ 832 00d4 1A48     		ldr	r0, .L46+48
+ 833 00d6 04F13C02 		add	r2, r4, #60
+ 834 00da 04F11C01 		add	r1, r4, #28
+ 835 00de 00EB4101 		add	r1, r0, r1, lsl #1
+ 836 00e2 00EB4202 		add	r2, r0, r2, lsl #1
+ 837 00e6 0431     		adds	r1, r1, #4
+ 838 00e8 00EB4400 		add	r0, r0, r4, lsl #1
+ 839 00ec FFF7FEFF 		bl	ADXL345_ReadXYZ
+ 840              	.LVL78:
+ 291:Core/Src/freertos.c ****         {
+ 841              		.loc 1 291 9 view .LVU204
+ 291:Core/Src/freertos.c ****         {
+ 842              		.loc 1 291 13 is_stmt 0 view .LVU205
+ 843 00f0 094B     		ldr	r3, .L46+8
+ 844 00f2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 291:Core/Src/freertos.c ****         {
+ 845              		.loc 1 291 12 view .LVU206
+ 846 00f4 002B     		cmp	r3, #0
+ 847 00f6 8DD1     		bne	.L43
+ 848              	.L36:
+ 314:Core/Src/freertos.c **** 
+ 849              		.loc 1 314 9 is_stmt 1 view .LVU207
+ 314:Core/Src/freertos.c **** 
+ 850              		.loc 1 314 19 is_stmt 0 view .LVU208
+ 851 00f8 114B     		ldr	r3, .L46+48
+ 852 00fa C3F8F450 		str	r5, [r3, #244]	@ float
+ 316:Core/Src/freertos.c ****             corriente_actual = Procesar_Corriente_RMS();
+ 853              		.loc 1 316 9 is_stmt 1 view .LVU209
+ 316:Core/Src/freertos.c ****             corriente_actual = Procesar_Corriente_RMS();
+ 854              		.loc 1 316 13 is_stmt 0 view .LVU210
+ 855 00fe 0B4B     		ldr	r3, .L46+28
+ 856 0100 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 316:Core/Src/freertos.c ****             corriente_actual = Procesar_Corriente_RMS();
+ 857              		.loc 1 316 12 view .LVU211
+ 858 0102 002B     		cmp	r3, #0
+ 859 0104 ACD1     		bne	.L44
+ 860              	.LVL79:
+ 861              	.L37:
+ 346:Core/Src/freertos.c **** 
+ 862              		.loc 1 346 9 is_stmt 1 view .LVU212
+ 346:Core/Src/freertos.c **** 
+ 863              		.loc 1 346 12 is_stmt 0 view .LVU213
+ 864 0106 0134     		adds	r4, r4, #1
+ 865              	.LVL80:
+ 346:Core/Src/freertos.c **** 
+ 866              		.loc 1 346 12 view .LVU214
+ 867 0108 A4B2     		uxth	r4, r4
+ 868              	.LVL81:
+ 348:Core/Src/freertos.c ****         {
+ 869              		.loc 1 348 9 is_stmt 1 view .LVU215
+ 348:Core/Src/freertos.c ****         {
+ 870              		.loc 1 348 12 is_stmt 0 view .LVU216
+ 871 010a 1D2C     		cmp	r4, #29
+ 872 010c D6D8     		bhi	.L45
+ 873 010e DEE7     		b	.L39
+ 874              	.L47:
+ARM GAS  /tmp/ccN1nt23.s 			page 30
+
+
  875              		.align	2
- 876              	.LC4:
- 877 0008 74784341 		.ascii	"txCAN\000"
- 877      4E00
- 878 000e 0000     		.align	2
- 879              	.LC2:
- 880 0010 7061636B 		.ascii	"package\000"
- 880      61676500 
- 881              		.align	2
- 882              	.LC0:
- 883 0018 61637175 		.ascii	"acquire\000"
- 883      69726500 
- 884              		.global	corriente_actual
- 885              		.section	.bss.corriente_actual,"aw",%nobits
- 886              		.align	2
- 889              	corriente_actual:
- 890 0000 00000000 		.space	4
-ARM GAS  /tmp/ccjkNbhh.s 			page 31
+ 876              	.L46:
+ 877 0110 00000000 		.word	.LC14
+ 878 0114 00000000 		.word	diff_ticks
+ 879 0118 00000000 		.word	new_read
+ 880 011c 00000000 		.word	.LANCHOR12
+ 881 0120 00000000 		.word	.LANCHOR13
+ 882 0124 C0E1E44A 		.word	1256513984
+ 883 0128 00000000 		.word	.LANCHOR2
+ 884 012c 00000000 		.word	buffer_listo
+ 885 0130 00000000 		.word	hadc2
+ 886 0134 00E04B3F 		.word	1061937152
+ 887 0138 00002041 		.word	1092616192
+ 888 013c 00000000 		.word	.LANCHOR1
+ 889 0140 00000000 		.word	.LANCHOR11
+ 890 0144 00000000 		.word	.LANCHOR0
+ 891              		.cfi_endproc
+ 892              	.LFE77:
+ 894              		.global	corriente_actual
+ 895              		.global	temp_filtrada
+ 896              		.global	i
+ 897              		.global	buffer
+ 898              		.global	canQueue
+ 899              		.global	rawQueue
+ 900              		.global	samplerHandle
+ 901              		.global	txCANHandle
+ 902              		.global	packageHandle
+ 903              		.global	acquireHandle
+ 904              		.section	.rodata
+ 905              		.align	2
+ 906              		.set	.LANCHOR6,. + 0
+ 907              	.LC10:
+ 908 0000 00000000 		.word	.LC0
+ 909 0004 00000000 		.word	StartAcquireTask
+ 910 0008 0000     		.short	0
+ 911 000a 0000     		.space	2
+ 912 000c 00000000 		.word	0
+ 913 0010 00020000 		.word	512
+ 914 0014 00000000 		.word	0
+ 915 0018 00000000 		.word	0
+ 916              	.LC11:
+ 917 001c 08000000 		.word	.LC2
+ 918 0020 00000000 		.word	StartPackageTask
+ 919 0024 0000     		.short	0
+ 920 0026 0000     		.space	2
+ 921 0028 00000000 		.word	0
+ 922 002c 00010000 		.word	256
+ 923 0030 00000000 		.word	0
+ 924 0034 00000000 		.word	0
+ 925              	.LC12:
+ 926 0038 10000000 		.word	.LC4
+ 927 003c 00000000 		.word	StartTxCAN
+ 928 0040 0000     		.short	0
+ 929 0042 0000     		.space	2
+ 930 0044 00000000 		.word	0
+ 931 0048 00020000 		.word	512
+ 932 004c 00000000 		.word	0
+ARM GAS  /tmp/ccN1nt23.s 			page 31
 
 
- 891              		.global	temp_filtrada
- 892              		.section	.bss.temp_filtrada,"aw",%nobits
- 893              		.align	2
- 896              	temp_filtrada:
- 897 0000 00000000 		.space	4
- 898              		.global	i
- 899              		.section	.bss.i,"aw",%nobits
- 900              		.align	1
- 903              	i:
- 904 0000 0000     		.space	2
- 905              		.global	buffer
- 906              		.section	.bss.buffer,"aw",%nobits
- 907              		.align	2
- 910              	buffer:
- 911 0000 00000000 		.space	1000
- 911      00000000 
- 911      00000000 
- 911      00000000 
- 911      00000000 
- 912              		.section	.bss.xIdleStack,"aw",%nobits
- 913              		.align	2
- 916              	xIdleStack:
- 917 0000 00000000 		.space	512
- 917      00000000 
- 917      00000000 
- 917      00000000 
- 917      00000000 
- 918              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
- 919              		.align	2
- 922              	xIdleTaskTCBBuffer:
- 923 0000 00000000 		.space	84
- 923      00000000 
- 923      00000000 
- 923      00000000 
- 923      00000000 
- 924              		.global	canQueue
- 925              		.section	.bss.canQueue,"aw",%nobits
- 926              		.align	2
- 929              	canQueue:
- 930 0000 00000000 		.space	4
- 931              		.global	rawQueue
- 932              		.section	.bss.rawQueue,"aw",%nobits
- 933              		.align	2
- 936              	rawQueue:
- 937 0000 00000000 		.space	4
- 938              		.global	samplerHandle
- 939              		.section	.bss.samplerHandle,"aw",%nobits
- 940              		.align	2
- 943              	samplerHandle:
- 944 0000 00000000 		.space	4
- 945              		.global	txCANHandle
- 946              		.section	.bss.txCANHandle,"aw",%nobits
- 947              		.align	2
- 950              	txCANHandle:
- 951 0000 00000000 		.space	4
- 952              		.global	packageHandle
- 953              		.section	.bss.packageHandle,"aw",%nobits
-ARM GAS  /tmp/ccjkNbhh.s 			page 32
+ 933 0050 00000000 		.word	0
+ 934              	.LC13:
+ 935 0054 18000000 		.word	.LC6
+ 936 0058 00000000 		.word	StartSampler
+ 937 005c 0200     		.short	2
+ 938 005e 0000     		.space	2
+ 939 0060 00000000 		.word	0
+ 940 0064 80000000 		.word	128
+ 941 0068 00000000 		.word	0
+ 942 006c 00000000 		.word	0
+ 943              		.section	.bss.acquireHandle,"aw",%nobits
+ 944              		.align	2
+ 945              		.set	.LANCHOR7,. + 0
+ 948              	acquireHandle:
+ 949 0000 00000000 		.space	4
+ 950              		.section	.bss.acumulador_ticks.1,"aw",%nobits
+ 951              		.align	2
+ 952              		.set	.LANCHOR12,. + 0
+ 955              	acumulador_ticks.1:
+ 956 0000 00000000 		.space	4
+ 957              		.section	.bss.buffer,"aw",%nobits
+ 958              		.align	2
+ 961              	buffer:
+ 962 0000 00000000 		.space	1000
+ 962      00000000 
+ 962      00000000 
+ 962      00000000 
+ 962      00000000 
+ 963              		.section	.bss.canQueue,"aw",%nobits
+ 964              		.align	2
+ 965              		.set	.LANCHOR3,. + 0
+ 968              	canQueue:
+ 969 0000 00000000 		.space	4
+ 970              		.section	.bss.contador_pulsos.0,"aw",%nobits
+ 971              		.set	.LANCHOR13,. + 0
+ 974              	contador_pulsos.0:
+ 975 0000 00       		.space	1
+ 976              		.section	.bss.corriente_actual,"aw",%nobits
+ 977              		.align	2
+ 978              		.set	.LANCHOR2,. + 0
+ 981              	corriente_actual:
+ 982 0000 00000000 		.space	4
+ 983              		.section	.bss.i,"aw",%nobits
+ 984              		.align	1
+ 987              	i:
+ 988 0000 0000     		.space	2
+ 989              		.section	.bss.packageHandle,"aw",%nobits
+ 990              		.align	2
+ 991              		.set	.LANCHOR8,. + 0
+ 994              	packageHandle:
+ 995 0000 00000000 		.space	4
+ 996              		.section	.bss.raw.2,"aw",%nobits
+ 997              		.align	2
+ 998              		.set	.LANCHOR11,. + 0
+ 1001              	raw.2:
+ 1002 0000 00000000 		.space	248
+ 1002      00000000 
+ARM GAS  /tmp/ccN1nt23.s 			page 32
 
 
- 954              		.align	2
- 957              	packageHandle:
- 958 0000 00000000 		.space	4
- 959              		.global	acquireHandle
- 960              		.section	.bss.acquireHandle,"aw",%nobits
- 961              		.align	2
- 964              	acquireHandle:
- 965 0000 00000000 		.space	4
- 966              		.section	.rodata
- 967              		.align	2
- 968              		.set	.LANCHOR0,. + 0
- 969              	.LC10:
- 970 0000 18000000 		.word	.LC0
- 971 0004 00000000 		.word	StartAcquireTask
- 972 0008 0000     		.short	0
- 973 000a 0000     		.space	2
- 974 000c 00000000 		.word	0
- 975 0010 00010000 		.word	256
- 976 0014 00000000 		.word	0
- 977 0018 00000000 		.word	0
- 978              	.LC11:
- 979 001c 10000000 		.word	.LC2
- 980 0020 00000000 		.word	StartPackageTask
- 981 0024 0000     		.short	0
- 982 0026 0000     		.space	2
- 983 0028 00000000 		.word	0
- 984 002c 00010000 		.word	256
- 985 0030 00000000 		.word	0
- 986 0034 00000000 		.word	0
- 987              	.LC12:
- 988 0038 08000000 		.word	.LC4
- 989 003c 00000000 		.word	StartTxCAN
- 990 0040 0000     		.short	0
- 991 0042 0000     		.space	2
- 992 0044 00000000 		.word	0
- 993 0048 00020000 		.word	512
- 994 004c 00000000 		.word	0
- 995 0050 00000000 		.word	0
- 996              	.LC13:
- 997 0054 00000000 		.word	.LC6
- 998 0058 00000000 		.word	StartSampler
- 999 005c 0200     		.short	2
- 1000 005e 0000     		.space	2
- 1001 0060 00000000 		.word	0
- 1002 0064 80000000 		.word	128
- 1003 0068 00000000 		.word	0
- 1004 006c 00000000 		.word	0
- 1005              		.text
- 1006              	.Letext0:
- 1007              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 1008              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
- 1009              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
- 1010              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 1011              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
- 1012              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 1013              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 1014              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
-ARM GAS  /tmp/ccjkNbhh.s 			page 33
+ 1002      00000000 
+ 1002      00000000 
+ 1002      00000000 
+ 1003              		.section	.bss.rawQueue,"aw",%nobits
+ 1004              		.align	2
+ 1005              		.set	.LANCHOR0,. + 0
+ 1008              	rawQueue:
+ 1009 0000 00000000 		.space	4
+ 1010              		.section	.bss.samplerHandle,"aw",%nobits
+ 1011              		.align	2
+ 1012              		.set	.LANCHOR10,. + 0
+ 1015              	samplerHandle:
+ 1016 0000 00000000 		.space	4
+ 1017              		.section	.bss.temp_filtrada,"aw",%nobits
+ 1018              		.align	2
+ 1019              		.set	.LANCHOR1,. + 0
+ 1022              	temp_filtrada:
+ 1023 0000 00000000 		.space	4
+ 1024              		.section	.bss.txCANHandle,"aw",%nobits
+ 1025              		.align	2
+ 1026              		.set	.LANCHOR9,. + 0
+ 1029              	txCANHandle:
+ 1030 0000 00000000 		.space	4
+ 1031              		.section	.bss.xIdleStack,"aw",%nobits
+ 1032              		.align	2
+ 1033              		.set	.LANCHOR5,. + 0
+ 1036              	xIdleStack:
+ 1037 0000 00000000 		.space	512
+ 1037      00000000 
+ 1037      00000000 
+ 1037      00000000 
+ 1037      00000000 
+ 1038              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 1039              		.align	2
+ 1040              		.set	.LANCHOR4,. + 0
+ 1043              	xIdleTaskTCBBuffer:
+ 1044 0000 00000000 		.space	84
+ 1044      00000000 
+ 1044      00000000 
+ 1044      00000000 
+ 1044      00000000 
+ 1045              		.text
+ 1046              	.Letext0:
+ 1047              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 1048              		.file 4 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 1049              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 1050              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 1051              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 1052              		.file 8 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 1053              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1054              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1055              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 1056              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 1057              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 1058              		.file 14 "Core/Inc/adc.h"
+ 1059              		.file 15 "Core/Inc/features.h"
+ 1060              		.file 16 "Core/Inc/can_app.h"
+ARM GAS  /tmp/ccN1nt23.s 			page 33
 
 
- 1015              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
- 1016              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 1017              		.file 13 "Core/Inc/adc.h"
- 1018              		.file 14 "Core/Inc/features.h"
- 1019              		.file 15 "Core/Inc/can_app.h"
- 1020              		.file 16 "Core/Inc/adxl345.h"
- 1021              		.file 17 "/usr/include/newlib/math.h"
- 1022              		.file 18 "<built-in>"
-ARM GAS  /tmp/ccjkNbhh.s 			page 34
+ 1061              		.file 17 "Core/Inc/adxl345.h"
+ 1062              		.file 18 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 1063              		.file 19 "<built-in>"
+ARM GAS  /tmp/ccN1nt23.s 			page 34
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 freertos.c
-     /tmp/ccjkNbhh.s:19     .text.StartSampler:00000000 $t
-     /tmp/ccjkNbhh.s:25     .text.StartSampler:00000000 StartSampler
-     /tmp/ccjkNbhh.s:65     .text.StartSampler:0000001c $d
-     /tmp/ccjkNbhh.s:70     .rodata.StartPackageTask.str1.4:00000000 $d
-     /tmp/ccjkNbhh.s:74     .text.StartPackageTask:00000000 $t
-     /tmp/ccjkNbhh.s:80     .text.StartPackageTask:00000000 StartPackageTask
-     /tmp/ccjkNbhh.s:146    .text.StartPackageTask:00000044 $d
-     /tmp/ccjkNbhh.s:936    .bss.rawQueue:00000000 rawQueue
-     /tmp/ccjkNbhh.s:896    .bss.temp_filtrada:00000000 temp_filtrada
-     /tmp/ccjkNbhh.s:889    .bss.corriente_actual:00000000 corriente_actual
-     /tmp/ccjkNbhh.s:929    .bss.canQueue:00000000 canQueue
-     /tmp/ccjkNbhh.s:155    .rodata.StartTxCAN.str1.4:00000000 $d
-     /tmp/ccjkNbhh.s:159    .text.StartTxCAN:00000000 $t
-     /tmp/ccjkNbhh.s:165    .text.StartTxCAN:00000000 StartTxCAN
-     /tmp/ccjkNbhh.s:237    .text.StartTxCAN:0000005c $d
-     /tmp/ccjkNbhh.s:243    .text.vApplicationGetIdleTaskMemory:00000000 $t
-     /tmp/ccjkNbhh.s:249    .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
-     /tmp/ccjkNbhh.s:274    .text.vApplicationGetIdleTaskMemory:00000010 $d
-     /tmp/ccjkNbhh.s:922    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
-     /tmp/ccjkNbhh.s:916    .bss.xIdleStack:00000000 xIdleStack
-     /tmp/ccjkNbhh.s:280    .text.MX_FREERTOS_Init:00000000 $t
-     /tmp/ccjkNbhh.s:286    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-     /tmp/ccjkNbhh.s:455    .text.MX_FREERTOS_Init:000000e0 $d
-     /tmp/ccjkNbhh.s:964    .bss.acquireHandle:00000000 acquireHandle
-     /tmp/ccjkNbhh.s:957    .bss.packageHandle:00000000 packageHandle
-     /tmp/ccjkNbhh.s:950    .bss.txCANHandle:00000000 txCANHandle
-     /tmp/ccjkNbhh.s:943    .bss.samplerHandle:00000000 samplerHandle
-     /tmp/ccjkNbhh.s:470    .text.Procesar_Corriente_RMS:00000000 $t
-     /tmp/ccjkNbhh.s:476    .text.Procesar_Corriente_RMS:00000000 Procesar_Corriente_RMS
-     /tmp/ccjkNbhh.s:558    .text.Procesar_Corriente_RMS:00000040 $d
-     /tmp/ccjkNbhh.s:565    .rodata.StartAcquireTask.str1.4:00000000 $d
-     /tmp/ccjkNbhh.s:570    .text.StartAcquireTask:00000000 $t
-     /tmp/ccjkNbhh.s:576    .text.StartAcquireTask:00000000 StartAcquireTask
-     /tmp/ccjkNbhh.s:837    .text.StartAcquireTask:00000114 $d
-     /tmp/ccjkNbhh.s:863    .bss.acumulador_ticks.1:00000000 acumulador_ticks.1
-     /tmp/ccjkNbhh.s:857    .bss.contador_pulsos.0:00000000 contador_pulsos.0
-     /tmp/ccjkNbhh.s:869    .bss.raw.2:00000000 raw.2
-     /tmp/ccjkNbhh.s:858    .bss.contador_pulsos.0:00000000 $d
-     /tmp/ccjkNbhh.s:860    .bss.acumulador_ticks.1:00000000 $d
-     /tmp/ccjkNbhh.s:866    .bss.raw.2:00000000 $d
-     /tmp/ccjkNbhh.s:872    .rodata.str1.4:00000000 $d
-     /tmp/ccjkNbhh.s:886    .bss.corriente_actual:00000000 $d
-     /tmp/ccjkNbhh.s:893    .bss.temp_filtrada:00000000 $d
-     /tmp/ccjkNbhh.s:903    .bss.i:00000000 i
-     /tmp/ccjkNbhh.s:900    .bss.i:00000000 $d
-     /tmp/ccjkNbhh.s:910    .bss.buffer:00000000 buffer
-     /tmp/ccjkNbhh.s:907    .bss.buffer:00000000 $d
-     /tmp/ccjkNbhh.s:913    .bss.xIdleStack:00000000 $d
-     /tmp/ccjkNbhh.s:919    .bss.xIdleTaskTCBBuffer:00000000 $d
-     /tmp/ccjkNbhh.s:926    .bss.canQueue:00000000 $d
-     /tmp/ccjkNbhh.s:933    .bss.rawQueue:00000000 $d
-     /tmp/ccjkNbhh.s:940    .bss.samplerHandle:00000000 $d
-     /tmp/ccjkNbhh.s:947    .bss.txCANHandle:00000000 $d
-     /tmp/ccjkNbhh.s:954    .bss.packageHandle:00000000 $d
-     /tmp/ccjkNbhh.s:961    .bss.acquireHandle:00000000 $d
-ARM GAS  /tmp/ccjkNbhh.s 			page 35
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/ccN1nt23.s:15     .rodata.str1.4:0000000000000000 $d
+     /tmp/ccN1nt23.s:31     .text.StartSampler:0000000000000000 $t
+     /tmp/ccN1nt23.s:37     .text.StartSampler:0000000000000000 StartSampler
+     /tmp/ccN1nt23.s:78     .text.StartSampler:000000000000001c $d
+     /tmp/ccN1nt23.s:83     .rodata.StartPackageTask.str1.4:0000000000000000 $d
+     /tmp/ccN1nt23.s:87     .text.StartPackageTask:0000000000000000 $t
+     /tmp/ccN1nt23.s:93     .text.StartPackageTask:0000000000000000 StartPackageTask
+     /tmp/ccN1nt23.s:159    .text.StartPackageTask:0000000000000044 $d
+     /tmp/ccN1nt23.s:168    .rodata.StartTxCAN.str1.4:0000000000000000 $d
+     /tmp/ccN1nt23.s:172    .text.StartTxCAN:0000000000000000 $t
+     /tmp/ccN1nt23.s:178    .text.StartTxCAN:0000000000000000 StartTxCAN
+     /tmp/ccN1nt23.s:269    .text.StartTxCAN:000000000000007c $d
+     /tmp/ccN1nt23.s:275    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
+     /tmp/ccN1nt23.s:281    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
+     /tmp/ccN1nt23.s:306    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
+     /tmp/ccN1nt23.s:312    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/ccN1nt23.s:318    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/ccN1nt23.s:493    .text.MX_FREERTOS_Init:00000000000000e0 $d
+     /tmp/ccN1nt23.s:508    .text.Procesar_Corriente_RMS:0000000000000000 $t
+     /tmp/ccN1nt23.s:514    .text.Procesar_Corriente_RMS:0000000000000000 Procesar_Corriente_RMS
+     /tmp/ccN1nt23.s:598    .text.Procesar_Corriente_RMS:0000000000000040 $d
+     /tmp/ccN1nt23.s:605    .rodata.StartAcquireTask.str1.4:0000000000000000 $d
+     /tmp/ccN1nt23.s:610    .text.StartAcquireTask:0000000000000000 $t
+     /tmp/ccN1nt23.s:616    .text.StartAcquireTask:0000000000000000 StartAcquireTask
+     /tmp/ccN1nt23.s:877    .text.StartAcquireTask:0000000000000110 $d
+     /tmp/ccN1nt23.s:981    .bss.corriente_actual:0000000000000000 corriente_actual
+     /tmp/ccN1nt23.s:1022   .bss.temp_filtrada:0000000000000000 temp_filtrada
+     /tmp/ccN1nt23.s:987    .bss.i:0000000000000000 i
+     /tmp/ccN1nt23.s:961    .bss.buffer:0000000000000000 buffer
+     /tmp/ccN1nt23.s:968    .bss.canQueue:0000000000000000 canQueue
+     /tmp/ccN1nt23.s:1008   .bss.rawQueue:0000000000000000 rawQueue
+     /tmp/ccN1nt23.s:1015   .bss.samplerHandle:0000000000000000 samplerHandle
+     /tmp/ccN1nt23.s:1029   .bss.txCANHandle:0000000000000000 txCANHandle
+     /tmp/ccN1nt23.s:994    .bss.packageHandle:0000000000000000 packageHandle
+     /tmp/ccN1nt23.s:948    .bss.acquireHandle:0000000000000000 acquireHandle
+     /tmp/ccN1nt23.s:905    .rodata:0000000000000000 $d
+     /tmp/ccN1nt23.s:944    .bss.acquireHandle:0000000000000000 $d
+     /tmp/ccN1nt23.s:951    .bss.acumulador_ticks.1:0000000000000000 $d
+     /tmp/ccN1nt23.s:955    .bss.acumulador_ticks.1:0000000000000000 acumulador_ticks.1
+     /tmp/ccN1nt23.s:958    .bss.buffer:0000000000000000 $d
+     /tmp/ccN1nt23.s:964    .bss.canQueue:0000000000000000 $d
+     /tmp/ccN1nt23.s:974    .bss.contador_pulsos.0:0000000000000000 contador_pulsos.0
+     /tmp/ccN1nt23.s:975    .bss.contador_pulsos.0:0000000000000000 $d
+     /tmp/ccN1nt23.s:977    .bss.corriente_actual:0000000000000000 $d
+     /tmp/ccN1nt23.s:984    .bss.i:0000000000000000 $d
+     /tmp/ccN1nt23.s:990    .bss.packageHandle:0000000000000000 $d
+     /tmp/ccN1nt23.s:997    .bss.raw.2:0000000000000000 $d
+     /tmp/ccN1nt23.s:1001   .bss.raw.2:0000000000000000 raw.2
+     /tmp/ccN1nt23.s:1004   .bss.rawQueue:0000000000000000 $d
+     /tmp/ccN1nt23.s:1011   .bss.samplerHandle:0000000000000000 $d
+     /tmp/ccN1nt23.s:1018   .bss.temp_filtrada:0000000000000000 $d
+     /tmp/ccN1nt23.s:1025   .bss.txCANHandle:0000000000000000 $d
+     /tmp/ccN1nt23.s:1032   .bss.xIdleStack:0000000000000000 $d
+     /tmp/ccN1nt23.s:1036   .bss.xIdleStack:0000000000000000 xIdleStack
+     /tmp/ccN1nt23.s:1039   .bss.xIdleTaskTCBBuffer:0000000000000000 $d
+ARM GAS  /tmp/ccN1nt23.s 			page 35
 
 
-     /tmp/ccjkNbhh.s:967    .rodata:00000000 $d
+     /tmp/ccN1nt23.s:1043   .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
 
 UNDEFINED SYMBOLS
 xTaskGetTickCount
@@ -2004,7 +1999,7 @@ xQueueReceive
 Features_ComputeRMSPeak
 xQueueGenericSend
 CAN_SendFloat
-osDelay
+vTaskDelay
 xQueueGenericCreate
 osThreadCreate
 __aeabi_i2f
@@ -2020,6 +2015,7 @@ HAL_ADC_Start
 HAL_ADC_PollForConversion
 HAL_ADC_Stop
 HAL_ADC_GetValue
+osDelay
 ADXL345_ReadXYZ
 diff_ticks
 new_read

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccowHYlj.s 			page 1
+ARM GAS  /tmp/ccaaV1Ev.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,16 +17,16 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Middlewares/Third_Party/FreeRTOS/Source/list.c"
-  18              		.section	.text.vListInitialise,"ax",%progbits
-  19              		.align	1
-  20              		.global	vListInitialise
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	vListInitialise:
-  26              	.LVL0:
-  27              	.LFB5:
+  17              		.section	.text.vListInitialise,"ax",%progbits
+  18              		.align	1
+  19              		.global	vListInitialise
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	vListInitialise:
+  25              	.LVL0:
+  26              	.LFB5:
+  27              		.file 1 "Middlewares/Third_Party/FreeRTOS/Source/list.c"
    1:Middlewares/Third_Party/FreeRTOS/Source/list.c **** /*
    2:Middlewares/Third_Party/FreeRTOS/Source/list.c ****  * FreeRTOS Kernel V10.3.1
    3:Middlewares/Third_Party/FreeRTOS/Source/list.c ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
   29:Middlewares/Third_Party/FreeRTOS/Source/list.c **** #include <stdlib.h>
   30:Middlewares/Third_Party/FreeRTOS/Source/list.c **** #include "FreeRTOS.h"
   31:Middlewares/Third_Party/FreeRTOS/Source/list.c **** #include "list.h"
-ARM GAS  /tmp/ccowHYlj.s 			page 2
+ARM GAS  /tmp/ccaaV1Ev.s 			page 2
 
 
   32:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
   54              		.loc 1 59 1 is_stmt 0 view .LVU14
   55 0014 7047     		bx	lr
   56              		.cfi_endproc
-ARM GAS  /tmp/ccowHYlj.s 			page 3
+ARM GAS  /tmp/ccaaV1Ev.s 			page 3
 
 
   57              	.LFE5:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
   99              		@ link register save eliminated.
   76:Middlewares/Third_Party/FreeRTOS/Source/list.c **** ListItem_t * const pxIndex = pxList->pxIndex;
  100              		.loc 1 76 1 view .LVU22
-ARM GAS  /tmp/ccowHYlj.s 			page 4
+ARM GAS  /tmp/ccaaV1Ev.s 			page 4
 
 
  101              		.loc 1 76 20 is_stmt 0 view .LVU23
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  131              		.loc 1 100 1 view .LVU41
  132 0014 7047     		bx	lr
  133              		.cfi_endproc
-ARM GAS  /tmp/ccowHYlj.s 			page 5
+ARM GAS  /tmp/ccaaV1Ev.s 			page 5
 
 
  134              	.LFE7:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  123:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 	{
  124:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 		pxIterator = pxList->xListEnd.pxPrevious;
  125:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 	}
-ARM GAS  /tmp/ccowHYlj.s 			page 6
+ARM GAS  /tmp/ccaaV1Ev.s 			page 6
 
 
  126:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 	else
@@ -331,14 +331,14 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  170 000a 00F10803 		add	r3, r0, #8
  171              	.LVL7:
  172              	.L7:
- 173              		.loc 1 150 92 is_stmt 1 discriminator 1 view .LVU53
+ 173              		.loc 1 150 61 is_stmt 1 discriminator 1 view .LVU53
  174 000e 1C46     		mov	r4, r3
  175              		.loc 1 150 71 is_stmt 0 discriminator 1 view .LVU54
  176 0010 5B68     		ldr	r3, [r3, #4]
  177              	.LVL8:
  178              		.loc 1 150 79 discriminator 1 view .LVU55
  179 0012 1A68     		ldr	r2, [r3]
- 180              		.loc 1 150 92 discriminator 1 view .LVU56
+ 180              		.loc 1 150 3 discriminator 1 view .LVU56
  181 0014 AA42     		cmp	r2, r5
  182 0016 FAD9     		bls	.L7
  183              	.L6:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  189              		.loc 1 158 2 is_stmt 1 view .LVU60
  190              		.loc 1 158 36 is_stmt 0 view .LVU61
  191 001c 9960     		str	r1, [r3, #8]
-ARM GAS  /tmp/ccowHYlj.s 			page 7
+ARM GAS  /tmp/ccaaV1Ev.s 			page 7
 
 
  159:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 	pxNewListItem->pxPrevious = pxIterator;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  235              		.thumb_func
  237              	uxListRemove:
  238              	.LVL12:
-ARM GAS  /tmp/ccowHYlj.s 			page 8
+ARM GAS  /tmp/ccaaV1Ev.s 			page 8
 
 
  239              	.LFB9:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  191:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 
  192:Middlewares/Third_Party/FreeRTOS/Source/list.c **** 	pxItemToRemove->pxContainer = NULL;
  270              		.loc 1 192 2 view .LVU91
-ARM GAS  /tmp/ccowHYlj.s 			page 9
+ARM GAS  /tmp/ccaaV1Ev.s 			page 9
 
 
  271              		.loc 1 192 30 is_stmt 0 view .LVU92
@@ -515,23 +515,24 @@ ARM GAS  /tmp/ccowHYlj.s 			page 1
  295              	.LFE9:
  297              		.text
  298              	.Letext0:
- 299              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 300              		.file 3 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
- 301              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/include/list.h"
-ARM GAS  /tmp/ccowHYlj.s 			page 10
+ 299              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 300              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 301              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 302              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/list.h"
+ARM GAS  /tmp/ccaaV1Ev.s 			page 10
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 list.c
-     /tmp/ccowHYlj.s:19     .text.vListInitialise:00000000 $t
-     /tmp/ccowHYlj.s:25     .text.vListInitialise:00000000 vListInitialise
-     /tmp/ccowHYlj.s:60     .text.vListInitialiseItem:00000000 $t
-     /tmp/ccowHYlj.s:66     .text.vListInitialiseItem:00000000 vListInitialiseItem
-     /tmp/ccowHYlj.s:86     .text.vListInsertEnd:00000000 $t
-     /tmp/ccowHYlj.s:92     .text.vListInsertEnd:00000000 vListInsertEnd
-     /tmp/ccowHYlj.s:137    .text.vListInsert:00000000 $t
-     /tmp/ccowHYlj.s:143    .text.vListInsert:00000000 vListInsert
-     /tmp/ccowHYlj.s:231    .text.uxListRemove:00000000 $t
-     /tmp/ccowHYlj.s:237    .text.uxListRemove:00000000 uxListRemove
+                            *ABS*:0000000000000000 list.c
+     /tmp/ccaaV1Ev.s:18     .text.vListInitialise:0000000000000000 $t
+     /tmp/ccaaV1Ev.s:24     .text.vListInitialise:0000000000000000 vListInitialise
+     /tmp/ccaaV1Ev.s:60     .text.vListInitialiseItem:0000000000000000 $t
+     /tmp/ccaaV1Ev.s:66     .text.vListInitialiseItem:0000000000000000 vListInitialiseItem
+     /tmp/ccaaV1Ev.s:86     .text.vListInsertEnd:0000000000000000 $t
+     /tmp/ccaaV1Ev.s:92     .text.vListInsertEnd:0000000000000000 vListInsertEnd
+     /tmp/ccaaV1Ev.s:137    .text.vListInsert:0000000000000000 $t
+     /tmp/ccaaV1Ev.s:143    .text.vListInsert:0000000000000000 vListInsert
+     /tmp/ccaaV1Ev.s:231    .text.uxListRemove:0000000000000000 $t
+     /tmp/ccaaV1Ev.s:237    .text.uxListRemove:0000000000000000 uxListRemove
 
 NO UNDEFINED SYMBOLS

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccbohl1G.s 			page 1
+ARM GAS  /tmp/ccS33osz.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,15 +17,15 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/i2c.c"
-  18              		.section	.text.MX_I2C1_Init,"ax",%progbits
-  19              		.align	1
-  20              		.global	MX_I2C1_Init
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	MX_I2C1_Init:
-  26              	.LFB65:
+  17              		.section	.text.MX_I2C1_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_I2C1_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	MX_I2C1_Init:
+  25              	.LFB65:
+  26              		.file 1 "Core/Src/i2c.c"
    1:Core/Src/i2c.c **** /* USER CODE BEGIN Header */
    2:Core/Src/i2c.c **** /**
    3:Core/Src/i2c.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   30:Core/Src/i2c.c **** void MX_I2C1_Init(void)
   31:Core/Src/i2c.c **** {
   27              		.loc 1 31 1 view -0
-ARM GAS  /tmp/ccbohl1G.s 			page 2
+ARM GAS  /tmp/ccS33osz.s 			page 2
 
 
   28              		.cfi_startproc
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   65              		.loc 1 48 3 is_stmt 1 view .LVU17
   66              		.loc 1 48 28 is_stmt 0 view .LVU18
   67 001e 0362     		str	r3, [r0, #32]
-ARM GAS  /tmp/ccbohl1G.s 			page 3
+ARM GAS  /tmp/ccS33osz.s 			page 3
 
 
   49:Core/Src/i2c.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
@@ -126,7 +126,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   69              		.loc 1 49 7 is_stmt 0 view .LVU20
   70 0020 FFF7FEFF 		bl	HAL_I2C_Init
   71              	.LVL0:
-  72              		.loc 1 49 6 discriminator 1 view .LVU21
+  72              		.loc 1 49 6 view .LVU21
   73 0024 00B9     		cbnz	r0, .L4
   74              	.L1:
   50:Core/Src/i2c.c ****   {
@@ -149,7 +149,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   83              	.L6:
   84 002e 00BF     		.align	2
   85              	.L5:
-  86 0030 00000000 		.word	hi2c1
+  86 0030 00000000 		.word	.LANCHOR0
   87 0034 00540040 		.word	1073763328
   88 0038 A0860100 		.word	100000
   89              		.cfi_endproc
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
  111              		.cfi_offset 14, -4
  112 0002 86B0     		sub	sp, sp, #24
  113              	.LCFI2:
-ARM GAS  /tmp/ccbohl1G.s 			page 4
+ARM GAS  /tmp/ccS33osz.s 			page 4
 
 
  114              		.cfi_def_cfa_offset 32
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
  142              		.loc 1 69 5 is_stmt 1 view .LVU33
  143              	.LBB2:
   69:Core/Src/i2c.c ****     /**I2C1 GPIO Configuration
-ARM GAS  /tmp/ccbohl1G.s 			page 5
+ARM GAS  /tmp/ccS33osz.s 			page 5
 
 
  144              		.loc 1 69 5 view .LVU34
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
  183 0048 E361     		str	r3, [r4, #28]
   80:Core/Src/i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
  184              		.loc 1 80 5 view .LVU50
-ARM GAS  /tmp/ccbohl1G.s 			page 6
+ARM GAS  /tmp/ccS33osz.s 			page 6
 
 
  185 004a E369     		ldr	r3, [r4, #28]
@@ -309,7 +309,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
  189 0052 019B     		ldr	r3, [sp, #4]
  190              	.LBE3:
   80:Core/Src/i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
- 191              		.loc 1 80 5 discriminator 1 view .LVU52
+ 191              		.loc 1 80 5 view .LVU52
  192              		.loc 1 85 1 is_stmt 0 view .LVU53
  193 0054 DFE7     		b	.L7
  194              	.L12:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
   92:Core/Src/i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
   93:Core/Src/i2c.c **** 
   94:Core/Src/i2c.c ****   /* USER CODE END I2C1_MspDeInit 0 */
-ARM GAS  /tmp/ccbohl1G.s 			page 7
+ARM GAS  /tmp/ccS33osz.s 			page 7
 
 
   95:Core/Src/i2c.c ****     /* Peripheral clock disable */
@@ -408,41 +408,43 @@ ARM GAS  /tmp/ccbohl1G.s 			page 1
  261              		.global	hi2c1
  262              		.section	.bss.hi2c1,"aw",%nobits
  263              		.align	2
- 266              	hi2c1:
- 267 0000 00000000 		.space	84
- 267      00000000 
- 267      00000000 
- 267      00000000 
- 267      00000000 
- 268              		.text
- 269              	.Letext0:
- 270              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 271              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
-ARM GAS  /tmp/ccbohl1G.s 			page 8
+ 264              		.set	.LANCHOR0,. + 0
+ 267              	hi2c1:
+ 268 0000 00000000 		.space	84
+ 268      00000000 
+ 268      00000000 
+ 268      00000000 
+ 268      00000000 
+ 269              		.text
+ 270              	.Letext0:
+ 271              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ARM GAS  /tmp/ccS33osz.s 			page 8
 
 
- 272              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 273              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 274              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 275              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 276              		.file 8 "Core/Inc/i2c.h"
- 277              		.file 9 "Core/Inc/main.h"
-ARM GAS  /tmp/ccbohl1G.s 			page 9
+ 272              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 273              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 274              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 275              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 276              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 277              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 278              		.file 9 "Core/Inc/main.h"
+ 279              		.file 10 "Core/Inc/i2c.h"
+ARM GAS  /tmp/ccS33osz.s 			page 9
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 i2c.c
-     /tmp/ccbohl1G.s:19     .text.MX_I2C1_Init:00000000 $t
-     /tmp/ccbohl1G.s:25     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-     /tmp/ccbohl1G.s:86     .text.MX_I2C1_Init:00000030 $d
-     /tmp/ccbohl1G.s:266    .bss.hi2c1:00000000 hi2c1
-     /tmp/ccbohl1G.s:93     .text.HAL_I2C_MspInit:00000000 $t
-     /tmp/ccbohl1G.s:99     .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-     /tmp/ccbohl1G.s:197    .text.HAL_I2C_MspInit:00000058 $d
-     /tmp/ccbohl1G.s:204    .text.HAL_I2C_MspDeInit:00000000 $t
-     /tmp/ccbohl1G.s:210    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-     /tmp/ccbohl1G.s:255    .text.HAL_I2C_MspDeInit:0000002c $d
-     /tmp/ccbohl1G.s:263    .bss.hi2c1:00000000 $d
+                            *ABS*:0000000000000000 i2c.c
+     /tmp/ccS33osz.s:18     .text.MX_I2C1_Init:0000000000000000 $t
+     /tmp/ccS33osz.s:24     .text.MX_I2C1_Init:0000000000000000 MX_I2C1_Init
+     /tmp/ccS33osz.s:86     .text.MX_I2C1_Init:0000000000000030 $d
+     /tmp/ccS33osz.s:93     .text.HAL_I2C_MspInit:0000000000000000 $t
+     /tmp/ccS33osz.s:99     .text.HAL_I2C_MspInit:0000000000000000 HAL_I2C_MspInit
+     /tmp/ccS33osz.s:197    .text.HAL_I2C_MspInit:0000000000000058 $d
+     /tmp/ccS33osz.s:204    .text.HAL_I2C_MspDeInit:0000000000000000 $t
+     /tmp/ccS33osz.s:210    .text.HAL_I2C_MspDeInit:0000000000000000 HAL_I2C_MspDeInit
+     /tmp/ccS33osz.s:255    .text.HAL_I2C_MspDeInit:000000000000002c $d
+     /tmp/ccS33osz.s:267    .bss.hi2c1:0000000000000000 hi2c1
+     /tmp/ccS33osz.s:263    .bss.hi2c1:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Init

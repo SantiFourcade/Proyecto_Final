@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccTZVEdM.s 			page 1
+ARM GAS  /tmp/ccQa19pl.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,15 +17,15 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/stm32f1xx_it.c"
-  18              		.section	.text.NMI_Handler,"ax",%progbits
-  19              		.align	1
-  20              		.global	NMI_Handler
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	NMI_Handler:
-  26              	.LFB65:
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	NMI_Handler:
+  25              	.LFB65:
+  26              		.file 1 "Core/Src/stm32f1xx_it.c"
    1:Core/Src/stm32f1xx_it.c **** /* USER CODE BEGIN Header */
    2:Core/Src/stm32f1xx_it.c **** /**
    3:Core/Src/stm32f1xx_it.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
   30:Core/Src/stm32f1xx_it.c **** 
   31:Core/Src/stm32f1xx_it.c **** /* USER CODE END PTD */
   32:Core/Src/stm32f1xx_it.c **** 
-ARM GAS  /tmp/ccTZVEdM.s 			page 2
+ARM GAS  /tmp/ccQa19pl.s 			page 2
 
 
   33:Core/Src/stm32f1xx_it.c **** /* Private define ------------------------------------------------------------*/
@@ -115,15 +115,15 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
   77:Core/Src/stm32f1xx_it.c **** 
   78:Core/Src/stm32f1xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
   79:Core/Src/stm32f1xx_it.c ****    while (1)
-  34              		.loc 1 79 4 view .LVU1
+  34              		.loc 1 79 4 discriminator 1 view .LVU1
   80:Core/Src/stm32f1xx_it.c ****   {
   81:Core/Src/stm32f1xx_it.c ****   }
-ARM GAS  /tmp/ccTZVEdM.s 			page 3
+ARM GAS  /tmp/ccQa19pl.s 			page 3
 
 
-  35              		.loc 1 81 3 view .LVU2
+  35              		.loc 1 81 3 discriminator 1 view .LVU2
   79:Core/Src/stm32f1xx_it.c ****   {
-  36              		.loc 1 79 10 view .LVU3
+  36              		.loc 1 79 10 discriminator 1 view .LVU3
   37 0000 FEE7     		b	.L2
   38              		.cfi_endproc
   39              	.LFE65:
@@ -153,12 +153,12 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
   90:Core/Src/stm32f1xx_it.c **** 
   91:Core/Src/stm32f1xx_it.c ****   /* USER CODE END HardFault_IRQn 0 */
   92:Core/Src/stm32f1xx_it.c ****   while (1)
-  57              		.loc 1 92 3 view .LVU5
+  57              		.loc 1 92 3 discriminator 1 view .LVU5
   93:Core/Src/stm32f1xx_it.c ****   {
   94:Core/Src/stm32f1xx_it.c ****   }
-  58              		.loc 1 94 3 view .LVU6
+  58              		.loc 1 94 3 discriminator 1 view .LVU6
   92:Core/Src/stm32f1xx_it.c ****   {
-  59              		.loc 1 92 9 view .LVU7
+  59              		.loc 1 92 9 discriminator 1 view .LVU7
   60 0000 FEE7     		b	.L4
   61              		.cfi_endproc
   62              	.LFE66:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  100:Core/Src/stm32f1xx_it.c **** void MemManage_Handler(void)
  101:Core/Src/stm32f1xx_it.c **** {
   73              		.loc 1 101 1 view -0
-ARM GAS  /tmp/ccTZVEdM.s 			page 4
+ARM GAS  /tmp/ccQa19pl.s 			page 4
 
 
   74              		.cfi_startproc
@@ -191,12 +191,12 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  103:Core/Src/stm32f1xx_it.c **** 
  104:Core/Src/stm32f1xx_it.c ****   /* USER CODE END MemoryManagement_IRQn 0 */
  105:Core/Src/stm32f1xx_it.c ****   while (1)
-  80              		.loc 1 105 3 view .LVU9
+  80              		.loc 1 105 3 discriminator 1 view .LVU9
  106:Core/Src/stm32f1xx_it.c ****   {
  107:Core/Src/stm32f1xx_it.c ****   }
-  81              		.loc 1 107 3 view .LVU10
+  81              		.loc 1 107 3 discriminator 1 view .LVU10
  105:Core/Src/stm32f1xx_it.c ****   {
-  82              		.loc 1 105 9 view .LVU11
+  82              		.loc 1 105 9 discriminator 1 view .LVU11
   83 0000 FEE7     		b	.L6
   84              		.cfi_endproc
   85              	.LFE67:
@@ -226,19 +226,19 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  116:Core/Src/stm32f1xx_it.c **** 
  117:Core/Src/stm32f1xx_it.c ****   /* USER CODE END BusFault_IRQn 0 */
  118:Core/Src/stm32f1xx_it.c ****   while (1)
- 103              		.loc 1 118 3 view .LVU13
+ 103              		.loc 1 118 3 discriminator 1 view .LVU13
  119:Core/Src/stm32f1xx_it.c ****   {
  120:Core/Src/stm32f1xx_it.c ****   }
- 104              		.loc 1 120 3 view .LVU14
+ 104              		.loc 1 120 3 discriminator 1 view .LVU14
  118:Core/Src/stm32f1xx_it.c ****   {
- 105              		.loc 1 118 9 view .LVU15
+ 105              		.loc 1 118 9 discriminator 1 view .LVU15
  106 0000 FEE7     		b	.L8
  107              		.cfi_endproc
  108              	.LFE68:
  110              		.section	.text.UsageFault_Handler,"ax",%progbits
  111              		.align	1
  112              		.global	UsageFault_Handler
-ARM GAS  /tmp/ccTZVEdM.s 			page 5
+ARM GAS  /tmp/ccQa19pl.s 			page 5
 
 
  113              		.syntax unified
@@ -264,12 +264,12 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  129:Core/Src/stm32f1xx_it.c **** 
  130:Core/Src/stm32f1xx_it.c ****   /* USER CODE END UsageFault_IRQn 0 */
  131:Core/Src/stm32f1xx_it.c ****   while (1)
- 126              		.loc 1 131 3 view .LVU17
+ 126              		.loc 1 131 3 discriminator 1 view .LVU17
  132:Core/Src/stm32f1xx_it.c ****   {
  133:Core/Src/stm32f1xx_it.c ****   }
- 127              		.loc 1 133 3 view .LVU18
+ 127              		.loc 1 133 3 discriminator 1 view .LVU18
  131:Core/Src/stm32f1xx_it.c ****   {
- 128              		.loc 1 131 9 view .LVU19
+ 128              		.loc 1 131 9 discriminator 1 view .LVU19
  129 0000 FEE7     		b	.L10
  130              		.cfi_endproc
  131              	.LFE69:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  148 0000 7047     		bx	lr
  149              		.cfi_endproc
  150              	.LFE70:
-ARM GAS  /tmp/ccTZVEdM.s 			page 6
+ARM GAS  /tmp/ccQa19pl.s 			page 6
 
 
  152              		.section	.text.TIM2_IRQHandler,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  186              		.syntax unified
  187              		.thumb
  188              		.thumb_func
-ARM GAS  /tmp/ccTZVEdM.s 			page 7
+ARM GAS  /tmp/ccQa19pl.s 			page 7
 
 
  190              	TIM3_IRQHandler:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  228              	.LCFI2:
  229              		.cfi_def_cfa_offset 8
  230              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccTZVEdM.s 			page 8
+ARM GAS  /tmp/ccQa19pl.s 			page 8
 
 
  231              		.cfi_offset 14, -4
@@ -450,39 +450,40 @@ ARM GAS  /tmp/ccTZVEdM.s 			page 1
  248              	.LFE73:
  250              		.text
  251              	.Letext0:
- 252              		.file 2 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 253              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 254              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
- 255              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 256              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 257              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
- 258              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
-ARM GAS  /tmp/ccTZVEdM.s 			page 9
+ 252              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 253              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 254              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 255              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 256              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 257              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 258              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 259              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ARM GAS  /tmp/ccQa19pl.s 			page 9
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 stm32f1xx_it.c
-     /tmp/ccTZVEdM.s:19     .text.NMI_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:25     .text.NMI_Handler:00000000 NMI_Handler
-     /tmp/ccTZVEdM.s:42     .text.HardFault_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:48     .text.HardFault_Handler:00000000 HardFault_Handler
-     /tmp/ccTZVEdM.s:65     .text.MemManage_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:71     .text.MemManage_Handler:00000000 MemManage_Handler
-     /tmp/ccTZVEdM.s:88     .text.BusFault_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:94     .text.BusFault_Handler:00000000 BusFault_Handler
-     /tmp/ccTZVEdM.s:111    .text.UsageFault_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:117    .text.UsageFault_Handler:00000000 UsageFault_Handler
-     /tmp/ccTZVEdM.s:134    .text.DebugMon_Handler:00000000 $t
-     /tmp/ccTZVEdM.s:140    .text.DebugMon_Handler:00000000 DebugMon_Handler
-     /tmp/ccTZVEdM.s:153    .text.TIM2_IRQHandler:00000000 $t
-     /tmp/ccTZVEdM.s:159    .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
-     /tmp/ccTZVEdM.s:179    .text.TIM2_IRQHandler:0000000c $d
-     /tmp/ccTZVEdM.s:184    .text.TIM3_IRQHandler:00000000 $t
-     /tmp/ccTZVEdM.s:190    .text.TIM3_IRQHandler:00000000 TIM3_IRQHandler
-     /tmp/ccTZVEdM.s:210    .text.TIM3_IRQHandler:0000000c $d
-     /tmp/ccTZVEdM.s:215    .text.ADC1_2_IRQHandler:00000000 $t
-     /tmp/ccTZVEdM.s:221    .text.ADC1_2_IRQHandler:00000000 ADC1_2_IRQHandler
-     /tmp/ccTZVEdM.s:245    .text.ADC1_2_IRQHandler:00000010 $d
+                            *ABS*:0000000000000000 stm32f1xx_it.c
+     /tmp/ccQa19pl.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:24     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/ccQa19pl.s:42     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:48     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/ccQa19pl.s:65     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:71     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/ccQa19pl.s:88     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:94     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/ccQa19pl.s:111    .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:117    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/ccQa19pl.s:134    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/ccQa19pl.s:140    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/ccQa19pl.s:153    .text.TIM2_IRQHandler:0000000000000000 $t
+     /tmp/ccQa19pl.s:159    .text.TIM2_IRQHandler:0000000000000000 TIM2_IRQHandler
+     /tmp/ccQa19pl.s:179    .text.TIM2_IRQHandler:000000000000000c $d
+     /tmp/ccQa19pl.s:184    .text.TIM3_IRQHandler:0000000000000000 $t
+     /tmp/ccQa19pl.s:190    .text.TIM3_IRQHandler:0000000000000000 TIM3_IRQHandler
+     /tmp/ccQa19pl.s:210    .text.TIM3_IRQHandler:000000000000000c $d
+     /tmp/ccQa19pl.s:215    .text.ADC1_2_IRQHandler:0000000000000000 $t
+     /tmp/ccQa19pl.s:221    .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
+     /tmp/ccQa19pl.s:245    .text.ADC1_2_IRQHandler:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_IRQHandler

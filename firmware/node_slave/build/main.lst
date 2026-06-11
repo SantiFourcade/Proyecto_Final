@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccXfMGEe.s 			page 1
+ARM GAS  /tmp/ccUF04sh.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,16 +17,16 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/main.c"
-  18              		.section	.text.HAL_TIM_IC_CaptureCallback,"ax",%progbits
-  19              		.align	1
-  20              		.global	HAL_TIM_IC_CaptureCallback
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	HAL_TIM_IC_CaptureCallback:
-  26              	.LVL0:
-  27              	.LFB75:
+  17              		.section	.text.HAL_TIM_IC_CaptureCallback,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_TIM_IC_CaptureCallback
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	HAL_TIM_IC_CaptureCallback:
+  25              	.LVL0:
+  26              	.LFB75:
+  27              		.file 1 "Core/Src/main.c"
    1:Core/Src/main.c **** /* USER CODE BEGIN Header */
    2:Core/Src/main.c **** /**
    3:Core/Src/main.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   29:Core/Src/main.c **** volatile uint8_t flag_pulso = 0;
   30:Core/Src/main.c **** volatile uint32_t pulsos = 0;
   31:Core/Src/main.c **** volatile uint16_t adc_buffer_corriente[100]; // Buffer para 100 muestras (100ms)
-ARM GAS  /tmp/ccXfMGEe.s 			page 2
+ARM GAS  /tmp/ccUF04sh.s 			page 2
 
 
   32:Core/Src/main.c **** volatile uint16_t indice_adc = 0;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   86:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
   87:Core/Src/main.c **** 
   88:Core/Src/main.c ****   /* USER CODE END 2 */
-ARM GAS  /tmp/ccXfMGEe.s 			page 3
+ARM GAS  /tmp/ccUF04sh.s 			page 3
 
 
   89:Core/Src/main.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  143:Core/Src/main.c ****     Error_Handler();
  144:Core/Src/main.c ****   }
  145:Core/Src/main.c **** }
-ARM GAS  /tmp/ccXfMGEe.s 			page 4
+ARM GAS  /tmp/ccUF04sh.s 			page 4
 
 
  146:Core/Src/main.c **** 
@@ -226,7 +226,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   54 000e FFF7FEFF 		bl	HAL_TIM_ReadCapturedValue
   55              	.LVL3:
  156:Core/Src/main.c ****         new_read = 1;
-  56              		.loc 1 156 20 discriminator 1 view .LVU8
+  56              		.loc 1 156 20 view .LVU8
   57 0012 044B     		ldr	r3, .L5+4
   58 0014 1860     		str	r0, [r3]
  157:Core/Src/main.c ****     }
@@ -238,15 +238,15 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   63 001a 1A70     		strb	r2, [r3]
   64              		.loc 1 159 1 view .LVU11
   65 001c F5E7     		b	.L1
-ARM GAS  /tmp/ccXfMGEe.s 			page 5
+ARM GAS  /tmp/ccUF04sh.s 			page 5
 
 
   66              	.L6:
   67 001e 00BF     		.align	2
   68              	.L5:
   69 0020 00040040 		.word	1073742848
-  70 0024 00000000 		.word	diff_ticks
-  71 0028 00000000 		.word	new_read
+  70 0024 00000000 		.word	.LANCHOR0
+  71 0028 00000000 		.word	.LANCHOR1
   72              		.cfi_endproc
   73              	.LFE75:
   75              		.section	.text._write,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  112              		.loc 1 169 1 view .LVU19
  113              		.align	2
  114              	.L9:
-ARM GAS  /tmp/ccXfMGEe.s 			page 6
+ARM GAS  /tmp/ccUF04sh.s 			page 6
 
 
  115 0014 00000000 		.word	huart1
@@ -357,15 +357,15 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  154 000c FFF7FEFF 		bl	HAL_ADC_GetValue
  155              	.LVL12:
  174:Core/Src/main.c ****         indice_adc++;
- 156              		.loc 1 174 29 discriminator 1 view .LVU28
-ARM GAS  /tmp/ccXfMGEe.s 			page 7
+ 156              		.loc 1 174 29 view .LVU28
+ARM GAS  /tmp/ccUF04sh.s 			page 7
 
 
  157 0010 0C4A     		ldr	r2, .L15+4
  158 0012 1388     		ldrh	r3, [r2]
  159 0014 9BB2     		uxth	r3, r3
  174:Core/Src/main.c ****         indice_adc++;
- 160              		.loc 1 174 42 discriminator 1 view .LVU29
+ 160              		.loc 1 174 42 view .LVU29
  161 0016 80B2     		uxth	r0, r0
  162 0018 0B49     		ldr	r1, .L15+8
  163 001a 21F81300 		strh	r0, [r1, r3, lsl #1]	@ movhi
@@ -408,9 +408,9 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  191 003e 00BF     		.align	2
  192              	.L15:
  193 0040 00240140 		.word	1073816576
- 194 0044 00000000 		.word	indice_adc
- 195 0048 00000000 		.word	adc_buffer_corriente
- 196 004c 00000000 		.word	buffer_listo
+ 194 0044 00000000 		.word	.LANCHOR2
+ 195 0048 00000000 		.word	.LANCHOR3
+ 196 004c 00000000 		.word	.LANCHOR4
  197              		.cfi_endproc
  198              	.LFE77:
  200              		.section	.rodata.HAL_CAN_TxMailbox0CompleteCallback.str1.4,"aMS",%progbits,1
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  202              	.LC0:
  203 0000 4D41494C 		.ascii	"MAILBOX0 TX OK\015\000"
  203      424F5830 
-ARM GAS  /tmp/ccXfMGEe.s 			page 8
+ARM GAS  /tmp/ccUF04sh.s 			page 8
 
 
  203      20545820 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  251              	.LVL16:
  252              	.LFB79:
  189:Core/Src/main.c **** 
-ARM GAS  /tmp/ccXfMGEe.s 			page 9
+ARM GAS  /tmp/ccUF04sh.s 			page 9
 
 
  190:Core/Src/main.c **** void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  299              		.cfi_def_cfa_offset 8
  300              		.cfi_offset 3, -8
  301              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccXfMGEe.s 			page 10
+ARM GAS  /tmp/ccUF04sh.s 			page 10
 
 
  197:Core/Src/main.c ****     printf("MAILBOX2 TX OK\r\n");
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  203:Core/Src/main.c **** 
  204:Core/Src/main.c ****     printf("CAN ERROR: %lu\r\n", err);
  348              		.loc 1 204 5 is_stmt 1 view .LVU60
-ARM GAS  /tmp/ccXfMGEe.s 			page 11
+ARM GAS  /tmp/ccUF04sh.s 			page 11
 
 
  349 0008 0148     		ldr	r0, .L31
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  391              		.loc 1 218 1 view .LVU68
  392 000a 08BD     		pop	{r3, pc}
  393              	.LVL29:
-ARM GAS  /tmp/ccXfMGEe.s 			page 12
+ARM GAS  /tmp/ccUF04sh.s 			page 12
 
 
  394              	.L36:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
   22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
   23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/ccXfMGEe.s 			page 13
+ARM GAS  /tmp/ccUF04sh.s 			page 13
 
 
   24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
   78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
   79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
   80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-ARM GAS  /tmp/ccXfMGEe.s 			page 14
+ARM GAS  /tmp/ccUF04sh.s 			page 14
 
 
   81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
  137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
-ARM GAS  /tmp/ccXfMGEe.s 			page 15
+ARM GAS  /tmp/ccUF04sh.s 			page 15
 
 
  138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
@@ -859,12 +859,12 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  432              	.LBE5:
  433              	.LBE4:
  226:Core/Src/main.c ****   while (1)
- 434              		.loc 1 226 3 view .LVU75
+ 434              		.loc 1 226 3 discriminator 1 view .LVU75
  227:Core/Src/main.c ****   {
  228:Core/Src/main.c ****   }
- 435              		.loc 1 228 3 view .LVU76
+ 435              		.loc 1 228 3 discriminator 1 view .LVU76
  226:Core/Src/main.c ****   while (1)
- 436              		.loc 1 226 9 view .LVU77
+ 436              		.loc 1 226 9 discriminator 1 view .LVU77
  437 0002 FEE7     		b	.L38
  438              		.cfi_endproc
  439              	.LFE83:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  466 000c FFF7FEFF 		bl	memset
  467              	.LVL31:
  108:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-ARM GAS  /tmp/ccXfMGEe.s 			page 16
+ARM GAS  /tmp/ccUF04sh.s 			page 16
 
 
  468              		.loc 1 108 3 is_stmt 1 view .LVU81
@@ -958,14 +958,14 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  505              		.loc 1 121 3 is_stmt 1 view .LVU98
  121:Core/Src/main.c ****   {
  506              		.loc 1 121 7 is_stmt 0 view .LVU99
-ARM GAS  /tmp/ccXfMGEe.s 			page 17
+ARM GAS  /tmp/ccUF04sh.s 			page 17
 
 
  507 003c 0AA8     		add	r0, sp, #40
  508 003e FFF7FEFF 		bl	HAL_RCC_OscConfig
  509              	.LVL32:
  121:Core/Src/main.c ****   {
- 510              		.loc 1 121 6 discriminator 1 view .LVU100
+ 510              		.loc 1 121 6 view .LVU100
  511 0042 C8B9     		cbnz	r0, .L44
  128:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
  512              		.loc 1 128 3 is_stmt 1 view .LVU101
@@ -1004,7 +1004,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  534 005a FFF7FEFF 		bl	HAL_RCC_ClockConfig
  535              	.LVL33:
  135:Core/Src/main.c ****   {
- 536              		.loc 1 135 6 discriminator 1 view .LVU113
+ 536              		.loc 1 135 6 view .LVU113
  537 005e 68B9     		cbnz	r0, .L45
  139:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV8;
  538              		.loc 1 139 3 is_stmt 1 view .LVU114
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  543              		.loc 1 140 35 is_stmt 0 view .LVU117
  544 0064 4FF44043 		mov	r3, #49152
  545 0068 0393     		str	r3, [sp, #12]
-ARM GAS  /tmp/ccXfMGEe.s 			page 18
+ARM GAS  /tmp/ccUF04sh.s 			page 18
 
 
  141:Core/Src/main.c ****   {
@@ -1029,7 +1029,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  549 006c FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
  550              	.LVL34:
  141:Core/Src/main.c ****   {
- 551              		.loc 1 141 6 discriminator 1 view .LVU120
+ 551              		.loc 1 141 6 view .LVU120
  552 0070 30B9     		cbnz	r0, .L46
  145:Core/Src/main.c **** 
  553              		.loc 1 145 1 view .LVU121
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  594              		.cfi_offset 3, -8
  595              		.cfi_offset 14, -4
   55:Core/Src/main.c **** 
-ARM GAS  /tmp/ccXfMGEe.s 			page 19
+ARM GAS  /tmp/ccUF04sh.s 			page 19
 
 
  596              		.loc 1 55 3 view .LVU126
@@ -1125,7 +1125,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  627 002a FFF7FEFF 		bl	HAL_CAN_Start
  628              	.LVL47:
   70:Core/Src/main.c ****   {
- 629              		.loc 1 70 6 discriminator 1 view .LVU137
+ 629              		.loc 1 70 6 view .LVU137
  630 002e 08B1     		cbz	r0, .L48
   72:Core/Src/main.c ****   }
  631              		.loc 1 72 4 is_stmt 1 view .LVU138
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  637 0038 0748     		ldr	r0, .L51+4
  638 003a FFF7FEFF 		bl	HAL_CAN_ActivateNotification
  639              	.LVL49:
-ARM GAS  /tmp/ccXfMGEe.s 			page 20
+ARM GAS  /tmp/ccUF04sh.s 			page 20
 
 
   83:Core/Src/main.c ****   HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_1);
@@ -1161,11 +1161,11 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  653              	.LVL53:
  654              	.L49:
   97:Core/Src/main.c ****   {
- 655              		.loc 1 97 3 view .LVU144
+ 655              		.loc 1 97 3 discriminator 1 view .LVU144
   99:Core/Src/main.c **** }
- 656              		.loc 1 99 3 view .LVU145
+ 656              		.loc 1 99 3 discriminator 1 view .LVU145
   97:Core/Src/main.c ****   {
- 657              		.loc 1 97 9 view .LVU146
+ 657              		.loc 1 97 9 discriminator 1 view .LVU146
  658 0052 FEE7     		b	.L49
  659              	.L52:
  660              		.align	2
@@ -1176,122 +1176,128 @@ ARM GAS  /tmp/ccXfMGEe.s 			page 1
  665              		.cfi_endproc
  666              	.LFE73:
  668              		.global	new_read
- 669              		.section	.bss.new_read,"aw",%nobits
- 672              	new_read:
- 673 0000 00       		.space	1
- 674              		.global	diff_ticks
- 675              		.section	.bss.diff_ticks,"aw",%nobits
+ 669              		.global	diff_ticks
+ 670              		.global	buffer_listo
+ 671              		.global	indice_adc
+ 672              		.global	adc_buffer_corriente
+ 673              		.global	pulsos
+ 674              		.global	flag_pulso
+ 675              		.section	.bss.adc_buffer_corriente,"aw",%nobits
  676              		.align	2
- 679              	diff_ticks:
- 680 0000 00000000 		.space	4
- 681              		.global	buffer_listo
+ 677              		.set	.LANCHOR3,. + 0
+ 680              	adc_buffer_corriente:
+ 681 0000 00000000 		.space	200
+ 681      00000000 
+ 681      00000000 
+ 681      00000000 
+ 681      00000000 
  682              		.section	.bss.buffer_listo,"aw",%nobits
- 685              	buffer_listo:
- 686 0000 00       		.space	1
- 687              		.global	indice_adc
- 688              		.section	.bss.indice_adc,"aw",%nobits
- 689              		.align	1
- 692              	indice_adc:
- 693 0000 0000     		.space	2
- 694              		.global	adc_buffer_corriente
- 695              		.section	.bss.adc_buffer_corriente,"aw",%nobits
- 696              		.align	2
- 699              	adc_buffer_corriente:
- 700 0000 00000000 		.space	200
-ARM GAS  /tmp/ccXfMGEe.s 			page 21
+ 683              		.set	.LANCHOR4,. + 0
+ 686              	buffer_listo:
+ 687 0000 00       		.space	1
+ 688              		.section	.bss.diff_ticks,"aw",%nobits
+ 689              		.align	2
+ 690              		.set	.LANCHOR0,. + 0
+ARM GAS  /tmp/ccUF04sh.s 			page 21
 
 
- 700      00000000 
- 700      00000000 
- 700      00000000 
- 700      00000000 
- 701              		.global	pulsos
- 702              		.section	.bss.pulsos,"aw",%nobits
- 703              		.align	2
- 706              	pulsos:
- 707 0000 00000000 		.space	4
- 708              		.global	flag_pulso
- 709              		.section	.bss.flag_pulso,"aw",%nobits
- 712              	flag_pulso:
- 713 0000 00       		.space	1
- 714              		.text
- 715              	.Letext0:
- 716              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 717              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 718              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
- 719              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 720              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
- 721              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
- 722              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 723              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
- 724              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
- 725              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 726              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 727              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 728              		.file 15 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 729              		.file 16 "Core/Inc/can.h"
- 730              		.file 17 "Core/Inc/i2c.h"
- 731              		.file 18 "Core/Inc/tim.h"
- 732              		.file 19 "Core/Inc/usart.h"
- 733              		.file 20 "/usr/include/newlib/stdio.h"
- 734              		.file 21 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 735              		.file 22 "Core/Inc/adxl345.h"
- 736              		.file 23 "Core/Inc/adc.h"
- 737              		.file 24 "Core/Inc/gpio.h"
- 738              		.file 25 "<built-in>"
-ARM GAS  /tmp/ccXfMGEe.s 			page 22
+ 693              	diff_ticks:
+ 694 0000 00000000 		.space	4
+ 695              		.section	.bss.flag_pulso,"aw",%nobits
+ 698              	flag_pulso:
+ 699 0000 00       		.space	1
+ 700              		.section	.bss.indice_adc,"aw",%nobits
+ 701              		.align	1
+ 702              		.set	.LANCHOR2,. + 0
+ 705              	indice_adc:
+ 706 0000 0000     		.space	2
+ 707              		.section	.bss.new_read,"aw",%nobits
+ 708              		.set	.LANCHOR1,. + 0
+ 711              	new_read:
+ 712 0000 00       		.space	1
+ 713              		.section	.bss.pulsos,"aw",%nobits
+ 714              		.align	2
+ 717              	pulsos:
+ 718 0000 00000000 		.space	4
+ 719              		.text
+ 720              	.Letext0:
+ 721              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 722              		.file 4 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 723              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 724              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 725              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 726              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 727              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 728              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 729              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
+ 730              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 731              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 732              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 733              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 734              		.file 16 "Core/Inc/can.h"
+ 735              		.file 17 "Core/Inc/i2c.h"
+ 736              		.file 18 "Core/Inc/tim.h"
+ 737              		.file 19 "Core/Inc/usart.h"
+ 738              		.file 20 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 739              		.file 21 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 740              		.file 22 "<built-in>"
+ 741              		.file 23 "Core/Inc/gpio.h"
+ 742              		.file 24 "Core/Inc/adc.h"
+ 743              		.file 25 "Core/Inc/adxl345.h"
+ 744              		.file 26 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  /tmp/ccUF04sh.s 			page 22
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 main.c
-     /tmp/ccXfMGEe.s:19     .text.HAL_TIM_IC_CaptureCallback:00000000 $t
-     /tmp/ccXfMGEe.s:25     .text.HAL_TIM_IC_CaptureCallback:00000000 HAL_TIM_IC_CaptureCallback
-     /tmp/ccXfMGEe.s:69     .text.HAL_TIM_IC_CaptureCallback:00000020 $d
-     /tmp/ccXfMGEe.s:679    .bss.diff_ticks:00000000 diff_ticks
-     /tmp/ccXfMGEe.s:672    .bss.new_read:00000000 new_read
-     /tmp/ccXfMGEe.s:76     .text._write:00000000 $t
-     /tmp/ccXfMGEe.s:82     .text._write:00000000 _write
-     /tmp/ccXfMGEe.s:115    .text._write:00000014 $d
-     /tmp/ccXfMGEe.s:120    .text.HAL_ADC_ConvCpltCallback:00000000 $t
-     /tmp/ccXfMGEe.s:126    .text.HAL_ADC_ConvCpltCallback:00000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccXfMGEe.s:193    .text.HAL_ADC_ConvCpltCallback:00000040 $d
-     /tmp/ccXfMGEe.s:692    .bss.indice_adc:00000000 indice_adc
-     /tmp/ccXfMGEe.s:699    .bss.adc_buffer_corriente:00000000 adc_buffer_corriente
-     /tmp/ccXfMGEe.s:685    .bss.buffer_listo:00000000 buffer_listo
-     /tmp/ccXfMGEe.s:201    .rodata.HAL_CAN_TxMailbox0CompleteCallback.str1.4:00000000 $d
-     /tmp/ccXfMGEe.s:205    .text.HAL_CAN_TxMailbox0CompleteCallback:00000000 $t
-     /tmp/ccXfMGEe.s:211    .text.HAL_CAN_TxMailbox0CompleteCallback:00000000 HAL_CAN_TxMailbox0CompleteCallback
-     /tmp/ccXfMGEe.s:235    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000c $d
-     /tmp/ccXfMGEe.s:240    .rodata.HAL_CAN_TxMailbox1CompleteCallback.str1.4:00000000 $d
-     /tmp/ccXfMGEe.s:244    .text.HAL_CAN_TxMailbox1CompleteCallback:00000000 $t
-     /tmp/ccXfMGEe.s:250    .text.HAL_CAN_TxMailbox1CompleteCallback:00000000 HAL_CAN_TxMailbox1CompleteCallback
-     /tmp/ccXfMGEe.s:274    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000c $d
-     /tmp/ccXfMGEe.s:279    .rodata.HAL_CAN_TxMailbox2CompleteCallback.str1.4:00000000 $d
-     /tmp/ccXfMGEe.s:283    .text.HAL_CAN_TxMailbox2CompleteCallback:00000000 $t
-     /tmp/ccXfMGEe.s:289    .text.HAL_CAN_TxMailbox2CompleteCallback:00000000 HAL_CAN_TxMailbox2CompleteCallback
-     /tmp/ccXfMGEe.s:313    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000c $d
-     /tmp/ccXfMGEe.s:318    .rodata.HAL_CAN_ErrorCallback.str1.4:00000000 $d
-     /tmp/ccXfMGEe.s:322    .text.HAL_CAN_ErrorCallback:00000000 $t
-     /tmp/ccXfMGEe.s:328    .text.HAL_CAN_ErrorCallback:00000000 HAL_CAN_ErrorCallback
-     /tmp/ccXfMGEe.s:359    .text.HAL_CAN_ErrorCallback:00000010 $d
-     /tmp/ccXfMGEe.s:364    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-     /tmp/ccXfMGEe.s:370    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccXfMGEe.s:404    .text.Error_Handler:00000000 $t
-     /tmp/ccXfMGEe.s:410    .text.Error_Handler:00000000 Error_Handler
-     /tmp/ccXfMGEe.s:442    .text.SystemClock_Config:00000000 $t
-     /tmp/ccXfMGEe.s:448    .text.SystemClock_Config:00000000 SystemClock_Config
-     /tmp/ccXfMGEe.s:578    .text.main:00000000 $t
-     /tmp/ccXfMGEe.s:584    .text.main:00000000 main
-     /tmp/ccXfMGEe.s:662    .text.main:00000054 $d
-     /tmp/ccXfMGEe.s:673    .bss.new_read:00000000 $d
-     /tmp/ccXfMGEe.s:676    .bss.diff_ticks:00000000 $d
-     /tmp/ccXfMGEe.s:686    .bss.buffer_listo:00000000 $d
-     /tmp/ccXfMGEe.s:689    .bss.indice_adc:00000000 $d
-     /tmp/ccXfMGEe.s:696    .bss.adc_buffer_corriente:00000000 $d
-     /tmp/ccXfMGEe.s:706    .bss.pulsos:00000000 pulsos
-     /tmp/ccXfMGEe.s:703    .bss.pulsos:00000000 $d
-     /tmp/ccXfMGEe.s:712    .bss.flag_pulso:00000000 flag_pulso
-     /tmp/ccXfMGEe.s:713    .bss.flag_pulso:00000000 $d
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccUF04sh.s:18     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:24     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 HAL_TIM_IC_CaptureCallback
+     /tmp/ccUF04sh.s:69     .text.HAL_TIM_IC_CaptureCallback:0000000000000020 $d
+     /tmp/ccUF04sh.s:76     .text._write:0000000000000000 $t
+     /tmp/ccUF04sh.s:82     .text._write:0000000000000000 _write
+     /tmp/ccUF04sh.s:115    .text._write:0000000000000014 $d
+     /tmp/ccUF04sh.s:120    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:126    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccUF04sh.s:193    .text.HAL_ADC_ConvCpltCallback:0000000000000040 $d
+     /tmp/ccUF04sh.s:201    .rodata.HAL_CAN_TxMailbox0CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccUF04sh.s:205    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:211    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 HAL_CAN_TxMailbox0CompleteCallback
+     /tmp/ccUF04sh.s:235    .text.HAL_CAN_TxMailbox0CompleteCallback:000000000000000c $d
+     /tmp/ccUF04sh.s:240    .rodata.HAL_CAN_TxMailbox1CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccUF04sh.s:244    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:250    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 HAL_CAN_TxMailbox1CompleteCallback
+     /tmp/ccUF04sh.s:274    .text.HAL_CAN_TxMailbox1CompleteCallback:000000000000000c $d
+     /tmp/ccUF04sh.s:279    .rodata.HAL_CAN_TxMailbox2CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccUF04sh.s:283    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:289    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 HAL_CAN_TxMailbox2CompleteCallback
+     /tmp/ccUF04sh.s:313    .text.HAL_CAN_TxMailbox2CompleteCallback:000000000000000c $d
+     /tmp/ccUF04sh.s:318    .rodata.HAL_CAN_ErrorCallback.str1.4:0000000000000000 $d
+     /tmp/ccUF04sh.s:322    .text.HAL_CAN_ErrorCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:328    .text.HAL_CAN_ErrorCallback:0000000000000000 HAL_CAN_ErrorCallback
+     /tmp/ccUF04sh.s:359    .text.HAL_CAN_ErrorCallback:0000000000000010 $d
+     /tmp/ccUF04sh.s:364    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+     /tmp/ccUF04sh.s:370    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccUF04sh.s:404    .text.Error_Handler:0000000000000000 $t
+     /tmp/ccUF04sh.s:410    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/ccUF04sh.s:442    .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccUF04sh.s:448    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccUF04sh.s:578    .text.main:0000000000000000 $t
+     /tmp/ccUF04sh.s:584    .text.main:0000000000000000 main
+     /tmp/ccUF04sh.s:662    .text.main:0000000000000054 $d
+     /tmp/ccUF04sh.s:711    .bss.new_read:0000000000000000 new_read
+     /tmp/ccUF04sh.s:693    .bss.diff_ticks:0000000000000000 diff_ticks
+     /tmp/ccUF04sh.s:686    .bss.buffer_listo:0000000000000000 buffer_listo
+     /tmp/ccUF04sh.s:705    .bss.indice_adc:0000000000000000 indice_adc
+     /tmp/ccUF04sh.s:680    .bss.adc_buffer_corriente:0000000000000000 adc_buffer_corriente
+     /tmp/ccUF04sh.s:717    .bss.pulsos:0000000000000000 pulsos
+     /tmp/ccUF04sh.s:698    .bss.flag_pulso:0000000000000000 flag_pulso
+     /tmp/ccUF04sh.s:676    .bss.adc_buffer_corriente:0000000000000000 $d
+     /tmp/ccUF04sh.s:687    .bss.buffer_listo:0000000000000000 $d
+     /tmp/ccUF04sh.s:689    .bss.diff_ticks:0000000000000000 $d
+     /tmp/ccUF04sh.s:699    .bss.flag_pulso:0000000000000000 $d
+     /tmp/ccUF04sh.s:701    .bss.indice_adc:0000000000000000 $d
+     /tmp/ccUF04sh.s:712    .bss.new_read:0000000000000000 $d
+     /tmp/ccUF04sh.s:714    .bss.pulsos:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_ReadCapturedValue
@@ -1299,7 +1305,7 @@ HAL_UART_Transmit
 huart1
 HAL_ADC_GetValue
 puts
-ARM GAS  /tmp/ccXfMGEe.s 			page 23
+ARM GAS  /tmp/ccUF04sh.s 			page 23
 
 
 HAL_CAN_GetError

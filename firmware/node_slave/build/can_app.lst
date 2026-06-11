@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccm5iGlw.s 			page 1
+ARM GAS  /tmp/ccGB0bLC.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,40 +17,40 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.file 1 "Core/Src/can_app.c"
-  18              		.section	.rodata.CAN_SendFloat.str1.4,"aMS",%progbits,1
-  19              		.align	2
-  20              	.LC0:
-  21 0000 54582054 		.ascii	"TX TIMEOUT\015\000"
-  21      494D454F 
-  21      55540D00 
-  22              		.align	2
-  23              	.LC1:
-  24 000c 5B43414E 		.ascii	"[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02"
-  24      2053454E 
-  24      445D2049 
-  24      443D3078 
-  24      25303358 
-  25 003f 58202825 		.ascii	"X (%.3f)\015\012\000"
-  25      2E336629 
-  25      0D0A00
-  26              		.global	__aeabi_f2d
-  27 004a 0000     		.align	2
-  28              	.LC2:
-  29 004c 5B43414E 		.ascii	"[CAN TX] ERROR al enviar ID=0x%03X\015\012\000"
-  29      2054585D 
-  29      20455252 
-  29      4F522061 
-  29      6C20656E 
-  30              		.section	.text.CAN_SendFloat,"ax",%progbits
-  31              		.align	1
-  32              		.global	CAN_SendFloat
-  33              		.syntax unified
-  34              		.thumb
-  35              		.thumb_func
-  37              	CAN_SendFloat:
-  38              	.LVL0:
-  39              	.LFB68:
+  17              		.section	.rodata.CAN_SendFloat.str1.4,"aMS",%progbits,1
+  18              		.align	2
+  19              	.LC0:
+  20 0000 54582054 		.ascii	"TX TIMEOUT\015\000"
+  20      494D454F 
+  20      55540D00 
+  21              		.align	2
+  22              	.LC1:
+  23 000c 5B43414E 		.ascii	"[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02"
+  23      2053454E 
+  23      445D2049 
+  23      443D3078 
+  23      25303358 
+  24 003f 58202825 		.ascii	"X (%.3f)\015\012\000"
+  24      2E336629 
+  24      0D0A00
+  25              		.global	__aeabi_f2d
+  26 004a 0000     		.align	2
+  27              	.LC2:
+  28 004c 5B43414E 		.ascii	"[CAN TX] ERROR al enviar ID=0x%03X\015\012\000"
+  28      2054585D 
+  28      20455252 
+  28      4F522061 
+  28      6C20656E 
+  29              		.section	.text.CAN_SendFloat,"ax",%progbits
+  30              		.align	1
+  31              		.global	CAN_SendFloat
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  36              	CAN_SendFloat:
+  37              	.LVL0:
+  38              	.LFB68:
+  39              		.file 1 "Core/Src/can_app.c"
    1:Core/Src/can_app.c **** #include "can.h"
    2:Core/Src/can_app.c **** #include "can_app.h"
    3:Core/Src/can_app.c **** #include <stdio.h>
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
    5:Core/Src/can_app.c **** extern CAN_HandleTypeDef hcan;
    6:Core/Src/can_app.c **** 
    7:Core/Src/can_app.c **** void CAN_SendFloat(uint16_t id, float value)
-ARM GAS  /tmp/ccm5iGlw.s 			page 2
+ARM GAS  /tmp/ccGB0bLC.s 			page 2
 
 
    8:Core/Src/can_app.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
   79 0016 0C92     		str	r2, [sp, #48]
   23:Core/Src/can_app.c ****     TxHeader.TransmitGlobalTime = DISABLE;
   80              		.loc 1 23 5 is_stmt 1 view .LVU15
-ARM GAS  /tmp/ccm5iGlw.s 			page 3
+ARM GAS  /tmp/ccGB0bLC.s 			page 3
 
 
   81              		.loc 1 23 33 is_stmt 0 view .LVU16
@@ -132,16 +132,16 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
   27:Core/Src/can_app.c ****     {
   28:Core/Src/can_app.c ****         //taskYIELD();   // o osDelay(1)
   29:Core/Src/can_app.c ****     }
-  86              		.loc 1 29 5 view .LVU18
+  86              		.loc 1 29 5 discriminator 1 view .LVU18
   26:Core/Src/can_app.c ****     {
-  87              		.loc 1 26 51 discriminator 1 view .LVU19
+  87              		.loc 1 26 11 discriminator 1 view .LVU19
   26:Core/Src/can_app.c ****     {
   88              		.loc 1 26 12 is_stmt 0 discriminator 1 view .LVU20
   89 001c 1E48     		ldr	r0, .L9
   90 001e FFF7FEFF 		bl	HAL_CAN_GetTxMailboxesFreeLevel
   91              	.LVL2:
   26:Core/Src/can_app.c ****     {
-  92              		.loc 1 26 51 discriminator 1 view .LVU21
+  92              		.loc 1 26 11 discriminator 1 view .LVU21
   93 0022 0028     		cmp	r0, #0
   94 0024 FAD0     		beq	.L2
   30:Core/Src/can_app.c **** 
@@ -154,7 +154,7 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
  100 002c 1A48     		ldr	r0, .L9
  101 002e FFF7FEFF 		bl	HAL_CAN_AddTxMessage
  102              	.LVL3:
- 103              		.loc 1 31 8 discriminator 1 view .LVU24
+ 103              		.loc 1 31 8 view .LVU24
  104 0032 48BB     		cbnz	r0, .L3
  105              	.LBB2:
   32:Core/Src/can_app.c ****     {
@@ -171,89 +171,90 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
   36:Core/Src/can_app.c ****         while(HAL_CAN_IsTxMessagePending(&hcan, TxMailbox))
  113              		.loc 1 36 9 view .LVU28
  114              	.L4:
- 115              		.loc 1 36 15 view .LVU29
- 116 003a 0799     		ldr	r1, [sp, #28]
- 117 003c 1648     		ldr	r0, .L9
- 118 003e FFF7FEFF 		bl	HAL_CAN_IsTxMessagePending
- 119              	.LVL6:
- 120              		.loc 1 36 15 is_stmt 0 discriminator 1 view .LVU30
- 121 0042 40B1     		cbz	r0, .L8
-ARM GAS  /tmp/ccm5iGlw.s 			page 4
+ 115              		.loc 1 36 14 view .LVU29
+ 116              		.loc 1 36 15 is_stmt 0 view .LVU30
+ 117 003a 0799     		ldr	r1, [sp, #28]
+ 118 003c 1648     		ldr	r0, .L9
+ 119 003e FFF7FEFF 		bl	HAL_CAN_IsTxMessagePending
+ 120              	.LVL6:
+ 121              		.loc 1 36 14 view .LVU31
+ARM GAS  /tmp/ccGB0bLC.s 			page 4
 
 
+ 122 0042 40B1     		cbz	r0, .L8
   37:Core/Src/can_app.c ****         {
   38:Core/Src/can_app.c ****             if((HAL_GetTick() - timeout) > 10)
- 122              		.loc 1 38 13 is_stmt 1 view .LVU31
- 123              		.loc 1 38 17 is_stmt 0 view .LVU32
- 124 0044 FFF7FEFF 		bl	HAL_GetTick
- 125              	.LVL7:
- 126              		.loc 1 38 31 discriminator 1 view .LVU33
- 127 0048 031B     		subs	r3, r0, r4
- 128              		.loc 1 38 15 discriminator 1 view .LVU34
- 129 004a 0A2B     		cmp	r3, #10
- 130 004c F5D9     		bls	.L4
+ 123              		.loc 1 38 13 is_stmt 1 view .LVU32
+ 124              		.loc 1 38 17 is_stmt 0 view .LVU33
+ 125 0044 FFF7FEFF 		bl	HAL_GetTick
+ 126              	.LVL7:
+ 127              		.loc 1 38 31 view .LVU34
+ 128 0048 031B     		subs	r3, r0, r4
+ 129              		.loc 1 38 15 view .LVU35
+ 130 004a 0A2B     		cmp	r3, #10
+ 131 004c F5D9     		bls	.L4
   39:Core/Src/can_app.c ****             {
   40:Core/Src/can_app.c ****                 printf("TX TIMEOUT\r\n");
- 131              		.loc 1 40 17 is_stmt 1 view .LVU35
- 132 004e 1348     		ldr	r0, .L9+4
- 133 0050 FFF7FEFF 		bl	puts
- 134              	.LVL8:
+ 132              		.loc 1 40 17 is_stmt 1 view .LVU36
+ 133 004e 1348     		ldr	r0, .L9+4
+ 134 0050 FFF7FEFF 		bl	puts
+ 135              	.LVL8:
   41:Core/Src/can_app.c ****                 tx_ok = 0;
- 135              		.loc 1 41 17 view .LVU36
+ 136              		.loc 1 41 17 view .LVU37
   42:Core/Src/can_app.c ****                 break;
- 136              		.loc 1 42 17 view .LVU37
+ 137              		.loc 1 42 17 view .LVU38
   43:Core/Src/can_app.c ****             }
   44:Core/Src/can_app.c ****         }
   45:Core/Src/can_app.c **** 
   46:Core/Src/can_app.c ****     if(tx_ok)
- 137              		.loc 1 46 5 view .LVU38
- 138 0054 1CE0     		b	.L1
- 139              	.LVL9:
- 140              	.L8:
- 141              		.loc 1 46 5 view .LVU39
+ 138              		.loc 1 46 5 view .LVU39
+ 139 0054 1CE0     		b	.L1
+ 140              	.LVL9:
+ 141              	.L8:
+ 142              		.loc 1 46 5 view .LVU40
   47:Core/Src/can_app.c ****     {
   48:Core/Src/can_app.c ****         printf(
- 142              		.loc 1 48 9 view .LVU40
+ 143              		.loc 1 48 9 view .LVU41
   49:Core/Src/can_app.c ****            "[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02X (%.3f)\r\n",
   50:Core/Src/can_app.c ****            id,
   51:Core/Src/can_app.c ****            TxHeader.DLC,
   52:Core/Src/can_app.c ****            data.bytes[0],
- 143              		.loc 1 52 22 is_stmt 0 view .LVU41
- 144 0056 9DF81840 		ldrb	r4, [sp, #24]	@ zero_extendqisi2
- 145              	.LVL10:
+ 144              		.loc 1 52 22 is_stmt 0 view .LVU42
+ 145 0056 9DF81840 		ldrb	r4, [sp, #24]	@ zero_extendqisi2
+ 146              	.LVL10:
   53:Core/Src/can_app.c ****            data.bytes[1],
- 146              		.loc 1 53 22 view .LVU42
- 147 005a 9DF81970 		ldrb	r7, [sp, #25]	@ zero_extendqisi2
+ 147              		.loc 1 53 22 view .LVU43
+ 148 005a 9DF81970 		ldrb	r7, [sp, #25]	@ zero_extendqisi2
   54:Core/Src/can_app.c ****            data.bytes[2],
- 148              		.loc 1 54 22 view .LVU43
- 149 005e 9DF81A80 		ldrb	r8, [sp, #26]	@ zero_extendqisi2
+ 149              		.loc 1 54 22 view .LVU44
+ 150 005e 9DF81A80 		ldrb	r8, [sp, #26]	@ zero_extendqisi2
   55:Core/Src/can_app.c ****            data.bytes[3],
- 150              		.loc 1 55 22 view .LVU44
- 151 0062 9DF81B90 		ldrb	r9, [sp, #27]	@ zero_extendqisi2
+ 151              		.loc 1 55 22 view .LVU45
+ 152 0062 9DF81B90 		ldrb	r9, [sp, #27]	@ zero_extendqisi2
   48:Core/Src/can_app.c ****            "[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02X (%.3f)\r\n",
- 152              		.loc 1 48 9 view .LVU45
- 153 0066 3046     		mov	r0, r6
- 154 0068 FFF7FEFF 		bl	__aeabi_f2d
- 155              	.LVL11:
- 156 006c CDE90401 		strd	r0, [sp, #16]
- 157 0070 CDF80890 		str	r9, [sp, #8]
- 158 0074 CDF80480 		str	r8, [sp, #4]
-ARM GAS  /tmp/ccm5iGlw.s 			page 5
+ 153              		.loc 1 48 9 view .LVU46
+ 154 0066 3046     		mov	r0, r6
+ 155 0068 FFF7FEFF 		bl	__aeabi_f2d
+ 156              	.LVL11:
+ 157 006c CDE90401 		strd	r0, [sp, #16]
+ 158 0070 CDF80890 		str	r9, [sp, #8]
+ARM GAS  /tmp/ccGB0bLC.s 			page 5
 
 
- 159 0078 0097     		str	r7, [sp]
- 160 007a 2346     		mov	r3, r4
- 161 007c 0C9A     		ldr	r2, [sp, #48]
- 162 007e 2946     		mov	r1, r5
- 163 0080 0748     		ldr	r0, .L9+8
- 164 0082 FFF7FEFF 		bl	printf
- 165              	.LVL12:
- 166 0086 03E0     		b	.L1
- 167              	.LVL13:
- 168              	.L3:
+ 159 0074 CDF80480 		str	r8, [sp, #4]
+ 160 0078 0097     		str	r7, [sp]
+ 161 007a 2346     		mov	r3, r4
+ 162 007c 0C9A     		ldr	r2, [sp, #48]
+ 163 007e 2946     		mov	r1, r5
+ 164 0080 0748     		ldr	r0, .L9+8
+ 165 0082 FFF7FEFF 		bl	printf
+ 166              	.LVL12:
+ 167 0086 03E0     		b	.L1
+ 168              	.LVL13:
+ 169              	.L3:
   48:Core/Src/can_app.c ****            "[CAN SEND] ID=0x%03X DLC=%d DATA=%02X %02X %02X %02X (%.3f)\r\n",
- 169              		.loc 1 48 9 view .LVU46
- 170              	.LBE2:
+ 170              		.loc 1 48 9 view .LVU47
+ 171              	.LBE2:
   56:Core/Src/can_app.c ****            value
   57:Core/Src/can_app.c ****         );
   58:Core/Src/can_app.c ****     }
@@ -262,54 +263,55 @@ ARM GAS  /tmp/ccm5iGlw.s 			page 1
   61:Core/Src/can_app.c ****     else
   62:Core/Src/can_app.c ****     {
   63:Core/Src/can_app.c ****         printf("[CAN TX] ERROR al enviar ID=0x%03X\r\n", id);
- 171              		.loc 1 63 9 is_stmt 1 view .LVU47
- 172 0088 2946     		mov	r1, r5
- 173 008a 0648     		ldr	r0, .L9+12
- 174 008c FFF7FEFF 		bl	printf
- 175              	.LVL14:
- 176              	.L1:
+ 172              		.loc 1 63 9 is_stmt 1 view .LVU48
+ 173 0088 2946     		mov	r1, r5
+ 174 008a 0648     		ldr	r0, .L9+12
+ 175 008c FFF7FEFF 		bl	printf
+ 176              	.LVL14:
+ 177              	.L1:
   64:Core/Src/can_app.c ****     }
   65:Core/Src/can_app.c **** }
- 177              		.loc 1 65 1 is_stmt 0 view .LVU48
- 178 0090 0FB0     		add	sp, sp, #60
- 179              	.LCFI2:
- 180              		.cfi_def_cfa_offset 28
- 181              		@ sp needed
- 182 0092 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
- 183              	.LVL15:
- 184              	.L10:
- 185              		.loc 1 65 1 view .LVU49
- 186 0096 00BF     		.align	2
- 187              	.L9:
- 188 0098 00000000 		.word	hcan
- 189 009c 00000000 		.word	.LC0
- 190 00a0 0C000000 		.word	.LC1
- 191 00a4 4C000000 		.word	.LC2
- 192              		.cfi_endproc
- 193              	.LFE68:
- 195              		.text
- 196              	.Letext0:
- 197              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
- 198              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 199              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
- 200              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 201              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
- 202              		.file 7 "/usr/include/newlib/stdio.h"
- 203              		.file 8 "Core/Inc/can.h"
- 204              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 205              		.file 10 "<built-in>"
-ARM GAS  /tmp/ccm5iGlw.s 			page 6
+ 178              		.loc 1 65 1 is_stmt 0 view .LVU49
+ 179 0090 0FB0     		add	sp, sp, #60
+ 180              	.LCFI2:
+ 181              		.cfi_def_cfa_offset 28
+ 182              		@ sp needed
+ 183 0092 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 184              	.LVL15:
+ 185              	.L10:
+ 186              		.loc 1 65 1 view .LVU50
+ 187 0096 00BF     		.align	2
+ 188              	.L9:
+ 189 0098 00000000 		.word	hcan
+ 190 009c 00000000 		.word	.LC0
+ 191 00a0 0C000000 		.word	.LC1
+ 192 00a4 4C000000 		.word	.LC2
+ 193              		.cfi_endproc
+ 194              	.LFE68:
+ 196              		.text
+ 197              	.Letext0:
+ 198              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 199              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 200              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 201              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 202              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 203              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
+ 204              		.file 8 "Core/Inc/can.h"
+ 205              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  /tmp/ccGB0bLC.s 			page 6
 
 
-ARM GAS  /tmp/ccm5iGlw.s 			page 7
+ 206              		.file 10 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 207              		.file 11 "<built-in>"
+ARM GAS  /tmp/ccGB0bLC.s 			page 7
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 can_app.c
-     /tmp/ccm5iGlw.s:19     .rodata.CAN_SendFloat.str1.4:00000000 $d
-     /tmp/ccm5iGlw.s:31     .text.CAN_SendFloat:00000000 $t
-     /tmp/ccm5iGlw.s:37     .text.CAN_SendFloat:00000000 CAN_SendFloat
-     /tmp/ccm5iGlw.s:188    .text.CAN_SendFloat:00000098 $d
+                            *ABS*:0000000000000000 can_app.c
+     /tmp/ccGB0bLC.s:18     .rodata.CAN_SendFloat.str1.4:0000000000000000 $d
+     /tmp/ccGB0bLC.s:30     .text.CAN_SendFloat:0000000000000000 $t
+     /tmp/ccGB0bLC.s:36     .text.CAN_SendFloat:0000000000000000 CAN_SendFloat
+     /tmp/ccGB0bLC.s:189    .text.CAN_SendFloat:0000000000000098 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
