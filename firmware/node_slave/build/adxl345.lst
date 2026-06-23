@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczpv41w.s 			page 1
+ARM GAS  /tmp/ccjHjrY0.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -29,241 +29,340 @@ ARM GAS  /tmp/cczpv41w.s 			page 1
   27              		.file 1 "Core/Src/adxl345.c"
    1:Core/Src/adxl345.c **** #include "adxl345.h"
    2:Core/Src/adxl345.c **** 
-   3:Core/Src/adxl345.c **** static I2C_HandleTypeDef *adxl_i2c;
-   4:Core/Src/adxl345.c **** 
-   5:Core/Src/adxl345.c **** HAL_StatusTypeDef ADXL345_Init(I2C_HandleTypeDef *hi2c)
-   6:Core/Src/adxl345.c **** {
-  28              		.loc 1 6 1 view -0
+   3:Core/Src/adxl345.c **** /* Timeout en ms para operaciones I2C.
+   4:Core/Src/adxl345.c ****  * Debe ser mayor que el tiempo de un byte a 100kHz (~0.1ms)
+   5:Core/Src/adxl345.c ****  * pero lo suficientemente corto para que FreeRTOS pueda recuperarse.
+   6:Core/Src/adxl345.c ****  * 10ms es conservador y seguro. */
+   7:Core/Src/adxl345.c **** #define ADXL345_I2C_TIMEOUT 10U
+   8:Core/Src/adxl345.c **** 
+   9:Core/Src/adxl345.c **** static I2C_HandleTypeDef *adxl_i2c;
+  10:Core/Src/adxl345.c **** 
+  11:Core/Src/adxl345.c **** /**
+  12:Core/Src/adxl345.c ****  * @brief Inicializa el ADXL345 y verifica que el sensor responda.
+  13:Core/Src/adxl345.c ****  * @retval HAL_OK si el sensor fue configurado correctamente.
+  14:Core/Src/adxl345.c ****  *         HAL_ERROR si el sensor no responde o no se puede verificar.
+  15:Core/Src/adxl345.c ****  */
+  16:Core/Src/adxl345.c **** HAL_StatusTypeDef ADXL345_Init(I2C_HandleTypeDef *hi2c)
+  17:Core/Src/adxl345.c **** {
+  28              		.loc 1 17 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 8
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		.loc 1 6 1 is_stmt 0 view .LVU1
-  33 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  32              		.loc 1 17 1 is_stmt 0 view .LVU1
+  33 0000 00B5     		push	{lr}
   34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 24
-  36              		.cfi_offset 4, -24
-  37              		.cfi_offset 5, -20
-  38              		.cfi_offset 6, -16
-  39              		.cfi_offset 7, -12
-  40              		.cfi_offset 8, -8
-  41              		.cfi_offset 14, -4
-  42 0004 86B0     		sub	sp, sp, #24
-  43              	.LCFI1:
-  44              		.cfi_def_cfa_offset 48
-   7:Core/Src/adxl345.c ****     uint8_t data;
-  45              		.loc 1 7 5 is_stmt 1 view .LVU2
-   8:Core/Src/adxl345.c **** 
-   9:Core/Src/adxl345.c ****     adxl_i2c = hi2c;
-  46              		.loc 1 9 5 view .LVU3
-  47              		.loc 1 9 14 is_stmt 0 view .LVU4
-  48 0006 114D     		ldr	r5, .L3
-  49 0008 2860     		str	r0, [r5]
-ARM GAS  /tmp/cczpv41w.s 			page 2
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 14, -4
+  37 0002 87B0     		sub	sp, sp, #28
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 32
+  18:Core/Src/adxl345.c ****     HAL_StatusTypeDef ret;
+  40              		.loc 1 18 5 is_stmt 1 view .LVU2
+ARM GAS  /tmp/ccjHjrY0.s 			page 2
 
 
-  10:Core/Src/adxl345.c **** 
-  11:Core/Src/adxl345.c ****     /* Modo medida */
-  12:Core/Src/adxl345.c ****     data = 0x08;
-  50              		.loc 1 12 5 is_stmt 1 view .LVU5
-  51              		.loc 1 12 10 is_stmt 0 view .LVU6
-  52 000a 4FF00808 		mov	r8, #8
-  53 000e 8DF81780 		strb	r8, [sp, #23]
-  13:Core/Src/adxl345.c ****     HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
-  54              		.loc 1 13 5 is_stmt 1 view .LVU7
-  55 0012 4FF0FF37 		mov	r7, #-1
-  56 0016 0297     		str	r7, [sp, #8]
-  57 0018 0124     		movs	r4, #1
-  58 001a 0194     		str	r4, [sp, #4]
-  59 001c 0DF11706 		add	r6, sp, #23
-  60 0020 0096     		str	r6, [sp]
-  61 0022 2346     		mov	r3, r4
-  62 0024 2D22     		movs	r2, #45
-  63 0026 A621     		movs	r1, #166
-  64 0028 FFF7FEFF 		bl	HAL_I2C_Mem_Write
-  65              	.LVL1:
-  14:Core/Src/adxl345.c ****                       ADXL345_POWER_CTL,
-  15:Core/Src/adxl345.c ****                       I2C_MEMADD_SIZE_8BIT,
-  16:Core/Src/adxl345.c ****                       &data, 1, HAL_MAX_DELAY);
-  17:Core/Src/adxl345.c **** 
-  18:Core/Src/adxl345.c ****     /* ±2g, full resolution */
-  19:Core/Src/adxl345.c ****     data = 0x08;
-  66              		.loc 1 19 5 view .LVU8
-  67              		.loc 1 19 10 is_stmt 0 view .LVU9
-  68 002c 8DF81780 		strb	r8, [sp, #23]
-  20:Core/Src/adxl345.c ****     HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
-  69              		.loc 1 20 5 is_stmt 1 view .LVU10
-  70 0030 0297     		str	r7, [sp, #8]
-  71 0032 0194     		str	r4, [sp, #4]
-  72 0034 0096     		str	r6, [sp]
-  73 0036 2346     		mov	r3, r4
-  74 0038 3122     		movs	r2, #49
-  75 003a A621     		movs	r1, #166
-  76 003c 2868     		ldr	r0, [r5]
-  77 003e FFF7FEFF 		bl	HAL_I2C_Mem_Write
-  78              	.LVL2:
-  21:Core/Src/adxl345.c ****                       ADXL345_DATA_FORMAT,
-  22:Core/Src/adxl345.c ****                       I2C_MEMADD_SIZE_8BIT,
-  23:Core/Src/adxl345.c ****                       &data, 1, HAL_MAX_DELAY);
-  24:Core/Src/adxl345.c **** 
-  25:Core/Src/adxl345.c ****     return HAL_OK;
-  79              		.loc 1 25 5 view .LVU11
-  26:Core/Src/adxl345.c **** }
-  80              		.loc 1 26 1 is_stmt 0 view .LVU12
-  81 0042 0020     		movs	r0, #0
-  82 0044 06B0     		add	sp, sp, #24
-  83              	.LCFI2:
-  84              		.cfi_def_cfa_offset 24
-  85              		@ sp needed
-  86 0046 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
-  87              	.L4:
-  88 004a 00BF     		.align	2
-  89              	.L3:
-ARM GAS  /tmp/cczpv41w.s 			page 3
+  19:Core/Src/adxl345.c ****     uint8_t data;
+  41              		.loc 1 19 5 view .LVU3
+  20:Core/Src/adxl345.c **** 
+  21:Core/Src/adxl345.c ****     adxl_i2c = hi2c;
+  42              		.loc 1 21 5 view .LVU4
+  43              		.loc 1 21 14 is_stmt 0 view .LVU5
+  44 0004 1C4B     		ldr	r3, .L6
+  45 0006 1860     		str	r0, [r3]
+  22:Core/Src/adxl345.c **** 
+  23:Core/Src/adxl345.c ****     /* Verificar que el sensor responde leyendo el registro DEVID (debe ser 0xE5) */
+  24:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Read(adxl_i2c, ADXL345_ADDR,
+  46              		.loc 1 24 5 is_stmt 1 view .LVU6
+  47              		.loc 1 24 11 is_stmt 0 view .LVU7
+  48 0008 0A23     		movs	r3, #10
+  49 000a 0293     		str	r3, [sp, #8]
+  50 000c 0123     		movs	r3, #1
+  51 000e 0193     		str	r3, [sp, #4]
+  52 0010 0DF11702 		add	r2, sp, #23
+  53 0014 0092     		str	r2, [sp]
+  54 0016 0022     		movs	r2, #0
+  55 0018 A621     		movs	r1, #166
+  56 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
+  57              	.LVL1:
+  25:Core/Src/adxl345.c ****                            ADXL345_DEVID,
+  26:Core/Src/adxl345.c ****                            I2C_MEMADD_SIZE_8BIT,
+  27:Core/Src/adxl345.c ****                            &data, 1, ADXL345_I2C_TIMEOUT);
+  28:Core/Src/adxl345.c ****     if (ret != HAL_OK)
+  58              		.loc 1 28 5 is_stmt 1 view .LVU8
+  59              		.loc 1 28 8 is_stmt 0 view .LVU9
+  60 001e 20B9     		cbnz	r0, .L2
+  29:Core/Src/adxl345.c ****         return ret;
+  30:Core/Src/adxl345.c **** 
+  31:Core/Src/adxl345.c ****     if (data != 0xE5)
+  61              		.loc 1 31 5 is_stmt 1 view .LVU10
+  62              		.loc 1 31 14 is_stmt 0 view .LVU11
+  63 0020 9DF81730 		ldrb	r3, [sp, #23]	@ zero_extendqisi2
+  64              		.loc 1 31 8 view .LVU12
+  65 0024 E52B     		cmp	r3, #229
+  66 0026 03D0     		beq	.L5
+  32:Core/Src/adxl345.c ****         return HAL_ERROR;  /* Sensor no es un ADXL345 o está en mal estado */
+  67              		.loc 1 32 16 view .LVU13
+  68 0028 0120     		movs	r0, #1
+  69              	.LVL2:
+  70              	.L2:
+  33:Core/Src/adxl345.c **** 
+  34:Core/Src/adxl345.c ****     /* Modo medida (salir de standby) */
+  35:Core/Src/adxl345.c ****     data = 0x08;
+  36:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+  37:Core/Src/adxl345.c ****                             ADXL345_POWER_CTL,
+  38:Core/Src/adxl345.c ****                             I2C_MEMADD_SIZE_8BIT,
+  39:Core/Src/adxl345.c ****                             &data, 1, ADXL345_I2C_TIMEOUT);
+  40:Core/Src/adxl345.c ****     if (ret != HAL_OK)
+  41:Core/Src/adxl345.c ****         return ret;
+  42:Core/Src/adxl345.c **** 
+  43:Core/Src/adxl345.c ****     /* ±2g, full resolution */
+  44:Core/Src/adxl345.c ****     data = 0x08;
+  45:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+ARM GAS  /tmp/ccjHjrY0.s 			page 3
 
 
-  90 004c 00000000 		.word	.LANCHOR0
-  91              		.cfi_endproc
-  92              	.LFE65:
-  94              		.section	.text.ADXL345_ReadXYZ,"ax",%progbits
-  95              		.align	1
-  96              		.global	ADXL345_ReadXYZ
-  97              		.syntax unified
-  98              		.thumb
-  99              		.thumb_func
- 101              	ADXL345_ReadXYZ:
- 102              	.LVL3:
- 103              	.LFB66:
-  27:Core/Src/adxl345.c **** 
-  28:Core/Src/adxl345.c **** HAL_StatusTypeDef ADXL345_ReadXYZ(int16_t *x, int16_t *y, int16_t *z)
-  29:Core/Src/adxl345.c **** {
- 104              		.loc 1 29 1 is_stmt 1 view -0
- 105              		.cfi_startproc
- 106              		@ args = 0, pretend = 0, frame = 8
- 107              		@ frame_needed = 0, uses_anonymous_args = 0
- 108              		.loc 1 29 1 is_stmt 0 view .LVU14
- 109 0000 70B5     		push	{r4, r5, r6, lr}
- 110              	.LCFI3:
- 111              		.cfi_def_cfa_offset 16
- 112              		.cfi_offset 4, -16
- 113              		.cfi_offset 5, -12
- 114              		.cfi_offset 6, -8
- 115              		.cfi_offset 14, -4
- 116 0002 86B0     		sub	sp, sp, #24
- 117              	.LCFI4:
- 118              		.cfi_def_cfa_offset 40
- 119 0004 0646     		mov	r6, r0
- 120 0006 0D46     		mov	r5, r1
- 121 0008 1446     		mov	r4, r2
-  30:Core/Src/adxl345.c ****     uint8_t buf[6];
- 122              		.loc 1 30 5 is_stmt 1 view .LVU15
-  31:Core/Src/adxl345.c **** 
-  32:Core/Src/adxl345.c ****     HAL_I2C_Mem_Read(adxl_i2c, ADXL345_ADDR,
- 123              		.loc 1 32 5 view .LVU16
- 124 000a 4FF0FF33 		mov	r3, #-1
- 125 000e 0293     		str	r3, [sp, #8]
- 126 0010 0623     		movs	r3, #6
- 127 0012 0193     		str	r3, [sp, #4]
- 128 0014 04AB     		add	r3, sp, #16
- 129 0016 0093     		str	r3, [sp]
- 130 0018 0123     		movs	r3, #1
- 131 001a 3222     		movs	r2, #50
- 132              	.LVL4:
- 133              		.loc 1 32 5 is_stmt 0 view .LVU17
- 134 001c A621     		movs	r1, #166
- 135              	.LVL5:
- 136              		.loc 1 32 5 view .LVU18
- 137 001e 0E48     		ldr	r0, .L7
- 138              	.LVL6:
- 139              		.loc 1 32 5 view .LVU19
- 140 0020 0068     		ldr	r0, [r0]
- 141 0022 FFF7FEFF 		bl	HAL_I2C_Mem_Read
- 142              	.LVL7:
-ARM GAS  /tmp/cczpv41w.s 			page 4
+  46:Core/Src/adxl345.c ****                             ADXL345_DATA_FORMAT,
+  47:Core/Src/adxl345.c ****                             I2C_MEMADD_SIZE_8BIT,
+  48:Core/Src/adxl345.c ****                             &data, 1, ADXL345_I2C_TIMEOUT);
+  49:Core/Src/adxl345.c ****     if (ret != HAL_OK)
+  50:Core/Src/adxl345.c ****         return ret;
+  51:Core/Src/adxl345.c **** 
+  52:Core/Src/adxl345.c ****     return HAL_OK;
+  53:Core/Src/adxl345.c **** }
+  71              		.loc 1 53 1 view .LVU14
+  72 002a 07B0     		add	sp, sp, #28
+  73              	.LCFI2:
+  74              		.cfi_remember_state
+  75              		.cfi_def_cfa_offset 4
+  76              		@ sp needed
+  77 002c 5DF804FB 		ldr	pc, [sp], #4
+  78              	.LVL3:
+  79              	.L5:
+  80              	.LCFI3:
+  81              		.cfi_restore_state
+  35:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+  82              		.loc 1 35 5 is_stmt 1 view .LVU15
+  35:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+  83              		.loc 1 35 10 is_stmt 0 view .LVU16
+  84 0030 0823     		movs	r3, #8
+  85 0032 8DF81730 		strb	r3, [sp, #23]
+  36:Core/Src/adxl345.c ****                             ADXL345_POWER_CTL,
+  86              		.loc 1 36 5 is_stmt 1 view .LVU17
+  36:Core/Src/adxl345.c ****                             ADXL345_POWER_CTL,
+  87              		.loc 1 36 11 is_stmt 0 view .LVU18
+  88 0036 0A23     		movs	r3, #10
+  89 0038 0293     		str	r3, [sp, #8]
+  90 003a 0123     		movs	r3, #1
+  91              	.LVL4:
+  36:Core/Src/adxl345.c ****                             ADXL345_POWER_CTL,
+  92              		.loc 1 36 11 view .LVU19
+  93 003c 0193     		str	r3, [sp, #4]
+  94 003e 0DF11702 		add	r2, sp, #23
+  95 0042 0092     		str	r2, [sp]
+  96 0044 2D22     		movs	r2, #45
+  97 0046 A621     		movs	r1, #166
+  98 0048 0B48     		ldr	r0, .L6
+  99 004a 0068     		ldr	r0, [r0]
+ 100 004c FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 101              	.LVL5:
+  40:Core/Src/adxl345.c ****         return ret;
+ 102              		.loc 1 40 5 is_stmt 1 view .LVU20
+  40:Core/Src/adxl345.c ****         return ret;
+ 103              		.loc 1 40 8 is_stmt 0 view .LVU21
+ 104 0050 0028     		cmp	r0, #0
+ 105 0052 EAD1     		bne	.L2
+  44:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+ 106              		.loc 1 44 5 is_stmt 1 view .LVU22
+  44:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Write(adxl_i2c, ADXL345_ADDR,
+ 107              		.loc 1 44 10 is_stmt 0 view .LVU23
+ 108 0054 0823     		movs	r3, #8
+ 109 0056 8DF81730 		strb	r3, [sp, #23]
+  45:Core/Src/adxl345.c ****                             ADXL345_DATA_FORMAT,
+ARM GAS  /tmp/ccjHjrY0.s 			page 4
 
 
-  33:Core/Src/adxl345.c ****                      ADXL345_DATAX0,
-  34:Core/Src/adxl345.c ****                      I2C_MEMADD_SIZE_8BIT,
-  35:Core/Src/adxl345.c ****                      buf, 6, HAL_MAX_DELAY);
-  36:Core/Src/adxl345.c **** 
-  37:Core/Src/adxl345.c ****     *x = (int16_t)((buf[1] << 8) | buf[0]);
- 143              		.loc 1 37 5 is_stmt 1 view .LVU20
- 144              		.loc 1 37 24 is_stmt 0 view .LVU21
- 145 0026 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
- 146              		.loc 1 37 39 view .LVU22
- 147 002a 9DF81030 		ldrb	r3, [sp, #16]	@ zero_extendqisi2
- 148              		.loc 1 37 10 view .LVU23
- 149 002e 43EA0223 		orr	r3, r3, r2, lsl #8
- 150              		.loc 1 37 8 view .LVU24
- 151 0032 3380     		strh	r3, [r6]	@ movhi
-  38:Core/Src/adxl345.c ****     *y = (int16_t)((buf[3] << 8) | buf[2]);
- 152              		.loc 1 38 5 is_stmt 1 view .LVU25
- 153              		.loc 1 38 24 is_stmt 0 view .LVU26
- 154 0034 9DF81320 		ldrb	r2, [sp, #19]	@ zero_extendqisi2
- 155              		.loc 1 38 39 view .LVU27
- 156 0038 9DF81230 		ldrb	r3, [sp, #18]	@ zero_extendqisi2
- 157              		.loc 1 38 10 view .LVU28
- 158 003c 43EA0223 		orr	r3, r3, r2, lsl #8
- 159              		.loc 1 38 8 view .LVU29
- 160 0040 2B80     		strh	r3, [r5]	@ movhi
-  39:Core/Src/adxl345.c ****     *z = (int16_t)((buf[5] << 8) | buf[4]);
- 161              		.loc 1 39 5 is_stmt 1 view .LVU30
- 162              		.loc 1 39 24 is_stmt 0 view .LVU31
- 163 0042 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
- 164              		.loc 1 39 39 view .LVU32
- 165 0046 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
- 166              		.loc 1 39 10 view .LVU33
- 167 004a 43EA0223 		orr	r3, r3, r2, lsl #8
- 168              		.loc 1 39 8 view .LVU34
- 169 004e 2380     		strh	r3, [r4]	@ movhi
-  40:Core/Src/adxl345.c **** 
-  41:Core/Src/adxl345.c ****     return HAL_OK;
- 170              		.loc 1 41 5 is_stmt 1 view .LVU35
-  42:Core/Src/adxl345.c **** }
- 171              		.loc 1 42 1 is_stmt 0 view .LVU36
- 172 0050 0020     		movs	r0, #0
- 173 0052 06B0     		add	sp, sp, #24
- 174              	.LCFI5:
- 175              		.cfi_def_cfa_offset 16
- 176              		@ sp needed
- 177 0054 70BD     		pop	{r4, r5, r6, pc}
- 178              	.LVL8:
- 179              	.L8:
- 180              		.loc 1 42 1 view .LVU37
- 181 0056 00BF     		.align	2
- 182              	.L7:
- 183 0058 00000000 		.word	.LANCHOR0
- 184              		.cfi_endproc
- 185              	.LFE66:
- 187              		.section	.bss.adxl_i2c,"aw",%nobits
- 188              		.align	2
- 189              		.set	.LANCHOR0,. + 0
- 192              	adxl_i2c:
-ARM GAS  /tmp/cczpv41w.s 			page 5
+ 110              		.loc 1 45 5 is_stmt 1 view .LVU24
+  45:Core/Src/adxl345.c ****                             ADXL345_DATA_FORMAT,
+ 111              		.loc 1 45 11 is_stmt 0 view .LVU25
+ 112 005a 0A23     		movs	r3, #10
+ 113 005c 0293     		str	r3, [sp, #8]
+ 114 005e 0123     		movs	r3, #1
+ 115 0060 0193     		str	r3, [sp, #4]
+ 116 0062 0DF11702 		add	r2, sp, #23
+ 117 0066 0092     		str	r2, [sp]
+ 118 0068 3122     		movs	r2, #49
+ 119 006a A621     		movs	r1, #166
+ 120 006c 0248     		ldr	r0, .L6
+ 121              	.LVL6:
+  45:Core/Src/adxl345.c ****                             ADXL345_DATA_FORMAT,
+ 122              		.loc 1 45 11 view .LVU26
+ 123 006e 0068     		ldr	r0, [r0]
+ 124 0070 FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 125              	.LVL7:
+  49:Core/Src/adxl345.c ****         return ret;
+ 126              		.loc 1 49 5 is_stmt 1 view .LVU27
+ 127 0074 D9E7     		b	.L2
+ 128              	.L7:
+ 129 0076 00BF     		.align	2
+ 130              	.L6:
+ 131 0078 00000000 		.word	.LANCHOR0
+ 132              		.cfi_endproc
+ 133              	.LFE65:
+ 135              		.section	.text.ADXL345_ReadXYZ,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	ADXL345_ReadXYZ
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	ADXL345_ReadXYZ:
+ 143              	.LVL8:
+ 144              	.LFB66:
+  54:Core/Src/adxl345.c **** 
+  55:Core/Src/adxl345.c **** /**
+  56:Core/Src/adxl345.c ****  * @brief Lee los ejes X, Y, Z del ADXL345.
+  57:Core/Src/adxl345.c ****  * @retval HAL_OK si la lectura fue exitosa.
+  58:Core/Src/adxl345.c ****  *         HAL_TIMEOUT si el sensor no respondió en ADXL345_I2C_TIMEOUT ms.
+  59:Core/Src/adxl345.c ****  *         HAL_ERROR / HAL_BUSY en otros errores de bus.
+  60:Core/Src/adxl345.c ****  */
+  61:Core/Src/adxl345.c **** HAL_StatusTypeDef ADXL345_ReadXYZ(int16_t *x, int16_t *y, int16_t *z)
+  62:Core/Src/adxl345.c **** {
+ 145              		.loc 1 62 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		.loc 1 62 1 is_stmt 0 view .LVU29
+ 150 0000 70B5     		push	{r4, r5, r6, lr}
+ 151              	.LCFI4:
+ 152              		.cfi_def_cfa_offset 16
+ 153              		.cfi_offset 4, -16
+ 154              		.cfi_offset 5, -12
+ 155              		.cfi_offset 6, -8
+ 156              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccjHjrY0.s 			page 5
 
 
- 193 0000 00000000 		.space	4
- 194              		.text
- 195              	.Letext0:
- 196              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 197              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
- 198              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 199              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 200              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 201              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
-ARM GAS  /tmp/cczpv41w.s 			page 6
+ 157 0002 86B0     		sub	sp, sp, #24
+ 158              	.LCFI5:
+ 159              		.cfi_def_cfa_offset 40
+ 160 0004 0646     		mov	r6, r0
+ 161 0006 0D46     		mov	r5, r1
+ 162 0008 1446     		mov	r4, r2
+  63:Core/Src/adxl345.c ****     HAL_StatusTypeDef ret;
+ 163              		.loc 1 63 5 is_stmt 1 view .LVU30
+  64:Core/Src/adxl345.c ****     uint8_t buf[6];
+ 164              		.loc 1 64 5 view .LVU31
+  65:Core/Src/adxl345.c **** 
+  66:Core/Src/adxl345.c ****     ret = HAL_I2C_Mem_Read(adxl_i2c, ADXL345_ADDR,
+ 165              		.loc 1 66 5 view .LVU32
+ 166              		.loc 1 66 11 is_stmt 0 view .LVU33
+ 167 000a 0A23     		movs	r3, #10
+ 168 000c 0293     		str	r3, [sp, #8]
+ 169 000e 0623     		movs	r3, #6
+ 170 0010 0193     		str	r3, [sp, #4]
+ 171 0012 04AB     		add	r3, sp, #16
+ 172 0014 0093     		str	r3, [sp]
+ 173 0016 0123     		movs	r3, #1
+ 174 0018 3222     		movs	r2, #50
+ 175              	.LVL9:
+ 176              		.loc 1 66 11 view .LVU34
+ 177 001a A621     		movs	r1, #166
+ 178              	.LVL10:
+ 179              		.loc 1 66 11 view .LVU35
+ 180 001c 0D48     		ldr	r0, .L11
+ 181              	.LVL11:
+ 182              		.loc 1 66 11 view .LVU36
+ 183 001e 0068     		ldr	r0, [r0]
+ 184 0020 FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 185              	.LVL12:
+  67:Core/Src/adxl345.c ****                            ADXL345_DATAX0,
+  68:Core/Src/adxl345.c ****                            I2C_MEMADD_SIZE_8BIT,
+  69:Core/Src/adxl345.c ****                            buf, 6, ADXL345_I2C_TIMEOUT);
+  70:Core/Src/adxl345.c **** 
+  71:Core/Src/adxl345.c ****     if (ret != HAL_OK)
+ 186              		.loc 1 71 5 is_stmt 1 view .LVU37
+ 187              		.loc 1 71 8 is_stmt 0 view .LVU38
+ 188 0024 A0B9     		cbnz	r0, .L9
+  72:Core/Src/adxl345.c ****         return ret;  /* Propagar el error — no retornar HAL_OK a ciegas */
+  73:Core/Src/adxl345.c **** 
+  74:Core/Src/adxl345.c ****     *x = (int16_t)((buf[1] << 8) | buf[0]);
+ 189              		.loc 1 74 5 is_stmt 1 view .LVU39
+ 190              		.loc 1 74 24 is_stmt 0 view .LVU40
+ 191 0026 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
+ 192              		.loc 1 74 39 view .LVU41
+ 193 002a 9DF81030 		ldrb	r3, [sp, #16]	@ zero_extendqisi2
+ 194              		.loc 1 74 10 view .LVU42
+ 195 002e 43EA0223 		orr	r3, r3, r2, lsl #8
+ 196              		.loc 1 74 8 view .LVU43
+ 197 0032 3380     		strh	r3, [r6]	@ movhi
+  75:Core/Src/adxl345.c ****     *y = (int16_t)((buf[3] << 8) | buf[2]);
+ 198              		.loc 1 75 5 is_stmt 1 view .LVU44
+ 199              		.loc 1 75 24 is_stmt 0 view .LVU45
+ 200 0034 9DF81320 		ldrb	r2, [sp, #19]	@ zero_extendqisi2
+ARM GAS  /tmp/ccjHjrY0.s 			page 6
+
+
+ 201              		.loc 1 75 39 view .LVU46
+ 202 0038 9DF81230 		ldrb	r3, [sp, #18]	@ zero_extendqisi2
+ 203              		.loc 1 75 10 view .LVU47
+ 204 003c 43EA0223 		orr	r3, r3, r2, lsl #8
+ 205              		.loc 1 75 8 view .LVU48
+ 206 0040 2B80     		strh	r3, [r5]	@ movhi
+  76:Core/Src/adxl345.c ****     *z = (int16_t)((buf[5] << 8) | buf[4]);
+ 207              		.loc 1 76 5 is_stmt 1 view .LVU49
+ 208              		.loc 1 76 24 is_stmt 0 view .LVU50
+ 209 0042 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
+ 210              		.loc 1 76 39 view .LVU51
+ 211 0046 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
+ 212              		.loc 1 76 10 view .LVU52
+ 213 004a 43EA0223 		orr	r3, r3, r2, lsl #8
+ 214              		.loc 1 76 8 view .LVU53
+ 215 004e 2380     		strh	r3, [r4]	@ movhi
+  77:Core/Src/adxl345.c **** 
+  78:Core/Src/adxl345.c ****     return HAL_OK;
+ 216              		.loc 1 78 5 is_stmt 1 view .LVU54
+ 217              	.L9:
+  79:Core/Src/adxl345.c **** }...
+ 218              		.loc 1 79 1 is_stmt 0 view .LVU55
+ 219 0050 06B0     		add	sp, sp, #24
+ 220              	.LCFI6:
+ 221              		.cfi_def_cfa_offset 16
+ 222              		@ sp needed
+ 223 0052 70BD     		pop	{r4, r5, r6, pc}
+ 224              	.LVL13:
+ 225              	.L12:
+ 226              		.loc 1 79 1 view .LVU56
+ 227              		.align	2
+ 228              	.L11:
+ 229 0054 00000000 		.word	.LANCHOR0
+ 230              		.cfi_endproc
+ 231              	.LFE66:
+ 233              		.section	.bss.adxl_i2c,"aw",%nobits
+ 234              		.align	2
+ 235              		.set	.LANCHOR0,. + 0
+ 238              	adxl_i2c:
+ 239 0000 00000000 		.space	4
+ 240              		.text
+ 241              	.Letext0:
+ 242              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 243              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 244              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 245              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 246              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 247              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ARM GAS  /tmp/ccjHjrY0.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adxl345.c
-     /tmp/cczpv41w.s:18     .text.ADXL345_Init:0000000000000000 $t
-     /tmp/cczpv41w.s:24     .text.ADXL345_Init:0000000000000000 ADXL345_Init
-     /tmp/cczpv41w.s:90     .text.ADXL345_Init:000000000000004c $d
-     /tmp/cczpv41w.s:95     .text.ADXL345_ReadXYZ:0000000000000000 $t
-     /tmp/cczpv41w.s:101    .text.ADXL345_ReadXYZ:0000000000000000 ADXL345_ReadXYZ
-     /tmp/cczpv41w.s:183    .text.ADXL345_ReadXYZ:0000000000000058 $d
-     /tmp/cczpv41w.s:188    .bss.adxl_i2c:0000000000000000 $d
-     /tmp/cczpv41w.s:192    .bss.adxl_i2c:0000000000000000 adxl_i2c
+     /tmp/ccjHjrY0.s:18     .text.ADXL345_Init:0000000000000000 $t
+     /tmp/ccjHjrY0.s:24     .text.ADXL345_Init:0000000000000000 ADXL345_Init
+     /tmp/ccjHjrY0.s:131    .text.ADXL345_Init:0000000000000078 $d
+     /tmp/ccjHjrY0.s:136    .text.ADXL345_ReadXYZ:0000000000000000 $t
+     /tmp/ccjHjrY0.s:142    .text.ADXL345_ReadXYZ:0000000000000000 ADXL345_ReadXYZ
+     /tmp/ccjHjrY0.s:229    .text.ADXL345_ReadXYZ:0000000000000054 $d
+     /tmp/ccjHjrY0.s:234    .bss.adxl_i2c:0000000000000000 $d
+     /tmp/ccjHjrY0.s:238    .bss.adxl_i2c:0000000000000000 adxl_i2c
 
 UNDEFINED SYMBOLS
-HAL_I2C_Mem_Write
 HAL_I2C_Mem_Read
+HAL_I2C_Mem_Write

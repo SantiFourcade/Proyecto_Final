@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccMnGlD7.s 			page 1
+ARM GAS  /tmp/ccho9uVf.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
   29:Core/Src/main.c **** volatile uint8_t flag_pulso = 0;
   30:Core/Src/main.c **** volatile uint32_t pulsos = 0;
   31:Core/Src/main.c **** volatile uint16_t adc_buffer_corriente[100]; // Buffer para 100 muestras (100ms)
-ARM GAS  /tmp/ccMnGlD7.s 			page 2
+ARM GAS  /tmp/ccho9uVf.s 			page 2
 
 
   32:Core/Src/main.c **** volatile uint16_t indice_adc = 0;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
   86:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
   87:Core/Src/main.c **** 
   88:Core/Src/main.c ****   /* USER CODE END 2 */
-ARM GAS  /tmp/ccMnGlD7.s 			page 3
+ARM GAS  /tmp/ccho9uVf.s 			page 3
 
 
   89:Core/Src/main.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  143:Core/Src/main.c ****     Error_Handler();
  144:Core/Src/main.c ****   }
  145:Core/Src/main.c **** }
-ARM GAS  /tmp/ccMnGlD7.s 			page 4
+ARM GAS  /tmp/ccho9uVf.s 			page 4
 
 
  146:Core/Src/main.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
   63 001a 1A70     		strb	r2, [r3]
   64              		.loc 1 159 1 view .LVU11
   65 001c F5E7     		b	.L1
-ARM GAS  /tmp/ccMnGlD7.s 			page 5
+ARM GAS  /tmp/ccho9uVf.s 			page 5
 
 
   66              	.L6:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  112              		.loc 1 169 1 view .LVU19
  113              		.align	2
  114              	.L9:
-ARM GAS  /tmp/ccMnGlD7.s 			page 6
+ARM GAS  /tmp/ccho9uVf.s 			page 6
 
 
  115 0014 00000000 		.word	huart1
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  155              	.LVL12:
  174:Core/Src/main.c ****         indice_adc++;
  156              		.loc 1 174 29 view .LVU28
-ARM GAS  /tmp/ccMnGlD7.s 			page 7
+ARM GAS  /tmp/ccho9uVf.s 			page 7
 
 
  157 0010 0C4A     		ldr	r2, .L15+4
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  202              	.LC0:
  203 0000 4D41494C 		.ascii	"MAILBOX0 TX OK\015\000"
  203      424F5830 
-ARM GAS  /tmp/ccMnGlD7.s 			page 8
+ARM GAS  /tmp/ccho9uVf.s 			page 8
 
 
  203      20545820 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  251              	.LVL16:
  252              	.LFB79:
  189:Core/Src/main.c **** 
-ARM GAS  /tmp/ccMnGlD7.s 			page 9
+ARM GAS  /tmp/ccho9uVf.s 			page 9
 
 
  190:Core/Src/main.c **** void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  299              		.cfi_def_cfa_offset 8
  300              		.cfi_offset 3, -8
  301              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccMnGlD7.s 			page 10
+ARM GAS  /tmp/ccho9uVf.s 			page 10
 
 
  197:Core/Src/main.c ****     printf("MAILBOX2 TX OK\r\n");
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  203:Core/Src/main.c **** 
  204:Core/Src/main.c ****     printf("CAN ERROR: %lu\r\n", err);
  348              		.loc 1 204 5 is_stmt 1 view .LVU60
-ARM GAS  /tmp/ccMnGlD7.s 			page 11
+ARM GAS  /tmp/ccho9uVf.s 			page 11
 
 
  349 0008 0148     		ldr	r0, .L31
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  391              		.loc 1 218 1 view .LVU68
  392 000a 08BD     		pop	{r3, pc}
  393              	.LVL29:
-ARM GAS  /tmp/ccMnGlD7.s 			page 12
+ARM GAS  /tmp/ccho9uVf.s 			page 12
 
 
  394              	.L36:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
   21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
   22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
   23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/ccMnGlD7.s 			page 13
+ARM GAS  /tmp/ccho9uVf.s 			page 13
 
 
   24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
   78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
   79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
   80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-ARM GAS  /tmp/ccMnGlD7.s 			page 14
+ARM GAS  /tmp/ccho9uVf.s 			page 14
 
 
   81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
  137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
-ARM GAS  /tmp/ccMnGlD7.s 			page 15
+ARM GAS  /tmp/ccho9uVf.s 			page 15
 
 
  138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  466 000c FFF7FEFF 		bl	memset
  467              	.LVL31:
  108:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-ARM GAS  /tmp/ccMnGlD7.s 			page 16
+ARM GAS  /tmp/ccho9uVf.s 			page 16
 
 
  468              		.loc 1 108 3 is_stmt 1 view .LVU81
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  505              		.loc 1 121 3 is_stmt 1 view .LVU98
  121:Core/Src/main.c ****   {
  506              		.loc 1 121 7 is_stmt 0 view .LVU99
-ARM GAS  /tmp/ccMnGlD7.s 			page 17
+ARM GAS  /tmp/ccho9uVf.s 			page 17
 
 
  507 003c 0AA8     		add	r0, sp, #40
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  543              		.loc 1 140 35 is_stmt 0 view .LVU117
  544 0064 4FF44043 		mov	r3, #49152
  545 0068 0393     		str	r3, [sp, #12]
-ARM GAS  /tmp/ccMnGlD7.s 			page 18
+ARM GAS  /tmp/ccho9uVf.s 			page 18
 
 
  141:Core/Src/main.c ****   {
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  594              		.cfi_offset 3, -8
  595              		.cfi_offset 14, -4
   55:Core/Src/main.c **** 
-ARM GAS  /tmp/ccMnGlD7.s 			page 19
+ARM GAS  /tmp/ccho9uVf.s 			page 19
 
 
  596              		.loc 1 55 3 view .LVU126
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  637 0038 0748     		ldr	r0, .L51+4
  638 003a FFF7FEFF 		bl	HAL_CAN_ActivateNotification
  639              	.LVL49:
-ARM GAS  /tmp/ccMnGlD7.s 			page 20
+ARM GAS  /tmp/ccho9uVf.s 			page 20
 
 
   83:Core/Src/main.c ****   HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_1);
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  688              		.section	.bss.diff_ticks,"aw",%nobits
  689              		.align	2
  690              		.set	.LANCHOR0,. + 0
-ARM GAS  /tmp/ccMnGlD7.s 			page 21
+ARM GAS  /tmp/ccho9uVf.s 			page 21
 
 
  693              	diff_ticks:
@@ -1245,59 +1245,59 @@ ARM GAS  /tmp/ccMnGlD7.s 			page 1
  742              		.file 24 "Core/Inc/adc.h"
  743              		.file 25 "Core/Inc/adxl345.h"
  744              		.file 26 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
-ARM GAS  /tmp/ccMnGlD7.s 			page 22
+ARM GAS  /tmp/ccho9uVf.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccMnGlD7.s:18     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:24     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 HAL_TIM_IC_CaptureCallback
-     /tmp/ccMnGlD7.s:69     .text.HAL_TIM_IC_CaptureCallback:0000000000000020 $d
-     /tmp/ccMnGlD7.s:76     .text._write:0000000000000000 $t
-     /tmp/ccMnGlD7.s:82     .text._write:0000000000000000 _write
-     /tmp/ccMnGlD7.s:115    .text._write:0000000000000014 $d
-     /tmp/ccMnGlD7.s:120    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:126    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccMnGlD7.s:193    .text.HAL_ADC_ConvCpltCallback:0000000000000040 $d
-     /tmp/ccMnGlD7.s:201    .rodata.HAL_CAN_TxMailbox0CompleteCallback.str1.4:0000000000000000 $d
-     /tmp/ccMnGlD7.s:205    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:211    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 HAL_CAN_TxMailbox0CompleteCallback
-     /tmp/ccMnGlD7.s:235    .text.HAL_CAN_TxMailbox0CompleteCallback:000000000000000c $d
-     /tmp/ccMnGlD7.s:240    .rodata.HAL_CAN_TxMailbox1CompleteCallback.str1.4:0000000000000000 $d
-     /tmp/ccMnGlD7.s:244    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:250    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 HAL_CAN_TxMailbox1CompleteCallback
-     /tmp/ccMnGlD7.s:274    .text.HAL_CAN_TxMailbox1CompleteCallback:000000000000000c $d
-     /tmp/ccMnGlD7.s:279    .rodata.HAL_CAN_TxMailbox2CompleteCallback.str1.4:0000000000000000 $d
-     /tmp/ccMnGlD7.s:283    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:289    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 HAL_CAN_TxMailbox2CompleteCallback
-     /tmp/ccMnGlD7.s:313    .text.HAL_CAN_TxMailbox2CompleteCallback:000000000000000c $d
-     /tmp/ccMnGlD7.s:318    .rodata.HAL_CAN_ErrorCallback.str1.4:0000000000000000 $d
-     /tmp/ccMnGlD7.s:322    .text.HAL_CAN_ErrorCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:328    .text.HAL_CAN_ErrorCallback:0000000000000000 HAL_CAN_ErrorCallback
-     /tmp/ccMnGlD7.s:359    .text.HAL_CAN_ErrorCallback:0000000000000010 $d
-     /tmp/ccMnGlD7.s:364    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
-     /tmp/ccMnGlD7.s:370    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccMnGlD7.s:404    .text.Error_Handler:0000000000000000 $t
-     /tmp/ccMnGlD7.s:410    .text.Error_Handler:0000000000000000 Error_Handler
-     /tmp/ccMnGlD7.s:442    .text.SystemClock_Config:0000000000000000 $t
-     /tmp/ccMnGlD7.s:448    .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/ccMnGlD7.s:578    .text.main:0000000000000000 $t
-     /tmp/ccMnGlD7.s:584    .text.main:0000000000000000 main
-     /tmp/ccMnGlD7.s:662    .text.main:0000000000000054 $d
-     /tmp/ccMnGlD7.s:711    .bss.new_read:0000000000000000 new_read
-     /tmp/ccMnGlD7.s:693    .bss.diff_ticks:0000000000000000 diff_ticks
-     /tmp/ccMnGlD7.s:686    .bss.buffer_listo:0000000000000000 buffer_listo
-     /tmp/ccMnGlD7.s:705    .bss.indice_adc:0000000000000000 indice_adc
-     /tmp/ccMnGlD7.s:680    .bss.adc_buffer_corriente:0000000000000000 adc_buffer_corriente
-     /tmp/ccMnGlD7.s:717    .bss.pulsos:0000000000000000 pulsos
-     /tmp/ccMnGlD7.s:698    .bss.flag_pulso:0000000000000000 flag_pulso
-     /tmp/ccMnGlD7.s:676    .bss.adc_buffer_corriente:0000000000000000 $d
-     /tmp/ccMnGlD7.s:687    .bss.buffer_listo:0000000000000000 $d
-     /tmp/ccMnGlD7.s:689    .bss.diff_ticks:0000000000000000 $d
-     /tmp/ccMnGlD7.s:699    .bss.flag_pulso:0000000000000000 $d
-     /tmp/ccMnGlD7.s:701    .bss.indice_adc:0000000000000000 $d
-     /tmp/ccMnGlD7.s:712    .bss.new_read:0000000000000000 $d
-     /tmp/ccMnGlD7.s:714    .bss.pulsos:0000000000000000 $d
+     /tmp/ccho9uVf.s:18     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:24     .text.HAL_TIM_IC_CaptureCallback:0000000000000000 HAL_TIM_IC_CaptureCallback
+     /tmp/ccho9uVf.s:69     .text.HAL_TIM_IC_CaptureCallback:0000000000000020 $d
+     /tmp/ccho9uVf.s:76     .text._write:0000000000000000 $t
+     /tmp/ccho9uVf.s:82     .text._write:0000000000000000 _write
+     /tmp/ccho9uVf.s:115    .text._write:0000000000000014 $d
+     /tmp/ccho9uVf.s:120    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:126    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccho9uVf.s:193    .text.HAL_ADC_ConvCpltCallback:0000000000000040 $d
+     /tmp/ccho9uVf.s:201    .rodata.HAL_CAN_TxMailbox0CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccho9uVf.s:205    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:211    .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 HAL_CAN_TxMailbox0CompleteCallback
+     /tmp/ccho9uVf.s:235    .text.HAL_CAN_TxMailbox0CompleteCallback:000000000000000c $d
+     /tmp/ccho9uVf.s:240    .rodata.HAL_CAN_TxMailbox1CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccho9uVf.s:244    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:250    .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 HAL_CAN_TxMailbox1CompleteCallback
+     /tmp/ccho9uVf.s:274    .text.HAL_CAN_TxMailbox1CompleteCallback:000000000000000c $d
+     /tmp/ccho9uVf.s:279    .rodata.HAL_CAN_TxMailbox2CompleteCallback.str1.4:0000000000000000 $d
+     /tmp/ccho9uVf.s:283    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:289    .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 HAL_CAN_TxMailbox2CompleteCallback
+     /tmp/ccho9uVf.s:313    .text.HAL_CAN_TxMailbox2CompleteCallback:000000000000000c $d
+     /tmp/ccho9uVf.s:318    .rodata.HAL_CAN_ErrorCallback.str1.4:0000000000000000 $d
+     /tmp/ccho9uVf.s:322    .text.HAL_CAN_ErrorCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:328    .text.HAL_CAN_ErrorCallback:0000000000000000 HAL_CAN_ErrorCallback
+     /tmp/ccho9uVf.s:359    .text.HAL_CAN_ErrorCallback:0000000000000010 $d
+     /tmp/ccho9uVf.s:364    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+     /tmp/ccho9uVf.s:370    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccho9uVf.s:404    .text.Error_Handler:0000000000000000 $t
+     /tmp/ccho9uVf.s:410    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/ccho9uVf.s:442    .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccho9uVf.s:448    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccho9uVf.s:578    .text.main:0000000000000000 $t
+     /tmp/ccho9uVf.s:584    .text.main:0000000000000000 main
+     /tmp/ccho9uVf.s:662    .text.main:0000000000000054 $d
+     /tmp/ccho9uVf.s:711    .bss.new_read:0000000000000000 new_read
+     /tmp/ccho9uVf.s:693    .bss.diff_ticks:0000000000000000 diff_ticks
+     /tmp/ccho9uVf.s:686    .bss.buffer_listo:0000000000000000 buffer_listo
+     /tmp/ccho9uVf.s:705    .bss.indice_adc:0000000000000000 indice_adc
+     /tmp/ccho9uVf.s:680    .bss.adc_buffer_corriente:0000000000000000 adc_buffer_corriente
+     /tmp/ccho9uVf.s:717    .bss.pulsos:0000000000000000 pulsos
+     /tmp/ccho9uVf.s:698    .bss.flag_pulso:0000000000000000 flag_pulso
+     /tmp/ccho9uVf.s:676    .bss.adc_buffer_corriente:0000000000000000 $d
+     /tmp/ccho9uVf.s:687    .bss.buffer_listo:0000000000000000 $d
+     /tmp/ccho9uVf.s:689    .bss.diff_ticks:0000000000000000 $d
+     /tmp/ccho9uVf.s:699    .bss.flag_pulso:0000000000000000 $d
+     /tmp/ccho9uVf.s:701    .bss.indice_adc:0000000000000000 $d
+     /tmp/ccho9uVf.s:712    .bss.new_read:0000000000000000 $d
+     /tmp/ccho9uVf.s:714    .bss.pulsos:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_ReadCapturedValue
@@ -1305,7 +1305,7 @@ HAL_UART_Transmit
 huart1
 HAL_ADC_GetValue
 puts
-ARM GAS  /tmp/ccMnGlD7.s 			page 23
+ARM GAS  /tmp/ccho9uVf.s 			page 23
 
 
 HAL_CAN_GetError
