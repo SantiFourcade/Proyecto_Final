@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccKMQlIy.s 			page 1
+ARM GAS  /tmp/ccuAOcL0.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
   40 0004 0023     		movs	r3, #0
   41 0006 0193     		str	r3, [sp, #4]
   42 0008 0293     		str	r3, [sp, #8]
-ARM GAS  /tmp/ccKMQlIy.s 			page 2
+ARM GAS  /tmp/ccuAOcL0.s 			page 2
 
 
   43 000a 0393     		str	r3, [sp, #12]
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
   38:Core/Src/adc.c ****   sConfig.Channel = ADC_CHANNEL_0;
   76              		.loc 1 38 3 is_stmt 1 view .LVU20
   77              		.loc 1 38 19 is_stmt 0 view .LVU21
-ARM GAS  /tmp/ccKMQlIy.s 			page 3
+ARM GAS  /tmp/ccuAOcL0.s 			page 3
 
 
   78 002a 0023     		movs	r3, #0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  119              	.L7:
  120 0054 00000000 		.word	.LANCHOR0
  121 0058 00240140 		.word	1073816576
-ARM GAS  /tmp/ccKMQlIy.s 			page 4
+ARM GAS  /tmp/ccuAOcL0.s 			page 4
 
 
  122              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  159              		.loc 1 68 3 is_stmt 1 view .LVU40
  160              		.loc 1 68 33 is_stmt 0 view .LVU41
  161 0014 0373     		strb	r3, [r0, #12]
-ARM GAS  /tmp/ccKMQlIy.s 			page 5
+ARM GAS  /tmp/ccuAOcL0.s 			page 5
 
 
   69:Core/Src/adc.c ****   hadc2.Init.DiscontinuousConvMode = DISABLE;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  201 003c 28B9     		cbnz	r0, .L14
  202              	.L9:
   84:Core/Src/adc.c ****   {
-ARM GAS  /tmp/ccKMQlIy.s 			page 6
+ARM GAS  /tmp/ccuAOcL0.s 			page 6
 
 
   85:Core/Src/adc.c ****     Error_Handler();
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  247              	.LCFI8:
  248              		.cfi_def_cfa_offset 4
  249              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccKMQlIy.s 			page 7
+ARM GAS  /tmp/ccuAOcL0.s 			page 7
 
 
  250 0002 89B0     		sub	sp, sp, #36
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  125:Core/Src/adc.c ****     /* ADC2 clock enable */
  126:Core/Src/adc.c ****     __HAL_RCC_ADC2_CLK_ENABLE();
  127:Core/Src/adc.c **** 
-ARM GAS  /tmp/ccKMQlIy.s 			page 8
+ARM GAS  /tmp/ccuAOcL0.s 			page 8
 
 
  128:Core/Src/adc.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  105:Core/Src/adc.c ****     /**ADC1 GPIO Configuration
  304              		.loc 1 105 5 view .LVU84
  305 0036 9A69     		ldr	r2, [r3, #24]
-ARM GAS  /tmp/ccKMQlIy.s 			page 9
+ARM GAS  /tmp/ccuAOcL0.s 			page 9
 
 
  306 0038 42F00402 		orr	r2, r2, #4
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  126:Core/Src/adc.c **** 
  347              		.loc 1 126 5 view .LVU98
  348 006a 144B     		ldr	r3, .L23+8
-ARM GAS  /tmp/ccKMQlIy.s 			page 10
+ARM GAS  /tmp/ccuAOcL0.s 			page 10
 
 
  349 006c 9A69     		ldr	r2, [r3, #24]
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  388 009c FFF7FEFF 		bl	HAL_GPIO_Init
  389              	.LVL17:
  137:Core/Src/adc.c ****     HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
-ARM GAS  /tmp/ccKMQlIy.s 			page 11
+ARM GAS  /tmp/ccuAOcL0.s 			page 11
 
 
  390              		.loc 1 137 5 is_stmt 1 view .LVU114
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  150:Core/Src/adc.c ****   /* USER CODE BEGIN ADC1_MspDeInit 0 */
  151:Core/Src/adc.c **** 
  152:Core/Src/adc.c ****   /* USER CODE END ADC1_MspDeInit 0 */
-ARM GAS  /tmp/ccKMQlIy.s 			page 12
+ARM GAS  /tmp/ccuAOcL0.s 			page 12
 
 
  153:Core/Src/adc.c ****     /* Peripheral clock disable */
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  200:Core/Src/adc.c **** }
  446              		.loc 1 200 1 view .LVU124
  447 0010 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/ccKMQlIy.s 			page 13
+ARM GAS  /tmp/ccuAOcL0.s 			page 13
 
 
  448              	.LVL22:
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  201:Core/Src/adc.c **** 
  202:Core/Src/adc.c **** 
  203:Core/Src/adc.c **** void ADC_Select_Channel(uint32_t channel)
-ARM GAS  /tmp/ccKMQlIy.s 			page 14
+ARM GAS  /tmp/ccuAOcL0.s 			page 14
 
 
  204:Core/Src/adc.c **** {
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  543 0024 00000000 		.word	.LANCHOR0
  544              		.cfi_endproc
  545              	.LFE69:
-ARM GAS  /tmp/ccKMQlIy.s 			page 15
+ARM GAS  /tmp/ccuAOcL0.s 			page 15
 
 
  547              		.global	hadc2
@@ -874,30 +874,30 @@ ARM GAS  /tmp/ccKMQlIy.s 			page 1
  573              		.file 10 "Core/Inc/adc.h"
  574              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
  575              		.file 12 "Core/Inc/main.h"
-ARM GAS  /tmp/ccKMQlIy.s 			page 16
+ARM GAS  /tmp/ccuAOcL0.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adc.c
-     /tmp/ccKMQlIy.s:18     .text.MX_ADC1_Init:0000000000000000 $t
-     /tmp/ccKMQlIy.s:24     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
-     /tmp/ccKMQlIy.s:120    .text.MX_ADC1_Init:0000000000000054 $d
-     /tmp/ccKMQlIy.s:126    .text.MX_ADC2_Init:0000000000000000 $t
-     /tmp/ccKMQlIy.s:132    .text.MX_ADC2_Init:0000000000000000 MX_ADC2_Init
-     /tmp/ccKMQlIy.s:226    .text.MX_ADC2_Init:0000000000000050 $d
-     /tmp/ccKMQlIy.s:232    .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccKMQlIy.s:238    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccKMQlIy.s:405    .text.HAL_ADC_MspInit:00000000000000b4 $d
-     /tmp/ccKMQlIy.s:413    .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccKMQlIy.s:419    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccKMQlIy.s:482    .text.HAL_ADC_MspDeInit:0000000000000040 $d
-     /tmp/ccKMQlIy.s:489    .text.ADC_Select_Channel:0000000000000000 $t
-     /tmp/ccKMQlIy.s:495    .text.ADC_Select_Channel:0000000000000000 ADC_Select_Channel
-     /tmp/ccKMQlIy.s:543    .text.ADC_Select_Channel:0000000000000024 $d
-     /tmp/ccKMQlIy.s:561    .bss.hadc2:0000000000000000 hadc2
-     /tmp/ccKMQlIy.s:554    .bss.hadc1:0000000000000000 hadc1
-     /tmp/ccKMQlIy.s:550    .bss.hadc1:0000000000000000 $d
-     /tmp/ccKMQlIy.s:557    .bss.hadc2:0000000000000000 $d
+     /tmp/ccuAOcL0.s:18     .text.MX_ADC1_Init:0000000000000000 $t
+     /tmp/ccuAOcL0.s:24     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
+     /tmp/ccuAOcL0.s:120    .text.MX_ADC1_Init:0000000000000054 $d
+     /tmp/ccuAOcL0.s:126    .text.MX_ADC2_Init:0000000000000000 $t
+     /tmp/ccuAOcL0.s:132    .text.MX_ADC2_Init:0000000000000000 MX_ADC2_Init
+     /tmp/ccuAOcL0.s:226    .text.MX_ADC2_Init:0000000000000050 $d
+     /tmp/ccuAOcL0.s:232    .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/ccuAOcL0.s:238    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/ccuAOcL0.s:405    .text.HAL_ADC_MspInit:00000000000000b4 $d
+     /tmp/ccuAOcL0.s:413    .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/ccuAOcL0.s:419    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/ccuAOcL0.s:482    .text.HAL_ADC_MspDeInit:0000000000000040 $d
+     /tmp/ccuAOcL0.s:489    .text.ADC_Select_Channel:0000000000000000 $t
+     /tmp/ccuAOcL0.s:495    .text.ADC_Select_Channel:0000000000000000 ADC_Select_Channel
+     /tmp/ccuAOcL0.s:543    .text.ADC_Select_Channel:0000000000000024 $d
+     /tmp/ccuAOcL0.s:561    .bss.hadc2:0000000000000000 hadc2
+     /tmp/ccuAOcL0.s:554    .bss.hadc1:0000000000000000 hadc1
+     /tmp/ccuAOcL0.s:550    .bss.hadc1:0000000000000000 $d
+     /tmp/ccuAOcL0.s:557    .bss.hadc2:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_ADC_Init

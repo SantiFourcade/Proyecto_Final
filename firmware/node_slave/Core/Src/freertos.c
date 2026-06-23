@@ -177,54 +177,6 @@ void MX_FREERTOS_Init(void) {
 volatile uint16_t buffer[N];
 volatile uint16_t i = 0;
 
-// void StartLogger(void const * argument)
-// {
-//   /* USER CODE BEGIN StartLogger */
-//   printf("Iniciando Logger...\r\n");
-//   /* Infinite loop */
-//   uint32_t acumulador_temp = 0;
-//   uint32_t cuenta_muestras_temp = 0;
-//   float temp_filtrada = 0.0f;
-//   float corriente_actual = 0.0f;
-
-//   /* Infinite loop */
-//   for(;;)
-//   {
-//     if (buffer_listo) {
-//         // 1. PROCESAMOS LA CORRIENTE (Esto tarda microsegundos, no bloquea)
-//         corriente_actual = Procesar_Corriente_RMS();
-//         buffer_listo = 0; // Liberamos el buffer al toque
-
-//         // 2. TOMAMOS UNA SOLA MUESTRA DE TEMPERATURA
-//         // Como pasó 100ms desde la última vez, el capacitor interno está limpísimo (0 crosstalk)
-//         HAL_ADC_Start(&hadc2);
-//         if(HAL_ADC_PollForConversion(&hadc2, 2) == HAL_OK) {
-//             acumulador_temp += HAL_ADC_GetValue(&hadc2);
-//             cuenta_muestras_temp++;
-//         }
-//         HAL_ADC_Stop(&hadc2);
-
-//         // 3. ¿YA TENEMOS LAS 32 MUESTRAS? (Pasan cada ~3.2 segundos)
-//         if (cuenta_muestras_temp >= 32) {
-//             float promedio_ticks = (float)acumulador_temp / 32.0f;
-//             float voltaje_mv = promedio_ticks * (3262.0f / 4096.0f);
-//             temp_filtrada = voltaje_mv / 10.0f;
-
-//             // Reseteamos para el próximo ciclo largo
-//             acumulador_temp = 0;
-//             cuenta_muestras_temp = 0;
-//         }
-
-//         // 4. ENVIAMOS A PYTHON
-//         // Manda la corriente nueva siempre, y la temperatura se actualiza cada 3.2s
-//         printf("%.2f,%.2f\r\n", temp_filtrada, corriente_actual);
-//     } 
-    
-//     vTaskDelay(pdMS_TO_TICKS(1));  
-//   }
-//   /* USER CODE END StartLogger */
-// }
-
 
 void StartSampler(void const * argument)
 {

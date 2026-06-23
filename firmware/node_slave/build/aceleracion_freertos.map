@@ -70,6 +70,8 @@ Archive member included to satisfy reference by file (symbol)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-sbrkr.o) (errno)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
+/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+                              build/fixed_point.o (roundf)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
                               build/freertos.o (sqrtf)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-ef_sqrt.o)
@@ -83,9 +85,11 @@ Archive member included to satisfy reference by file (symbol)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_muldivsf3.o)
                               build/freertos.o (__aeabi_fdiv)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
-                              /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o) (__aeabi_fcmplt)
+                              build/fixed_point.o (__aeabi_fcmplt)
 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_unordsf2.o)
                               /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o) (__aeabi_fcmpun)
+/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+                              build/fixed_point.o (__aeabi_f2iz)
 
 Discarded input sections
 
@@ -155,6 +159,25 @@ Discarded input sections
                 0x0000000000000000       0x28 build/features.o
  .text.ADC_To_Current
                 0x0000000000000000       0x64 build/features.o
+ .text          0x0000000000000000        0x0 build/fixed_point.o
+ .data          0x0000000000000000        0x0 build/fixed_point.o
+ .bss           0x0000000000000000        0x0 build/fixed_point.o
+ .text.FloatTo_Q8_7
+                0x0000000000000000       0x38 build/fixed_point.o
+ .text.FloatTo_Q11_4
+                0x0000000000000000       0x38 build/fixed_point.o
+ .debug_info    0x0000000000000000      0x1a1 build/fixed_point.o
+ .debug_abbrev  0x0000000000000000       0x9a build/fixed_point.o
+ .debug_loc     0x0000000000000000       0x84 build/fixed_point.o
+ .debug_aranges
+                0x0000000000000000       0x28 build/fixed_point.o
+ .debug_ranges  0x0000000000000000       0x18 build/fixed_point.o
+ .debug_line    0x0000000000000000      0x230 build/fixed_point.o
+ .debug_str     0x0000000000000000      0x200 build/fixed_point.o
+ .comment       0x0000000000000000       0x4a build/fixed_point.o
+ .debug_frame   0x0000000000000000       0x40 build/fixed_point.o
+ .ARM.attributes
+                0x0000000000000000       0x2d build/fixed_point.o
  .text          0x0000000000000000        0x0 build/usart.o
  .data          0x0000000000000000        0x0 build/usart.o
  .bss           0x0000000000000000        0x0 build/usart.o
@@ -1758,6 +1781,13 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0x20 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
  .ARM.attributes
                 0x0000000000000000       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-nano-msizer.o)
+ .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+ .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+ .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+ .text.roundf   0x0000000000000000       0x48 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+ .debug_frame   0x0000000000000000       0x28 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
@@ -1780,6 +1810,12 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_unordsf2.o)
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_unordsf2.o)
+ .text          0x0000000000000000       0x4c /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+ .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+ .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+ .debug_frame   0x0000000000000000       0x24 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+ .ARM.attributes
+                0x0000000000000000       0x1d /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
  .text          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
  .data          0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
  .bss           0x0000000000000000        0x0 /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
@@ -1810,6 +1846,7 @@ LOAD build/i2c.o
 LOAD build/adc.o
 LOAD build/tim.o
 LOAD build/features.o
+LOAD build/fixed_point.o
 LOAD build/usart.o
 LOAD build/can_app.o
 LOAD build/adxl345.o
@@ -3159,81 +3196,81 @@ LOAD /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eab
  .comment       0x0000000000000049       0x4a build/can.o
  .comment       0x0000000000000049       0x4a build/stm32f1xx_hal_can.o
 
-.debug_info     0x0000000000000000    0x25e81
+.debug_info     0x0000000000000000    0x25e72
  .debug_info    0x0000000000000000     0x1ad9 build/main.o
  .debug_info    0x0000000000001ad9      0x360 build/gpio.o
- .debug_info    0x0000000000001e39     0x142e build/freertos.o
- .debug_info    0x0000000000003267      0x962 build/i2c.o
- .debug_info    0x0000000000003bc9      0xc41 build/adc.o
- .debug_info    0x000000000000480a      0xd69 build/tim.o
- .debug_info    0x0000000000005573      0x405 build/features.o
- .debug_info    0x0000000000005978      0x99d build/usart.o
- .debug_info    0x0000000000006315      0x789 build/can_app.o
- .debug_info    0x0000000000006a9e      0x7fc build/adxl345.o
- .debug_info    0x000000000000729a      0xa3a build/stm32f1xx_it.o
- .debug_info    0x0000000000007cd4      0x3b0 build/stm32f1xx_hal_msp.o
- .debug_info    0x0000000000008084      0xb07 build/stm32f1xx_hal_timebase_tim.o
- .debug_info    0x0000000000008b8b      0xd19 build/stm32f1xx_hal_adc_ex.o
- .debug_info    0x00000000000098a4     0x1054 build/stm32f1xx_hal_adc.o
- .debug_info    0x000000000000a8f8     0x4074 build/stm32f1xx_hal_tim.o
- .debug_info    0x000000000000e96c     0x1c39 build/stm32f1xx_hal_tim_ex.o
- .debug_info    0x00000000000105a5      0x855 build/stm32f1xx_hal.o
- .debug_info    0x0000000000010dfa      0xaf0 build/stm32f1xx_hal_rcc.o
- .debug_info    0x00000000000118ea      0x47f build/stm32f1xx_hal_rcc_ex.o
- .debug_info    0x0000000000011d69      0x6d7 build/stm32f1xx_hal_gpio.o
- .debug_info    0x0000000000012440      0xe2d build/stm32f1xx_hal_cortex.o
- .debug_info    0x000000000001326d     0x3cad build/stm32f1xx_hal_i2c.o
- .debug_info    0x0000000000016f1a     0x42a4 build/stm32f1xx_hal_uart.o
- .debug_info    0x000000000001b1be      0x26e build/system_stm32f1xx.o
- .debug_info    0x000000000001b42c      0x30f build/list.o
- .debug_info    0x000000000001b73b     0x2407 build/queue.o
- .debug_info    0x000000000001db42     0x2bf7 build/tasks.o
- .debug_info    0x0000000000020739     0x243d build/cmsis_os.o
- .debug_info    0x0000000000022b76      0x61a build/heap_4.o
- .debug_info    0x0000000000023190      0x569 build/port.o
- .debug_info    0x00000000000236f9      0x185 build/sysmem.o
- .debug_info    0x000000000002387e      0x840 build/syscalls.o
- .debug_info    0x00000000000240be      0xa0d build/can.o
- .debug_info    0x0000000000024acb     0x1394 build/stm32f1xx_hal_can.o
- .debug_info    0x0000000000025e5f       0x22 build/startup_stm32f103xb.o
+ .debug_info    0x0000000000001e39     0x141f build/freertos.o
+ .debug_info    0x0000000000003258      0x962 build/i2c.o
+ .debug_info    0x0000000000003bba      0xc41 build/adc.o
+ .debug_info    0x00000000000047fb      0xd69 build/tim.o
+ .debug_info    0x0000000000005564      0x405 build/features.o
+ .debug_info    0x0000000000005969      0x99d build/usart.o
+ .debug_info    0x0000000000006306      0x789 build/can_app.o
+ .debug_info    0x0000000000006a8f      0x7fc build/adxl345.o
+ .debug_info    0x000000000000728b      0xa3a build/stm32f1xx_it.o
+ .debug_info    0x0000000000007cc5      0x3b0 build/stm32f1xx_hal_msp.o
+ .debug_info    0x0000000000008075      0xb07 build/stm32f1xx_hal_timebase_tim.o
+ .debug_info    0x0000000000008b7c      0xd19 build/stm32f1xx_hal_adc_ex.o
+ .debug_info    0x0000000000009895     0x1054 build/stm32f1xx_hal_adc.o
+ .debug_info    0x000000000000a8e9     0x4074 build/stm32f1xx_hal_tim.o
+ .debug_info    0x000000000000e95d     0x1c39 build/stm32f1xx_hal_tim_ex.o
+ .debug_info    0x0000000000010596      0x855 build/stm32f1xx_hal.o
+ .debug_info    0x0000000000010deb      0xaf0 build/stm32f1xx_hal_rcc.o
+ .debug_info    0x00000000000118db      0x47f build/stm32f1xx_hal_rcc_ex.o
+ .debug_info    0x0000000000011d5a      0x6d7 build/stm32f1xx_hal_gpio.o
+ .debug_info    0x0000000000012431      0xe2d build/stm32f1xx_hal_cortex.o
+ .debug_info    0x000000000001325e     0x3cad build/stm32f1xx_hal_i2c.o
+ .debug_info    0x0000000000016f0b     0x42a4 build/stm32f1xx_hal_uart.o
+ .debug_info    0x000000000001b1af      0x26e build/system_stm32f1xx.o
+ .debug_info    0x000000000001b41d      0x30f build/list.o
+ .debug_info    0x000000000001b72c     0x2407 build/queue.o
+ .debug_info    0x000000000001db33     0x2bf7 build/tasks.o
+ .debug_info    0x000000000002072a     0x243d build/cmsis_os.o
+ .debug_info    0x0000000000022b67      0x61a build/heap_4.o
+ .debug_info    0x0000000000023181      0x569 build/port.o
+ .debug_info    0x00000000000236ea      0x185 build/sysmem.o
+ .debug_info    0x000000000002386f      0x840 build/syscalls.o
+ .debug_info    0x00000000000240af      0xa0d build/can.o
+ .debug_info    0x0000000000024abc     0x1394 build/stm32f1xx_hal_can.o
+ .debug_info    0x0000000000025e50       0x22 build/startup_stm32f103xb.o
 
-.debug_abbrev   0x0000000000000000     0x4dde
+.debug_abbrev   0x0000000000000000     0x4dc8
  .debug_abbrev  0x0000000000000000      0x294 build/main.o
  .debug_abbrev  0x0000000000000294      0x13f build/gpio.o
- .debug_abbrev  0x00000000000003d3      0x3aa build/freertos.o
- .debug_abbrev  0x000000000000077d      0x1c5 build/i2c.o
- .debug_abbrev  0x0000000000000942      0x1ce build/adc.o
- .debug_abbrev  0x0000000000000b10      0x1f3 build/tim.o
- .debug_abbrev  0x0000000000000d03      0x168 build/features.o
- .debug_abbrev  0x0000000000000e6b      0x1e0 build/usart.o
- .debug_abbrev  0x000000000000104b      0x204 build/can_app.o
- .debug_abbrev  0x000000000000124f      0x1a1 build/adxl345.o
- .debug_abbrev  0x00000000000013f0      0x18d build/stm32f1xx_it.o
- .debug_abbrev  0x000000000000157d      0x130 build/stm32f1xx_hal_msp.o
- .debug_abbrev  0x00000000000016ad      0x202 build/stm32f1xx_hal_timebase_tim.o
- .debug_abbrev  0x00000000000018af      0x26a build/stm32f1xx_hal_adc_ex.o
- .debug_abbrev  0x0000000000001b19      0x239 build/stm32f1xx_hal_adc.o
- .debug_abbrev  0x0000000000001d52      0x29d build/stm32f1xx_hal_tim.o
- .debug_abbrev  0x0000000000001fef      0x29f build/stm32f1xx_hal_tim_ex.o
- .debug_abbrev  0x000000000000228e      0x1f7 build/stm32f1xx_hal.o
- .debug_abbrev  0x0000000000002485      0x2b8 build/stm32f1xx_hal_rcc.o
- .debug_abbrev  0x000000000000273d      0x1d5 build/stm32f1xx_hal_rcc_ex.o
- .debug_abbrev  0x0000000000002912      0x222 build/stm32f1xx_hal_gpio.o
- .debug_abbrev  0x0000000000002b34      0x359 build/stm32f1xx_hal_cortex.o
- .debug_abbrev  0x0000000000002e8d      0x306 build/stm32f1xx_hal_i2c.o
- .debug_abbrev  0x0000000000003193      0x334 build/stm32f1xx_hal_uart.o
- .debug_abbrev  0x00000000000034c7      0x140 build/system_stm32f1xx.o
- .debug_abbrev  0x0000000000003607      0x124 build/list.o
- .debug_abbrev  0x000000000000372b      0x3c4 build/queue.o
- .debug_abbrev  0x0000000000003aef      0x36b build/tasks.o
- .debug_abbrev  0x0000000000003e5a      0x37d build/cmsis_os.o
- .debug_abbrev  0x00000000000041d7      0x269 build/heap_4.o
- .debug_abbrev  0x0000000000004440      0x29d build/port.o
- .debug_abbrev  0x00000000000046dd       0xea build/sysmem.o
- .debug_abbrev  0x00000000000047c7      0x1cb build/syscalls.o
- .debug_abbrev  0x0000000000004992      0x1e4 build/can.o
- .debug_abbrev  0x0000000000004b76      0x256 build/stm32f1xx_hal_can.o
- .debug_abbrev  0x0000000000004dcc       0x12 build/startup_stm32f103xb.o
+ .debug_abbrev  0x00000000000003d3      0x394 build/freertos.o
+ .debug_abbrev  0x0000000000000767      0x1c5 build/i2c.o
+ .debug_abbrev  0x000000000000092c      0x1ce build/adc.o
+ .debug_abbrev  0x0000000000000afa      0x1f3 build/tim.o
+ .debug_abbrev  0x0000000000000ced      0x168 build/features.o
+ .debug_abbrev  0x0000000000000e55      0x1e0 build/usart.o
+ .debug_abbrev  0x0000000000001035      0x204 build/can_app.o
+ .debug_abbrev  0x0000000000001239      0x1a1 build/adxl345.o
+ .debug_abbrev  0x00000000000013da      0x18d build/stm32f1xx_it.o
+ .debug_abbrev  0x0000000000001567      0x130 build/stm32f1xx_hal_msp.o
+ .debug_abbrev  0x0000000000001697      0x202 build/stm32f1xx_hal_timebase_tim.o
+ .debug_abbrev  0x0000000000001899      0x26a build/stm32f1xx_hal_adc_ex.o
+ .debug_abbrev  0x0000000000001b03      0x239 build/stm32f1xx_hal_adc.o
+ .debug_abbrev  0x0000000000001d3c      0x29d build/stm32f1xx_hal_tim.o
+ .debug_abbrev  0x0000000000001fd9      0x29f build/stm32f1xx_hal_tim_ex.o
+ .debug_abbrev  0x0000000000002278      0x1f7 build/stm32f1xx_hal.o
+ .debug_abbrev  0x000000000000246f      0x2b8 build/stm32f1xx_hal_rcc.o
+ .debug_abbrev  0x0000000000002727      0x1d5 build/stm32f1xx_hal_rcc_ex.o
+ .debug_abbrev  0x00000000000028fc      0x222 build/stm32f1xx_hal_gpio.o
+ .debug_abbrev  0x0000000000002b1e      0x359 build/stm32f1xx_hal_cortex.o
+ .debug_abbrev  0x0000000000002e77      0x306 build/stm32f1xx_hal_i2c.o
+ .debug_abbrev  0x000000000000317d      0x334 build/stm32f1xx_hal_uart.o
+ .debug_abbrev  0x00000000000034b1      0x140 build/system_stm32f1xx.o
+ .debug_abbrev  0x00000000000035f1      0x124 build/list.o
+ .debug_abbrev  0x0000000000003715      0x3c4 build/queue.o
+ .debug_abbrev  0x0000000000003ad9      0x36b build/tasks.o
+ .debug_abbrev  0x0000000000003e44      0x37d build/cmsis_os.o
+ .debug_abbrev  0x00000000000041c1      0x269 build/heap_4.o
+ .debug_abbrev  0x000000000000442a      0x29d build/port.o
+ .debug_abbrev  0x00000000000046c7       0xea build/sysmem.o
+ .debug_abbrev  0x00000000000047b1      0x1cb build/syscalls.o
+ .debug_abbrev  0x000000000000497c      0x1e4 build/can.o
+ .debug_abbrev  0x0000000000004b60      0x256 build/stm32f1xx_hal_can.o
+ .debug_abbrev  0x0000000000004db6       0x12 build/startup_stm32f103xb.o
 
 .debug_loc      0x0000000000000000    0x1d7fa
  .debug_loc     0x0000000000000000      0x35b build/main.o
@@ -3627,6 +3664,8 @@ FLASH_WaitForLastOperation                        build/stm32f1xx_hal_flash.o
                                                   build/stm32f1xx_hal_flash_ex.o
 Features_ComputeRMSPeak                           build/features.o
                                                   build/freertos.o
+FloatTo_Q11_4                                     build/fixed_point.o
+FloatTo_Q8_7                                      build/fixed_point.o
 HAL_ADCEx_Calibration_Start                       build/stm32f1xx_hal_adc_ex.o
 HAL_ADCEx_InjectedConfigChannel                   build/stm32f1xx_hal_adc_ex.o
 HAL_ADCEx_InjectedConvCpltCallback                build/stm32f1xx_hal_adc_ex.o
@@ -4247,17 +4286,22 @@ __aeabi_drsub                                     /home/santiago/gcc-arm-none-ea
 __aeabi_dsub                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubdf3.o)
 __aeabi_f2d                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubdf3.o)
                                                   build/can_app.o
+__aeabi_f2iz                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
+                                                  build/fixed_point.o
 __aeabi_fadd                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubsf3.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-ef_sqrt.o)
+                                                  /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
                                                   build/features.o
                                                   build/freertos.o
 __aeabi_fcmpeq                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
 __aeabi_fcmpge                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
 __aeabi_fcmpgt                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
+                                                  build/fixed_point.o
                                                   build/features.o
 __aeabi_fcmple                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
 __aeabi_fcmplt                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_cmpsf2.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
+                                                  build/fixed_point.o
 __aeabi_fcmpun                                    /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_unordsf2.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)
 __aeabi_fdiv                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_muldivsf3.o)
@@ -4268,6 +4312,7 @@ __aeabi_fdiv                                      /home/santiago/gcc-arm-none-ea
 __aeabi_fmul                                      /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_muldivsf3.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_mulsf3.o)
                                                   /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-ef_sqrt.o)
+                                                  build/fixed_point.o
                                                   build/features.o
                                                   build/freertos.o
 __aeabi_frsub                                     /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubsf3.o)
@@ -4300,6 +4345,7 @@ __errno                                           /home/santiago/gcc-arm-none-ea
                                                   build/syscalls.o
                                                   build/sysmem.o
 __extendsfdf2                                     /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubdf3.o)
+__fixsfsi                                         /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_fixsfsi.o)
 __floatdidf                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubdf3.o)
 __floatdisf                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubsf3.o)
 __floatsidf                                       /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a(_arm_addsubdf3.o)
@@ -4697,6 +4743,8 @@ pxCurrentTCB                                      build/tasks.o
 pxPortInitialiseStack                             build/port.o
                                                   build/tasks.o
 rawQueue                                          build/freertos.o
+roundf                                            /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-sf_round.o)
+                                                  build/fixed_point.o
 samplerHandle                                     build/freertos.o
 software_init_hook                                /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 sqrtf                                             /home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libm.a(lib_a-wf_sqrt.o)

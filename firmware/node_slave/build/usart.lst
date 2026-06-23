@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccH6E5pu.s 			page 1
+ARM GAS  /tmp/ccMpXsTL.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
   30:Core/Src/usart.c **** /* USART1 init function */
   31:Core/Src/usart.c **** 
   32:Core/Src/usart.c **** void MX_USART1_UART_Init(void)
-ARM GAS  /tmp/ccH6E5pu.s 			page 2
+ARM GAS  /tmp/ccMpXsTL.s 			page 2
 
 
   33:Core/Src/usart.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
   64 001c C361     		str	r3, [r0, #28]
   50:Core/Src/usart.c ****   if (HAL_UART_Init(&huart1) != HAL_OK)
   65              		.loc 1 50 3 is_stmt 1 view .LVU17
-ARM GAS  /tmp/ccH6E5pu.s 			page 3
+ARM GAS  /tmp/ccMpXsTL.s 			page 3
 
 
   66              		.loc 1 50 7 is_stmt 0 view .LVU18
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  110              		.cfi_def_cfa_offset 32
   62:Core/Src/usart.c **** 
   63:Core/Src/usart.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
-ARM GAS  /tmp/ccH6E5pu.s 			page 4
+ARM GAS  /tmp/ccMpXsTL.s 			page 4
 
 
  111              		.loc 1 63 3 is_stmt 1 view .LVU25
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  137              		.cfi_restore_state
   70:Core/Src/usart.c **** 
  138              		.loc 1 70 5 is_stmt 1 view .LVU31
-ARM GAS  /tmp/ccH6E5pu.s 			page 5
+ARM GAS  /tmp/ccMpXsTL.s 			page 5
 
 
  139              	.LBB2:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  177              		.loc 1 79 5 is_stmt 1 view .LVU47
   79:Core/Src/usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  178              		.loc 1 79 27 is_stmt 0 view .LVU48
-ARM GAS  /tmp/ccH6E5pu.s 			page 6
+ARM GAS  /tmp/ccMpXsTL.s 			page 6
 
 
  179 004c 0323     		movs	r3, #3
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
   93:Core/Src/usart.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
   94:Core/Src/usart.c **** {
  225              		.loc 1 94 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccH6E5pu.s 			page 7
+ARM GAS  /tmp/ccMpXsTL.s 			page 7
 
 
  226              		.cfi_startproc
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  257              		.loc 1 108 5 is_stmt 0 view .LVU67
  258 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
  259              	.LVL12:
-ARM GAS  /tmp/ccH6E5pu.s 			page 8
+ARM GAS  /tmp/ccMpXsTL.s 			page 8
 
 
  260              		.loc 1 114 1 view .LVU68
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  305              	.LVL16:
  306              	.L22:
  307              		.loc 1 124 1 view .LVU75
-ARM GAS  /tmp/ccH6E5pu.s 			page 9
+ARM GAS  /tmp/ccMpXsTL.s 			page 9
 
 
  308              		.align	2
@@ -508,25 +508,25 @@ ARM GAS  /tmp/ccH6E5pu.s 			page 1
  331              		.file 9 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
  332              		.file 10 "Core/Inc/main.h"
  333              		.file 11 "Core/Inc/usart.h"
-ARM GAS  /tmp/ccH6E5pu.s 			page 10
+ARM GAS  /tmp/ccMpXsTL.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 usart.c
-     /tmp/ccH6E5pu.s:18     .text.MX_USART1_UART_Init:0000000000000000 $t
-     /tmp/ccH6E5pu.s:24     .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
-     /tmp/ccH6E5pu.s:83     .text.MX_USART1_UART_Init:000000000000002c $d
-     /tmp/ccH6E5pu.s:89     .text.HAL_UART_MspInit:0000000000000000 $t
-     /tmp/ccH6E5pu.s:95     .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
-     /tmp/ccH6E5pu.s:210    .text.HAL_UART_MspInit:0000000000000070 $d
-     /tmp/ccH6E5pu.s:216    .text.HAL_UART_MspDeInit:0000000000000000 $t
-     /tmp/ccH6E5pu.s:222    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
-     /tmp/ccH6E5pu.s:265    .text.HAL_UART_MspDeInit:0000000000000024 $d
-     /tmp/ccH6E5pu.s:272    .text.UART_Print:0000000000000000 $t
-     /tmp/ccH6E5pu.s:278    .text.UART_Print:0000000000000000 UART_Print
-     /tmp/ccH6E5pu.s:310    .text.UART_Print:0000000000000018 $d
-     /tmp/ccH6E5pu.s:320    .bss.huart1:0000000000000000 huart1
-     /tmp/ccH6E5pu.s:316    .bss.huart1:0000000000000000 $d
+     /tmp/ccMpXsTL.s:18     .text.MX_USART1_UART_Init:0000000000000000 $t
+     /tmp/ccMpXsTL.s:24     .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
+     /tmp/ccMpXsTL.s:83     .text.MX_USART1_UART_Init:000000000000002c $d
+     /tmp/ccMpXsTL.s:89     .text.HAL_UART_MspInit:0000000000000000 $t
+     /tmp/ccMpXsTL.s:95     .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
+     /tmp/ccMpXsTL.s:210    .text.HAL_UART_MspInit:0000000000000070 $d
+     /tmp/ccMpXsTL.s:216    .text.HAL_UART_MspDeInit:0000000000000000 $t
+     /tmp/ccMpXsTL.s:222    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
+     /tmp/ccMpXsTL.s:265    .text.HAL_UART_MspDeInit:0000000000000024 $d
+     /tmp/ccMpXsTL.s:272    .text.UART_Print:0000000000000000 $t
+     /tmp/ccMpXsTL.s:278    .text.UART_Print:0000000000000000 UART_Print
+     /tmp/ccMpXsTL.s:310    .text.UART_Print:0000000000000018 $d
+     /tmp/ccMpXsTL.s:320    .bss.huart1:0000000000000000 huart1
+     /tmp/ccMpXsTL.s:316    .bss.huart1:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Init

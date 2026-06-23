@@ -43,6 +43,7 @@ Core/Src/i2c.c \
 Core/Src/adc.c \
 Core/Src/tim.c \
 Core/Src/features.c \
+Core/Src/fixed_point.c \
 Core/Src/usart.c \
 Core/Src/can_app.c \
 Core/Src/adxl345.c \

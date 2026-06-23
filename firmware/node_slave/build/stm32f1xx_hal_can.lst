@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccamhgRM.s 			page 1
+ARM GAS  /tmp/ccHBVNnb.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
   29:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   ==============================================================================
   30:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     [..]
   31:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       (#) Initialize the CAN low level resources by implementing the
-ARM GAS  /tmp/ccamhgRM.s 			page 2
+ARM GAS  /tmp/ccHBVNnb.s 			page 2
 
 
   32:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           HAL_CAN_MspInit():
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
   86:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****             (++) Monitor the Tx mailboxes availability until at least one Tx
   87:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****                  mailbox is free, using HAL_CAN_GetTxMailboxesFreeLevel().
   88:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****             (++) Then request transmission of a message using
-ARM GAS  /tmp/ccamhgRM.s 			page 3
+ARM GAS  /tmp/ccHBVNnb.s 			page 3
 
 
   89:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****                  HAL_CAN_AddTxMessage().
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  143:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   The compilation define  USE_HAL_CAN_REGISTER_CALLBACKS when set to 1
  144:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   allows the user to configure dynamically the driver callbacks.
  145:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   Use Function HAL_CAN_RegisterCallback() to register an interrupt callback.
-ARM GAS  /tmp/ccamhgRM.s 			page 4
+ARM GAS  /tmp/ccHBVNnb.s 			page 4
 
 
  146:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  200:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   In that case first register the MspInit/MspDeInit user callbacks
  201:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   using HAL_CAN_RegisterCallback() before calling HAL_CAN_DeInit()
  202:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   or HAL_CAN_Init() function.
-ARM GAS  /tmp/ccamhgRM.s 			page 5
+ARM GAS  /tmp/ccHBVNnb.s 			page 5
 
 
  203:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  257:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   ==============================================================================
  258:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     [..]  This section provides functions allowing to:
  259:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       (+) HAL_CAN_Init                       : Initialize and configure the CAN.
-ARM GAS  /tmp/ccamhgRM.s 			page 6
+ARM GAS  /tmp/ccHBVNnb.s 			page 6
 
 
  260:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       (+) HAL_CAN_DeInit                     : De-initialize the CAN.
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  314:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     hcan->WakeUpFromRxMsgCallback    =  HAL_CAN_WakeUpFromRxMsgCallback;    /* Legacy weak WakeUpFr
  315:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     hcan->ErrorCallback              =  HAL_CAN_ErrorCallback;              /* Legacy weak ErrorCal
  316:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 7
+ARM GAS  /tmp/ccHBVNnb.s 			page 7
 
 
  317:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     if (hcan->MspInitCallback == NULL)
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  371:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* Change CAN state */
  372:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       hcan->State = HAL_CAN_STATE_ERROR;
  373:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 8
+ARM GAS  /tmp/ccHBVNnb.s 			page 8
 
 
  374:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       return HAL_ERROR;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  428:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   /* Set the transmit FIFO priority */
  429:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   if (hcan->Init.TransmitFifoPriority == ENABLE)
  430:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
-ARM GAS  /tmp/ccamhgRM.s 			page 9
+ARM GAS  /tmp/ccHBVNnb.s 			page 9
 
 
  431:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     SET_BIT(hcan->Instance->MCR, CAN_MCR_TXFP);
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  485:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #else
  486:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   /* DeInit the low level hardware: CLOCK, NVIC */
  487:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   HAL_CAN_MspDeInit(hcan);
-ARM GAS  /tmp/ccamhgRM.s 			page 10
+ARM GAS  /tmp/ccHBVNnb.s 			page 10
 
 
  488:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #endif /* USE_HAL_CAN_REGISTER_CALLBACKS */
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  277:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
   53              		.loc 1 277 3 view .LVU4
  280:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
-ARM GAS  /tmp/ccamhgRM.s 			page 11
+ARM GAS  /tmp/ccHBVNnb.s 			page 11
 
 
   54              		.loc 1 280 3 view .LVU5
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
   90 0018 1360     		str	r3, [r2]
  339:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
   91              		.loc 1 339 3 view .LVU24
-ARM GAS  /tmp/ccamhgRM.s 			page 12
+ARM GAS  /tmp/ccHBVNnb.s 			page 12
 
 
  339:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  129              		.loc 1 453 1 view .LVU41
  130 0044 38BD     		pop	{r3, r4, r5, pc}
  131              	.LVL6:
-ARM GAS  /tmp/ccamhgRM.s 			page 13
+ARM GAS  /tmp/ccHBVNnb.s 			page 13
 
 
  132              	.L26:
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  170              		.loc 1 369 23 is_stmt 0 view .LVU57
  171 006e 636A     		ldr	r3, [r4, #36]
  172 0070 43F40033 		orr	r3, r3, #131072
-ARM GAS  /tmp/ccamhgRM.s 			page 14
+ARM GAS  /tmp/ccHBVNnb.s 			page 14
 
 
  173 0074 6362     		str	r3, [r4, #36]
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  405:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
  212              		.loc 1 405 5 is_stmt 1 view .LVU73
  213 00a4 2268     		ldr	r2, [r4]
-ARM GAS  /tmp/ccamhgRM.s 			page 15
+ARM GAS  /tmp/ccHBVNnb.s 			page 15
 
 
  214 00a6 1368     		ldr	r3, [r2]
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  255 00de A368     		ldr	r3, [r4, #8]
  256 00e0 E268     		ldr	r2, [r4, #12]
  257 00e2 1343     		orrs	r3, r3, r2
-ARM GAS  /tmp/ccamhgRM.s 			page 16
+ARM GAS  /tmp/ccHBVNnb.s 			page 16
 
 
  258 00e4 2269     		ldr	r2, [r4, #16]
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  302 0128 23F01003 		bic	r3, r3, #16
  303 012c 1360     		str	r3, [r2]
  304 012e C6E7     		b	.L16
-ARM GAS  /tmp/ccamhgRM.s 			page 17
+ARM GAS  /tmp/ccHBVNnb.s 			page 17
 
 
  305              	.L33:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  348              		@ frame_needed = 0, uses_anonymous_args = 0
  349              		@ link register save eliminated.
  527:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   /* Prevent unused argument(s) compilation warning */
-ARM GAS  /tmp/ccamhgRM.s 			page 18
+ARM GAS  /tmp/ccHBVNnb.s 			page 18
 
 
  528:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   UNUSED(hcan);
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  568:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Update the error code */
  569:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     hcan->ErrorCode |= HAL_CAN_ERROR_INVALID_CALLBACK;
  570:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 19
+ARM GAS  /tmp/ccHBVNnb.s 			page 19
 
 
  571:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     return HAL_ERROR;
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  625:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
  626:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       case HAL_CAN_ERROR_CB_ID :
  627:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         hcan->ErrorCallback = pCallback;
-ARM GAS  /tmp/ccamhgRM.s 			page 20
+ARM GAS  /tmp/ccHBVNnb.s 			page 20
 
 
  628:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         break;
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  682:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   *         CAN callback is redirected to the weak predefined callback
  683:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  hcan pointer to a CAN_HandleTypeDef structure that contains
  684:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   *         the configuration information for CAN module
-ARM GAS  /tmp/ccamhgRM.s 			page 21
+ARM GAS  /tmp/ccHBVNnb.s 			page 21
 
 
  685:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  CallbackID ID of the callback to be unregistered
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  739:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
  740:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       case HAL_CAN_RX_FIFO0_FULL_CB_ID :
  741:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         hcan->RxFifo0FullCallback = HAL_CAN_RxFifo0FullCallback;
-ARM GAS  /tmp/ccamhgRM.s 			page 22
+ARM GAS  /tmp/ccHBVNnb.s 			page 22
 
 
  742:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         break;
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  796:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
  797:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         /* Return error status */
  798:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         status =  HAL_ERROR;
-ARM GAS  /tmp/ccamhgRM.s 			page 23
+ARM GAS  /tmp/ccHBVNnb.s 			page 23
 
 
  799:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         break;
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  373 0000 0268     		ldr	r2, [r0]
  374              	.LVL16:
  846:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   HAL_CAN_StateTypeDef state = hcan->State;
-ARM GAS  /tmp/ccamhgRM.s 			page 24
+ARM GAS  /tmp/ccHBVNnb.s 			page 24
 
 
  375              		.loc 1 846 3 is_stmt 1 view .LVU108
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  888:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Filter Deactivation */
  889:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     CLEAR_BIT(can_ip->FA1R, filternbrbitpos);
  890:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 25
+ARM GAS  /tmp/ccHBVNnb.s 			page 25
 
 
  891:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Filter Scale */
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  945:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
  946:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* FIFO 1 assignation for the filter */
  947:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       SET_BIT(can_ip->FFA1R, filternbrbitpos);
-ARM GAS  /tmp/ccamhgRM.s 			page 26
+ARM GAS  /tmp/ccHBVNnb.s 			page 26
 
 
  948:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  858:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     assert_param(IS_CAN_FILTER_ACTIVATION(sFilterConfig->FilterActivation));
  413              		.loc 1 858 5 view .LVU126
  859:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 27
+ARM GAS  /tmp/ccHBVNnb.s 			page 27
 
 
  414              		.loc 1 859 5 view .LVU127
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  452 005c 44EA0E44 		orr	r4, r4, lr, lsl #16
  899:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         ((0x0000FFFFU & (uint32_t)sFilterConfig->FilterMaskIdLow) << 16U) |
  453              		.loc 1 899 62 view .LVU144
-ARM GAS  /tmp/ccamhgRM.s 			page 28
+ARM GAS  /tmp/ccHBVNnb.s 			page 28
 
 
  454 0060 4830     		adds	r0, r0, #72
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  492 0094 D2F81402 		ldr	r0, [r2, #532]
  493 0098 0CEA0000 		and	r0, ip, r0
  494 009c C2F81402 		str	r0, [r2, #532]
-ARM GAS  /tmp/ccamhgRM.s 			page 29
+ARM GAS  /tmp/ccHBVNnb.s 			page 29
 
 
  495              	.L43:
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  534              		.loc 1 921 44 view .LVU176
  535 00d4 4869     		ldr	r0, [r1, #20]
  922:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         (0x0000FFFFU & (uint32_t)sFilterConfig->FilterMaskIdLow);
-ARM GAS  /tmp/ccamhgRM.s 			page 30
+ARM GAS  /tmp/ccHBVNnb.s 			page 30
 
 
  536              		.loc 1 922 76 view .LVU177
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  979:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   ==============================================================================
  980:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****                       ##### Control functions #####
  981:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   ==============================================================================
-ARM GAS  /tmp/ccamhgRM.s 			page 31
+ARM GAS  /tmp/ccHBVNnb.s 			page 31
 
 
  982:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     [..]  This section provides functions allowing to:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1015:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     hcan->State = HAL_CAN_STATE_LISTENING;
 1016:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 1017:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Request leave initialisation */
-ARM GAS  /tmp/ccamhgRM.s 			page 32
+ARM GAS  /tmp/ccHBVNnb.s 			page 32
 
 
 1018:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     CLEAR_BIT(hcan->Instance->MCR, CAN_MCR_INRQ);
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  616 001c 0223     		movs	r3, #2
  617 001e 80F82030 		strb	r3, [r0, #32]
 1018:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 33
+ARM GAS  /tmp/ccHBVNnb.s 			page 33
 
 
  618              		.loc 1 1018 5 is_stmt 1 view .LVU196
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  656 004e 0523     		movs	r3, #5
  657 0050 84F82030 		strb	r3, [r4, #32]
 1035:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       }
-ARM GAS  /tmp/ccamhgRM.s 			page 34
+ARM GAS  /tmp/ccHBVNnb.s 			page 34
 
 
  658              		.loc 1 1035 9 is_stmt 1 view .LVU213
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  697              		.loc 1 1064 11 is_stmt 0 view .LVU223
  698 0004 90F82030 		ldrb	r3, [r0, #32]	@ zero_extendqisi2
  699 0008 DBB2     		uxtb	r3, r3
-ARM GAS  /tmp/ccamhgRM.s 			page 35
+ARM GAS  /tmp/ccHBVNnb.s 			page 35
 
 
  700              		.loc 1 1064 6 view .LVU224
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  714 0018 38BD     		pop	{r3, r4, r5, pc}
  715              	.LVL36:
  716              	.L67:
-ARM GAS  /tmp/ccamhgRM.s 			page 36
+ARM GAS  /tmp/ccHBVNnb.s 			page 36
 
 
 1067:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  754              		.loc 1 1082 21 is_stmt 0 view .LVU246
  755 0046 0523     		movs	r3, #5
  756 0048 84F82030 		strb	r3, [r4, #32]
-ARM GAS  /tmp/ccamhgRM.s 			page 37
+ARM GAS  /tmp/ccHBVNnb.s 			page 37
 
 
 1084:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       }
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  801              		.loc 1 471 3 is_stmt 1 view .LVU258
  474:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
  802              		.loc 1 474 3 view .LVU259
-ARM GAS  /tmp/ccamhgRM.s 			page 38
+ARM GAS  /tmp/ccHBVNnb.s 			page 38
 
 
  474:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  848              	.LFB72:
 1105:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 1106:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** /**
-ARM GAS  /tmp/ccamhgRM.s 			page 39
+ARM GAS  /tmp/ccHBVNnb.s 			page 39
 
 
 1107:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @brief  Request the sleep mode (low power) entry.
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  875              	.LVL48:
 1135:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
 1136:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** }
-ARM GAS  /tmp/ccamhgRM.s 			page 40
+ARM GAS  /tmp/ccHBVNnb.s 			page 40
 
 
  876              		.loc 1 1136 1 view .LVU282
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  916 0004 0193     		str	r3, [sp, #4]
 1149:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   HAL_CAN_StateTypeDef state = hcan->State;
  917              		.loc 1 1149 3 is_stmt 1 view .LVU291
-ARM GAS  /tmp/ccamhgRM.s 			page 41
+ARM GAS  /tmp/ccHBVNnb.s 			page 41
 
 
  918              		.loc 1 1149 24 is_stmt 0 view .LVU292
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  950              		.loc 1 1171 19 is_stmt 0 view .LVU305
  951 002a 0368     		ldr	r3, [r0]
  952              		.loc 1 1171 29 view .LVU306
-ARM GAS  /tmp/ccamhgRM.s 			page 42
+ARM GAS  /tmp/ccHBVNnb.s 			page 42
 
 
  953 002c 5B68     		ldr	r3, [r3, #4]
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  990              		.cfi_def_cfa_offset 0
  991              		@ sp needed
  992 0050 7047     		bx	lr
-ARM GAS  /tmp/ccamhgRM.s 			page 43
+ARM GAS  /tmp/ccHBVNnb.s 			page 43
 
 
  993              	.L88:
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1032              		.loc 1 1195 12 view .LVU329
  1033 000e 7047     		bx	lr
  1034              	.LVL63:
-ARM GAS  /tmp/ccamhgRM.s 			page 44
+ARM GAS  /tmp/ccHBVNnb.s 			page 44
 
 
  1035              	.L93:
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1224:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** HAL_StatusTypeDef HAL_CAN_AddTxMessage(CAN_HandleTypeDef *hcan, const CAN_TxHeaderTypeDef *pHeader,
 1225:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****                                        const uint8_t aData[], uint32_t *pTxMailbox)
 1226:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** {
-ARM GAS  /tmp/ccamhgRM.s 			page 45
+ARM GAS  /tmp/ccHBVNnb.s 			page 45
 
 
  1066              		.loc 1 1226 1 is_stmt 1 view -0
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1101 0016 62D8     		bhi	.L95
 1246:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       (state == HAL_CAN_STATE_LISTENING))
 1247:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
-ARM GAS  /tmp/ccamhgRM.s 			page 46
+ARM GAS  /tmp/ccHBVNnb.s 			page 46
 
 
 1248:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Check that all the Tx mailboxes are not full */
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1137 0040 E550     		str	r5, [r4, r3]
  1138              	.L98:
 1264:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       }
-ARM GAS  /tmp/ccamhgRM.s 			page 47
+ARM GAS  /tmp/ccHBVNnb.s 			page 47
 
 
 1265:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       else
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1170 0076 9378     		ldrb	r3, [r2, #2]	@ zero_extendqisi2
  1171 0078 1B04     		lsls	r3, r3, #16
  1172 007a 43EA0163 		orr	r3, r3, r1, lsl #24
-ARM GAS  /tmp/ccamhgRM.s 			page 48
+ARM GAS  /tmp/ccHBVNnb.s 			page 48
 
 
  1173 007e 5178     		ldrb	r1, [r2, #1]	@ zero_extendqisi2
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1211 00bc 0568     		ldr	r5, [r0]
  1212 00be 2B51     		str	r3, [r5, r4]
  1213 00c0 BFE7     		b	.L98
-ARM GAS  /tmp/ccamhgRM.s 			page 49
+ARM GAS  /tmp/ccHBVNnb.s 			page 49
 
 
  1214              	.L102:
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1251              	.LVL84:
  1252              	.L100:
 1313:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
-ARM GAS  /tmp/ccamhgRM.s 			page 50
+ARM GAS  /tmp/ccHBVNnb.s 			page 50
 
 
 1314:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** }
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1336:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
 1337:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* Add cancellation request for Tx Mailbox 0 */
 1338:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       SET_BIT(hcan->Instance->TSR, CAN_TSR_ABRQ0);
-ARM GAS  /tmp/ccamhgRM.s 			page 51
+ARM GAS  /tmp/ccHBVNnb.s 			page 51
 
 
 1339:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1310              		.loc 1 1342 5 view .LVU422
 1342:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
  1311              		.loc 1 1342 8 is_stmt 0 view .LVU423
-ARM GAS  /tmp/ccamhgRM.s 			page 52
+ARM GAS  /tmp/ccHBVNnb.s 			page 52
 
 
  1312 0028 11F0020F 		tst	r1, #2
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1352              		@ frame_needed = 0, uses_anonymous_args = 0
  1353              		@ link register save eliminated.
 1375:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   uint32_t freelevel = 0U;
-ARM GAS  /tmp/ccamhgRM.s 			page 53
+ARM GAS  /tmp/ccHBVNnb.s 			page 53
 
 
  1354              		.loc 1 1375 3 view .LVU432
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1378              		.loc 1 1382 14 is_stmt 0 view .LVU443
  1379 0010 0368     		ldr	r3, [r0]
 1382:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
-ARM GAS  /tmp/ccamhgRM.s 			page 54
+ARM GAS  /tmp/ccHBVNnb.s 			page 54
 
 
  1380              		.loc 1 1382 24 view .LVU444
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1423              	HAL_CAN_IsTxMessagePending:
  1424              	.LVL100:
  1425              	.LFB78:
-ARM GAS  /tmp/ccamhgRM.s 			page 55
+ARM GAS  /tmp/ccHBVNnb.s 			page 55
 
 
 1403:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1428:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     if ((hcan->Instance->TSR & (TxMailboxes << CAN_TSR_TME0_Pos)) != (TxMailboxes << CAN_TSR_TME0_P
  1453              		.loc 1 1428 5 is_stmt 1 view .LVU469
  1454              		.loc 1 1428 14 is_stmt 0 view .LVU470
-ARM GAS  /tmp/ccamhgRM.s 			page 56
+ARM GAS  /tmp/ccHBVNnb.s 			page 56
 
 
  1455 0010 0368     		ldr	r3, [r0]
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1449:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** {
  1489              		.loc 1 1449 1 is_stmt 1 view -0
  1490              		.cfi_startproc
-ARM GAS  /tmp/ccamhgRM.s 			page 57
+ARM GAS  /tmp/ccHBVNnb.s 			page 57
 
 
  1491              		@ args = 0, pretend = 0, frame = 0
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
    4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
-ARM GAS  /tmp/ccamhgRM.s 			page 58
+ARM GAS  /tmp/ccHBVNnb.s 			page 58
 
 
    5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
   59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
   60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
-ARM GAS  /tmp/ccamhgRM.s 			page 59
+ARM GAS  /tmp/ccHBVNnb.s 			page 59
 
 
   62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  116:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
-ARM GAS  /tmp/ccamhgRM.s 			page 60
+ARM GAS  /tmp/ccHBVNnb.s 			page 60
 
 
  119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  173:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  174:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  175:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 61
+ARM GAS  /tmp/ccHBVNnb.s 			page 61
 
 
  176:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  230:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the xPSR Register.
  231:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               xPSR Register value
  232:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/ccamhgRM.s 			page 62
+ARM GAS  /tmp/ccHBVNnb.s 			page 62
 
 
  233:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_xPSR(void)
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  287:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
  288:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  289:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PSP_NS(uint32_t topOfProcStack)
-ARM GAS  /tmp/ccamhgRM.s 			page 63
+ARM GAS  /tmp/ccHBVNnb.s 			page 63
 
 
  290:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  344:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  345:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR msp_ns, %0" : : "r" (topOfMainStack) : );
  346:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  /tmp/ccamhgRM.s 			page 64
+ARM GAS  /tmp/ccHBVNnb.s 			page 64
 
 
  347:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  401:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask_ns" : "=r" (result) :: "memory");
  402:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
  403:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  /tmp/ccamhgRM.s 			page 65
+ARM GAS  /tmp/ccHBVNnb.s 			page 65
 
 
  404:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  458:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Base Priority register.
  459:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Base Priority register value
  460:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/ccamhgRM.s 			page 66
+ARM GAS  /tmp/ccHBVNnb.s 			page 66
 
 
  461:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_BASEPRI(void)
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  515:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  516:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_BASEPRI_MAX(uint32_t basePri)
  517:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  /tmp/ccamhgRM.s 			page 67
+ARM GAS  /tmp/ccHBVNnb.s 			page 67
 
 
  518:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR basepri_max, %0" : : "r" (basePri) : "memory");
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  572:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  573:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  574:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 68
+ARM GAS  /tmp/ccHBVNnb.s 			page 68
 
 
  575:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  629:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Process Stack Pointer Limit
  630:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
  631:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored in non-secure
-ARM GAS  /tmp/ccamhgRM.s 			page 69
+ARM GAS  /tmp/ccHBVNnb.s 			page 69
 
 
  632:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  686:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
  687:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, msplim" : "=r" (result) );
  688:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
-ARM GAS  /tmp/ccamhgRM.s 			page 70
+ARM GAS  /tmp/ccHBVNnb.s 			page 70
 
 
  689:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  743:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer Limit (MSPLIM) when in secu
  744:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    MainStackPtrLimit  Main Stack Pointer value to set
  745:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/ccamhgRM.s 			page 71
+ARM GAS  /tmp/ccHBVNnb.s 			page 71
 
 
  746:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  800:Drivers/CMSIS/Include/cmsis_gcc.h ****   __builtin_arm_set_fpscr(fpscr);
  801:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  802:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) : "vfpcc", "memory");
-ARM GAS  /tmp/ccamhgRM.s 			page 72
+ARM GAS  /tmp/ccHBVNnb.s 			page 72
 
 
  803:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  857:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __SEV()                             __ASM volatile ("sev")
  858:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  859:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 73
+ARM GAS  /tmp/ccHBVNnb.s 			page 73
 
 
  860:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  914:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (16 bit)
  915:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order within each halfword of a word. For example, 0x12345678 becomes 
  916:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
-ARM GAS  /tmp/ccamhgRM.s 			page 74
+ARM GAS  /tmp/ccHBVNnb.s 			page 74
 
 
  917:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  971:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  972:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __BKPT(value)                       __ASM volatile ("bkpt "#value)
  973:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 75
+ARM GAS  /tmp/ccHBVNnb.s 			page 75
 
 
  974:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1544 001a 1831     		adds	r1, r1, #24
  1545              	.LVL115:
 1464:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
-ARM GAS  /tmp/ccamhgRM.s 			page 76
+ARM GAS  /tmp/ccHBVNnb.s 			page 76
 
 
  1546              		.loc 1 1464 61 view .LVU502
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1489:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   if ((state == HAL_CAN_STATE_READY) ||
  1580              		.loc 1 1489 3 view .LVU510
  1581              		.loc 1 1489 38 is_stmt 0 view .LVU511
-ARM GAS  /tmp/ccamhgRM.s 			page 77
+ARM GAS  /tmp/ccHBVNnb.s 			page 77
 
 
  1582 0004 0CF1FF3C 		add	ip, ip, #-1
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1504:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     else /* Rx element is assigned to Rx FIFO 1 */
 1505:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
 1506:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* Check that the Rx FIFO 1 is not empty */
-ARM GAS  /tmp/ccamhgRM.s 			page 78
+ARM GAS  /tmp/ccHBVNnb.s 			page 78
 
 
 1507:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       if ((hcan->Instance->RF1R & CAN_RF1R_FMP1) == 0U)
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1661 0058 0568     		ldr	r5, [r0]
  1662              		.loc 1 1520 77 view .LVU546
  1663 005a 01F11B04 		add	r4, r1, #27
-ARM GAS  /tmp/ccamhgRM.s 			page 79
+ARM GAS  /tmp/ccHBVNnb.s 			page 79
 
 
  1664 005e 2401     		lsls	r4, r4, #4
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1701 0092 05EB0C15 		add	r5, r5, ip, lsl #4
  1702 0096 6D68     		ldr	r5, [r5, #4]
  1703              		.loc 1 1537 93 view .LVU563
-ARM GAS  /tmp/ccamhgRM.s 			page 80
+ARM GAS  /tmp/ccHBVNnb.s 			page 80
 
 
  1704 0098 C5F30725 		ubfx	r5, r5, #8, #8
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1751 00dc D2F8B821 		ldr	r2, [r2, #440]
  1752              		.loc 1 1544 16 view .LVU587
  1753 00e0 120E     		lsrs	r2, r2, #24
-ARM GAS  /tmp/ccamhgRM.s 			page 81
+ARM GAS  /tmp/ccHBVNnb.s 			page 81
 
 
  1754              		.loc 1 1544 14 view .LVU588
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1798 0120 0268     		ldr	r2, [r0]
  1799 0122 D368     		ldr	r3, [r2, #12]
  1800              	.LVL129:
-ARM GAS  /tmp/ccamhgRM.s 			page 82
+ARM GAS  /tmp/ccHBVNnb.s 			page 82
 
 
  1801              		.loc 1 1554 7 is_stmt 0 view .LVU611
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1832 013c 5460     		str	r4, [r2, #4]
  1833 013e 92E7     		b	.L133
  1834              	.L134:
-ARM GAS  /tmp/ccamhgRM.s 			page 83
+ARM GAS  /tmp/ccHBVNnb.s 			page 83
 
 
 1535:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1879              		.global	HAL_CAN_GetRxFifoFillLevel
  1880              		.syntax unified
  1881              		.thumb
-ARM GAS  /tmp/ccamhgRM.s 			page 84
+ARM GAS  /tmp/ccHBVNnb.s 			page 84
 
 
  1882              		.thumb_func
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1599:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       filllevel = hcan->Instance->RF1R & CAN_RF1R_FMP1;
 1600:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
 1601:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
-ARM GAS  /tmp/ccamhgRM.s 			page 85
+ARM GAS  /tmp/ccHBVNnb.s 			page 85
 
 
 1602:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1949              		.thumb
  1950              		.thumb_func
  1952              	HAL_CAN_ActivateNotification:
-ARM GAS  /tmp/ccamhgRM.s 			page 86
+ARM GAS  /tmp/ccHBVNnb.s 			page 86
 
 
  1953              	.LVL147:
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  1970 0006 DBB2     		uxtb	r3, r3
  1971              		.loc 1 1642 6 view .LVU663
  1972 0008 012B     		cmp	r3, #1
-ARM GAS  /tmp/ccamhgRM.s 			page 87
+ARM GAS  /tmp/ccHBVNnb.s 			page 87
 
 
  1973 000a 05D9     		bls	.L150
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2007              		.thumb
  2008              		.thumb_func
  2010              	HAL_CAN_DeactivateNotification:
-ARM GAS  /tmp/ccamhgRM.s 			page 88
+ARM GAS  /tmp/ccHBVNnb.s 			page 88
 
 
  2011              	.LVL154:
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2036 0012 4362     		str	r3, [r0, #36]
 1688:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 1689:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     return HAL_ERROR;
-ARM GAS  /tmp/ccamhgRM.s 			page 89
+ARM GAS  /tmp/ccHBVNnb.s 			page 89
 
 
  2037              		.loc 1 1689 5 is_stmt 1 view .LVU684
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1707:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   uint32_t esrflags = READ_REG(hcan->Instance->ESR);
 1708:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 1709:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   /* Transmit Mailbox empty interrupt management *****************************/
-ARM GAS  /tmp/ccamhgRM.s 			page 90
+ARM GAS  /tmp/ccHBVNnb.s 			page 90
 
 
 1710:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   if ((interrupts & CAN_IT_TX_MAILBOX_EMPTY) != 0U)
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1764:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #if USE_HAL_CAN_REGISTER_CALLBACKS == 1
 1765:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         /* Call registered callback*/
 1766:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         hcan->TxMailbox1CompleteCallback(hcan);
-ARM GAS  /tmp/ccamhgRM.s 			page 91
+ARM GAS  /tmp/ccHBVNnb.s 			page 91
 
 
 1767:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #else
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1821:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         }
 1822:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         else if ((tsrflags & CAN_TSR_TERR2) != 0U)
 1823:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****         {
-ARM GAS  /tmp/ccamhgRM.s 			page 92
+ARM GAS  /tmp/ccHBVNnb.s 			page 92
 
 
 1824:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           /* Update error code */
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1878:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     if ((hcan->Instance->RF0R & CAN_RF0R_FMP0) != 0U)
 1879:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     {
 1880:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* Receive FIFO 0 message pending Callback */
-ARM GAS  /tmp/ccamhgRM.s 			page 93
+ARM GAS  /tmp/ccHBVNnb.s 			page 93
 
 
 1881:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #if USE_HAL_CAN_REGISTER_CALLBACKS == 1
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1935:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       HAL_CAN_RxFifo1MsgPendingCallback(hcan);
 1936:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #endif /* USE_HAL_CAN_REGISTER_CALLBACKS */
 1937:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
-ARM GAS  /tmp/ccamhgRM.s 			page 94
+ARM GAS  /tmp/ccHBVNnb.s 			page 94
 
 
 1938:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 1992:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 1993:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       /* Check Error Passive Flag */
 1994:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       if (((interrupts & CAN_IT_ERROR_PASSIVE) != 0U) &&
-ARM GAS  /tmp/ccamhgRM.s 			page 95
+ARM GAS  /tmp/ccHBVNnb.s 			page 95
 
 
 1995:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           ((esrflags & CAN_ESR_EPVF) != 0U))
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2049:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       }
 2050:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     }
 2051:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 96
+ARM GAS  /tmp/ccHBVNnb.s 			page 96
 
 
 2052:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****     /* Clear ERRI Flag */
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2106:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  hcan pointer to a CAN_HandleTypeDef structure that contains
 2107:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   *         the configuration information for the specified CAN.
 2108:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @retval None
-ARM GAS  /tmp/ccamhgRM.s 			page 97
+ARM GAS  /tmp/ccHBVNnb.s 			page 97
 
 
 2109:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   */
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2099 0000 7047     		bx	lr
  2100              		.cfi_endproc
  2101              	.LFE86:
-ARM GAS  /tmp/ccamhgRM.s 			page 98
+ARM GAS  /tmp/ccHBVNnb.s 			page 98
 
 
  2103              		.section	.text.HAL_CAN_TxMailbox2CompleteCallback,"ax",%progbits
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2134              		.loc 1 2162 1 is_stmt 1 view -0
  2135              		.cfi_startproc
  2136              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccamhgRM.s 			page 99
+ARM GAS  /tmp/ccHBVNnb.s 			page 99
 
 
  2137              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2169              		.syntax unified
  2170              		.thumb
  2171              		.thumb_func
-ARM GAS  /tmp/ccamhgRM.s 			page 100
+ARM GAS  /tmp/ccHBVNnb.s 			page 100
 
 
  2173              	HAL_CAN_TxMailbox2AbortCallback:
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2215:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   UNUSED(hcan);
  2202              		.loc 1 2215 3 view .LVU711
 2216:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
-ARM GAS  /tmp/ccamhgRM.s 			page 101
+ARM GAS  /tmp/ccHBVNnb.s 			page 101
 
 
 2217:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   /* NOTE : This function Should not be modified, when the callback is needed,
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2239:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 2240:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** /**
 2241:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @brief  Rx FIFO 1 message pending callback.
-ARM GAS  /tmp/ccamhgRM.s 			page 102
+ARM GAS  /tmp/ccHBVNnb.s 			page 102
 
 
 2242:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  hcan pointer to a CAN_HandleTypeDef structure that contains
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2271:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****    */
 2272:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** }
  2266              		.loc 1 2272 1 is_stmt 0 view .LVU721
-ARM GAS  /tmp/ccamhgRM.s 			page 103
+ARM GAS  /tmp/ccHBVNnb.s 			page 103
 
 
  2267 0000 7047     		bx	lr
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2296:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** __weak void HAL_CAN_WakeUpFromRxMsgCallback(CAN_HandleTypeDef *hcan)
 2297:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** {
  2302              		.loc 1 2297 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccamhgRM.s 			page 104
+ARM GAS  /tmp/ccHBVNnb.s 			page 104
 
 
  2303              		.cfi_startproc
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2336              		.global	HAL_CAN_IRQHandler
  2337              		.syntax unified
  2338              		.thumb
-ARM GAS  /tmp/ccamhgRM.s 			page 105
+ARM GAS  /tmp/ccHBVNnb.s 			page 105
 
 
  2339              		.thumb_func
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2382              	.LVL179:
 1706:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   uint32_t esrflags = READ_REG(hcan->Instance->ESR);
  2383              		.loc 1 1706 3 is_stmt 1 view .LVU743
-ARM GAS  /tmp/ccamhgRM.s 			page 106
+ARM GAS  /tmp/ccHBVNnb.s 			page 106
 
 
 1706:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   uint32_t esrflags = READ_REG(hcan->Instance->ESR);
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2421              		.loc 1 1701 12 is_stmt 0 view .LVU760
  2422 0048 0026     		movs	r6, #0
  2423 004a 04E0     		b	.L170
-ARM GAS  /tmp/ccamhgRM.s 			page 107
+ARM GAS  /tmp/ccHBVNnb.s 			page 107
 
 
  2424              	.LVL183:
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2463 007e 2B68     		ldr	r3, [r5]
  2464 0080 4FF48032 		mov	r2, #65536
  2465 0084 9A60     		str	r2, [r3, #8]
-ARM GAS  /tmp/ccamhgRM.s 			page 108
+ARM GAS  /tmp/ccHBVNnb.s 			page 108
 
 
 1804:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****       {
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2503 00ba 79D1     		bne	.L208
  2504              	.L180:
 1875:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
-ARM GAS  /tmp/ccamhgRM.s 			page 109
+ARM GAS  /tmp/ccHBVNnb.s 			page 109
 
 
  2505              		.loc 1 1875 3 is_stmt 1 view .LVU793
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2543              	.L183:
 1924:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
  2544              		.loc 1 1924 3 is_stmt 1 view .LVU810
-ARM GAS  /tmp/ccamhgRM.s 			page 110
+ARM GAS  /tmp/ccHBVNnb.s 			page 110
 
 
 1924:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   {
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2582 0120 74D0     		beq	.L188
 1984:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           ((esrflags & CAN_ESR_EWGF) != 0U))
  2583              		.loc 1 1984 7 is_stmt 1 view .LVU828
-ARM GAS  /tmp/ccamhgRM.s 			page 111
+ARM GAS  /tmp/ccHBVNnb.s 			page 111
 
 
 1984:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           ((esrflags & CAN_ESR_EWGF) != 0U))
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2622 0156 59D0     		beq	.L188
 2014:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           ((esrflags & CAN_ESR_LEC) != 0U))
  2623              		.loc 1 2014 57 discriminator 1 view .LVU845
-ARM GAS  /tmp/ccamhgRM.s 			page 112
+ARM GAS  /tmp/ccHBVNnb.s 			page 112
 
 
  2624 0158 19F07009 		ands	r9, r9, #112
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2666              	.L207:
 1812:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** #endif /* USE_HAL_CAN_REGISTER_CALLBACKS */
  2667              		.loc 1 1812 9 view .LVU858
-ARM GAS  /tmp/ccamhgRM.s 			page 113
+ARM GAS  /tmp/ccHBVNnb.s 			page 113
 
 
  2668 0194 2846     		mov	r0, r5
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2711 01cc 2846     		mov	r0, r5
  2712 01ce FFF7FEFF 		bl	HAL_CAN_RxFifo1FullCallback
  2713              	.LVL205:
-ARM GAS  /tmp/ccamhgRM.s 			page 114
+ARM GAS  /tmp/ccHBVNnb.s 			page 114
 
 
  2714 01d2 8CE7     		b	.L183
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2053:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   }
  2758              		.loc 1 2053 5 view .LVU880
  2759 020c 2B68     		ldr	r3, [r5]
-ARM GAS  /tmp/ccamhgRM.s 			page 115
+ARM GAS  /tmp/ccHBVNnb.s 			page 115
 
 
  2760 020e 0422     		movs	r2, #4
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2799              		.loc 1 2037 23 is_stmt 0 view .LVU895
  2800 0236 46F08006 		orr	r6, r6, #128
  2801              	.LVL216:
-ARM GAS  /tmp/ccamhgRM.s 			page 116
+ARM GAS  /tmp/ccHBVNnb.s 			page 116
 
 
 2038:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****           case (CAN_ESR_LEC_2 | CAN_ESR_LEC_1):
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2343:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** 
 2344:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** /**
 2345:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @brief  Return the CAN state.
-ARM GAS  /tmp/ccamhgRM.s 			page 117
+ARM GAS  /tmp/ccHBVNnb.s 			page 117
 
 
 2346:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  hcan pointer to a CAN_HandleTypeDef structure that contains
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2377:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c **** }
  2854              		.loc 1 2377 1 is_stmt 0 view .LVU911
  2855 0010 7047     		bx	lr
-ARM GAS  /tmp/ccamhgRM.s 			page 118
+ARM GAS  /tmp/ccHBVNnb.s 			page 118
 
 
  2856              	.LVL222:
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
 2381:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @param  hcan pointer to a CAN_HandleTypeDef structure that contains
 2382:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   *         the configuration information for the specified CAN.
 2383:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   * @retval CAN Error Code
-ARM GAS  /tmp/ccamhgRM.s 			page 119
+ARM GAS  /tmp/ccHBVNnb.s 			page 119
 
 
 2384:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c ****   */
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2935              	.LVL231:
  2936              		.loc 1 2402 38 view .LVU933
  2937 0006 DBB2     		uxtb	r3, r3
-ARM GAS  /tmp/ccamhgRM.s 			page 120
+ARM GAS  /tmp/ccHBVNnb.s 			page 120
 
 
  2938              		.loc 1 2402 6 view .LVU934
@@ -7198,91 +7198,91 @@ ARM GAS  /tmp/ccamhgRM.s 			page 1
  2973              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
  2974              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
  2975              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
-ARM GAS  /tmp/ccamhgRM.s 			page 121
+ARM GAS  /tmp/ccHBVNnb.s 			page 121
 
 
  2976              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  /tmp/ccamhgRM.s 			page 122
+ARM GAS  /tmp/ccHBVNnb.s 			page 122
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_can.c
-     /tmp/ccamhgRM.s:18     .text.HAL_CAN_MspInit:0000000000000000 $t
-     /tmp/ccamhgRM.s:24     .text.HAL_CAN_MspInit:0000000000000000 HAL_CAN_MspInit
-     /tmp/ccamhgRM.s:40     .text.HAL_CAN_Init:0000000000000000 $t
-     /tmp/ccamhgRM.s:46     .text.HAL_CAN_Init:0000000000000000 HAL_CAN_Init
-     /tmp/ccamhgRM.s:336    .text.HAL_CAN_MspDeInit:0000000000000000 $t
-     /tmp/ccamhgRM.s:342    .text.HAL_CAN_MspDeInit:0000000000000000 HAL_CAN_MspDeInit
-     /tmp/ccamhgRM.s:357    .text.HAL_CAN_ConfigFilter:0000000000000000 $t
-     /tmp/ccamhgRM.s:363    .text.HAL_CAN_ConfigFilter:0000000000000000 HAL_CAN_ConfigFilter
-     /tmp/ccamhgRM.s:569    .text.HAL_CAN_Start:0000000000000000 $t
-     /tmp/ccamhgRM.s:575    .text.HAL_CAN_Start:0000000000000000 HAL_CAN_Start
-     /tmp/ccamhgRM.s:673    .text.HAL_CAN_Stop:0000000000000000 $t
-     /tmp/ccamhgRM.s:679    .text.HAL_CAN_Stop:0000000000000000 HAL_CAN_Stop
-     /tmp/ccamhgRM.s:778    .text.HAL_CAN_DeInit:0000000000000000 $t
-     /tmp/ccamhgRM.s:784    .text.HAL_CAN_DeInit:0000000000000000 HAL_CAN_DeInit
-     /tmp/ccamhgRM.s:840    .text.HAL_CAN_RequestSleep:0000000000000000 $t
-     /tmp/ccamhgRM.s:846    .text.HAL_CAN_RequestSleep:0000000000000000 HAL_CAN_RequestSleep
-     /tmp/ccamhgRM.s:895    .text.HAL_CAN_WakeUp:0000000000000000 $t
-     /tmp/ccamhgRM.s:901    .text.HAL_CAN_WakeUp:0000000000000000 HAL_CAN_WakeUp
-     /tmp/ccamhgRM.s:996    .text.HAL_CAN_WakeUp:0000000000000054 $d
-     /tmp/ccamhgRM.s:1001   .text.HAL_CAN_IsSleepActive:0000000000000000 $t
-     /tmp/ccamhgRM.s:1007   .text.HAL_CAN_IsSleepActive:0000000000000000 HAL_CAN_IsSleepActive
-     /tmp/ccamhgRM.s:1057   .text.HAL_CAN_AddTxMessage:0000000000000000 $t
-     /tmp/ccamhgRM.s:1063   .text.HAL_CAN_AddTxMessage:0000000000000000 HAL_CAN_AddTxMessage
-     /tmp/ccamhgRM.s:1259   .text.HAL_CAN_AbortTxRequest:0000000000000000 $t
-     /tmp/ccamhgRM.s:1265   .text.HAL_CAN_AbortTxRequest:0000000000000000 HAL_CAN_AbortTxRequest
-     /tmp/ccamhgRM.s:1340   .text.HAL_CAN_GetTxMailboxesFreeLevel:0000000000000000 $t
-     /tmp/ccamhgRM.s:1346   .text.HAL_CAN_GetTxMailboxesFreeLevel:0000000000000000 HAL_CAN_GetTxMailboxesFreeLevel
-     /tmp/ccamhgRM.s:1417   .text.HAL_CAN_IsTxMessagePending:0000000000000000 $t
-     /tmp/ccamhgRM.s:1423   .text.HAL_CAN_IsTxMessagePending:0000000000000000 HAL_CAN_IsTxMessagePending
-     /tmp/ccamhgRM.s:1480   .text.HAL_CAN_GetTxTimestamp:0000000000000000 $t
-     /tmp/ccamhgRM.s:1486   .text.HAL_CAN_GetTxTimestamp:0000000000000000 HAL_CAN_GetTxTimestamp
-     /tmp/ccamhgRM.s:1561   .text.HAL_CAN_GetRxMessage:0000000000000000 $t
-     /tmp/ccamhgRM.s:1567   .text.HAL_CAN_GetRxMessage:0000000000000000 HAL_CAN_GetRxMessage
-     /tmp/ccamhgRM.s:1878   .text.HAL_CAN_GetRxFifoFillLevel:0000000000000000 $t
-     /tmp/ccamhgRM.s:1884   .text.HAL_CAN_GetRxFifoFillLevel:0000000000000000 HAL_CAN_GetRxFifoFillLevel
-     /tmp/ccamhgRM.s:1946   .text.HAL_CAN_ActivateNotification:0000000000000000 $t
-     /tmp/ccamhgRM.s:1952   .text.HAL_CAN_ActivateNotification:0000000000000000 HAL_CAN_ActivateNotification
-     /tmp/ccamhgRM.s:2004   .text.HAL_CAN_DeactivateNotification:0000000000000000 $t
-     /tmp/ccamhgRM.s:2010   .text.HAL_CAN_DeactivateNotification:0000000000000000 HAL_CAN_DeactivateNotification
-     /tmp/ccamhgRM.s:2062   .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2068   .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 HAL_CAN_TxMailbox0CompleteCallback
-     /tmp/ccamhgRM.s:2083   .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2089   .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 HAL_CAN_TxMailbox1CompleteCallback
-     /tmp/ccamhgRM.s:2104   .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2110   .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 HAL_CAN_TxMailbox2CompleteCallback
-     /tmp/ccamhgRM.s:2125   .text.HAL_CAN_TxMailbox0AbortCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2131   .text.HAL_CAN_TxMailbox0AbortCallback:0000000000000000 HAL_CAN_TxMailbox0AbortCallback
-     /tmp/ccamhgRM.s:2146   .text.HAL_CAN_TxMailbox1AbortCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2152   .text.HAL_CAN_TxMailbox1AbortCallback:0000000000000000 HAL_CAN_TxMailbox1AbortCallback
-     /tmp/ccamhgRM.s:2167   .text.HAL_CAN_TxMailbox2AbortCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2173   .text.HAL_CAN_TxMailbox2AbortCallback:0000000000000000 HAL_CAN_TxMailbox2AbortCallback
-     /tmp/ccamhgRM.s:2188   .text.HAL_CAN_RxFifo0MsgPendingCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2194   .text.HAL_CAN_RxFifo0MsgPendingCallback:0000000000000000 HAL_CAN_RxFifo0MsgPendingCallback
-     /tmp/ccamhgRM.s:2209   .text.HAL_CAN_RxFifo0FullCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2215   .text.HAL_CAN_RxFifo0FullCallback:0000000000000000 HAL_CAN_RxFifo0FullCallback
-ARM GAS  /tmp/ccamhgRM.s 			page 123
+     /tmp/ccHBVNnb.s:18     .text.HAL_CAN_MspInit:0000000000000000 $t
+     /tmp/ccHBVNnb.s:24     .text.HAL_CAN_MspInit:0000000000000000 HAL_CAN_MspInit
+     /tmp/ccHBVNnb.s:40     .text.HAL_CAN_Init:0000000000000000 $t
+     /tmp/ccHBVNnb.s:46     .text.HAL_CAN_Init:0000000000000000 HAL_CAN_Init
+     /tmp/ccHBVNnb.s:336    .text.HAL_CAN_MspDeInit:0000000000000000 $t
+     /tmp/ccHBVNnb.s:342    .text.HAL_CAN_MspDeInit:0000000000000000 HAL_CAN_MspDeInit
+     /tmp/ccHBVNnb.s:357    .text.HAL_CAN_ConfigFilter:0000000000000000 $t
+     /tmp/ccHBVNnb.s:363    .text.HAL_CAN_ConfigFilter:0000000000000000 HAL_CAN_ConfigFilter
+     /tmp/ccHBVNnb.s:569    .text.HAL_CAN_Start:0000000000000000 $t
+     /tmp/ccHBVNnb.s:575    .text.HAL_CAN_Start:0000000000000000 HAL_CAN_Start
+     /tmp/ccHBVNnb.s:673    .text.HAL_CAN_Stop:0000000000000000 $t
+     /tmp/ccHBVNnb.s:679    .text.HAL_CAN_Stop:0000000000000000 HAL_CAN_Stop
+     /tmp/ccHBVNnb.s:778    .text.HAL_CAN_DeInit:0000000000000000 $t
+     /tmp/ccHBVNnb.s:784    .text.HAL_CAN_DeInit:0000000000000000 HAL_CAN_DeInit
+     /tmp/ccHBVNnb.s:840    .text.HAL_CAN_RequestSleep:0000000000000000 $t
+     /tmp/ccHBVNnb.s:846    .text.HAL_CAN_RequestSleep:0000000000000000 HAL_CAN_RequestSleep
+     /tmp/ccHBVNnb.s:895    .text.HAL_CAN_WakeUp:0000000000000000 $t
+     /tmp/ccHBVNnb.s:901    .text.HAL_CAN_WakeUp:0000000000000000 HAL_CAN_WakeUp
+     /tmp/ccHBVNnb.s:996    .text.HAL_CAN_WakeUp:0000000000000054 $d
+     /tmp/ccHBVNnb.s:1001   .text.HAL_CAN_IsSleepActive:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1007   .text.HAL_CAN_IsSleepActive:0000000000000000 HAL_CAN_IsSleepActive
+     /tmp/ccHBVNnb.s:1057   .text.HAL_CAN_AddTxMessage:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1063   .text.HAL_CAN_AddTxMessage:0000000000000000 HAL_CAN_AddTxMessage
+     /tmp/ccHBVNnb.s:1259   .text.HAL_CAN_AbortTxRequest:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1265   .text.HAL_CAN_AbortTxRequest:0000000000000000 HAL_CAN_AbortTxRequest
+     /tmp/ccHBVNnb.s:1340   .text.HAL_CAN_GetTxMailboxesFreeLevel:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1346   .text.HAL_CAN_GetTxMailboxesFreeLevel:0000000000000000 HAL_CAN_GetTxMailboxesFreeLevel
+     /tmp/ccHBVNnb.s:1417   .text.HAL_CAN_IsTxMessagePending:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1423   .text.HAL_CAN_IsTxMessagePending:0000000000000000 HAL_CAN_IsTxMessagePending
+     /tmp/ccHBVNnb.s:1480   .text.HAL_CAN_GetTxTimestamp:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1486   .text.HAL_CAN_GetTxTimestamp:0000000000000000 HAL_CAN_GetTxTimestamp
+     /tmp/ccHBVNnb.s:1561   .text.HAL_CAN_GetRxMessage:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1567   .text.HAL_CAN_GetRxMessage:0000000000000000 HAL_CAN_GetRxMessage
+     /tmp/ccHBVNnb.s:1878   .text.HAL_CAN_GetRxFifoFillLevel:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1884   .text.HAL_CAN_GetRxFifoFillLevel:0000000000000000 HAL_CAN_GetRxFifoFillLevel
+     /tmp/ccHBVNnb.s:1946   .text.HAL_CAN_ActivateNotification:0000000000000000 $t
+     /tmp/ccHBVNnb.s:1952   .text.HAL_CAN_ActivateNotification:0000000000000000 HAL_CAN_ActivateNotification
+     /tmp/ccHBVNnb.s:2004   .text.HAL_CAN_DeactivateNotification:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2010   .text.HAL_CAN_DeactivateNotification:0000000000000000 HAL_CAN_DeactivateNotification
+     /tmp/ccHBVNnb.s:2062   .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2068   .text.HAL_CAN_TxMailbox0CompleteCallback:0000000000000000 HAL_CAN_TxMailbox0CompleteCallback
+     /tmp/ccHBVNnb.s:2083   .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2089   .text.HAL_CAN_TxMailbox1CompleteCallback:0000000000000000 HAL_CAN_TxMailbox1CompleteCallback
+     /tmp/ccHBVNnb.s:2104   .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2110   .text.HAL_CAN_TxMailbox2CompleteCallback:0000000000000000 HAL_CAN_TxMailbox2CompleteCallback
+     /tmp/ccHBVNnb.s:2125   .text.HAL_CAN_TxMailbox0AbortCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2131   .text.HAL_CAN_TxMailbox0AbortCallback:0000000000000000 HAL_CAN_TxMailbox0AbortCallback
+     /tmp/ccHBVNnb.s:2146   .text.HAL_CAN_TxMailbox1AbortCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2152   .text.HAL_CAN_TxMailbox1AbortCallback:0000000000000000 HAL_CAN_TxMailbox1AbortCallback
+     /tmp/ccHBVNnb.s:2167   .text.HAL_CAN_TxMailbox2AbortCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2173   .text.HAL_CAN_TxMailbox2AbortCallback:0000000000000000 HAL_CAN_TxMailbox2AbortCallback
+     /tmp/ccHBVNnb.s:2188   .text.HAL_CAN_RxFifo0MsgPendingCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2194   .text.HAL_CAN_RxFifo0MsgPendingCallback:0000000000000000 HAL_CAN_RxFifo0MsgPendingCallback
+     /tmp/ccHBVNnb.s:2209   .text.HAL_CAN_RxFifo0FullCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2215   .text.HAL_CAN_RxFifo0FullCallback:0000000000000000 HAL_CAN_RxFifo0FullCallback
+ARM GAS  /tmp/ccHBVNnb.s 			page 123
 
 
-     /tmp/ccamhgRM.s:2230   .text.HAL_CAN_RxFifo1MsgPendingCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2236   .text.HAL_CAN_RxFifo1MsgPendingCallback:0000000000000000 HAL_CAN_RxFifo1MsgPendingCallback
-     /tmp/ccamhgRM.s:2251   .text.HAL_CAN_RxFifo1FullCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2257   .text.HAL_CAN_RxFifo1FullCallback:0000000000000000 HAL_CAN_RxFifo1FullCallback
-     /tmp/ccamhgRM.s:2272   .text.HAL_CAN_SleepCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2278   .text.HAL_CAN_SleepCallback:0000000000000000 HAL_CAN_SleepCallback
-     /tmp/ccamhgRM.s:2293   .text.HAL_CAN_WakeUpFromRxMsgCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2299   .text.HAL_CAN_WakeUpFromRxMsgCallback:0000000000000000 HAL_CAN_WakeUpFromRxMsgCallback
-     /tmp/ccamhgRM.s:2314   .text.HAL_CAN_ErrorCallback:0000000000000000 $t
-     /tmp/ccamhgRM.s:2320   .text.HAL_CAN_ErrorCallback:0000000000000000 HAL_CAN_ErrorCallback
-     /tmp/ccamhgRM.s:2335   .text.HAL_CAN_IRQHandler:0000000000000000 $t
-     /tmp/ccamhgRM.s:2341   .text.HAL_CAN_IRQHandler:0000000000000000 HAL_CAN_IRQHandler
-     /tmp/ccamhgRM.s:2822   .text.HAL_CAN_GetState:0000000000000000 $t
-     /tmp/ccamhgRM.s:2828   .text.HAL_CAN_GetState:0000000000000000 HAL_CAN_GetState
-     /tmp/ccamhgRM.s:2889   .text.HAL_CAN_GetError:0000000000000000 $t
-     /tmp/ccamhgRM.s:2895   .text.HAL_CAN_GetError:0000000000000000 HAL_CAN_GetError
-     /tmp/ccamhgRM.s:2913   .text.HAL_CAN_ResetError:0000000000000000 $t
-     /tmp/ccamhgRM.s:2919   .text.HAL_CAN_ResetError:0000000000000000 HAL_CAN_ResetError
+     /tmp/ccHBVNnb.s:2230   .text.HAL_CAN_RxFifo1MsgPendingCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2236   .text.HAL_CAN_RxFifo1MsgPendingCallback:0000000000000000 HAL_CAN_RxFifo1MsgPendingCallback
+     /tmp/ccHBVNnb.s:2251   .text.HAL_CAN_RxFifo1FullCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2257   .text.HAL_CAN_RxFifo1FullCallback:0000000000000000 HAL_CAN_RxFifo1FullCallback
+     /tmp/ccHBVNnb.s:2272   .text.HAL_CAN_SleepCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2278   .text.HAL_CAN_SleepCallback:0000000000000000 HAL_CAN_SleepCallback
+     /tmp/ccHBVNnb.s:2293   .text.HAL_CAN_WakeUpFromRxMsgCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2299   .text.HAL_CAN_WakeUpFromRxMsgCallback:0000000000000000 HAL_CAN_WakeUpFromRxMsgCallback
+     /tmp/ccHBVNnb.s:2314   .text.HAL_CAN_ErrorCallback:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2320   .text.HAL_CAN_ErrorCallback:0000000000000000 HAL_CAN_ErrorCallback
+     /tmp/ccHBVNnb.s:2335   .text.HAL_CAN_IRQHandler:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2341   .text.HAL_CAN_IRQHandler:0000000000000000 HAL_CAN_IRQHandler
+     /tmp/ccHBVNnb.s:2822   .text.HAL_CAN_GetState:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2828   .text.HAL_CAN_GetState:0000000000000000 HAL_CAN_GetState
+     /tmp/ccHBVNnb.s:2889   .text.HAL_CAN_GetError:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2895   .text.HAL_CAN_GetError:0000000000000000 HAL_CAN_GetError
+     /tmp/ccHBVNnb.s:2913   .text.HAL_CAN_ResetError:0000000000000000 $t
+     /tmp/ccHBVNnb.s:2919   .text.HAL_CAN_ResetError:0000000000000000 HAL_CAN_ResetError
 
 UNDEFINED SYMBOLS
 HAL_GetTick

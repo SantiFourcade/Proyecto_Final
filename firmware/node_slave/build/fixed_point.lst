@@ -1,0 +1,218 @@
+ARM GAS  /tmp/ccv8jMXn.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"fixed_point.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_fcmplt
+  18              		.global	__aeabi_fcmpgt
+  19              		.global	__aeabi_fmul
+  20              		.global	__aeabi_f2iz
+  21              		.section	.text.FloatTo_Q8_7,"ax",%progbits
+  22              		.align	1
+  23              		.global	FloatTo_Q8_7
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  28              	FloatTo_Q8_7:
+  29              	.LVL0:
+  30              	.LFB0:
+  31              		.file 1 "Core/Src/fixed_point.c"
+   1:Core/Src/fixed_point.c **** #include <stdint.h>
+   2:Core/Src/fixed_point.c **** #include <math.h>
+   3:Core/Src/fixed_point.c **** 
+   4:Core/Src/fixed_point.c **** /**
+   5:Core/Src/fixed_point.c ****  * @brief Formato Q8.7 para Corriente, Temperatura y Aceleracion
+   6:Core/Src/fixed_point.c ****  * Rango: -256.0 a 255.99 | Precision: 0.0078
+   7:Core/Src/fixed_point.c ****  */
+   8:Core/Src/fixed_point.c **** /*
+   9:Core/Src/fixed_point.c **** Logica:
+  10:Core/Src/fixed_point.c ****     valor_float * N desplaza la coma N bits
+  11:Core/Src/fixed_point.c ****     roundf redondea al entero mas cercano
+  12:Core/Src/fixed_point.c ****     int16_t convierte a formato S(15-N,N)
+  13:Core/Src/fixed_point.c **** */
+  14:Core/Src/fixed_point.c **** 
+  15:Core/Src/fixed_point.c **** int16_t FloatTo_Q8_7(float valor_float)
+  16:Core/Src/fixed_point.c **** {
+  32              		.loc 1 16 1 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              		.loc 1 16 1 is_stmt 0 view .LVU1
+  37 0000 10B5     		push	{r4, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 4, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0446     		mov	r4, r0
+ARM GAS  /tmp/ccv8jMXn.s 			page 2
+
+
+  17:Core/Src/fixed_point.c ****     if (valor_float < -256.0f) valor_float = -256.0f;
+  43              		.loc 1 17 5 is_stmt 1 view .LVU2
+  44              		.loc 1 17 8 is_stmt 0 view .LVU3
+  45 0004 0A49     		ldr	r1, .L7
+  46 0006 FFF7FEFF 		bl	__aeabi_fcmplt
+  47              	.LVL1:
+  48              		.loc 1 17 8 view .LVU4
+  49 000a 00B1     		cbz	r0, .L2
+  50              		.loc 1 17 44 view .LVU5
+  51 000c 084C     		ldr	r4, .L7
+  52              	.LVL2:
+  53              	.L2:
+  18:Core/Src/fixed_point.c ****     if (valor_float > 255.99f) valor_float = 255.99f;
+  54              		.loc 1 18 5 is_stmt 1 view .LVU6
+  55              		.loc 1 18 8 is_stmt 0 view .LVU7
+  56 000e 0949     		ldr	r1, .L7+4
+  57 0010 2046     		mov	r0, r4
+  58 0012 FFF7FEFF 		bl	__aeabi_fcmpgt
+  59              	.LVL3:
+  60 0016 00B1     		cbz	r0, .L3
+  61              		.loc 1 18 44 view .LVU8
+  62 0018 064C     		ldr	r4, .L7+4
+  63              	.LVL4:
+  64              	.L3:
+  19:Core/Src/fixed_point.c **** 
+  20:Core/Src/fixed_point.c ****     return (int16_t)roundf(valor_float * 128.0f); // 2^7 = 128
+  65              		.loc 1 20 5 is_stmt 1 view .LVU9
+  66              		.loc 1 20 21 is_stmt 0 view .LVU10
+  67 001a 4FF08641 		mov	r1, #1124073472
+  68 001e 2046     		mov	r0, r4
+  69 0020 FFF7FEFF 		bl	__aeabi_fmul
+  70              	.LVL5:
+  71 0024 FFF7FEFF 		bl	roundf
+  72              	.LVL6:
+  73              		.loc 1 20 12 view .LVU11
+  74 0028 FFF7FEFF 		bl	__aeabi_f2iz
+  75              	.LVL7:
+  21:Core/Src/fixed_point.c **** }
+  76              		.loc 1 21 1 view .LVU12
+  77 002c 00B2     		sxth	r0, r0
+  78 002e 10BD     		pop	{r4, pc}
+  79              	.LVL8:
+  80              	.L8:
+  81              		.loc 1 21 1 view .LVU13
+  82              		.align	2
+  83              	.L7:
+  84 0030 000080C3 		.word	-1015021568
+  85 0034 71FD7F43 		.word	1132461425
+  86              		.cfi_endproc
+  87              	.LFE0:
+  89              		.section	.text.FloatTo_Q11_4,"ax",%progbits
+  90              		.align	1
+  91              		.global	FloatTo_Q11_4
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  96              	FloatTo_Q11_4:
+ARM GAS  /tmp/ccv8jMXn.s 			page 3
+
+
+  97              	.LVL9:
+  98              	.LFB1:
+  22:Core/Src/fixed_point.c **** 
+  23:Core/Src/fixed_point.c **** /**
+  24:Core/Src/fixed_point.c ****  * @brief Formato Q11.4 para Velocidad (RPM)
+  25:Core/Src/fixed_point.c ****  * Rango: -2048.0 a 2047.93 | Precision: 0.0625
+  26:Core/Src/fixed_point.c ****  */
+  27:Core/Src/fixed_point.c **** int16_t FloatTo_Q11_4(float valor_float)
+  28:Core/Src/fixed_point.c **** {
+  99              		.loc 1 28 1 is_stmt 1 view -0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		.loc 1 28 1 is_stmt 0 view .LVU15
+ 104 0000 10B5     		push	{r4, lr}
+ 105              	.LCFI1:
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 4, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 0446     		mov	r4, r0
+  29:Core/Src/fixed_point.c ****     if (valor_float < -2048.0f) valor_float = -2048.0f;
+ 110              		.loc 1 29 5 is_stmt 1 view .LVU16
+ 111              		.loc 1 29 8 is_stmt 0 view .LVU17
+ 112 0004 4FF04541 		mov	r1, #-989855744
+ 113 0008 FFF7FEFF 		bl	__aeabi_fcmplt
+ 114              	.LVL10:
+ 115              		.loc 1 29 8 view .LVU18
+ 116 000c 08B1     		cbz	r0, .L10
+ 117              		.loc 1 29 45 view .LVU19
+ 118 000e 4FF04544 		mov	r4, #-989855744
+ 119              	.LVL11:
+ 120              	.L10:
+  30:Core/Src/fixed_point.c ****     if (valor_float > 2047.93f) valor_float = 2047.93f;
+ 121              		.loc 1 30 5 is_stmt 1 view .LVU20
+ 122              		.loc 1 30 8 is_stmt 0 view .LVU21
+ 123 0012 0849     		ldr	r1, .L15
+ 124 0014 2046     		mov	r0, r4
+ 125 0016 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 126              	.LVL12:
+ 127 001a 00B1     		cbz	r0, .L11
+ 128              		.loc 1 30 45 view .LVU22
+ 129 001c 054C     		ldr	r4, .L15
+ 130              	.LVL13:
+ 131              	.L11:
+  31:Core/Src/fixed_point.c **** 
+  32:Core/Src/fixed_point.c ****     return (int16_t)roundf(valor_float * 16.0f); // 2^4 = 16
+ 132              		.loc 1 32 5 is_stmt 1 view .LVU23
+ 133              		.loc 1 32 21 is_stmt 0 view .LVU24
+ 134 001e 4FF08341 		mov	r1, #1098907648
+ 135 0022 2046     		mov	r0, r4
+ 136 0024 FFF7FEFF 		bl	__aeabi_fmul
+ 137              	.LVL14:
+ 138 0028 FFF7FEFF 		bl	roundf
+ 139              	.LVL15:
+ 140              		.loc 1 32 12 view .LVU25
+ 141 002c FFF7FEFF 		bl	__aeabi_f2iz
+ 142              	.LVL16:
+ARM GAS  /tmp/ccv8jMXn.s 			page 4
+
+
+  33:Core/Src/fixed_point.c **** }...
+ 143              		.loc 1 33 1 view .LVU26
+ 144 0030 00B2     		sxth	r0, r0
+ 145 0032 10BD     		pop	{r4, pc}
+ 146              	.LVL17:
+ 147              	.L16:
+ 148              		.loc 1 33 1 view .LVU27
+ 149              		.align	2
+ 150              	.L15:
+ 151 0034 C3FDFF44 		.word	1157627331
+ 152              		.cfi_endproc
+ 153              	.LFE1:
+ 155              		.text
+ 156              	.Letext0:
+ 157              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 158              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 159              		.file 4 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ARM GAS  /tmp/ccv8jMXn.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 fixed_point.c
+     /tmp/ccv8jMXn.s:22     .text.FloatTo_Q8_7:0000000000000000 $t
+     /tmp/ccv8jMXn.s:28     .text.FloatTo_Q8_7:0000000000000000 FloatTo_Q8_7
+     /tmp/ccv8jMXn.s:84     .text.FloatTo_Q8_7:0000000000000030 $d
+     /tmp/ccv8jMXn.s:90     .text.FloatTo_Q11_4:0000000000000000 $t
+     /tmp/ccv8jMXn.s:96     .text.FloatTo_Q11_4:0000000000000000 FloatTo_Q11_4
+     /tmp/ccv8jMXn.s:151    .text.FloatTo_Q11_4:0000000000000034 $d
+
+UNDEFINED SYMBOLS
+__aeabi_fcmplt
+__aeabi_fcmpgt
+__aeabi_fmul
+__aeabi_f2iz
+roundf
