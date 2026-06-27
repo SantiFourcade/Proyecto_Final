@@ -1,0 +1,439 @@
+ARM GAS  /tmp/cco8HlhT.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"can_frame.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.FrameAssembler_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	FrameAssembler_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	FrameAssembler_Init:
+  25              	.LVL0:
+  26              	.LFB8:
+  27              		.file 1 "Core/Src/can_frame.c"
+   1:Core/Src/can_frame.c **** #include "can_frame.h"
+   2:Core/Src/can_frame.c **** #include <string.h>
+   3:Core/Src/can_frame.c **** #include <stdio.h>
+   4:Core/Src/can_frame.c **** #include "queue.h"
+   5:Core/Src/can_frame.c **** 
+   6:Core/Src/can_frame.c **** void FrameAssembler_Init(can_frame_assembler_t *fa)
+   7:Core/Src/can_frame.c **** {
+  28              		.loc 1 7 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 7 1 is_stmt 0 view .LVU1
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+   8:Core/Src/can_frame.c ****     memset(fa, 0, sizeof(can_frame_assembler_t));
+  38              		.loc 1 8 5 is_stmt 1 view .LVU2
+  39 0002 2022     		movs	r2, #32
+  40 0004 0021     		movs	r1, #0
+  41 0006 FFF7FEFF 		bl	memset
+  42              	.LVL1:
+   9:Core/Src/can_frame.c **** }
+  43              		.loc 1 9 1 is_stmt 0 view .LVU3
+  44 000a 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE8:
+  48              		.section	.text.FrameAssembler_Feed,"ax",%progbits
+  49              		.align	1
+  50              		.global	FrameAssembler_Feed
+ARM GAS  /tmp/cco8HlhT.s 			page 2
+
+
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  55              	FrameAssembler_Feed:
+  56              	.LVL2:
+  57              	.LFB9:
+  10:Core/Src/can_frame.c **** 
+  11:Core/Src/can_frame.c **** /* ============================================================
+  12:Core/Src/can_frame.c ****  * FrameAssembler_Feed
+  13:Core/Src/can_frame.c ****  *
+  14:Core/Src/can_frame.c ****  * @param out_queue  Queue donde se publica ml_frame_t cuando el
+  15:Core/Src/can_frame.c ****  *                   frame está completo. MLTask la consume.
+  16:Core/Src/can_frame.c ****  * @retval 1 frame completo publicado en out_queue
+  17:Core/Src/can_frame.c ****  * @retval 0 frame incompleto todavía
+  18:Core/Src/can_frame.c ****  * ============================================================ */
+  19:Core/Src/can_frame.c **** uint8_t FrameAssembler_Feed(can_frame_assembler_t *fa,
+  20:Core/Src/can_frame.c ****                              uint32_t      can_id,
+  21:Core/Src/can_frame.c ****                              float         value,
+  22:Core/Src/can_frame.c ****                              uint32_t      now_ms,
+  23:Core/Src/can_frame.c ****                              QueueHandle_t out_queue)
+  24:Core/Src/can_frame.c **** {
+  58              		.loc 1 24 1 is_stmt 1 view -0
+  59              		.cfi_startproc
+  60              		@ args = 4, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		.loc 1 24 1 is_stmt 0 view .LVU5
+  63 0000 10B5     		push	{r4, lr}
+  64              	.LCFI1:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 4, -8
+  67              		.cfi_offset 14, -4
+  68 0002 0446     		mov	r4, r0
+  25:Core/Src/can_frame.c ****     /* Primer campo del frame — registrar timestamp */
+  26:Core/Src/can_frame.c ****     if (fa->received_mask == 0)
+  69              		.loc 1 26 5 is_stmt 1 view .LVU6
+  70              		.loc 1 26 11 is_stmt 0 view .LVU7
+  71 0004 007E     		ldrb	r0, [r0, #24]	@ zero_extendqisi2
+  72              	.LVL3:
+  73              		.loc 1 26 8 view .LVU8
+  74 0006 00B9     		cbnz	r0, .L4
+  27:Core/Src/can_frame.c ****         fa->first_field_tick = now_ms;
+  75              		.loc 1 27 9 is_stmt 1 view .LVU9
+  76              		.loc 1 27 30 is_stmt 0 view .LVU10
+  77 0008 E361     		str	r3, [r4, #28]
+  78              	.L4:
+  28:Core/Src/can_frame.c **** 
+  29:Core/Src/can_frame.c ****     /* Asignar campo y marcar bitmask */
+  30:Core/Src/can_frame.c ****     switch (can_id)
+  79              		.loc 1 30 5 is_stmt 1 view .LVU11
+  80 000a A1F20111 		subw	r1, r1, #257
+  81              	.LVL4:
+  82              		.loc 1 30 5 is_stmt 0 view .LVU12
+  83 000e 0529     		cmp	r1, #5
+  84 0010 33D8     		bhi	.L14
+  85 0012 DFE801F0 		tbb	[pc, r1]
+  86              	.LVL5:
+  87              	.L7:
+ARM GAS  /tmp/cco8HlhT.s 			page 3
+
+
+  88 0016 03       		.byte	(.L12-.L7)/2
+  89 0017 0C       		.byte	(.L11-.L7)/2
+  90 0018 11       		.byte	(.L10-.L7)/2
+  91 0019 16       		.byte	(.L9-.L7)/2
+  92 001a 1B       		.byte	(.L8-.L7)/2
+  93 001b 20       		.byte	(.L6-.L7)/2
+  94              		.p2align 1
+  95              	.L12:
+  31:Core/Src/can_frame.c ****     {
+  32:Core/Src/can_frame.c ****         case CAN_ID_RMS:     fa->frame.rms         = value; fa->received_mask |= FIELD_RMS;     bre
+  96              		.loc 1 32 30 is_stmt 1 view .LVU13
+  97              		.loc 1 32 52 is_stmt 0 view .LVU14
+  98 001c 2260     		str	r2, [r4]	@ float
+  99              		.loc 1 32 61 is_stmt 1 view .LVU15
+ 100              		.loc 1 32 79 is_stmt 0 view .LVU16
+ 101 001e 40F00100 		orr	r0, r0, #1
+ 102 0022 2076     		strb	r0, [r4, #24]
+ 103              		.loc 1 32 97 is_stmt 1 view .LVU17
+ 104              	.L13:
+  33:Core/Src/can_frame.c ****         case CAN_ID_CREST:   fa->frame.crest       = value; fa->received_mask |= FIELD_CREST;   bre
+  34:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+  35:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+  36:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+  37:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+  38:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+  39:Core/Src/can_frame.c ****     }
+  40:Core/Src/can_frame.c ****     //printf("[INFO] Campo recibido: ID=0x%03lX, value=%.2f, mask=0x%02X\r\n",
+  41:Core/Src/can_frame.c ****     //       can_id, value, fa->received_mask);
+  42:Core/Src/can_frame.c ****     if (fa->received_mask != FRAME_COMPLETE_MASK)
+ 105              		.loc 1 42 5 view .LVU18
+ 106              		.loc 1 42 11 is_stmt 0 view .LVU19
+ 107 0024 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 108              		.loc 1 42 8 view .LVU20
+ 109 0026 3F2B     		cmp	r3, #63
+ 110 0028 1AD0     		beq	.L17
+  43:Core/Src/can_frame.c ****         return 0;  /* frame todavía incompleto */
+ 111              		.loc 1 43 16 view .LVU21
+ 112 002a 0020     		movs	r0, #0
+ 113              	.LVL6:
+ 114              	.L5:
+  44:Core/Src/can_frame.c ****     //printf("[INFO] Frame completo recibido — publicando en MLTask\r\n");
+  45:Core/Src/can_frame.c ****     /* Frame completo — publicar en la queue de MLTask.
+  46:Core/Src/can_frame.c ****      * xQueueOverwrite: si MLTask no consumió el anterior, lo reemplaza.
+  47:Core/Src/can_frame.c ****      * Así nunca bloqueamos CANParserTask por culpa del modelo. */
+  48:Core/Src/can_frame.c ****     xQueueOverwrite(out_queue, &fa->frame);
+  49:Core/Src/can_frame.c **** 
+  50:Core/Src/can_frame.c ****     /* Resetear para el próximo frame */
+  51:Core/Src/can_frame.c ****     memset(fa, 0, sizeof(can_frame_assembler_t));
+  52:Core/Src/can_frame.c ****     return 1;
+  53:Core/Src/can_frame.c **** }
+ 115              		.loc 1 53 1 view .LVU22
+ 116 002c 10BD     		pop	{r4, pc}
+ 117              	.LVL7:
+ 118              	.L11:
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ 119              		.loc 1 33 30 is_stmt 1 view .LVU23
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ARM GAS  /tmp/cco8HlhT.s 			page 4
+
+
+ 120              		.loc 1 33 52 is_stmt 0 view .LVU24
+ 121 002e 6260     		str	r2, [r4, #4]	@ float
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ 122              		.loc 1 33 61 is_stmt 1 view .LVU25
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ 123              		.loc 1 33 79 is_stmt 0 view .LVU26
+ 124 0030 40F00200 		orr	r0, r0, #2
+ 125 0034 2076     		strb	r0, [r4, #24]
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ 126              		.loc 1 33 97 is_stmt 1 view .LVU27
+  33:Core/Src/can_frame.c ****         case CAN_ID_PEAK:    fa->frame.peak        = value; fa->received_mask |= FIELD_PEAK;     br
+ 127              		.loc 1 33 9 is_stmt 0 view .LVU28
+ 128 0036 F5E7     		b	.L13
+ 129              	.L10:
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 130              		.loc 1 34 30 is_stmt 1 view .LVU29
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 131              		.loc 1 34 52 is_stmt 0 view .LVU30
+ 132 0038 A260     		str	r2, [r4, #8]	@ float
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 133              		.loc 1 34 61 is_stmt 1 view .LVU31
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 134              		.loc 1 34 79 is_stmt 0 view .LVU32
+ 135 003a 40F00400 		orr	r0, r0, #4
+ 136 003e 2076     		strb	r0, [r4, #24]
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 137              		.loc 1 34 98 is_stmt 1 view .LVU33
+  34:Core/Src/can_frame.c ****         case CAN_ID_TEMP:    fa->frame.temperature = value; fa->received_mask |= FIELD_TEMP;     br
+ 138              		.loc 1 34 9 is_stmt 0 view .LVU34
+ 139 0040 F0E7     		b	.L13
+ 140              	.L9:
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 141              		.loc 1 35 30 is_stmt 1 view .LVU35
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 142              		.loc 1 35 52 is_stmt 0 view .LVU36
+ 143 0042 E260     		str	r2, [r4, #12]	@ float
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 144              		.loc 1 35 61 is_stmt 1 view .LVU37
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 145              		.loc 1 35 79 is_stmt 0 view .LVU38
+ 146 0044 40F00800 		orr	r0, r0, #8
+ 147 0048 2076     		strb	r0, [r4, #24]
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 148              		.loc 1 35 98 is_stmt 1 view .LVU39
+  35:Core/Src/can_frame.c ****         case CAN_ID_CURRENT: fa->frame.current     = value; fa->received_mask |= FIELD_CURRENT; bre
+ 149              		.loc 1 35 9 is_stmt 0 view .LVU40
+ 150 004a EBE7     		b	.L13
+ 151              	.L8:
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 152              		.loc 1 36 30 is_stmt 1 view .LVU41
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 153              		.loc 1 36 52 is_stmt 0 view .LVU42
+ 154 004c 2261     		str	r2, [r4, #16]	@ float
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 155              		.loc 1 36 61 is_stmt 1 view .LVU43
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 156              		.loc 1 36 79 is_stmt 0 view .LVU44
+ARM GAS  /tmp/cco8HlhT.s 			page 5
+
+
+ 157 004e 40F01000 		orr	r0, r0, #16
+ 158 0052 2076     		strb	r0, [r4, #24]
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 159              		.loc 1 36 97 is_stmt 1 view .LVU45
+  36:Core/Src/can_frame.c ****         case CAN_ID_SPEED:   fa->frame.speed       = value; fa->received_mask |= FIELD_SPEED;   bre
+ 160              		.loc 1 36 9 is_stmt 0 view .LVU46
+ 161 0054 E6E7     		b	.L13
+ 162              	.L6:
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 163              		.loc 1 37 30 is_stmt 1 view .LVU47
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 164              		.loc 1 37 52 is_stmt 0 view .LVU48
+ 165 0056 6261     		str	r2, [r4, #20]	@ float
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 166              		.loc 1 37 61 is_stmt 1 view .LVU49
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 167              		.loc 1 37 79 is_stmt 0 view .LVU50
+ 168 0058 40F02000 		orr	r0, r0, #32
+ 169 005c 2076     		strb	r0, [r4, #24]
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 170              		.loc 1 37 97 is_stmt 1 view .LVU51
+  37:Core/Src/can_frame.c ****         default: return 0;  /* ID desconocido */
+ 171              		.loc 1 37 9 is_stmt 0 view .LVU52
+ 172 005e E1E7     		b	.L13
+ 173              	.L17:
+  48:Core/Src/can_frame.c **** 
+ 174              		.loc 1 48 5 is_stmt 1 view .LVU53
+ 175 0060 0223     		movs	r3, #2
+ 176 0062 0022     		movs	r2, #0
+ 177              	.LVL8:
+  48:Core/Src/can_frame.c **** 
+ 178              		.loc 1 48 5 is_stmt 0 view .LVU54
+ 179 0064 2146     		mov	r1, r4
+ 180 0066 0298     		ldr	r0, [sp, #8]
+ 181 0068 FFF7FEFF 		bl	xQueueGenericSend
+ 182              	.LVL9:
+  51:Core/Src/can_frame.c ****     return 1;
+ 183              		.loc 1 51 5 is_stmt 1 view .LVU55
+ 184 006c 2022     		movs	r2, #32
+ 185 006e 0021     		movs	r1, #0
+ 186 0070 2046     		mov	r0, r4
+ 187 0072 FFF7FEFF 		bl	memset
+ 188              	.LVL10:
+  52:Core/Src/can_frame.c **** }
+ 189              		.loc 1 52 5 view .LVU56
+  52:Core/Src/can_frame.c **** }
+ 190              		.loc 1 52 12 is_stmt 0 view .LVU57
+ 191 0076 0120     		movs	r0, #1
+ 192 0078 D8E7     		b	.L5
+ 193              	.LVL11:
+ 194              	.L14:
+  30:Core/Src/can_frame.c ****     {
+ 195              		.loc 1 30 5 view .LVU58
+ 196 007a 0020     		movs	r0, #0
+ 197 007c D6E7     		b	.L5
+ 198              		.cfi_endproc
+ 199              	.LFE9:
+ARM GAS  /tmp/cco8HlhT.s 			page 6
+
+
+ 201              		.section	.rodata.FrameAssembler_CheckTimeout.str1.4,"aMS",%progbits,1
+ 202              		.align	2
+ 203              	.LC0:
+ 204 0000 5B574152 		.ascii	"[WARN] Frame timeout \342\200\224 mask=0x%02X \342\200"
+ 204      4E5D2046 
+ 204      72616D65 
+ 204      2074696D 
+ 204      656F7574 
+ 205 0027 94206465 		.ascii	"\224 descartando\015\012\000"
+ 205      73636172 
+ 205      74616E64 
+ 205      6F0D0A00 
+ 206              		.section	.text.FrameAssembler_CheckTimeout,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	FrameAssembler_CheckTimeout
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	FrameAssembler_CheckTimeout:
+ 214              	.LVL12:
+ 215              	.LFB10:
+  54:Core/Src/can_frame.c **** 
+  55:Core/Src/can_frame.c **** /* ============================================================
+  56:Core/Src/can_frame.c ****  * FrameAssembler_CheckTimeout
+  57:Core/Src/can_frame.c ****  * Descartar frame parcial si tardó más de FRAME_TIMEOUT_MS.
+  58:Core/Src/can_frame.c ****  * ============================================================ */
+  59:Core/Src/can_frame.c **** void FrameAssembler_CheckTimeout(can_frame_assembler_t *fa, uint32_t now_ms)
+  60:Core/Src/can_frame.c **** {
+ 216              		.loc 1 60 1 is_stmt 1 view -0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+  61:Core/Src/can_frame.c ****     if (fa->received_mask == 0)
+ 220              		.loc 1 61 5 view .LVU60
+ 221              		.loc 1 61 11 is_stmt 0 view .LVU61
+ 222 0000 027E     		ldrb	r2, [r0, #24]	@ zero_extendqisi2
+ 223              		.loc 1 61 8 view .LVU62
+ 224 0002 8AB1     		cbz	r2, .L21
+  60:Core/Src/can_frame.c ****     if (fa->received_mask == 0)
+ 225              		.loc 1 60 1 view .LVU63
+ 226 0004 10B5     		push	{r4, lr}
+ 227              	.LCFI2:
+ 228              		.cfi_def_cfa_offset 8
+ 229              		.cfi_offset 4, -8
+ 230              		.cfi_offset 14, -4
+ 231 0006 0446     		mov	r4, r0
+  62:Core/Src/can_frame.c ****         return;
+  63:Core/Src/can_frame.c **** 
+  64:Core/Src/can_frame.c ****     if ((now_ms - fa->first_field_tick) > FRAME_TIMEOUT_MS)
+ 232              		.loc 1 64 5 is_stmt 1 view .LVU64
+ 233              		.loc 1 64 21 is_stmt 0 view .LVU65
+ 234 0008 C369     		ldr	r3, [r0, #28]
+ 235              		.loc 1 64 17 view .LVU66
+ 236 000a CB1A     		subs	r3, r1, r3
+ 237              		.loc 1 64 8 view .LVU67
+ 238 000c B3F5FA6F 		cmp	r3, #2000
+ 239 0010 00D8     		bhi	.L24
+ARM GAS  /tmp/cco8HlhT.s 			page 7
+
+
+ 240              	.LVL13:
+ 241              	.L18:
+  65:Core/Src/can_frame.c ****     {
+  66:Core/Src/can_frame.c ****         printf("[WARN] Frame timeout — mask=0x%02X — descartando\r\n",
+  67:Core/Src/can_frame.c ****                fa->received_mask);
+  68:Core/Src/can_frame.c ****         memset(fa, 0, sizeof(can_frame_assembler_t));
+  69:Core/Src/can_frame.c ****     }
+  70:Core/Src/can_frame.c **** }...
+ 242              		.loc 1 70 1 view .LVU68
+ 243 0012 10BD     		pop	{r4, pc}
+ 244              	.LVL14:
+ 245              	.L24:
+  66:Core/Src/can_frame.c ****         printf("[WARN] Frame timeout — mask=0x%02X — descartando\r\n",
+ 246              		.loc 1 66 9 is_stmt 1 view .LVU69
+ 247 0014 1146     		mov	r1, r2
+ 248              	.LVL15:
+  66:Core/Src/can_frame.c ****         printf("[WARN] Frame timeout — mask=0x%02X — descartando\r\n",
+ 249              		.loc 1 66 9 is_stmt 0 view .LVU70
+ 250 0016 0548     		ldr	r0, .L25
+ 251              	.LVL16:
+  66:Core/Src/can_frame.c ****         printf("[WARN] Frame timeout — mask=0x%02X — descartando\r\n",
+ 252              		.loc 1 66 9 view .LVU71
+ 253 0018 FFF7FEFF 		bl	printf
+ 254              	.LVL17:
+  68:Core/Src/can_frame.c ****         memset(fa, 0, sizeof(can_frame_assembler_t));
+ 255              		.loc 1 68 9 is_stmt 1 view .LVU72
+ 256 001c 2022     		movs	r2, #32
+ 257 001e 0021     		movs	r1, #0
+ 258 0020 2046     		mov	r0, r4
+ 259 0022 FFF7FEFF 		bl	memset
+ 260              	.LVL18:
+ 261 0026 F4E7     		b	.L18
+ 262              	.LVL19:
+ 263              	.L21:
+ 264              	.LCFI3:
+ 265              		.cfi_def_cfa_offset 0
+ 266              		.cfi_restore 4
+ 267              		.cfi_restore 14
+  68:Core/Src/can_frame.c ****         memset(fa, 0, sizeof(can_frame_assembler_t));
+ 268              		.loc 1 68 9 is_stmt 0 view .LVU73
+ 269 0028 7047     		bx	lr
+ 270              	.L26:
+ 271 002a 00BF     		.align	2
+ 272              	.L25:
+ 273 002c 00000000 		.word	.LC0
+ 274              		.cfi_endproc
+ 275              	.LFE10:
+ 277              		.text
+ 278              	.Letext0:
+ 279              		.file 2 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 280              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 281              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 282              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 283              		.file 6 "Core/Inc/can_frame.h"
+ 284              		.file 7 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 285              		.file 8 "<built-in>"
+ARM GAS  /tmp/cco8HlhT.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 can_frame.c
+     /tmp/cco8HlhT.s:18     .text.FrameAssembler_Init:0000000000000000 $t
+     /tmp/cco8HlhT.s:24     .text.FrameAssembler_Init:0000000000000000 FrameAssembler_Init
+     /tmp/cco8HlhT.s:49     .text.FrameAssembler_Feed:0000000000000000 $t
+     /tmp/cco8HlhT.s:55     .text.FrameAssembler_Feed:0000000000000000 FrameAssembler_Feed
+     /tmp/cco8HlhT.s:88     .text.FrameAssembler_Feed:0000000000000016 $d
+     /tmp/cco8HlhT.s:94     .text.FrameAssembler_Feed:000000000000001c $t
+     /tmp/cco8HlhT.s:202    .rodata.FrameAssembler_CheckTimeout.str1.4:0000000000000000 $d
+     /tmp/cco8HlhT.s:207    .text.FrameAssembler_CheckTimeout:0000000000000000 $t
+     /tmp/cco8HlhT.s:213    .text.FrameAssembler_CheckTimeout:0000000000000000 FrameAssembler_CheckTimeout
+     /tmp/cco8HlhT.s:273    .text.FrameAssembler_CheckTimeout:000000000000002c $d
+
+UNDEFINED SYMBOLS
+memset
+xQueueGenericSend
+printf

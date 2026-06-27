@@ -1,0 +1,1076 @@
+ARM GAS  /tmp/cccRgTrx.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC0:
+  17 0000 43414E50 		.ascii	"CANParser\000"
+  17      61727365 
+  17      7200
+  18 000a 0000     		.align	2
+  19              	.LC2:
+  20 000c 4D4C5461 		.ascii	"MLTask\000"
+  20      736B00
+  21              		.text
+  22              	.Ltext0:
+  23              		.cfi_sections	.debug_frame
+  24              		.section	.text.StartCANParserTask,"ax",%progbits
+  25              		.align	1
+  26              		.global	StartCANParserTask
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  31              	StartCANParserTask:
+  32              	.LFB75:
+  33              		.file 1 "Core/Src/freertos.c"
+   1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/freertos.c **** /**
+   3:Core/Src/freertos.c ****   ******************************************************************************
+   4:Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Core/Src/freertos.c ****   ******************************************************************************
+   7:Core/Src/freertos.c ****   */
+   8:Core/Src/freertos.c **** /* USER CODE END Header */
+   9:Core/Src/freertos.c **** 
+  10:Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  11:Core/Src/freertos.c **** #include "FreeRTOS.h"
+  12:Core/Src/freertos.c **** #include "task.h"
+  13:Core/Src/freertos.c **** #include "main.h"
+  14:Core/Src/freertos.c **** #include "cmsis_os.h"
+  15:Core/Src/freertos.c **** 
+  16:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  17:Core/Src/freertos.c **** #include "can_app.h"
+  18:Core/Src/freertos.c **** #include "can_frame.h"
+  19:Core/Src/freertos.c **** #include "regression_tree.h"
+  20:Core/Src/freertos.c **** #include <string.h>
+  21:Core/Src/freertos.c **** #include <stdio.h>
+  22:Core/Src/freertos.c **** #include <math.h>
+ARM GAS  /tmp/cccRgTrx.s 			page 2
+
+
+  23:Core/Src/freertos.c **** #include "can_frame.h"
+  24:Core/Src/freertos.c **** /* USER CODE END Includes */
+  25:Core/Src/freertos.c **** 
+  26:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  27:Core/Src/freertos.c **** extern CAN_HandleTypeDef hcan;
+  28:Core/Src/freertos.c **** 
+  29:Core/Src/freertos.c **** /* Ensamblador de frame CAN — compartido entre CANParser y MLTask */
+  30:Core/Src/freertos.c **** static can_frame_assembler_t  s_assembler;
+  31:Core/Src/freertos.c **** 
+  32:Core/Src/freertos.c **** /* Queue que avisa a MLTask cuando un frame está completo */
+  33:Core/Src/freertos.c **** static QueueHandle_t s_mlQueue;  /* tamaño 1 ml_frame_t — el resultado del modelo */
+  34:Core/Src/freertos.c **** 
+  35:Core/Src/freertos.c **** /* USER CODE END Variables */
+  36:Core/Src/freertos.c **** 
+  37:Core/Src/freertos.c **** osThreadId CANParserHandle;
+  38:Core/Src/freertos.c **** osThreadId MLTaskHandle;
+  39:Core/Src/freertos.c **** 
+  40:Core/Src/freertos.c **** QueueHandle_t canRxQueueSD;
+  41:Core/Src/freertos.c **** 
+  42:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  43:Core/Src/freertos.c **** void StartCANParserTask(void const * argument);
+  44:Core/Src/freertos.c **** void StartMLTask(void const * argument);
+  45:Core/Src/freertos.c **** void MX_FREERTOS_Init(void);
+  46:Core/Src/freertos.c **** 
+  47:Core/Src/freertos.c **** /* Static allocation for Idle task */
+  48:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  49:Core/Src/freertos.c **** static StackType_t  xIdleStack[configMINIMAL_STACK_SIZE];
+  50:Core/Src/freertos.c **** 
+  51:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer,
+  52:Core/Src/freertos.c ****                                     StackType_t  **ppxIdleTaskStackBuffer,
+  53:Core/Src/freertos.c ****                                     uint32_t      *pulIdleTaskStackSize )
+  54:Core/Src/freertos.c **** {
+  55:Core/Src/freertos.c ****     *ppxIdleTaskTCBBuffer  = &xIdleTaskTCBBuffer;
+  56:Core/Src/freertos.c ****     *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  57:Core/Src/freertos.c ****     *pulIdleTaskStackSize   = configMINIMAL_STACK_SIZE;
+  58:Core/Src/freertos.c **** }
+  59:Core/Src/freertos.c **** 
+  60:Core/Src/freertos.c **** /* ============================================================
+  61:Core/Src/freertos.c ****  * MX_FREERTOS_Init
+  62:Core/Src/freertos.c ****  * ============================================================ */
+  63:Core/Src/freertos.c **** void MX_FREERTOS_Init(void)
+  64:Core/Src/freertos.c **** {
+  65:Core/Src/freertos.c ****     /* Inicializar el ensamblador de frame */
+  66:Core/Src/freertos.c ****     FrameAssembler_Init(&s_assembler);
+  67:Core/Src/freertos.c **** 
+  68:Core/Src/freertos.c ****     /* Cola de mensajes CAN crudos → CANParserTask */
+  69:Core/Src/freertos.c ****     canRxQueueSD = xQueueCreate(64, sizeof(CAN_Message_t));
+  70:Core/Src/freertos.c ****     configASSERT(canRxQueueSD);
+  71:Core/Src/freertos.c **** 
+  72:Core/Src/freertos.c ****     /* Cola de resultado del modelo → MLTask (profundidad 1, sobrescribible) */
+  73:Core/Src/freertos.c ****     s_mlQueue = xQueueCreate(1, sizeof(ml_frame_t));
+  74:Core/Src/freertos.c ****     configASSERT(s_mlQueue);
+  75:Core/Src/freertos.c **** 
+  76:Core/Src/freertos.c ****     /* Tarea CAN Parser — alta prioridad para no perder mensajes */
+  77:Core/Src/freertos.c ****     osThreadDef(CANParser, StartCANParserTask, osPriorityAboveNormal, 0, 512);
+  78:Core/Src/freertos.c ****     CANParserHandle = osThreadCreate(osThread(CANParser), NULL);
+  79:Core/Src/freertos.c **** 
+ARM GAS  /tmp/cccRgTrx.s 			page 3
+
+
+  80:Core/Src/freertos.c ****     /* Tarea ML — prioridad normal, se activa cuando el frame está completo */
+  81:Core/Src/freertos.c ****     osThreadDef(MLTask, StartMLTask, osPriorityNormal, 0, 512);
+  82:Core/Src/freertos.c ****     MLTaskHandle = osThreadCreate(osThread(MLTask), NULL);
+  83:Core/Src/freertos.c **** }
+  84:Core/Src/freertos.c **** 
+  85:Core/Src/freertos.c **** /* ============================================================
+  86:Core/Src/freertos.c ****  * StartCANParserTask
+  87:Core/Src/freertos.c ****  *
+  88:Core/Src/freertos.c ****  * Recibe mensajes CAN de la ISR, los alimenta al ensamblador,
+  89:Core/Src/freertos.c ****  * y cuando el frame está completo ejecuta el modelo y publica
+  90:Core/Src/freertos.c ****  * el resultado en s_mlQueue.
+  91:Core/Src/freertos.c ****  * ============================================================ */
+  92:Core/Src/freertos.c **** void StartCANParserTask(void const * argument)
+  93:Core/Src/freertos.c **** {
+  34              		.loc 1 93 1 view -0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 40
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38              	.LVL0:
+  39              		.loc 1 93 1 is_stmt 0 view .LVU1
+  40 0000 70B5     		push	{r4, r5, r6, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 16
+  43              		.cfi_offset 4, -16
+  44              		.cfi_offset 5, -12
+  45              		.cfi_offset 6, -8
+  46              		.cfi_offset 14, -4
+  47 0002 8CB0     		sub	sp, sp, #48
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 64
+  50              	.LVL1:
+  51              	.L2:
+  94:Core/Src/freertos.c ****     CAN_Message_t rxMsg;
+  52              		.loc 1 94 5 is_stmt 1 view .LVU2
+  95:Core/Src/freertos.c ****     float         canValue;
+  53              		.loc 1 95 5 view .LVU3
+  96:Core/Src/freertos.c **** 
+  97:Core/Src/freertos.c ****     for (;;)
+  54              		.loc 1 97 5 view .LVU4
+  55              	.LBB6:
+  98:Core/Src/freertos.c ****     {
+  99:Core/Src/freertos.c ****         /* Bloquear hasta recibir un mensaje CAN */
+ 100:Core/Src/freertos.c ****         if (xQueueReceive(canRxQueueSD, &rxMsg, portMAX_DELAY) != pdPASS)
+  56              		.loc 1 100 9 view .LVU5
+  57              		.loc 1 100 13 is_stmt 0 view .LVU6
+  58 0004 4FF0FF32 		mov	r2, #-1
+  59 0008 03A9     		add	r1, sp, #12
+  60 000a 0E4B     		ldr	r3, .L5
+  61 000c 1868     		ldr	r0, [r3]
+  62 000e FFF7FEFF 		bl	xQueueReceive
+  63              	.LVL2:
+  64              		.loc 1 100 12 view .LVU7
+  65 0012 0128     		cmp	r0, #1
+  66 0014 F6D1     		bne	.L2
+ 101:Core/Src/freertos.c ****             continue;
+ 102:Core/Src/freertos.c **** 
+ 103:Core/Src/freertos.c ****         /* Verificar timeout del frame en curso antes de procesar */
+ARM GAS  /tmp/cccRgTrx.s 			page 4
+
+
+ 104:Core/Src/freertos.c ****         FrameAssembler_CheckTimeout(&s_assembler, HAL_GetTick());
+  67              		.loc 1 104 9 is_stmt 1 view .LVU8
+  68 0016 FFF7FEFF 		bl	HAL_GetTick
+  69              	.LVL3:
+  70 001a 0146     		mov	r1, r0
+  71 001c 0A4C     		ldr	r4, .L5+4
+  72 001e 2046     		mov	r0, r4
+  73 0020 FFF7FEFF 		bl	FrameAssembler_CheckTimeout
+  74              	.LVL4:
+ 105:Core/Src/freertos.c **** 
+ 106:Core/Src/freertos.c ****         /* Decodificar float del payload */
+ 107:Core/Src/freertos.c ****         memcpy(&canValue, rxMsg.data, sizeof(float));
+  75              		.loc 1 107 9 view .LVU9
+  76 0024 0A9D     		ldr	r5, [sp, #40]
+  77 0026 0295     		str	r5, [sp, #8]
+ 108:Core/Src/freertos.c ****         //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);  /* LED de actividad */
+ 109:Core/Src/freertos.c ****         /* Log por UART (igual que antes) */
+ 110:Core/Src/freertos.c ****         const char *label = "UNKNOWN";
+  78              		.loc 1 110 9 view .LVU10
+  79              	.LVL5:
+ 111:Core/Src/freertos.c ****         if      (rxMsg.header.StdId == CAN_ID_RMS)     label = "RMS";
+  80              		.loc 1 111 9 view .LVU11
+  81              		.loc 1 111 30 is_stmt 0 view .LVU12
+  82 0028 039E     		ldr	r6, [sp, #12]
+  83              	.LVL6:
+ 112:Core/Src/freertos.c ****         else if (rxMsg.header.StdId == CAN_ID_CREST)   label = "CREST";
+ 113:Core/Src/freertos.c ****         else if (rxMsg.header.StdId == CAN_ID_PEAK)    label = "PEAK";
+ 114:Core/Src/freertos.c ****         else if (rxMsg.header.StdId == CAN_ID_TEMP)    label = "TEMP";
+ 115:Core/Src/freertos.c ****         else if (rxMsg.header.StdId == CAN_ID_CURRENT) label = "CURRENT";
+ 116:Core/Src/freertos.c ****         else if (rxMsg.header.StdId == CAN_ID_SPEED)   label = "SPEED";
+ 117:Core/Src/freertos.c **** 
+ 118:Core/Src/freertos.c ****         /* Alimentar el ensamblador con el campo recibido.
+ 119:Core/Src/freertos.c ****          * Cuando retorna 1 el frame está completo y el modelo ya fue ejecutado
+ 120:Core/Src/freertos.c ****          * internamente — publicamos el resultado a MLTask. */
+ 121:Core/Src/freertos.c ****         /* Alimentar ensamblador — cuando completa los 6 campos publica
+ 122:Core/Src/freertos.c ****          * ml_frame_t en s_mlQueue y MLTask se desbloquea automáticamente */
+ 123:Core/Src/freertos.c ****         FrameAssembler_Feed(&s_assembler,
+  84              		.loc 1 123 9 is_stmt 1 view .LVU13
+  85 002a FFF7FEFF 		bl	HAL_GetTick
+  86              	.LVL7:
+  87 002e 0346     		mov	r3, r0
+  88 0030 064A     		ldr	r2, .L5+8
+  89 0032 1268     		ldr	r2, [r2]
+  90 0034 0092     		str	r2, [sp]
+  91 0036 2A46     		mov	r2, r5
+  92 0038 3146     		mov	r1, r6
+  93 003a 2046     		mov	r0, r4
+  94 003c FFF7FEFF 		bl	FrameAssembler_Feed
+  95              	.LVL8:
+  96 0040 E0E7     		b	.L2
+  97              	.L6:
+  98 0042 00BF     		.align	2
+  99              	.L5:
+ 100 0044 00000000 		.word	.LANCHOR0
+ 101 0048 00000000 		.word	.LANCHOR1
+ 102 004c 00000000 		.word	.LANCHOR2
+ 103              	.LBE6:
+ARM GAS  /tmp/cccRgTrx.s 			page 5
+
+
+ 104              		.cfi_endproc
+ 105              	.LFE75:
+ 107              		.section	.rodata.StartMLTask.str1.4,"aMS",%progbits,1
+ 108              		.align	2
+ 109              	.LC4:
+ 110 0000 4D4C5461 		.ascii	"MLTask iniciada \342\200\224 esperando frames compl"
+ 110      736B2069 
+ 110      6E696369 
+ 110      61646120 
+ 110      E2809420 
+ 111 002a 65746F73 		.ascii	"etos...\015\000"
+ 111      2E2E2E0D 
+ 111      00
+ 112              		.global	__aeabi_fsub
+ 113              		.global	__aeabi_fcmpgt
+ 114              		.global	__aeabi_f2d
+ 115 0033 00       		.align	2
+ 116              	.LC5:
+ 117 0034 414C4152 		.ascii	"ALARMA -> Pred=%.1f Real=%.1f Error=%.1f\015\012\000"
+ 117      4D41202D 
+ 117      3E205072 
+ 117      65643D25 
+ 117      2E316620 
+ 118 005f 00       		.align	2
+ 119              	.LC6:
+ 120 0060 4F4B2020 		.ascii	"OK     -> Pred=%.1f Real=%.1f Error=%.1f\015\012\000"
+ 120      2020202D 
+ 120      3E205072 
+ 120      65643D25 
+ 120      2E316620 
+ 121              		.section	.text.StartMLTask,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	StartMLTask
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	StartMLTask:
+ 129              	.LVL9:
+ 130              	.LFB76:
+ 124:Core/Src/freertos.c ****                             rxMsg.header.StdId,
+ 125:Core/Src/freertos.c ****                             canValue,
+ 126:Core/Src/freertos.c ****                             HAL_GetTick(),
+ 127:Core/Src/freertos.c ****                             s_mlQueue);
+ 128:Core/Src/freertos.c ****     }
+ 129:Core/Src/freertos.c **** }
+ 130:Core/Src/freertos.c **** 
+ 131:Core/Src/freertos.c **** /* ============================================================
+ 132:Core/Src/freertos.c ****  * StartMLTask
+ 133:Core/Src/freertos.c ****  *
+ 134:Core/Src/freertos.c ****  * Se desbloquea cuando llega un frame completo por s_mlQueue,
+ 135:Core/Src/freertos.c ****  * compara predicción con velocidad real y genera alarma si corresponde.
+ 136:Core/Src/freertos.c ****  * ============================================================ */
+ 137:Core/Src/freertos.c **** void StartMLTask(void const * argument)
+ 138:Core/Src/freertos.c **** {
+ 131              		.loc 1 138 1 view -0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 24
+ARM GAS  /tmp/cccRgTrx.s 			page 6
+
+
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		.loc 1 138 1 is_stmt 0 view .LVU15
+ 136 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 137              	.LCFI2:
+ 138              		.cfi_def_cfa_offset 24
+ 139              		.cfi_offset 4, -24
+ 140              		.cfi_offset 5, -20
+ 141              		.cfi_offset 6, -16
+ 142              		.cfi_offset 7, -12
+ 143              		.cfi_offset 8, -8
+ 144              		.cfi_offset 14, -4
+ 145 0004 8AB0     		sub	sp, sp, #40
+ 146              	.LCFI3:
+ 147              		.cfi_def_cfa_offset 64
+ 139:Core/Src/freertos.c ****     ml_frame_t frame;
+ 148              		.loc 1 139 5 is_stmt 1 view .LVU16
+ 140:Core/Src/freertos.c ****     printf("MLTask iniciada — esperando frames completos...\r\n");
+ 149              		.loc 1 140 5 view .LVU17
+ 150 0006 2948     		ldr	r0, .L15
+ 151              	.LVL10:
+ 152              		.loc 1 140 5 is_stmt 0 view .LVU18
+ 153 0008 FFF7FEFF 		bl	puts
+ 154              	.LVL11:
+ 155 000c 13E0     		b	.L8
+ 156              	.LVL12:
+ 157              	.L13:
+ 158              	.LBB7:
+ 141:Core/Src/freertos.c **** 
+ 142:Core/Src/freertos.c ****     for (;;)
+ 143:Core/Src/freertos.c ****     {
+ 144:Core/Src/freertos.c ****         /* Bloquear hasta que CANParserTask publique un frame completo */
+ 145:Core/Src/freertos.c ****         if (xQueueReceive(s_mlQueue, &frame, portMAX_DELAY) != pdPASS)
+ 146:Core/Src/freertos.c ****             continue;
+ 147:Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);  /* LED de actividad */
+ 148:Core/Src/freertos.c ****         float speed_pred = PredictSpeed(frame.rms,
+ 149:Core/Src/freertos.c ****                                         frame.crest,
+ 150:Core/Src/freertos.c ****                                         frame.peak,
+ 151:Core/Src/freertos.c ****                                         frame.temperature,
+ 152:Core/Src/freertos.c ****                                         frame.current);
+ 153:Core/Src/freertos.c **** 
+ 154:Core/Src/freertos.c ****         float error = fabsf(frame.speed - speed_pred);
+ 155:Core/Src/freertos.c **** 
+ 156:Core/Src/freertos.c ****         if (error > 100.0f)
+ 157:Core/Src/freertos.c ****         {
+ 158:Core/Src/freertos.c ****             printf("ALARMA -> Pred=%.1f Real=%.1f Error=%.1f\r\n",
+ 159:Core/Src/freertos.c ****                    speed_pred, frame.speed, error);
+ 160:Core/Src/freertos.c ****         }
+ 161:Core/Src/freertos.c ****         else
+ 162:Core/Src/freertos.c ****         {
+ 163:Core/Src/freertos.c ****             printf("OK     -> Pred=%.1f Real=%.1f Error=%.1f\r\n",
+ 159              		.loc 1 163 13 is_stmt 1 view .LVU19
+ 160 000e 2846     		mov	r0, r5
+ 161 0010 FFF7FEFF 		bl	__aeabi_f2d
+ 162              	.LVL13:
+ 163 0014 0646     		mov	r6, r0
+ 164 0016 0F46     		mov	r7, r1
+ 165 0018 2046     		mov	r0, r4
+ARM GAS  /tmp/cccRgTrx.s 			page 7
+
+
+ 166 001a FFF7FEFF 		bl	__aeabi_f2d
+ 167              	.LVL14:
+ 168 001e CDE90201 		strd	r0, [sp, #8]
+ 169 0022 4046     		mov	r0, r8
+ 170 0024 FFF7FEFF 		bl	__aeabi_f2d
+ 171              	.LVL15:
+ 172 0028 CDE90001 		strd	r0, [sp]
+ 173 002c 3246     		mov	r2, r6
+ 174 002e 3B46     		mov	r3, r7
+ 175 0030 1F48     		ldr	r0, .L15+4
+ 176 0032 FFF7FEFF 		bl	printf
+ 177              	.LVL16:
+ 178              	.L8:
+ 179              		.loc 1 163 13 is_stmt 0 view .LVU20
+ 180              	.LBE7:
+ 142:Core/Src/freertos.c ****     {
+ 181              		.loc 1 142 5 is_stmt 1 view .LVU21
+ 182              	.LBB8:
+ 145:Core/Src/freertos.c ****             continue;
+ 183              		.loc 1 145 9 view .LVU22
+ 145:Core/Src/freertos.c ****             continue;
+ 184              		.loc 1 145 13 is_stmt 0 view .LVU23
+ 185 0036 4FF0FF32 		mov	r2, #-1
+ 186 003a 04A9     		add	r1, sp, #16
+ 187 003c 1D4B     		ldr	r3, .L15+8
+ 188 003e 1868     		ldr	r0, [r3]
+ 189 0040 FFF7FEFF 		bl	xQueueReceive
+ 190              	.LVL17:
+ 145:Core/Src/freertos.c ****             continue;
+ 191              		.loc 1 145 12 view .LVU24
+ 192 0044 0128     		cmp	r0, #1
+ 193 0046 F6D1     		bne	.L8
+ 147:Core/Src/freertos.c ****         float speed_pred = PredictSpeed(frame.rms,
+ 194              		.loc 1 147 9 is_stmt 1 view .LVU25
+ 195 0048 4FF40051 		mov	r1, #8192
+ 196 004c 1A48     		ldr	r0, .L15+12
+ 197 004e FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 198              	.LVL18:
+ 148:Core/Src/freertos.c ****                                         frame.crest,
+ 199              		.loc 1 148 9 view .LVU26
+ 148:Core/Src/freertos.c ****                                         frame.crest,
+ 200              		.loc 1 148 28 is_stmt 0 view .LVU27
+ 201 0052 089B     		ldr	r3, [sp, #32]	@ float
+ 202 0054 0093     		str	r3, [sp]	@ float
+ 203 0056 079B     		ldr	r3, [sp, #28]	@ float
+ 204 0058 069A     		ldr	r2, [sp, #24]	@ float
+ 205 005a 0599     		ldr	r1, [sp, #20]	@ float
+ 206 005c 0498     		ldr	r0, [sp, #16]	@ float
+ 207 005e FFF7FEFF 		bl	PredictSpeed
+ 208              	.LVL19:
+ 209 0062 0546     		mov	r5, r0
+ 210              	.LVL20:
+ 154:Core/Src/freertos.c **** 
+ 211              		.loc 1 154 9 is_stmt 1 view .LVU28
+ 154:Core/Src/freertos.c **** 
+ 212              		.loc 1 154 34 is_stmt 0 view .LVU29
+ 213 0064 DDF82480 		ldr	r8, [sp, #36]	@ float
+ARM GAS  /tmp/cccRgTrx.s 			page 8
+
+
+ 154:Core/Src/freertos.c **** 
+ 214              		.loc 1 154 41 view .LVU30
+ 215 0068 0146     		mov	r1, r0
+ 216 006a 4046     		mov	r0, r8
+ 217              	.LVL21:
+ 154:Core/Src/freertos.c **** 
+ 218              		.loc 1 154 41 view .LVU31
+ 219 006c FFF7FEFF 		bl	__aeabi_fsub
+ 220              	.LVL22:
+ 154:Core/Src/freertos.c **** 
+ 221              		.loc 1 154 15 view .LVU32
+ 222 0070 20F00044 		bic	r4, r0, #-2147483648
+ 223              	.LVL23:
+ 156:Core/Src/freertos.c ****         {
+ 224              		.loc 1 156 9 is_stmt 1 view .LVU33
+ 156:Core/Src/freertos.c ****         {
+ 225              		.loc 1 156 12 is_stmt 0 view .LVU34
+ 226 0074 1149     		ldr	r1, .L15+16
+ 227 0076 2046     		mov	r0, r4
+ 228 0078 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 229              	.LVL24:
+ 230 007c 0028     		cmp	r0, #0
+ 231 007e C6D0     		beq	.L13
+ 158:Core/Src/freertos.c ****                    speed_pred, frame.speed, error);
+ 232              		.loc 1 158 13 is_stmt 1 view .LVU35
+ 233 0080 2846     		mov	r0, r5
+ 234 0082 FFF7FEFF 		bl	__aeabi_f2d
+ 235              	.LVL25:
+ 236 0086 0646     		mov	r6, r0
+ 237 0088 0F46     		mov	r7, r1
+ 238 008a 2046     		mov	r0, r4
+ 239 008c FFF7FEFF 		bl	__aeabi_f2d
+ 240              	.LVL26:
+ 241 0090 CDE90201 		strd	r0, [sp, #8]
+ 242 0094 4046     		mov	r0, r8
+ 243 0096 FFF7FEFF 		bl	__aeabi_f2d
+ 244              	.LVL27:
+ 245 009a CDE90001 		strd	r0, [sp]
+ 246 009e 3246     		mov	r2, r6
+ 247 00a0 3B46     		mov	r3, r7
+ 248 00a2 0748     		ldr	r0, .L15+20
+ 249 00a4 FFF7FEFF 		bl	printf
+ 250              	.LVL28:
+ 251 00a8 C5E7     		b	.L8
+ 252              	.L16:
+ 253 00aa 00BF     		.align	2
+ 254              	.L15:
+ 255 00ac 00000000 		.word	.LC4
+ 256 00b0 60000000 		.word	.LC6
+ 257 00b4 00000000 		.word	.LANCHOR2
+ 258 00b8 00100140 		.word	1073811456
+ 259 00bc 0000C842 		.word	1120403456
+ 260 00c0 34000000 		.word	.LC5
+ 261              	.LBE8:
+ 262              		.cfi_endproc
+ 263              	.LFE76:
+ 265              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+ARM GAS  /tmp/cccRgTrx.s 			page 9
+
+
+ 266              		.align	1
+ 267              		.global	vApplicationGetIdleTaskMemory
+ 268              		.syntax unified
+ 269              		.thumb
+ 270              		.thumb_func
+ 272              	vApplicationGetIdleTaskMemory:
+ 273              	.LVL29:
+ 274              	.LFB73:
+  54:Core/Src/freertos.c ****     *ppxIdleTaskTCBBuffer  = &xIdleTaskTCBBuffer;
+ 275              		.loc 1 54 1 view -0
+ 276              		.cfi_startproc
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279              		@ link register save eliminated.
+  55:Core/Src/freertos.c ****     *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 280              		.loc 1 55 5 view .LVU37
+  55:Core/Src/freertos.c ****     *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 281              		.loc 1 55 28 is_stmt 0 view .LVU38
+ 282 0000 034B     		ldr	r3, .L18
+ 283 0002 0360     		str	r3, [r0]
+  56:Core/Src/freertos.c ****     *pulIdleTaskStackSize   = configMINIMAL_STACK_SIZE;
+ 284              		.loc 1 56 5 is_stmt 1 view .LVU39
+  56:Core/Src/freertos.c ****     *pulIdleTaskStackSize   = configMINIMAL_STACK_SIZE;
+ 285              		.loc 1 56 29 is_stmt 0 view .LVU40
+ 286 0004 034B     		ldr	r3, .L18+4
+ 287 0006 0B60     		str	r3, [r1]
+  57:Core/Src/freertos.c **** }
+ 288              		.loc 1 57 5 is_stmt 1 view .LVU41
+  57:Core/Src/freertos.c **** }
+ 289              		.loc 1 57 29 is_stmt 0 view .LVU42
+ 290 0008 8023     		movs	r3, #128
+ 291 000a 1360     		str	r3, [r2]
+  58:Core/Src/freertos.c **** 
+ 292              		.loc 1 58 1 view .LVU43
+ 293 000c 7047     		bx	lr
+ 294              	.L19:
+ 295 000e 00BF     		.align	2
+ 296              	.L18:
+ 297 0010 00000000 		.word	.LANCHOR3
+ 298 0014 00000000 		.word	.LANCHOR4
+ 299              		.cfi_endproc
+ 300              	.LFE73:
+ 302              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 303              		.align	1
+ 304              		.global	MX_FREERTOS_Init
+ 305              		.syntax unified
+ 306              		.thumb
+ 307              		.thumb_func
+ 309              	MX_FREERTOS_Init:
+ 310              	.LFB74:
+  64:Core/Src/freertos.c ****     /* Inicializar el ensamblador de frame */
+ 311              		.loc 1 64 1 is_stmt 1 view -0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 56
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 315 0000 10B5     		push	{r4, lr}
+ 316              	.LCFI4:
+ARM GAS  /tmp/cccRgTrx.s 			page 10
+
+
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 4, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 8EB0     		sub	sp, sp, #56
+ 321              	.LCFI5:
+ 322              		.cfi_def_cfa_offset 64
+  66:Core/Src/freertos.c **** 
+ 323              		.loc 1 66 5 view .LVU45
+ 324 0004 2448     		ldr	r0, .L28
+ 325 0006 FFF7FEFF 		bl	FrameAssembler_Init
+ 326              	.LVL30:
+  69:Core/Src/freertos.c ****     configASSERT(canRxQueueSD);
+ 327              		.loc 1 69 5 view .LVU46
+  69:Core/Src/freertos.c ****     configASSERT(canRxQueueSD);
+ 328              		.loc 1 69 20 is_stmt 0 view .LVU47
+ 329 000a 0022     		movs	r2, #0
+ 330 000c 2421     		movs	r1, #36
+ 331 000e 4020     		movs	r0, #64
+ 332 0010 FFF7FEFF 		bl	xQueueGenericCreate
+ 333              	.LVL31:
+  69:Core/Src/freertos.c ****     configASSERT(canRxQueueSD);
+ 334              		.loc 1 69 18 view .LVU48
+ 335 0014 214B     		ldr	r3, .L28+4
+ 336 0016 1860     		str	r0, [r3]
+  70:Core/Src/freertos.c **** 
+ 337              		.loc 1 70 5 is_stmt 1 view .LVU49
+ 338 0018 60B3     		cbz	r0, .L26
+  70:Core/Src/freertos.c **** 
+ 339              		.loc 1 70 31 discriminator 2 view .LVU50
+  73:Core/Src/freertos.c ****     configASSERT(s_mlQueue);
+ 340              		.loc 1 73 5 discriminator 2 view .LVU51
+  73:Core/Src/freertos.c ****     configASSERT(s_mlQueue);
+ 341              		.loc 1 73 17 is_stmt 0 discriminator 2 view .LVU52
+ 342 001a 0022     		movs	r2, #0
+ 343 001c 1821     		movs	r1, #24
+ 344 001e 0120     		movs	r0, #1
+ 345 0020 FFF7FEFF 		bl	xQueueGenericCreate
+ 346              	.LVL32:
+  73:Core/Src/freertos.c ****     configASSERT(s_mlQueue);
+ 347              		.loc 1 73 15 discriminator 2 view .LVU53
+ 348 0024 1E4B     		ldr	r3, .L28+8
+ 349 0026 1860     		str	r0, [r3]
+  74:Core/Src/freertos.c **** 
+ 350              		.loc 1 74 5 is_stmt 1 discriminator 2 view .LVU54
+ 351 0028 68B3     		cbz	r0, .L27
+  74:Core/Src/freertos.c **** 
+ 352              		.loc 1 74 28 discriminator 2 view .LVU55
+  77:Core/Src/freertos.c ****     CANParserHandle = osThreadCreate(osThread(CANParser), NULL);
+ 353              		.loc 1 77 5 discriminator 2 view .LVU56
+ 354 002a 1E4C     		ldr	r4, .L28+12
+ 355 002c 0DF11C0C 		add	ip, sp, #28
+ 356 0030 A646     		mov	lr, r4
+ 357 0032 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 358 0036 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 359 003a 9EE80700 		ldm	lr, {r0, r1, r2}
+ 360 003e 8CE80700 		stm	ip, {r0, r1, r2}
+  78:Core/Src/freertos.c **** 
+ARM GAS  /tmp/cccRgTrx.s 			page 11
+
+
+ 361              		.loc 1 78 5 discriminator 2 view .LVU57
+  78:Core/Src/freertos.c **** 
+ 362              		.loc 1 78 23 is_stmt 0 discriminator 2 view .LVU58
+ 363 0042 0021     		movs	r1, #0
+ 364 0044 07A8     		add	r0, sp, #28
+ 365 0046 FFF7FEFF 		bl	osThreadCreate
+ 366              	.LVL33:
+  78:Core/Src/freertos.c **** 
+ 367              		.loc 1 78 21 discriminator 2 view .LVU59
+ 368 004a 174B     		ldr	r3, .L28+16
+ 369 004c 1860     		str	r0, [r3]
+  81:Core/Src/freertos.c ****     MLTaskHandle = osThreadCreate(osThread(MLTask), NULL);
+ 370              		.loc 1 81 5 is_stmt 1 discriminator 2 view .LVU60
+ 371 004e EE46     		mov	lr, sp
+ 372 0050 04F11C0C 		add	ip, r4, #28
+ 373 0054 BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 374 0058 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 375 005c 9CE80700 		ldm	ip, {r0, r1, r2}
+ 376 0060 8EE80700 		stm	lr, {r0, r1, r2}
+  82:Core/Src/freertos.c **** }
+ 377              		.loc 1 82 5 discriminator 2 view .LVU61
+  82:Core/Src/freertos.c **** }
+ 378              		.loc 1 82 20 is_stmt 0 discriminator 2 view .LVU62
+ 379 0064 0021     		movs	r1, #0
+ 380 0066 6846     		mov	r0, sp
+ 381 0068 FFF7FEFF 		bl	osThreadCreate
+ 382              	.LVL34:
+  82:Core/Src/freertos.c **** }
+ 383              		.loc 1 82 18 discriminator 2 view .LVU63
+ 384 006c 0F4B     		ldr	r3, .L28+20
+ 385 006e 1860     		str	r0, [r3]
+  83:Core/Src/freertos.c **** 
+ 386              		.loc 1 83 1 discriminator 2 view .LVU64
+ 387 0070 0EB0     		add	sp, sp, #56
+ 388              	.LCFI6:
+ 389              		.cfi_remember_state
+ 390              		.cfi_def_cfa_offset 8
+ 391              		@ sp needed
+ 392 0072 10BD     		pop	{r4, pc}
+ 393              	.L26:
+ 394              	.LCFI7:
+ 395              		.cfi_restore_state
+  70:Core/Src/freertos.c **** 
+ 396              		.loc 1 70 5 is_stmt 1 view .LVU65
+ 397              	.LBB9:
+ 398              	.LBI9:
+ 399              		.file 2 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+   1:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*
+   2:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * FreeRTOS Kernel V10.3.1
+   3:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+   5:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * this software and associated documentation files (the "Software"), to deal in
+   7:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * the Software without restriction, including without limitation the rights to
+   8:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * subject to the following conditions:
+ARM GAS  /tmp/cccRgTrx.s 			page 12
+
+
+  11:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  12:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * The above copyright notice and this permission notice shall be included in all
+  13:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * copies or substantial portions of the Software.
+  14:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  15:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  22:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * http://www.FreeRTOS.org
+  23:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * http://aws.amazon.com/freertos
+  24:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  25:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * 1 tab == 4 spaces!
+  26:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  */
+  27:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  28:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  29:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifndef PORTMACRO_H
+  30:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define PORTMACRO_H
+  31:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  32:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifdef __cplusplus
+  33:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** extern "C" {
+  34:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+  35:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  36:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------
+  37:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * Port specific definitions.
+  38:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  39:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
+  40:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * given hardware and compiler.
+  41:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
+  42:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * These settings should not be altered.
+  43:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *-----------------------------------------------------------
+  44:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  */
+  45:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  46:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Type definitions. */
+  47:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portCHAR		char
+  48:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portFLOAT		float
+  49:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portDOUBLE		double
+  50:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portLONG		long
+  51:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portSHORT		short
+  52:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portSTACK_TYPE	uint32_t
+  53:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portBASE_TYPE	long
+  54:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  55:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** typedef portSTACK_TYPE StackType_t;
+  56:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** typedef long BaseType_t;
+  57:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** typedef unsigned long UBaseType_t;
+  58:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  59:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
+  60:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	typedef uint16_t TickType_t;
+  61:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffff
+  62:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #else
+  63:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	typedef uint32_t TickType_t;
+  64:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
+  65:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  66:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
+  67:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	not need to be guarded with a critical section. */
+ARM GAS  /tmp/cccRgTrx.s 			page 13
+
+
+  68:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portTICK_TYPE_IS_ATOMIC 1
+  69:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+  70:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  71:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  72:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Architecture specifics. */
+  73:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
+  74:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
+  75:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portBYTE_ALIGNMENT			8
+  76:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  77:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  78:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Scheduler utilities. */
+  79:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portYIELD() 															\
+  80:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {																				\
+  81:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Set a PendSV to request a context switch. */								\
+  82:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
+  83:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 																				\
+  84:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
+  85:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	within the specified behaviour for the architecture. */						\
+  86:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
+  87:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__asm volatile( "isb" );													\
+  88:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** }
+  89:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  90:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
+  91:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
+  92:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
+  93:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
+  94:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  95:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+  96:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Critical section management. */
+  97:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** extern void vPortEnterCritical( void );
+  98:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** extern void vPortExitCritical( void );
+  99:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
+ 100:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)
+ 101:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portDISABLE_INTERRUPTS()				vPortRaiseBASEPRI()
+ 102:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portENABLE_INTERRUPTS()					vPortSetBASEPRI(0)
+ 103:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portENTER_CRITICAL()					vPortEnterCritical()
+ 104:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portEXIT_CRITICAL()						vPortExitCritical()
+ 105:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 106:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 107:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 108:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Task function macros as described on the FreeRTOS.org WEB site.  These are
+ 109:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** not necessary for to use this port.  They are defined so the common demo files
+ 110:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** (which build with all the ports) will build. */
+ 111:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portTASK_FUNCTION_PROTO( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 112:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portTASK_FUNCTION( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 113:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 114:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 115:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Tickless idle/low power functionality. */
+ 116:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
+ 117:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
+ 118:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdl
+ 119:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+ 120:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 121:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 122:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Architecture specific optimisations. */
+ 123:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
+ 124:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
+ARM GAS  /tmp/cccRgTrx.s 			page 14
+
+
+ 125:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+ 126:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 127:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #if configUSE_PORT_OPTIMISED_TASK_SELECTION == 1
+ 128:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 129:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Generic helper function. */
+ 130:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
+ 131:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	{
+ 132:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	uint8_t ucReturn;
+ 133:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 134:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+ 135:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		return ucReturn;
+ 136:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	}
+ 137:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 138:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Check the configuration. */
+ 139:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
+ 140:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
+ 141:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#endif
+ 142:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 143:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
+ 144:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
+ 145:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
+ 146:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 147:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/*-----------------------------------------------------------*/
+ 148:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 149:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( ui
+ 150:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 151:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
+ 152:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 153:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 154:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 155:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifdef configASSERT
+ 156:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	void vPortValidateInterruptPriority( void );
+ 157:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
+ 158:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+ 159:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 160:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* portNOP() is not required by this port. */
+ 161:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portNOP()
+ 162:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 163:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portINLINE	__inline
+ 164:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 165:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #ifndef portFORCE_INLINE
+ 166:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	#define portFORCE_INLINE inline __attribute__(( always_inline))
+ 167:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #endif
+ 168:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 169:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 170:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 171:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
+ 172:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
+ 173:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** uint32_t ulCurrentInterrupt;
+ 174:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** BaseType_t xReturn;
+ 175:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 176:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	/* Obtain the number of the currently executing interrupt. */
+ 177:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+ 178:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 179:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	if( ulCurrentInterrupt == 0 )
+ 180:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	{
+ 181:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		xReturn = pdFALSE;
+ARM GAS  /tmp/cccRgTrx.s 			page 15
+
+
+ 182:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	}
+ 183:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	else
+ 184:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	{
+ 185:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		xReturn = pdTRUE;
+ 186:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	}
+ 187:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 188:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	return xReturn;
+ 189:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** }
+ 190:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 191:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 192:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 193:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+ 400              		.loc 2 193 30 view .LVU66
+ 401              	.LBB10:
+ 194:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
+ 195:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** uint32_t ulNewBASEPRI;
+ 402              		.loc 2 195 1 view .LVU67
+ 196:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 197:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	__asm volatile
+ 403              		.loc 2 197 2 view .LVU68
+ 404              		.syntax unified
+ 405              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
+ 406 0074 4FF05003 			mov r3, #80												
+ 407 0078 83F31188 		msr basepri, r3											
+ 408 007c BFF36F8F 		isb														
+ 409 0080 BFF34F8F 		dsb														
+ 410              	
+ 411              	@ 0 "" 2
+ 412              	.LVL35:
+ 413              		.thumb
+ 414              		.syntax unified
+ 415              	.L22:
+ 416              		.loc 2 197 2 is_stmt 0 view .LVU69
+ 417              	.LBE10:
+ 418              	.LBE9:
+  70:Core/Src/freertos.c **** 
+ 419              		.loc 1 70 5 is_stmt 1 discriminator 1 view .LVU70
+  70:Core/Src/freertos.c **** 
+ 420              		.loc 1 70 5 discriminator 1 view .LVU71
+  70:Core/Src/freertos.c **** 
+ 421              		.loc 1 70 5 discriminator 1 view .LVU72
+ 422 0084 FEE7     		b	.L22
+ 423              	.L27:
+  74:Core/Src/freertos.c **** 
+ 424              		.loc 1 74 5 view .LVU73
+ 425              	.LBB11:
+ 426              	.LBI11:
+ 193:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
+ 427              		.loc 2 193 30 view .LVU74
+ 428              	.LBB12:
+ 195:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
+ 429              		.loc 2 195 1 view .LVU75
+ 430              		.loc 2 197 2 view .LVU76
+ 431              		.syntax unified
+ 432              	@ 197 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" 1
+ 433 0086 4FF05003 			mov r3, #80												
+ 434 008a 83F31188 		msr basepri, r3											
+ARM GAS  /tmp/cccRgTrx.s 			page 16
+
+
+ 435 008e BFF36F8F 		isb														
+ 436 0092 BFF34F8F 		dsb														
+ 437              	
+ 438              	@ 0 "" 2
+ 439              	.LVL36:
+ 440              		.thumb
+ 441              		.syntax unified
+ 442              	.L24:
+ 443              		.loc 2 197 2 is_stmt 0 view .LVU77
+ 444              	.LBE12:
+ 445              	.LBE11:
+  74:Core/Src/freertos.c **** 
+ 446              		.loc 1 74 5 is_stmt 1 discriminator 2 view .LVU78
+  74:Core/Src/freertos.c **** 
+ 447              		.loc 1 74 5 discriminator 2 view .LVU79
+  74:Core/Src/freertos.c **** 
+ 448              		.loc 1 74 5 discriminator 2 view .LVU80
+ 449 0096 FEE7     		b	.L24
+ 450              	.L29:
+ 451              		.align	2
+ 452              	.L28:
+ 453 0098 00000000 		.word	.LANCHOR1
+ 454 009c 00000000 		.word	.LANCHOR0
+ 455 00a0 00000000 		.word	.LANCHOR2
+ 456 00a4 00000000 		.word	.LANCHOR5
+ 457 00a8 00000000 		.word	.LANCHOR6
+ 458 00ac 00000000 		.word	.LANCHOR7
+ 459              		.cfi_endproc
+ 460              	.LFE74:
+ 462              		.global	canRxQueueSD
+ 463              		.global	MLTaskHandle
+ 464              		.global	CANParserHandle
+ 465              		.section	.rodata
+ 466              		.align	2
+ 467              		.set	.LANCHOR5,. + 0
+ 468              	.LC7:
+ 469 0000 00000000 		.word	.LC0
+ 470 0004 00000000 		.word	StartCANParserTask
+ 471 0008 0100     		.short	1
+ 472 000a 0000     		.space	2
+ 473 000c 00000000 		.word	0
+ 474 0010 00020000 		.word	512
+ 475 0014 00000000 		.word	0
+ 476 0018 00000000 		.word	0
+ 477              	.LC8:
+ 478 001c 0C000000 		.word	.LC2
+ 479 0020 00000000 		.word	StartMLTask
+ 480 0024 0000     		.short	0
+ 481 0026 0000     		.space	2
+ 482 0028 00000000 		.word	0
+ 483 002c 00020000 		.word	512
+ 484 0030 00000000 		.word	0
+ 485 0034 00000000 		.word	0
+ 486              		.section	.bss.CANParserHandle,"aw",%nobits
+ 487              		.align	2
+ 488              		.set	.LANCHOR6,. + 0
+ 491              	CANParserHandle:
+ARM GAS  /tmp/cccRgTrx.s 			page 17
+
+
+ 492 0000 00000000 		.space	4
+ 493              		.section	.bss.MLTaskHandle,"aw",%nobits
+ 494              		.align	2
+ 495              		.set	.LANCHOR7,. + 0
+ 498              	MLTaskHandle:
+ 499 0000 00000000 		.space	4
+ 500              		.section	.bss.canRxQueueSD,"aw",%nobits
+ 501              		.align	2
+ 502              		.set	.LANCHOR0,. + 0
+ 505              	canRxQueueSD:
+ 506 0000 00000000 		.space	4
+ 507              		.section	.bss.s_assembler,"aw",%nobits
+ 508              		.align	2
+ 509              		.set	.LANCHOR1,. + 0
+ 512              	s_assembler:
+ 513 0000 00000000 		.space	32
+ 513      00000000 
+ 513      00000000 
+ 513      00000000 
+ 513      00000000 
+ 514              		.section	.bss.s_mlQueue,"aw",%nobits
+ 515              		.align	2
+ 516              		.set	.LANCHOR2,. + 0
+ 519              	s_mlQueue:
+ 520 0000 00000000 		.space	4
+ 521              		.section	.bss.xIdleStack,"aw",%nobits
+ 522              		.align	2
+ 523              		.set	.LANCHOR4,. + 0
+ 526              	xIdleStack:
+ 527 0000 00000000 		.space	512
+ 527      00000000 
+ 527      00000000 
+ 527      00000000 
+ 527      00000000 
+ 528              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 529              		.align	2
+ 530              		.set	.LANCHOR3,. + 0
+ 533              	xIdleTaskTCBBuffer:
+ 534 0000 00000000 		.space	84
+ 534      00000000 
+ 534      00000000 
+ 534      00000000 
+ 534      00000000 
+ 535              		.text
+ 536              	.Letext0:
+ 537              		.file 3 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 538              		.file 4 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10
+ 539              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 540              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 541              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 542              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h"
+ 543              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 544              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 545              		.file 11 "Core/Inc/can_app.h"
+ 546              		.file 12 "Core/Inc/can_frame.h"
+ 547              		.file 13 "/home/santiago/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.1
+ 548              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ARM GAS  /tmp/cccRgTrx.s 			page 18
+
+
+ 549              		.file 15 "Core/Inc/regression_tree.h"
+ 550              		.file 16 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 551              		.file 17 "<built-in>"
+ARM GAS  /tmp/cccRgTrx.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/cccRgTrx.s:15     .rodata.str1.4:0000000000000000 $d
+     /tmp/cccRgTrx.s:25     .text.StartCANParserTask:0000000000000000 $t
+     /tmp/cccRgTrx.s:31     .text.StartCANParserTask:0000000000000000 StartCANParserTask
+     /tmp/cccRgTrx.s:100    .text.StartCANParserTask:0000000000000044 $d
+     /tmp/cccRgTrx.s:108    .rodata.StartMLTask.str1.4:0000000000000000 $d
+     /tmp/cccRgTrx.s:122    .text.StartMLTask:0000000000000000 $t
+     /tmp/cccRgTrx.s:128    .text.StartMLTask:0000000000000000 StartMLTask
+     /tmp/cccRgTrx.s:255    .text.StartMLTask:00000000000000ac $d
+     /tmp/cccRgTrx.s:266    .text.vApplicationGetIdleTaskMemory:0000000000000000 $t
+     /tmp/cccRgTrx.s:272    .text.vApplicationGetIdleTaskMemory:0000000000000000 vApplicationGetIdleTaskMemory
+     /tmp/cccRgTrx.s:297    .text.vApplicationGetIdleTaskMemory:0000000000000010 $d
+     /tmp/cccRgTrx.s:303    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/cccRgTrx.s:309    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/cccRgTrx.s:453    .text.MX_FREERTOS_Init:0000000000000098 $d
+     /tmp/cccRgTrx.s:505    .bss.canRxQueueSD:0000000000000000 canRxQueueSD
+     /tmp/cccRgTrx.s:498    .bss.MLTaskHandle:0000000000000000 MLTaskHandle
+     /tmp/cccRgTrx.s:491    .bss.CANParserHandle:0000000000000000 CANParserHandle
+     /tmp/cccRgTrx.s:466    .rodata:0000000000000000 $d
+     /tmp/cccRgTrx.s:487    .bss.CANParserHandle:0000000000000000 $d
+     /tmp/cccRgTrx.s:494    .bss.MLTaskHandle:0000000000000000 $d
+     /tmp/cccRgTrx.s:501    .bss.canRxQueueSD:0000000000000000 $d
+     /tmp/cccRgTrx.s:508    .bss.s_assembler:0000000000000000 $d
+     /tmp/cccRgTrx.s:512    .bss.s_assembler:0000000000000000 s_assembler
+     /tmp/cccRgTrx.s:515    .bss.s_mlQueue:0000000000000000 $d
+     /tmp/cccRgTrx.s:519    .bss.s_mlQueue:0000000000000000 s_mlQueue
+     /tmp/cccRgTrx.s:522    .bss.xIdleStack:0000000000000000 $d
+     /tmp/cccRgTrx.s:526    .bss.xIdleStack:0000000000000000 xIdleStack
+     /tmp/cccRgTrx.s:529    .bss.xIdleTaskTCBBuffer:0000000000000000 $d
+     /tmp/cccRgTrx.s:533    .bss.xIdleTaskTCBBuffer:0000000000000000 xIdleTaskTCBBuffer
+
+UNDEFINED SYMBOLS
+xQueueReceive
+HAL_GetTick
+FrameAssembler_CheckTimeout
+FrameAssembler_Feed
+__aeabi_fsub
+__aeabi_fcmpgt
+__aeabi_f2d
+puts
+printf
+HAL_GPIO_TogglePin
+PredictSpeed
+FrameAssembler_Init
+xQueueGenericCreate
+osThreadCreate
