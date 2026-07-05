@@ -11,6 +11,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "can.h"
+#include "can_app.h"
 #include "i2c.h"
 #include "adc.h"
 #include "tim.h"
@@ -25,23 +26,50 @@
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+#define CAN_ID_ACQ_CONTROL   0x100u
+#define CAN_DATA_ACQ_START   0xAAu
+#define CAN_DATA_ACQ_STOP    0x55u
 /* USER CODE BEGIN PV */
-volatile uint8_t flag_pulso = 0;
-volatile uint32_t pulsos = 0;
+// volatile uint8_t flag_pulso = 0;
+// volatile uint32_t pulsos = 0;
 volatile uint16_t adc_buffer_corriente[100]; // Buffer para 100 muestras (100ms)
 volatile uint16_t indice_adc = 0;
 volatile uint8_t buffer_listo = 0; // Bandera para la tarea
+volatile uint8_t g_acquisition_active = 0;   // Adquisiscion Activo=1, Inactivo=0
 
 /* Variables para el cálculo de RPM */
 volatile uint32_t diff_ticks = 0;
 volatile uint8_t new_read = 0;
 /* USER CODE END PV */
-
+extern CAN_HandleTypeDef hcan; 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
+    CAN_Message_t msg;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    //printf(">> [ISR] Mensaje CAN recibido\r\n");
 
+    if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &msg.header, msg.data) == HAL_OK) {
+      if(msg.header.StdId == CAN_ID_ACQ_CONTROL)
+        if (msg.data[0] == CAN_DATA_ACQ_START) {
+            g_acquisition_active = 1;
+            HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // LED ON
+        }
+        else if (msg.data[0] == CAN_DATA_ACQ_STOP) {
+            g_acquisition_active = 0;
+        }
+    }
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
+{
+    uint32_t err = HAL_CAN_GetError(hcan);
+
+    printf("CAN ERROR: %lu\r\n", err);
+}
 /* USER CODE END PFP */
 
 /**
@@ -66,6 +94,7 @@ int main(void)
   MX_I2C1_Init();
   ADXL345_Init(&hi2c1);
   MX_CAN_Init();
+  CAN_Filter_Init(); 
 
   if (HAL_CAN_Start(&hcan) != HAL_OK)
   {
@@ -73,11 +102,20 @@ int main(void)
   }
 
   /* Activar interrupciones CAN */
-HAL_CAN_ActivateNotification(&hcan,
-                             CAN_IT_TX_MAILBOX_EMPTY |
-                             CAN_IT_BUSOFF |
-                             CAN_IT_ERROR);
-
+// HAL_CAN_ActivateNotification(&hcan,
+//                              CAN_IT_TX_MAILBOX_EMPTY |
+//                              CAN_IT_BUSOFF |
+//                              CAN_IT_ERROR);
+if (HAL_CAN_ActivateNotification(&hcan,
+            CAN_IT_RX_FIFO0_MSG_PENDING |
+            CAN_IT_ERROR |
+            CAN_IT_BUSOFF |
+            CAN_IT_LAST_ERROR_CODE
+        ) != HAL_OK)
+    {
+        printf("Error activando notificaciones CAN\r\n");
+        Error_Handler();
+    }
   
   /* Inicialización de Timer para Input Capture (RPM) */
   MX_TIM3_Init();
@@ -195,13 +233,6 @@ void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
 void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
 {
     printf("MAILBOX2 TX OK\r\n");
-}
-
-void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
-{
-    uint32_t err = HAL_CAN_GetError(hcan);
-
-    printf("CAN ERROR: %lu\r\n", err);
 }
 
 /* USER CODE END 4 */

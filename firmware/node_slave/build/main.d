@@ -43,7 +43,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Core/Inc/can.h \
- Core/Inc/main.h Core/Inc/i2c.h Core/Inc/adc.h \
+ Core/Inc/main.h Core/Inc/can_app.h Core/Inc/i2c.h Core/Inc/adc.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h Core/Inc/tim.h \
  Core/Inc/usart.h Core/Inc/gpio.h Core/Inc/adxl345.h
 Core/Inc/main.h:
@@ -95,6 +95,7 @@ Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 Core/Inc/can.h:
 Core/Inc/main.h:
+Core/Inc/can_app.h:
 Core/Inc/i2c.h:
 Core/Inc/adc.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h:

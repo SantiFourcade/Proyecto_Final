@@ -48,20 +48,40 @@ printf("Iniciando secuencia de despertar CAN...\r\n");
 
   CAN_FilterTypeDef filter;
 
-  filter.FilterBank = 0;
-  filter.FilterMode = CAN_FILTERMODE_IDMASK;
-  filter.FilterScale = CAN_FILTERSCALE_32BIT;
-  filter.FilterIdHigh = 0x0000;
-  filter.FilterIdLow = 0x0000;
-  filter.FilterMaskIdHigh = 0x0000;
-  filter.FilterMaskIdLow = 0x0000;
-  filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
-  filter.FilterActivation = ENABLE;
+  // filter.FilterBank = 0;
+  // filter.FilterMode = CAN_FILTERMODE_IDMASK;
+  // filter.FilterScale = CAN_FILTERSCALE_32BIT;
+  // filter.FilterIdHigh = 0x0000;
+  // filter.FilterIdLow = 0x0000;
+  // filter.FilterMaskIdHigh = 0x0000;
+  // filter.FilterMaskIdLow = 0x0000;
+  // filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+  // filter.FilterActivation = ENABLE;
 
-  HAL_CAN_ConfigFilter(&hcan, &filter);
+  // HAL_CAN_ConfigFilter(&hcan, &filter);
 
 }
 
+void CAN_Filter_Init(void)
+{
+    CAN_FilterTypeDef filter;
+
+    filter.FilterBank = 0; // Usamos el banco 0
+    filter.FilterMode = CAN_FILTERMODE_IDMASK;
+    filter.FilterScale = CAN_FILTERSCALE_32BIT;
+    filter.FilterIdHigh = 0x0000;
+    filter.FilterIdLow = 0x0000;
+    filter.FilterMaskIdHigh = 0x0000;
+    filter.FilterMaskIdLow = 0x0000; // Máscara en 0 deja pasar TODO
+    filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+    filter.FilterActivation = ENABLE;
+    filter.SlaveStartFilterBank = 14; 
+
+    if (HAL_CAN_ConfigFilter(&hcan, &filter) != HAL_OK)
+    {
+        printf("Error configurando filtro en main\r\n");
+    }
+}
 
 void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle)
 {
@@ -101,5 +121,9 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle)
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    /* NVIC CAN RX */
+    HAL_NVIC_SetPriority(USB_LP_CAN1_RX0_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(USB_LP_CAN1_RX0_IRQn);
   }
 }

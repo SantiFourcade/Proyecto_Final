@@ -3,6 +3,7 @@
   ******************************************************************************
   * File Name          : freertos.c
   * Description        : Code for freertos applications (Optimized & Decoupled)
+  *                       + Gating de adquisición por broadcast CAN
   *
   ******************************************************************************
   */
@@ -37,18 +38,14 @@ extern volatile uint8_t  new_read;
 extern volatile uint16_t adc_buffer_corriente[100];
 extern volatile uint8_t  buffer_listo;
 
-/*
- * [FIX-1] Variables de telemetría lenta.
- * Solo StartTelemetryTask las escribe.
- * Cualquier otra tarea que las lea debe hacerlo dentro de una sección crítica.
- * Se mantienen volatile para que el compilador no las optimice fuera.
- */
 static volatile float s_temp_filtrada   = 0.0f;
 static volatile float s_corriente_actual = 0.0f;
 static volatile float s_rpm_global       = 0.0f;
 
-/* Contador de drops para diagnóstico (FIX-4) */
-static volatile uint32_t s_rawQueue_drops = 0;
+/* Contador de drops para diagnóstico */
+//static volatile uint32_t s_rawQueue_drops = 0;
+
+extern volatile uint8_t g_acquisition_active;   // Activacion de adquisición: 1=activo, 0=inactivo
 
 /* USER CODE END Variables */
 
@@ -186,9 +183,23 @@ void StartSampler(void const * argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(1);
+    uint8_t estaba_activo = 0;
 
     for (;;)
     {
+        if (!g_acquisition_active)
+        {
+            estaba_activo = 0;
+            vTaskDelay(pdMS_TO_TICKS(20));   /* inactivo: no golpear el ADC */
+            continue;
+        }
+
+        if (!estaba_activo)
+        {
+            xLastWakeTime = xTaskGetTickCount();  /* re-sincronizar el período */
+            estaba_activo = 1;
+        }
+
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
         HAL_ADC_Start_IT(&hadc1);
     }
@@ -198,45 +209,6 @@ void StartSampler(void const * argument)
  * StartAccelTask
  * Tarea dedicada exclusivamente al bus I2C del ADXL345.
  * ============================================================ */
-// void StartAccelTask(void const * argument)
-// {
-//     printf("Iniciando Adquisidor I2C (ADXL345)...\r\n");
-
-//     static raw_data_t raw;
-//     uint16_t idx = 0;
-
-//     TickType_t xLastWakeTime = xTaskGetTickCount();
-//     const TickType_t xPeriod = pdMS_TO_TICKS(20); // 50 Hz
-
-//     for (;;)
-//     {
-//         vTaskDelayUntil(&xLastWakeTime, xPeriod);
-
-//         /* Lectura I2C — si falla, recuperamos el bus y descartamos la muestra */
-//         if (ADXL345_ReadXYZ(&raw.accel.ax[idx],
-//                             &raw.accel.ay[idx],
-//                             &raw.accel.az[idx]) != HAL_OK)
-//         {
-//             printf("[I2C Error] Falló lectura ADXL345. Recuperando bus...\r\n");
-//             I2C_Reset_Bus_Routine();
-//             continue; /* muestra descartada intencionalmente */
-//         }
-
-//         idx++;
-//         if (idx >= WINDOW_SIZE)
-//         {
-//             /* [FIX-4] Contamos drops para poder diagnosticarlos */
-//             if (xQueueSend(rawQueue, &raw, pdMS_TO_TICKS(10)) != pdPASS)
-//             {
-//                 taskENTER_CRITICAL();
-//                 s_rawQueue_drops++;
-//                 taskEXIT_CRITICAL();
-//                 printf("[WARN] rawQueue llena — drops: %lu\r\n", s_rawQueue_drops);
-//             }
-//             idx = 0; /* reiniciamos siempre, con o sin error de queue */
-//         }
-//     }
-// }
 void StartAccelTask(void const * argument)
 {
     static raw_data_t raw;
@@ -246,9 +218,24 @@ void StartAccelTask(void const * argument)
 
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xPeriod = pdMS_TO_TICKS(20);
+    uint8_t estaba_activo = 0;
 
     for (;;)
     {
+        if (!g_acquisition_active)
+        {
+            idx = 0;               /* descartar ventana parcial */
+            estaba_activo = 0;
+            vTaskDelay(pdMS_TO_TICKS(20));
+            continue;
+        }
+
+        if (!estaba_activo)
+        {
+            xLastWakeTime = xTaskGetTickCount();
+            estaba_activo = 1;
+        }
+
         vTaskDelayUntil(&xLastWakeTime, xPeriod);
 
         int16_t ax, ay, az;
@@ -291,6 +278,7 @@ void StartAccelTask(void const * argument)
 /* ============================================================
  * StartTelemetryTask
  * Maneja RPM (pulsos) y telemetría lenta (ADC2 temperatura).
+ * [NUEVO] Espera bloqueante al broadcast CAN de activación.
  * ============================================================ */
 void StartTelemetryTask(void const * argument)
 {
@@ -300,14 +288,35 @@ void StartTelemetryTask(void const * argument)
     uint32_t cuenta_muestras_temp = 0;
     uint32_t acumulador_ticks     = 0;
     uint8_t  contador_pulsos      = 0;
+    uint8_t  estaba_activo        = 0;
+    static TickType_t ultimo_pulso = 0;
 
     for (;;)
     {
-        /* --------------------------------------------------
-         * 1. RPM — [FIX-2] Lectura y limpieza atómica de new_read
-         * -------------------------------------------------- */
+        if (!g_acquisition_active)
+        {
+            /* Adquisición detenida: limpiar acumuladores y dormir */
+            acumulador_temp      = 0;
+            cuenta_muestras_temp = 0;
+            acumulador_ticks     = 0;
+            contador_pulsos      = 0;
+            Telemetry_SetRPM(0.0f);
+            estaba_activo        = 0;
+
+            vTaskDelay(pdMS_TO_TICKS(20));
+            continue;
+        }
+
+        if (!estaba_activo)
+        {
+            ultimo_pulso = xTaskGetTickCount();
+            taskENTER_CRITICAL();
+            new_read = 0;
+            taskEXIT_CRITICAL();
+            estaba_activo = 1;
+        }
+
         uint8_t hubo_pulso;
-        static TickType_t ultimo_pulso = 0;
         uint32_t ticks_capturados;
 
         taskENTER_CRITICAL();
@@ -315,7 +324,7 @@ void StartTelemetryTask(void const * argument)
         if (hubo_pulso)
         {
             ticks_capturados = diff_ticks;
-            new_read = 0;          /* limpieza dentro de la misma sección crítica */
+            new_read = 0;
         }
         taskEXIT_CRITICAL();
 
@@ -328,7 +337,6 @@ void StartTelemetryTask(void const * argument)
             if (contador_pulsos >= 8)
             {
                 float promedio = (float)acumulador_ticks / 8.0f;
-                /* [FIX-1] escritura segura */
                 Telemetry_SetRPM(7500000.0f / promedio);
                 acumulador_ticks = 0;
                 contador_pulsos  = 0;
@@ -338,9 +346,6 @@ void StartTelemetryTask(void const * argument)
             Telemetry_SetRPM(0.0f);
         }
 
-        /* --------------------------------------------------
-         * 2. Corriente + Temperatura — [FIX-2] ídem para buffer_listo
-         * -------------------------------------------------- */
         uint8_t buffer_disponible;
 
         taskENTER_CRITICAL();
@@ -351,7 +356,7 @@ void StartTelemetryTask(void const * argument)
 
         if (buffer_disponible)
         {
-            /* [FIX-1] escritura segura de corriente */
+
             Telemetry_SetCurrent(Procesar_Corriente_RMS());
 
             HAL_ADC_Start(&hadc2);
@@ -395,7 +400,6 @@ void StartPackageTask(void const * argument)
 
         Features_ComputeRMSPeak(&raw.accel, &frame.vib);
 
-        /* [FIX-1] Lectura segura de variables de telemetría */
         frame.temperature = Telemetry_GetTemp();
         frame.current     = Telemetry_GetCurrent();
         frame.speed       = Telemetry_GetRPM();
@@ -407,6 +411,8 @@ void StartPackageTask(void const * argument)
 /* ============================================================
  * StartTxCAN
  * Despacha una trama CAN por mensaje recibido de canQueue.
+ * Igual que Package: bloqueada en xQueueReceive, sin gating
+ * explícito necesario.
  * ============================================================ */
 void StartTxCAN(void const * argument)
 {

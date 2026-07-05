@@ -43,6 +43,8 @@ extern CAN_HandleTypeDef hcan;
 /* USER CODE END Private defines */
 
 void MX_CAN_Init(void);
+void CAN_Filter_Init(void);
+void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle);
 
 /* USER CODE BEGIN Prototypes */
 

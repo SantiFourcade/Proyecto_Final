@@ -21,13 +21,13 @@ volatile uint8_t Timer1, Timer2;
 
 /* USER CODE BEGIN PV */
 extern CAN_HandleTypeDef hcan; 
-extern QueueHandle_t canRxQueueSD; // Asegúrate de que este nombre coincida con can_app.c
+extern QueueHandle_t canRxQueueSD;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
-void CAN_Filter_Init(void);
+//void CAN_Filter_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Función de procesamiento de recepción CAN (ISR) */

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cchP98Hu.s 			page 1
+ARM GAS  /tmp/ccT2rUHt.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
   31:FATFS/App/fatfs_sd.c **** 
   32:FATFS/App/fatfs_sd.c **** /* Transferencia de datos SPI */
   33:FATFS/App/fatfs_sd.c **** static void SPI_TxByte(BYTE data)
-ARM GAS  /tmp/cchP98Hu.s 			page 2
+ARM GAS  /tmp/ccT2rUHt.s 			page 2
 
 
   34:FATFS/App/fatfs_sd.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
   88:FATFS/App/fatfs_sd.c ****     SPI_TxByte(0xFF);
   89:FATFS/App/fatfs_sd.c ****   }
   90:FATFS/App/fatfs_sd.c **** 
-ARM GAS  /tmp/cchP98Hu.s 			page 3
+ARM GAS  /tmp/ccT2rUHt.s 			page 3
 
 
   91:FATFS/App/fatfs_sd.c ****   // SPI Chips Select 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
   47              		.syntax unified
   48              		.thumb
   49              		.thumb_func
-ARM GAS  /tmp/cchP98Hu.s 			page 4
+ARM GAS  /tmp/ccT2rUHt.s 			page 4
 
 
   51              	SD_CheckPower:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
   35:FATFS/App/fatfs_sd.c ****     ;
   96              		.loc 1 35 9 discriminator 1 view .LVU11
   35:FATFS/App/fatfs_sd.c ****     ;
-ARM GAS  /tmp/cchP98Hu.s 			page 5
+ARM GAS  /tmp/ccT2rUHt.s 			page 5
 
 
   97              		.loc 1 35 10 is_stmt 0 discriminator 1 view .LVU12
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  147              		.loc 1 24 1 is_stmt 0 view .LVU18
  148 000c 08BD     		pop	{r3, pc}
  149              	.L15:
-ARM GAS  /tmp/cchP98Hu.s 			page 6
+ARM GAS  /tmp/ccT2rUHt.s 			page 6
 
 
  150 000e 00BF     		.align	2
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  204 0002 85B0     		sub	sp, sp, #20
  205              	.LCFI6:
  206              		.cfi_def_cfa_offset 24
-ARM GAS  /tmp/cchP98Hu.s 			page 7
+ARM GAS  /tmp/ccT2rUHt.s 			page 7
 
 
   43:FATFS/App/fatfs_sd.c ****   dummy = 0xFF;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  248              		.cfi_endproc
  249              	.LFE68:
  251              		.section	.text.SD_PowerOn,"ax",%progbits
-ARM GAS  /tmp/cchP98Hu.s 			page 8
+ARM GAS  /tmp/ccT2rUHt.s 			page 8
 
 
  252              		.align	1
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  295              		.loc 1 86 19 is_stmt 1 discriminator 1 view .LVU47
   86:FATFS/App/fatfs_sd.c ****   {
  296              		.loc 1 86 3 is_stmt 0 discriminator 1 view .LVU48
-ARM GAS  /tmp/cchP98Hu.s 			page 9
+ARM GAS  /tmp/ccT2rUHt.s 			page 9
 
 
  297 0014 092C     		cmp	r4, #9
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  105:FATFS/App/fatfs_sd.c ****   }
  334              		.loc 1 105 5 is_stmt 1 discriminator 3 view .LVU66
  335 003c 04F10803 		add	r3, r4, #8
-ARM GAS  /tmp/cchP98Hu.s 			page 10
+ARM GAS  /tmp/ccT2rUHt.s 			page 10
 
 
  336 0040 6B44     		add	r3, sp, r3
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  376              	.LVL23:
  117:FATFS/App/fatfs_sd.c **** }
  377              		.loc 1 117 3 view .LVU81
-ARM GAS  /tmp/cchP98Hu.s 			page 11
+ARM GAS  /tmp/ccT2rUHt.s 			page 11
 
 
  117:FATFS/App/fatfs_sd.c **** }
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
   71:FATFS/App/fatfs_sd.c ****   } while ((res != 0xFF) && Timer2);
  425              		.loc 1 71 5 discriminator 2 view .LVU91
   71:FATFS/App/fatfs_sd.c ****   } while ((res != 0xFF) && Timer2);
-ARM GAS  /tmp/cchP98Hu.s 			page 12
+ARM GAS  /tmp/ccT2rUHt.s 			page 12
 
 
  426              		.loc 1 71 11 is_stmt 0 discriminator 2 view .LVU92
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  150:FATFS/App/fatfs_sd.c ****   // Recepción de datos en el búfer
  151:FATFS/App/fatfs_sd.c ****   while (btr--)
  152:FATFS/App/fatfs_sd.c ****   {
-ARM GAS  /tmp/cchP98Hu.s 			page 13
+ARM GAS  /tmp/ccT2rUHt.s 			page 13
 
 
  153:FATFS/App/fatfs_sd.c ****     SPI_RxBytePtr(buff++);
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  207:FATFS/App/fatfs_sd.c ****   if ((resp & 0x1F) == 0x05)
  208:FATFS/App/fatfs_sd.c ****     return TRUE;
  209:FATFS/App/fatfs_sd.c ****   else
-ARM GAS  /tmp/cchP98Hu.s 			page 14
+ARM GAS  /tmp/ccT2rUHt.s 			page 14
 
 
  210:FATFS/App/fatfs_sd.c ****     return FALSE;
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  239:FATFS/App/fatfs_sd.c ****   // En caso del comando CMD12 (Stop Reading), se descarta un byte de respuesta
  240:FATFS/App/fatfs_sd.c ****   if (cmd == CMD12)
  241:FATFS/App/fatfs_sd.c ****     SPI_RxByte();
-ARM GAS  /tmp/cchP98Hu.s 			page 15
+ARM GAS  /tmp/ccT2rUHt.s 			page 15
 
 
  242:FATFS/App/fatfs_sd.c **** 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  233:FATFS/App/fatfs_sd.c ****     crc = 0x87; // CRC for CMD8(0x1AA)
  518              		.loc 1 233 6 is_stmt 0 view .LVU116
  519 003a 482C     		cmp	r4, #72
-ARM GAS  /tmp/cchP98Hu.s 			page 16
+ARM GAS  /tmp/ccT2rUHt.s 			page 16
 
 
  520 003c 10D0     		beq	.L53
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  234:FATFS/App/fatfs_sd.c **** 
  561              		.loc 1 234 9 view .LVU130
  562 0062 ECE7     		b	.L45
-ARM GAS  /tmp/cchP98Hu.s 			page 17
+ARM GAS  /tmp/ccT2rUHt.s 			page 17
 
 
  563              	.L54:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  612              		.loc 1 135 1 is_stmt 1 view -0
  613              		.cfi_startproc
  614              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cchP98Hu.s 			page 18
+ARM GAS  /tmp/ccT2rUHt.s 			page 18
 
 
  615              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  656              		.loc 1 148 12 view .LVU152
  657 0022 0020     		movs	r0, #0
  658              	.LVL50:
-ARM GAS  /tmp/cchP98Hu.s 			page 19
+ARM GAS  /tmp/ccT2rUHt.s 			page 19
 
 
  148:FATFS/App/fatfs_sd.c **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  699              		.align	2
  700              	.L65:
  701 0044 00000000 		.word	Timer1
-ARM GAS  /tmp/cchP98Hu.s 			page 20
+ARM GAS  /tmp/ccT2rUHt.s 			page 20
 
 
  702              		.cfi_endproc
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  174:FATFS/App/fatfs_sd.c **** 
  748              		.loc 1 174 3 is_stmt 1 view .LVU177
  749 0014 2846     		mov	r0, r5
-ARM GAS  /tmp/cchP98Hu.s 			page 21
+ARM GAS  /tmp/ccT2rUHt.s 			page 21
 
 
  750 0016 FFF7FEFF 		bl	SPI_TxByte
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  790              	.L72:
  191:FATFS/App/fatfs_sd.c ****     {
  791              		.loc 1 191 11 is_stmt 1 view .LVU192
-ARM GAS  /tmp/cchP98Hu.s 			page 22
+ARM GAS  /tmp/ccT2rUHt.s 			page 22
 
 
  792 0040 402C     		cmp	r4, #64
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  830              		.loc 1 203 30 discriminator 1 view .LVU208
  831 0064 064B     		ldr	r3, .L82
  832 0066 1B88     		ldrh	r3, [r3]
-ARM GAS  /tmp/cchP98Hu.s 			page 23
+ARM GAS  /tmp/ccT2rUHt.s 			page 23
 
 
  833 0068 9BB2     		uxth	r3, r3
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  262:FATFS/App/fatfs_sd.c ****   // Soporte para un solo tipo de unidad
  263:FATFS/App/fatfs_sd.c ****   if (drv)
  874              		.loc 1 263 3 view .LVU216
-ARM GAS  /tmp/cchP98Hu.s 			page 24
+ARM GAS  /tmp/ccT2rUHt.s 			page 24
 
 
  875              		.loc 1 263 6 is_stmt 0 view .LVU217
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  289:FATFS/App/fatfs_sd.c ****       for (n = 0; n < 4; n++)
  290:FATFS/App/fatfs_sd.c ****       {
  291:FATFS/App/fatfs_sd.c ****         ocr[n] = SPI_RxByte();
-ARM GAS  /tmp/cchP98Hu.s 			page 25
+ARM GAS  /tmp/ccT2rUHt.s 			page 25
 
 
  292:FATFS/App/fatfs_sd.c ****       }
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  346:FATFS/App/fatfs_sd.c ****   SPI_RxByte(); // Transición a Idle (Release DO)
  347:FATFS/App/fatfs_sd.c **** 
  348:FATFS/App/fatfs_sd.c ****   if (type)
-ARM GAS  /tmp/cchP98Hu.s 			page 26
+ARM GAS  /tmp/ccT2rUHt.s 			page 26
 
 
  349:FATFS/App/fatfs_sd.c ****   {
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  344:FATFS/App/fatfs_sd.c **** 
  937              		.loc 1 344 3 is_stmt 1 view .LVU234
  938 0038 FFF7FEFF 		bl	DESELECT
-ARM GAS  /tmp/cchP98Hu.s 			page 27
+ARM GAS  /tmp/ccT2rUHt.s 			page 27
 
 
  939              	.LVL89:
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  980              	.L90:
  291:FATFS/App/fatfs_sd.c ****       }
  981              		.loc 1 291 9 is_stmt 1 discriminator 3 view .LVU248
-ARM GAS  /tmp/cchP98Hu.s 			page 28
+ARM GAS  /tmp/ccT2rUHt.s 			page 28
 
 
  291:FATFS/App/fatfs_sd.c ****       }
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1021              	.L93:
  297:FATFS/App/fatfs_sd.c ****         {
  1022              		.loc 1 297 9 is_stmt 1 view .LVU264
-ARM GAS  /tmp/cchP98Hu.s 			page 29
+ARM GAS  /tmp/ccT2rUHt.s 			page 29
 
 
  299:FATFS/App/fatfs_sd.c ****             break; // ACMD41 with HCS bit
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1064 00d4 032D     		cmp	r5, #3
  1065 00d6 09D8     		bhi	.L113
  308:FATFS/App/fatfs_sd.c ****           }
-ARM GAS  /tmp/cchP98Hu.s 			page 30
+ARM GAS  /tmp/ccT2rUHt.s 			page 30
 
 
  1066              		.loc 1 308 13 is_stmt 1 discriminator 3 view .LVU278
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1107              	.LVL107:
  318:FATFS/App/fatfs_sd.c **** 
  1108              		.loc 1 318 41 discriminator 1 view .LVU292
-ARM GAS  /tmp/cchP98Hu.s 			page 31
+ARM GAS  /tmp/ccT2rUHt.s 			page 31
 
 
  1109 010e 0128     		cmp	r0, #1
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1149 0138 F3D1     		bne	.L98
  1150              	.L99:
  334:FATFS/App/fatfs_sd.c ****       {
-ARM GAS  /tmp/cchP98Hu.s 			page 32
+ARM GAS  /tmp/ccT2rUHt.s 			page 32
 
 
  1151              		.loc 1 334 7 is_stmt 1 view .LVU307
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1196              		.cfi_restore 5
  1197              		.cfi_restore 14
  264:FATFS/App/fatfs_sd.c **** 
-ARM GAS  /tmp/cchP98Hu.s 			page 33
+ARM GAS  /tmp/ccT2rUHt.s 			page 33
 
 
  1198              		.loc 1 264 12 is_stmt 0 view .LVU317
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1244 000c 7047     		bx	lr
  1245              	.L122:
  1246 000e 00BF     		.align	2
-ARM GAS  /tmp/cchP98Hu.s 			page 34
+ARM GAS  /tmp/ccT2rUHt.s 			page 34
 
 
  1247              	.L121:
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  379:FATFS/App/fatfs_sd.c **** 
  380:FATFS/App/fatfs_sd.c ****   if (!(CardType & 4))
  1293              		.loc 1 380 3 is_stmt 1 view .LVU336
-ARM GAS  /tmp/cchP98Hu.s 			page 35
+ARM GAS  /tmp/ccT2rUHt.s 			page 35
 
 
  1294              		.loc 1 380 18 is_stmt 0 view .LVU337
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  399:FATFS/App/fatfs_sd.c ****           break;
  400:FATFS/App/fatfs_sd.c **** 
  401:FATFS/App/fatfs_sd.c ****         buff += 512;
-ARM GAS  /tmp/cchP98Hu.s 			page 36
+ARM GAS  /tmp/ccT2rUHt.s 			page 36
 
 
  1330              		.loc 1 401 9 is_stmt 1 view .LVU351
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1369              		.loc 1 388 8 view .LVU364
  1370 006c 0028     		cmp	r0, #0
  1371 006e F1D1     		bne	.L127
-ARM GAS  /tmp/cchP98Hu.s 			page 37
+ARM GAS  /tmp/ccT2rUHt.s 			page 37
 
 
  388:FATFS/App/fatfs_sd.c ****       count = 0;
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1417 008c E9E7     		b	.L124
  1418              	.L140:
  1419 008e 00BF     		.align	2
-ARM GAS  /tmp/cchP98Hu.s 			page 38
+ARM GAS  /tmp/ccT2rUHt.s 			page 38
 
 
  1420              	.L139:
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1466 0018 4BD1     		bne	.L151
  423:FATFS/App/fatfs_sd.c ****     return RES_NOTRDY;
  424:FATFS/App/fatfs_sd.c **** 
-ARM GAS  /tmp/cchP98Hu.s 			page 39
+ARM GAS  /tmp/ccT2rUHt.s 			page 39
 
 
  425:FATFS/App/fatfs_sd.c ****   if (Stat & STA_PROTECT)
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  445:FATFS/App/fatfs_sd.c ****       SD_SendCmd(CMD23, count); // ACMD23
  446:FATFS/App/fatfs_sd.c ****     }
  447:FATFS/App/fatfs_sd.c **** 
-ARM GAS  /tmp/cchP98Hu.s 			page 40
+ARM GAS  /tmp/ccT2rUHt.s 			page 40
 
 
  448:FATFS/App/fatfs_sd.c ****     if (SD_SendCmd(CMD25, sector) == 0)
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  463:FATFS/App/fatfs_sd.c ****   }
  464:FATFS/App/fatfs_sd.c **** 
  465:FATFS/App/fatfs_sd.c ****   DESELECT();
-ARM GAS  /tmp/cchP98Hu.s 			page 41
+ARM GAS  /tmp/ccT2rUHt.s 			page 41
 
 
  1540              		.loc 1 465 3 is_stmt 1 view .LVU413
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1582 0096 7720     		movs	r0, #119
  1583 0098 FFF7FEFF 		bl	SD_SendCmd
  1584              	.LVL161:
-ARM GAS  /tmp/cchP98Hu.s 			page 42
+ARM GAS  /tmp/ccT2rUHt.s 			page 42
 
 
  445:FATFS/App/fatfs_sd.c ****     }
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1631              	.L152:
  426:FATFS/App/fatfs_sd.c **** 
  1632              		.loc 1 426 12 view .LVU435
-ARM GAS  /tmp/cchP98Hu.s 			page 43
+ARM GAS  /tmp/ccT2rUHt.s 			page 43
 
 
  1633 00b6 0220     		movs	r0, #2
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1678 000a 0D46     		mov	r5, r1
  1679 000c 1646     		mov	r6, r2
  1680 000e 0446     		mov	r4, r0
-ARM GAS  /tmp/cchP98Hu.s 			page 44
+ARM GAS  /tmp/ccT2rUHt.s 			page 44
 
 
  480:FATFS/App/fatfs_sd.c ****     return RES_PARERR;
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1702 002e 61       		.byte	(.L175-.L170)/2
  1703 002f 20       		.byte	(.L174-.L170)/2
  1704 0030 5D       		.byte	(.L173-.L170)/2
-ARM GAS  /tmp/cchP98Hu.s 			page 45
+ARM GAS  /tmp/ccT2rUHt.s 			page 45
 
 
  1705 0031 98       		.byte	(.L182-.L170)/2
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  495:FATFS/App/fatfs_sd.c ****       break;
  1750              		.loc 1 495 7 view .LVU461
  496:FATFS/App/fatfs_sd.c ****     case 2:
-ARM GAS  /tmp/cchP98Hu.s 			page 46
+ARM GAS  /tmp/ccT2rUHt.s 			page 46
 
 
  1751              		.loc 1 496 7 view .LVU462
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1793              		.loc 1 518 12 view .LVU477
  1794 0090 012B     		cmp	r3, #1
  1795 0092 1FD0     		beq	.L193
-ARM GAS  /tmp/cchP98Hu.s 			page 47
+ARM GAS  /tmp/ccT2rUHt.s 			page 47
 
 
  519:FATFS/App/fatfs_sd.c ****         {
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1839 00d0 3360     		str	r3, [r6]
  1840              	.LVL191:
  1841              		.loc 1 529 26 view .LVU498
-ARM GAS  /tmp/cchP98Hu.s 			page 48
+ARM GAS  /tmp/ccT2rUHt.s 			page 48
 
 
  1842 00d2 45E0     		b	.L168
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  541:FATFS/App/fatfs_sd.c **** 
  542:FATFS/App/fatfs_sd.c ****     case CTRL_SYNC:
  543:FATFS/App/fatfs_sd.c ****       // Sincronización de escritura
-ARM GAS  /tmp/cchP98Hu.s 			page 49
+ARM GAS  /tmp/ccT2rUHt.s 			page 49
 
 
  544:FATFS/App/fatfs_sd.c ****       if (SD_ReadyWait() == 0xFF)
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1914 011c 4A20     		movs	r0, #74
  1915 011e FFF7FEFF 		bl	SD_SendCmd
  1916              	.LVL202:
-ARM GAS  /tmp/cchP98Hu.s 			page 50
+ARM GAS  /tmp/ccT2rUHt.s 			page 50
 
 
  1917              		.loc 1 556 10 view .LVU525
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  564:FATFS/App/fatfs_sd.c ****         {
  1957              		.loc 1 564 29 is_stmt 0 discriminator 3 view .LVU538
  1958 0150 0135     		adds	r5, r5, #1
-ARM GAS  /tmp/cchP98Hu.s 			page 51
+ARM GAS  /tmp/ccT2rUHt.s 			page 51
 
 
  1959              	.LVL208:
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  1992              		@ sp needed
  1993 016c 70BD     		pop	{r4, r5, r6, pc}
  1994              	.LVL214:
-ARM GAS  /tmp/cchP98Hu.s 			page 52
+ARM GAS  /tmp/ccT2rUHt.s 			page 52
 
 
  1995              	.L184:
@@ -3114,70 +3114,70 @@ ARM GAS  /tmp/cchP98Hu.s 			page 1
  2048              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
  2049              		.file 9 "Middlewares/Third_Party/FatFs/src/integer.h"
  2050              		.file 10 "Middlewares/Third_Party/FatFs/src/diskio.h"
-ARM GAS  /tmp/cchP98Hu.s 			page 53
+ARM GAS  /tmp/ccT2rUHt.s 			page 53
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 fatfs_sd.c
-     /tmp/cchP98Hu.s:18     .text.SD_PowerOff:0000000000000000 $t
-     /tmp/cchP98Hu.s:23     .text.SD_PowerOff:0000000000000000 SD_PowerOff
-     /tmp/cchP98Hu.s:41     .text.SD_PowerOff:0000000000000008 $d
-     /tmp/cchP98Hu.s:46     .text.SD_CheckPower:0000000000000000 $t
-     /tmp/cchP98Hu.s:51     .text.SD_CheckPower:0000000000000000 SD_CheckPower
-     /tmp/cchP98Hu.s:66     .text.SD_CheckPower:0000000000000008 $d
-     /tmp/cchP98Hu.s:71     .text.SPI_TxByte:0000000000000000 $t
-     /tmp/cchP98Hu.s:76     .text.SPI_TxByte:0000000000000000 SPI_TxByte
-     /tmp/cchP98Hu.s:120    .text.SPI_TxByte:0000000000000028 $d
-     /tmp/cchP98Hu.s:125    .text.SELECT:0000000000000000 $t
-     /tmp/cchP98Hu.s:130    .text.SELECT:0000000000000000 SELECT
-     /tmp/cchP98Hu.s:152    .text.SELECT:0000000000000010 $d
-     /tmp/cchP98Hu.s:157    .text.DESELECT:0000000000000000 $t
-     /tmp/cchP98Hu.s:162    .text.DESELECT:0000000000000000 DESELECT
-     /tmp/cchP98Hu.s:184    .text.DESELECT:0000000000000010 $d
-     /tmp/cchP98Hu.s:189    .text.SPI_RxByte:0000000000000000 $t
-     /tmp/cchP98Hu.s:194    .text.SPI_RxByte:0000000000000000 SPI_RxByte
-     /tmp/cchP98Hu.s:247    .text.SPI_RxByte:000000000000003c $d
-     /tmp/cchP98Hu.s:252    .text.SD_PowerOn:0000000000000000 $t
-     /tmp/cchP98Hu.s:257    .text.SD_PowerOn:0000000000000000 SD_PowerOn
-     /tmp/cchP98Hu.s:393    .text.SD_PowerOn:0000000000000078 $d
-     /tmp/cchP98Hu.s:398    .text.SD_ReadyWait:0000000000000000 $t
-     /tmp/cchP98Hu.s:403    .text.SD_ReadyWait:0000000000000000 SD_ReadyWait
-     /tmp/cchP98Hu.s:446    .text.SD_ReadyWait:0000000000000024 $d
-     /tmp/cchP98Hu.s:451    .text.SD_SendCmd:0000000000000000 $t
-     /tmp/cchP98Hu.s:456    .text.SD_SendCmd:0000000000000000 SD_SendCmd
-     /tmp/cchP98Hu.s:572    .text.SPI_RxBytePtr:0000000000000000 $t
-     /tmp/cchP98Hu.s:577    .text.SPI_RxBytePtr:0000000000000000 SPI_RxBytePtr
-     /tmp/cchP98Hu.s:604    .text.SD_RxDataBlock:0000000000000000 $t
-     /tmp/cchP98Hu.s:609    .text.SD_RxDataBlock:0000000000000000 SD_RxDataBlock
-     /tmp/cchP98Hu.s:701    .text.SD_RxDataBlock:0000000000000044 $d
-     /tmp/cchP98Hu.s:706    .text.SD_TxDataBlock:0000000000000000 $t
-     /tmp/cchP98Hu.s:711    .text.SD_TxDataBlock:0000000000000000 SD_TxDataBlock
-     /tmp/cchP98Hu.s:855    .text.SD_TxDataBlock:0000000000000080 $d
-     /tmp/cchP98Hu.s:860    .text.SD_disk_initialize:0000000000000000 $t
-     /tmp/cchP98Hu.s:866    .text.SD_disk_initialize:0000000000000000 SD_disk_initialize
-     /tmp/cchP98Hu.s:1206   .text.SD_disk_initialize:0000000000000178 $d
-     /tmp/cchP98Hu.s:1213   .text.SD_disk_status:0000000000000000 $t
-     /tmp/cchP98Hu.s:1219   .text.SD_disk_status:0000000000000000 SD_disk_status
-     /tmp/cchP98Hu.s:1248   .text.SD_disk_status:0000000000000010 $d
-     /tmp/cchP98Hu.s:1253   .text.SD_disk_read:0000000000000000 $t
-     /tmp/cchP98Hu.s:1259   .text.SD_disk_read:0000000000000000 SD_disk_read
-     /tmp/cchP98Hu.s:1421   .text.SD_disk_read:0000000000000090 $d
-     /tmp/cchP98Hu.s:1427   .text.SD_disk_write:0000000000000000 $t
-     /tmp/cchP98Hu.s:1433   .text.SD_disk_write:0000000000000000 SD_disk_write
-     /tmp/cchP98Hu.s:1640   .text.SD_disk_write:00000000000000bc $d
-     /tmp/cchP98Hu.s:1646   .text.SD_disk_ioctl:0000000000000000 $t
-     /tmp/cchP98Hu.s:1652   .text.SD_disk_ioctl:0000000000000000 SD_disk_ioctl
-     /tmp/cchP98Hu.s:1702   .text.SD_disk_ioctl:000000000000002e $d
-     /tmp/cchP98Hu.s:1717   .text.SD_disk_ioctl:000000000000003c $t
-     /tmp/cchP98Hu.s:2018   .text.SD_disk_ioctl:0000000000000180 $d
-     /tmp/cchP98Hu.s:2026   .bss.CardType:0000000000000000 CardType
-     /tmp/cchP98Hu.s:2027   .bss.CardType:0000000000000000 $d
-     /tmp/cchP98Hu.s:2032   .bss.PowerFlag:0000000000000000 PowerFlag
-     /tmp/cchP98Hu.s:2033   .bss.PowerFlag:0000000000000000 $d
-ARM GAS  /tmp/cchP98Hu.s 			page 54
+     /tmp/ccT2rUHt.s:18     .text.SD_PowerOff:0000000000000000 $t
+     /tmp/ccT2rUHt.s:23     .text.SD_PowerOff:0000000000000000 SD_PowerOff
+     /tmp/ccT2rUHt.s:41     .text.SD_PowerOff:0000000000000008 $d
+     /tmp/ccT2rUHt.s:46     .text.SD_CheckPower:0000000000000000 $t
+     /tmp/ccT2rUHt.s:51     .text.SD_CheckPower:0000000000000000 SD_CheckPower
+     /tmp/ccT2rUHt.s:66     .text.SD_CheckPower:0000000000000008 $d
+     /tmp/ccT2rUHt.s:71     .text.SPI_TxByte:0000000000000000 $t
+     /tmp/ccT2rUHt.s:76     .text.SPI_TxByte:0000000000000000 SPI_TxByte
+     /tmp/ccT2rUHt.s:120    .text.SPI_TxByte:0000000000000028 $d
+     /tmp/ccT2rUHt.s:125    .text.SELECT:0000000000000000 $t
+     /tmp/ccT2rUHt.s:130    .text.SELECT:0000000000000000 SELECT
+     /tmp/ccT2rUHt.s:152    .text.SELECT:0000000000000010 $d
+     /tmp/ccT2rUHt.s:157    .text.DESELECT:0000000000000000 $t
+     /tmp/ccT2rUHt.s:162    .text.DESELECT:0000000000000000 DESELECT
+     /tmp/ccT2rUHt.s:184    .text.DESELECT:0000000000000010 $d
+     /tmp/ccT2rUHt.s:189    .text.SPI_RxByte:0000000000000000 $t
+     /tmp/ccT2rUHt.s:194    .text.SPI_RxByte:0000000000000000 SPI_RxByte
+     /tmp/ccT2rUHt.s:247    .text.SPI_RxByte:000000000000003c $d
+     /tmp/ccT2rUHt.s:252    .text.SD_PowerOn:0000000000000000 $t
+     /tmp/ccT2rUHt.s:257    .text.SD_PowerOn:0000000000000000 SD_PowerOn
+     /tmp/ccT2rUHt.s:393    .text.SD_PowerOn:0000000000000078 $d
+     /tmp/ccT2rUHt.s:398    .text.SD_ReadyWait:0000000000000000 $t
+     /tmp/ccT2rUHt.s:403    .text.SD_ReadyWait:0000000000000000 SD_ReadyWait
+     /tmp/ccT2rUHt.s:446    .text.SD_ReadyWait:0000000000000024 $d
+     /tmp/ccT2rUHt.s:451    .text.SD_SendCmd:0000000000000000 $t
+     /tmp/ccT2rUHt.s:456    .text.SD_SendCmd:0000000000000000 SD_SendCmd
+     /tmp/ccT2rUHt.s:572    .text.SPI_RxBytePtr:0000000000000000 $t
+     /tmp/ccT2rUHt.s:577    .text.SPI_RxBytePtr:0000000000000000 SPI_RxBytePtr
+     /tmp/ccT2rUHt.s:604    .text.SD_RxDataBlock:0000000000000000 $t
+     /tmp/ccT2rUHt.s:609    .text.SD_RxDataBlock:0000000000000000 SD_RxDataBlock
+     /tmp/ccT2rUHt.s:701    .text.SD_RxDataBlock:0000000000000044 $d
+     /tmp/ccT2rUHt.s:706    .text.SD_TxDataBlock:0000000000000000 $t
+     /tmp/ccT2rUHt.s:711    .text.SD_TxDataBlock:0000000000000000 SD_TxDataBlock
+     /tmp/ccT2rUHt.s:855    .text.SD_TxDataBlock:0000000000000080 $d
+     /tmp/ccT2rUHt.s:860    .text.SD_disk_initialize:0000000000000000 $t
+     /tmp/ccT2rUHt.s:866    .text.SD_disk_initialize:0000000000000000 SD_disk_initialize
+     /tmp/ccT2rUHt.s:1206   .text.SD_disk_initialize:0000000000000178 $d
+     /tmp/ccT2rUHt.s:1213   .text.SD_disk_status:0000000000000000 $t
+     /tmp/ccT2rUHt.s:1219   .text.SD_disk_status:0000000000000000 SD_disk_status
+     /tmp/ccT2rUHt.s:1248   .text.SD_disk_status:0000000000000010 $d
+     /tmp/ccT2rUHt.s:1253   .text.SD_disk_read:0000000000000000 $t
+     /tmp/ccT2rUHt.s:1259   .text.SD_disk_read:0000000000000000 SD_disk_read
+     /tmp/ccT2rUHt.s:1421   .text.SD_disk_read:0000000000000090 $d
+     /tmp/ccT2rUHt.s:1427   .text.SD_disk_write:0000000000000000 $t
+     /tmp/ccT2rUHt.s:1433   .text.SD_disk_write:0000000000000000 SD_disk_write
+     /tmp/ccT2rUHt.s:1640   .text.SD_disk_write:00000000000000bc $d
+     /tmp/ccT2rUHt.s:1646   .text.SD_disk_ioctl:0000000000000000 $t
+     /tmp/ccT2rUHt.s:1652   .text.SD_disk_ioctl:0000000000000000 SD_disk_ioctl
+     /tmp/ccT2rUHt.s:1702   .text.SD_disk_ioctl:000000000000002e $d
+     /tmp/ccT2rUHt.s:1717   .text.SD_disk_ioctl:000000000000003c $t
+     /tmp/ccT2rUHt.s:2018   .text.SD_disk_ioctl:0000000000000180 $d
+     /tmp/ccT2rUHt.s:2026   .bss.CardType:0000000000000000 CardType
+     /tmp/ccT2rUHt.s:2027   .bss.CardType:0000000000000000 $d
+     /tmp/ccT2rUHt.s:2032   .bss.PowerFlag:0000000000000000 PowerFlag
+     /tmp/ccT2rUHt.s:2033   .bss.PowerFlag:0000000000000000 $d
+ARM GAS  /tmp/ccT2rUHt.s 			page 54
 
 
-     /tmp/cchP98Hu.s:2038   .data.Stat:0000000000000000 Stat
+     /tmp/ccT2rUHt.s:2038   .data.Stat:0000000000000000 Stat
 
 UNDEFINED SYMBOLS
 HAL_SPI_GetState
