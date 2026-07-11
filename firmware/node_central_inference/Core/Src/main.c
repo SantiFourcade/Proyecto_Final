@@ -19,7 +19,7 @@ volatile uint8_t Timer1, Timer2;
 
 /* USER CODE BEGIN PV */
 extern CAN_HandleTypeDef hcan; 
-extern QueueHandle_t canRxQueueSD; // Asegúrate de que este nombre coincida con can_app.c
+extern QueueHandle_t canRxQueueSD; 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -51,11 +51,11 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 }
 
 /* Manejador de tiempos de la SD (se llama cada 10ms) */
-void SDTimer_Handler(void)
-{  
-    if(Timer1 > 0) Timer1--;
-    if(Timer2 > 0) Timer2--;
-}
+// void SDTimer_Handler(void)
+// {  
+//     if(Timer1 > 0) Timer1--;
+//     if(Timer2 > 0) Timer2--;
+// }
 /* USER CODE END PFP */
 
 /**
@@ -100,7 +100,6 @@ int main(void)
     printf("FMR=0x%08lX FM1R=0x%08lX\r\n", CAN1->FMR, CAN1->FM1R);
     printf("\r\n=== NODO CENTRAL READY ===\r\n");
 
-    /* 4. Arrancar el scheduler */
     osKernelStart();
 
     while (1) {}

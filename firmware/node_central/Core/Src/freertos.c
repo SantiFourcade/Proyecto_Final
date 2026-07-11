@@ -26,7 +26,7 @@
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
-#define MAX_DATOS_A_GRABAR   200u
+#define MAX_DATOS_A_GRABAR   1000u
 /* USER CODE BEGIN Variables */
 extern CAN_HandleTypeDef hcan; // Para monitorear errores en la tarea
 volatile uint8_t g_grabacion_activa = 1;

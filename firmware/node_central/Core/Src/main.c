@@ -102,7 +102,6 @@ int main(void)
     printf("FMR=0x%08lX FM1R=0x%08lX\r\n", CAN1->FMR, CAN1->FM1R);
     printf("\r\n=== NODO CENTRAL READY ===\r\n");
 
-    /* 4. Arrancar el scheduler */
     osKernelStart();
 
     while (1) {}

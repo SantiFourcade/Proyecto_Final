@@ -40,8 +40,8 @@ build/freertos.o: Core/Src/freertos.c \
  Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- Core/Inc/can_app.h Core/Inc/can.h Core/Inc/main.h Core/Inc/can_frame.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Core/Inc/can.h \
+ Core/Inc/main.h Core/Inc/can_app.h Core/Inc/can.h Core/Inc/can_frame.h \
  Core/Inc/regression_tree.h
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
@@ -88,8 +88,9 @@ Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
-Core/Inc/can_app.h:
 Core/Inc/can.h:
 Core/Inc/main.h:
+Core/Inc/can_app.h:
+Core/Inc/can.h:
 Core/Inc/can_frame.h:
 Core/Inc/regression_tree.h:
